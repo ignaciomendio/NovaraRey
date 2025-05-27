@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .models import Cia
 
-# Create your views here.
+def vista_aseguradora(request):
+    aseguradoras = Cia.objects.all()
+    return render(request, 'AseguradoraApp/aseguradoras.html', {'aseguradoras': aseguradoras})
+
+

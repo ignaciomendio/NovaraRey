@@ -1,0 +1,60 @@
+{% extends "StaffApp/baseStaff.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">Prestadores</h3>
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="rubrofilter" class="form-label">Rubro</label>
+            <select name="rubrofilter" id="rubrofilter" class="form-select">
+                <option value="">Todos</option>
+                {% for rubro in rubros %}
+                    <option value="{{ rubro.id }}" {% if request.GET.rubrofilter == rubro.id|stringformat:"s" %}selected{% endif %}>{{ rubro.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="activofilter" class="form-label">Estado</label>
+            <select name="activofilter" id="activofilter" class="form-select">
+                <option value="">Todos</option>
+                <option value="1" {% if request.GET.activofilter == "1" %}selected{% endif %}>Solo activos</option>
+                <option value="0" {% if request.GET.activofilter == "0" %}selected{% endif %}>Inactivos</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="nombrefilter" class="form-label">Nombre</label>
+            <input type="text" name="nombrefilter" id="nombrefilter" class="form-control" value="{{ request.GET.nombrefilter }}">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </form>
+    <form method="post" action="{% url 'prestadores_enviar_mail' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Lista de Prestadores</label>
+            <select name="prestadores" id="prestadores" class="form-select" multiple size="10" required>
+                {% for prestador in prestadores %}
+                    <option value="{{ prestador.id }}">{{ prestador.nombre }} ({{ prestador.rubro.nombre }}){% if not prestador.activo %} - Inactivo{% endif %}</option>
+                {% empty %}
+                    <option disabled>No hay prestadores para mostrar.</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3 d-flex justify-content-between">
+            <a href="{% url 'prestadores_create' %}" class="btn btn-success">Agregar Prestador</a>
+            <button type="submit" class="btn btn-secondary">Enviar por mail los seleccionados</button>
+        </div>
+    </form>
+    <script>
+        // Redirecciona al hacer doble click sobre un prestador
+        document.addEventListener('DOMContentLoaded', function() {
+            const select = document.getElementById('prestadores');
+            select.addEventListener('dblclick', function(e) {
+                if (e.target.tagName === 'OPTION') {
+                    window.location.href = "{% url 'prestadores_edit' 0 %}".replace('0', e.target.value);
+                }
+            });
+        });
+    </script>
+</div>
+{% endblock %}

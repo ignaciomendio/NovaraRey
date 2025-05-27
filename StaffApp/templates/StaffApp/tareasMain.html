@@ -1,0 +1,41 @@
+<!-- plantilla: StaffApp/templates/StaffApp/tareas.html -->
+{% extends "StaffApp/baseStaff.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-center mb-3">
+        <a href="{% url 'tareas_create' %}" class="btn btn-primary custom-btn">Agregar Nueva Tarea</a>
+    </div>
+    <h3 class="mb-3">Tareas Pendientes</h3>
+    <ul class="list-group">
+        {% for tarea in tareas %}
+            {% with dias=tarea.dias_restantes %}
+            <li class="list-group-item d-flex justify-content-between align-items-center
+                {% if dias < 0 %}bg-danger-subtle{% endif %}">
+                <a href="{% url 'tareas_edit' tarea.id %}" class="flex-grow-1 text-decoration-none text-dark"
+                    {% if dias < 7 and dias >= 0 %}style="font-weight:bold;"{% endif %}>
+                    {{ tarea.titulo }}
+                    <small class="text-muted">({{ tarea.fecha_vencimiento|date:"d/m/Y" }})</small>
+                </a>
+                <span>
+                    {% if dias < 0 %}
+                        Vencida ({{ dias }} días)
+                    {% else %}
+                        {{ dias }} día{{ dias|pluralize }}
+                    {% endif %}
+                </span>
+            </li>
+            {% endwith %}
+        {% empty %}
+            <li class="list-group-item">No hay tareas pendientes.</li>
+        {% endfor %}
+    </ul>
+    <div class="d-flex mb-3 mt-3 justify-content-center">
+<a href="{% url 'tareas_export_excel' %}" class="btn btn-success custom-btn d-flex align-items-center justify-content-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-excel me-2" viewBox="0 0 16 16">
+      <path d="M5.884 6.68a.5.5 0 0 1 .09.638L5.21 8l.764.682a.5.5 0 1 1-.68.732L4.5 8.707l-.793.707a.5.5 0 1 1-.68-.732L3.79 8l-.763-.682a.5.5 0 1 1 .68-.732L4.5 7.293l.793-.707a.5.5 0 0 1 .591.094z"/>
+      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3.5-2V4a1 1 0 0 0 1 1h1.5L10.5 2.5zm-7 12A1 1 0 0 0 4 15h8a1 1 0 0 0 1-1V5.5H10a2 2 0 0 1-2-2V1H4a1 1 0 0 0-1 1v12z"/>
+    </svg>
+    Exportar a Excel
+</a>    </div>
+</div>
+{% endblock %}

@@ -28,10 +28,9 @@
             <div id="login-area">
                 {% if user.is_authenticated %}
                     <span class="me-2">Hola, {{ user.get_username }}</span>
-                    <a href="#" class="text-white me-2">Cerrar sesión</a>
-                    <a href="#" class="text-white">Modificar datos</a>
+                    <a href="{% url 'logout' %}" class="text-white me-2">Cerrar sesión</a>
                 {% else %}
-                    <a href="#" class="text-white">Login</a>
+                    <a href="{% url 'login' %}" class="text-white">Login</a>
                 {% endif %}
             </div>
         </div>
@@ -50,8 +49,8 @@
                             <li class="nav-item {% if request.path == '/rubros/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'rubros' %}">Seguros</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/tienda/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="#">Aseguradoras</a>
+                            <li class="nav-item {% if request.path == '/aseguradoras/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link text-uppercase text-expanded" href="{% url 'aseguradoras' %}">Aseguradoras</a>
                             </li>
                             <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="#">Cotizar</a>
@@ -62,7 +61,7 @@
                         </ul>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item px-lg-2">
-                                <a class="nav-link text-uppercase text-expanded" href="#">Staff</a>
+                                <a class="nav-link text-uppercase text-expanded" href="{% url 'enter' %}">Staff</a>
                             </li>
                         </ul>
                     </div>

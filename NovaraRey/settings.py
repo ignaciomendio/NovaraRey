@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MainApp',
     'RubrosApp',
+    'AseguradoraApp',
+    'AuthApp',
+    'StaffApp',
 ]
 
 MIDDLEWARE = [
@@ -104,11 +107,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-AR'
+LANGUAGE_CODE = 'es-ar'  # O el código de tu país, por ejemplo 'es-es' para España
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'  # O tu zona horaria
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -125,3 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
+
+LOGIN_URL = '/login/login'
