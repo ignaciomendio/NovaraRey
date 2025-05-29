@@ -1,0 +1,346 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 700px;">
+    <h3 class="mb-4">Editar Compañía Aseguradora</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ cia.nombre }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">CUIT</label>
+            <input type="text" name="cuit" class="form-control" value="{{ cia.cuit }}">
+        </div>
+
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" name="activa" id="activaSwitch" {% if cia.activa %}checked{% endif %}>
+            <label class="form-check-label" for="activaSwitch">Compañía activa</label>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Logo (URL)</label>
+            <input type="url" name="logoUrl" class="form-control" value="{{ cia.logoUrl }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Sitio Web</label>
+            <input type="url" name="url" class="form-control" value="{{ cia.url }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea name="desc" class="form-control" rows="4">{{ cia.desc }}</textarea>
+        </div>
+        <div>
+            <p>Dirección</p>
+            <div class="mb-3">
+                <label class="form-label" for="calle">Calle</label>
+                <input type="text" name="calle" class="form-control" value="{{ direccion.calle }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="numero">Número</label>
+                <input type="text" name="numero" class="form-control" value="{{ direccion.numero }}">   
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="piso">Piso</label>   
+                <input type="text" name="piso" class="form-control" value="{{ direccion.piso }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="depto">Departamento</label>      
+                <input type="text" name="depto" class="form-control" value="{{ direccion.depto }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="localidad">Localidad</label>
+                <input type="text" name="localidad" class="form-control" value="{{ direccion.localidad }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="provincia">Provincia</label>
+                <input type="text" name="provincia" class="form-control" value="{{ direccion.provincia }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="codigoPostal">Código Postal</label>
+                <input type="text" name="codigoPostal" class="form-control" value="{{ direccion.cp }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de direccion</label>
+                <select name="addtype" id="addtype">
+                    {% for tipo in addtypes %}
+                        <option value="{{ tipo }}" {% if tipo == direccion.tipo %}selected{% endif %}>
+                            {{ tipo }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+                
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Agenda de contactos telefónicos (doble click para modificar)</label>
+            <select name="contactotel" id="contactotel" class="form-select" size="5">
+                {% for tel in telefonos %}
+                    <option 
+                        value="{{ tel.id }}" 
+                        data-numero="{{ tel.telefono }}" 
+                        data-contacto="{{ tel.contacto }}" 
+                        data-descripcion="{{ tel.desc }}">
+                        {{ tel }}
+                    </option>
+                {% empty %}
+                    <option disabled>No hay teléfonos para mostrar.</option>
+                {% endfor %}
+            </select>
+            <div class="mb-3 d-flex justify-content-end">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregarTelefono">
+                    Agregar contacto telefónico
+                </button>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Agenda de correos electrónicos (doble click para modificar)</label>
+            <select name="contactomail_sel" id="contactomail_sel" class="form-select" size="5">
+                {% for mail in mails %}
+                    <option value="{{ mail.id }}"
+                        data-mail="{{mail.mail}}"
+                        data-contacto="{{mail.contacto}}"
+                        data-descripcion="{{mail.desc}}">
+                        {{ mail }} 
+                    </option>
+                {% empty %}
+                    <option disabled>No hay emails registrados.</option>
+                {% endfor %}
+            </select>
+            <div class="mb-3 d-flex justify-content-end">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregarMail">
+                    Agregar correo electrónico
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between">
+            <a href="{% url 'aseguradoras_create' %}" class="btn btn-success">Agregar Aseguradora</a>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'aseguradoras_main' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal para agregar contacto telefónico -->
+<div class="modal fade" id="modalAgregarTelefono" tabindex="-1" aria-labelledby="modalTelefonoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'telefono_add' cia.id %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTelefonoLabel">Agregar Teléfono</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="numeroTelefono" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numeroTelefono" name="numero" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactotel" class="form-label">Contacto</label>
+            <input type="text" class="form-control" id="contactoAgregar" name="contactotel" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcionTelefono" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcionTelefono" name="descripcion">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Teléfono</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar Contacto de Mail -->
+<div class="modal fade" id="modalAgregarMail" tabindex="-1" aria-labelledby="modalMailLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'mail_add' cia.id %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalMailLabel">Agregar Mail</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="email" class="form-label">E-Mail</label>
+            <input type="text" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactomail" class="form-label">Contacto</label>
+            <input type="text" class="form-control" id="contactomail" name="contactomail" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcionMail" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcionMail" name="descripcionMail">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Mail</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de edición de teléfono -->
+<div class="modal fade" id="modalEditarTelefono" tabindex="-1" aria-labelledby="modalEditarTelefonoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" id="formEditarTelefono">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarTelefonoLabel">Editar Teléfono</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="telefono_id" id="telefono_id">
+          <div class="mb-3">
+            <label for="numeroEditar" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numeroEditar" name="numero" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactoEditar" class="form-label">Contacto</label>
+            <input type="text" class="form-control" id="contactoEditar" name="contacto" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcionEditar" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcionEditar" name="descripcion">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-danger" id="btnEliminarTelefono">Eliminar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de edición de mail -->
+<div class="modal fade" id="modalEditarMail" tabindex="-1" aria-labelledby="modalEditarMailLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" id="formEditarMail">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarMailLabel">Editar E_Mail</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="mail_id" id="mail_id">
+          <div class="mb-3">
+            <label for="mailEditar" class="form-label">E-Mail</label>
+            <input type="text" class="form-control" id="mailEditar" name="mail" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactoMailEditar" class="form-label">Contacto</label>
+            <input type="text" class="form-control" id="contactoMailEditar" name="contactomail" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcionMailEditar" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcionMailEditar" name="descripcionmail">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-danger" id="btnEliminarMail">Eliminar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" id="cia_id" value="{{ cia.id }}">
+
+<script>
+document.addEventListener('DOMContentLoaded', function () 
+{
+
+    const selecttel = document.getElementById('contactotel');
+    const modaltel = new bootstrap.Modal(document.getElementById('modalEditarTelefono'));
+    const formtel  = document.getElementById('formEditarTelefono');
+    const selectmail = document.getElementById('contactomail_sel');
+    const modalmail = new bootstrap.Modal(document.getElementById('modalEditarMail'));
+    const formmail = document.getElementById('formEditarMail');
+
+    selecttel.addEventListener('dblclick', function () 
+    {
+      const selectedOptionTel = selecttel.options[selecttel.selectedIndex];
+      const telefonoId = selectedOptionTel.value;
+      const numerotel = selectedOptionTel.getAttribute('data-numero') || '';
+      const contactotel = selectedOptionTel.getAttribute('data-contacto') || '';
+      const descripciontel = selectedOptionTel.getAttribute('data-descripcion') || '';
+
+      document.getElementById('telefono_id').value = telefonoId;
+      document.getElementById('numeroEditar').value = numerotel;
+      document.getElementById('contactoEditar').value = contactotel;
+      document.getElementById('descripcionEditar').value = descripciontel;
+
+      const ciaId = document.getElementById('cia_id').value;
+      formtel.action = `/staff/aseguradoras/edit/telEdit/${telefonoId}/?cia=${ciaId}`; // Ruta que debes tener en tus URLs
+      document.getElementById('btnEliminarTelefono').onclick = function () 
+      {
+        if (confirm('¿Deseas eliminar este contacto telefónico?')) 
+        {
+          window.location.href = `/staff/aseguradoras/edit/telDelete/${telefonoId}/?cia=${ciaId}`; // Ruta que debes tener en tus URLs
+        }
+      };
+
+      modaltel.show();   
+    }); 
+
+    selectmail.addEventListener('dblclick', function () 
+    {
+      const selectedOptionMail = selectmail.options[selectmail.selectedIndex];
+      const mailId = selectedOptionMail.value;
+      const mail = selectedOptionMail.getAttribute('data-mail') || '';
+      const contactomail = selectedOptionMail.getAttribute('data-contacto') || '';
+      const descripcionmail = selectedOptionMail.getAttribute('data-descripcion') || '';
+
+      document.getElementById('mail_id').value = mailId;
+      document.getElementById('mailEditar').value = mail;
+      document.getElementById('contactoMailEditar').value = contactomail;
+      document.getElementById('descripcionMailEditar').value = descripcionmail;
+
+
+      const ciaId = document.getElementById('cia_id').value;
+      formmail.action = `/staff/aseguradoras/edit/mailEdit/${mailId}/?cia=${ciaId}`; // Ruta que debes tener en tus URLs
+      document.getElementById('btnEliminarMail').onclick = function () 
+      {
+        if (confirm('¿Deseas eliminar este correo electrónico?')) 
+        {
+          window.location.href = `/staff/aseguradoras/edit/mailDelete/${mailId}/?cia=${ciaId}`; // Ruta que debes tener en tus URLs
+        }
+      };
+      modalmail.show();
+    });
+});
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+

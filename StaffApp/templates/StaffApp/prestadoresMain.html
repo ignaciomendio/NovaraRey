@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-primary w-100">Filtrar</button>
         </div>
     </form>
-    <form method="post" action="{% url 'prestadores_enviar_mail' %}">
+    <form method="post" action="{% url 'prestadores_doc' %}">
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Lista de Prestadores</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3 d-flex justify-content-between">
             <a href="{% url 'prestadores_create' %}" class="btn btn-success">Agregar Prestador</a>
-            <button type="submit" class="btn btn-secondary">Enviar por mail los seleccionados</button>
+            <button type="submit" class="btn btn-secondary">Generar documento con Prestadores seleccionados</button>
         </div>
     </form>
     <script>
