@@ -48,7 +48,7 @@
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'tareas_main' %}">Tareas</a>
                             </li>
                             <li class="nav-item {% if request.path == '/clientes/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="#">Clientes</a>
+                                <a class="nav-link text-uppercase text-expanded" href="{% url 'clientes_main' %}">Clientes</a>
                             </li>
                             <li class="nav-item {% if request.path == '/aseguradoras/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'aseguradoras_main' %}">Aseguradoras</a>

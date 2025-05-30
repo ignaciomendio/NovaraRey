@@ -1,0 +1,97 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 700px;">
+    <h3 class="mb-4">Generar Nuevo Cliente Persona Física</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="" required>    
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DNI, CUIL o CUIT</label>
+            <input type="text" name="dni" class="form-control" value="">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" name="fecha_nacimiento" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="condicion_iva" class="form-label">Condición frente al IVA</label>
+            <select id="condicion_iva" name="condicion_iva" class="form-select">
+              {% for key, value in cond_choices %}
+                <option value="{{ key }}"> {{ value }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        <div>
+            <p>Dirección</p>
+            <div class="mb-3">
+              <label class="form-label">Calle</label>
+              <input type="text" name="calle" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Número</label>
+                <input type="text" name="numero" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Piso</label>
+                <input type="text" name="piso" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Departamento</label>
+                <input type="text" name="dpto" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Localidad</label>
+                <input type="text" name="localidad" class="form-control" value=""> 
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Provincia</label>
+                <input type="text" name="provincia" class="form-control" value=""> 
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Código Postal</label>
+                <input type="text" name="cp" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de direccion</label>
+                <select name="addtype" id="addtype">
+                    {% for tipo in addtype_choices %}
+                        <option value="{{ tipo.id }}">
+                            {{ tipo }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Notas sobre el cliente</label>
+            <textarea name="notas" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'clientes_main' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

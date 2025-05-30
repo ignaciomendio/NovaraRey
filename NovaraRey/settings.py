@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'AseguradoraApp',
     'AuthApp',
     'StaffApp',
+    'ClientesApp',
 ]
 
 MIDDLEWARE = [
