@@ -1,0 +1,41 @@
+.custom-btn {
+    width: 80%;
+    border-radius:5px;
+    margin: 5px 0;
+}
+
+.nav-item.active .nav-link {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.claseprueba{
+    color: red;
+    font-weight: bold;
+}
+
+
+.bg-coral {
+    background-color: lightcoral !important;
+}
+
+/* static/css/styles.css */
+.header-bg {
+    background-image: url('../img/fondo encabezado.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Opcional: superponer un velo blanco semitransparente para mayor claridad */
+    position: relative;
+}
+.header-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.7); /* Ajusta la opacidad según necesidad */
+    z-index: 0;
+}
+.header-bg > * {
+    position: relative;
+    z-index: 1;
+}

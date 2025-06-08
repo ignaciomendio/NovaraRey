@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'AuthApp',
     'StaffApp',
     'ClientesApp',
+    'CotizacionesApp',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
 LOGIN_URL = '/login/login'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static", # Si tienes una carpeta 'static' en la raíz del proyecto
+]

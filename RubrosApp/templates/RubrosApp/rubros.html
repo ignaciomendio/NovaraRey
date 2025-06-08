@@ -5,11 +5,19 @@
 {% block content %}
 <section class="page-section cta">
     <div class="container">
+        {% if mensaje_exito %}
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                {{ mensaje_exito }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        {% endif %}
+        <h3 class="text-center my-4">Conocé los tipos de seguros con los que trabajamos</h3>
+
         <!-- Tarjetas -->
         <div class="row">
             {% for rubro in rubros %}
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 p-2" style="max-width: 300px; width: 100%;">
+                <div class="card h-100 p-2 shadow" style="max-width: 240px; width: 100%;">
                     {% if rubro.imagen %}
                         <img src="{{ rubro.imagen.url }}" class="card-img-top" alt="{{ rubro.nombre }}">
                     {% else %}
@@ -51,20 +59,113 @@
                             <p>{{ rubro.descripcion }}</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-end">
-                            <a href="#" class="btn btn-success btn-sm custom-btn">Solicitar Cotización</a>
-                        </div>
+                    <div class="d-flex justify-content-between">
+                        <button href="#" class="btn btn-success btn-sm custom-btn mx-4">Solicitar Cotización</button>
+                        <button type="button" class="btn btn-primary btn-sm custom-btn btn-info-adicional mx-4"
+                            data-bs-toggle="modal"
+                            data-bs-target="#infoModal"
+                            data-bs-rubro="{{ rubro.nombre }}"
+                            data-bs-rubro-id="{{ rubro.id }}">
+                            Solicitar información adicional
+                        </button>
                     </div>
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-end">
-                            <a href="#" class="btn btn-primary btn-sm custom-btn">Solicitar información adicional</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
+
+<!-- Modal Solicitar Información Adicional -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="infoForm" method="post" action="{% url 'more_info' %}">    
+        {% csrf_token %}
+        <div class="modal-header">
+          Solicitar información adicional sobre&nbsp; <span id="nombreRubroModal"></span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="rubroId" name="rubroId" readonly>
+          <div class="mb-3">
+            <label for="nombreCliente" class="form-label">¿Cuál es tu Nombre?</label>
+            <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Cómo desea recibir la información?</label>
+            <select class="form-select" id="metodoContacto" name="metodoContacto" required>
+              <option value="" selected disabled>Seleccione una opción</option>
+              <option value="mail">Mail</option>
+              <option value="whatsapp">WhatsApp</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="campoMail">
+            <label for="emailCliente" class="form-label">Dirección de mail</label>
+            <input type="email" class="form-control" id="emailCliente" name="emailCliente">
+          </div>
+          <div class="mb-3 d-none" id="campoWhatsapp">
+            <label for="whatsappCliente" class="form-label">Número de WhatsApp</label>
+            <input type="tel" class="form-control" id="whatsappCliente" name="whatsappCliente" pattern="[0-9+ ]+">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="btnEnviarInfo">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-info-adicional').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            // No e.preventDefault(); aquí, deja que Bootstrap abra el modal
+            var nombreRubro = btn.getAttribute('data-bs-rubro') || '';
+            var rubroId = btn.getAttribute('data-bs-rubro-id') || '';
+            document.getElementById('nombreRubroModal').textContent = nombreRubro;
+            document.getElementById('infoForm').reset();
+            document.getElementById('rubroId').value = rubroId;
+            document.getElementById('campoMail').classList.add('d-none');
+            document.getElementById('campoWhatsapp').classList.add('d-none');
+            document.getElementById('btnEnviarInfo').classList.remove('d-none');
+            // No abrir el modal manualmente aquí
+        });
+    });
+
+    // Mostrar campo según método de contacto
+    document.getElementById('metodoContacto').addEventListener('change', function() {
+        document.getElementById('campoMail').classList.toggle('d-none', this.value !== 'mail');
+        document.getElementById('campoWhatsapp').classList.toggle('d-none', this.value !== 'whatsapp');
+        // Limpiar campos al cambiar
+        document.getElementById('emailCliente').value = '';
+        document.getElementById('whatsappCliente').value = '';
+    });
+
+    // Validar y mostrar mensaje de éxito
+    document.getElementById('infoForm').addEventListener('submit', function(e) {
+        var nombre = document.getElementById('nombreCliente').value.trim();
+        var metodo = document.getElementById('metodoContacto').value;
+        var email = document.getElementById('emailCliente').value.trim();
+        var whatsapp = document.getElementById('whatsappCliente').value.trim();
+
+        if (!nombre || !metodo || (metodo === 'mail' && !email) || (metodo === 'whatsapp' && !whatsapp)) {
+            e.preventDefault(); // Solo previene si falta algún dato
+            return;
+        }
+        // Si todo está bien, el formulario se envía normalmente y Django recibe el POST
+    });
+
+    // Al cerrar el modal, limpiar backdrop si quedara alguno (opcional, solo si el bug persiste)
+    document.getElementById('infoModal').addEventListener('hidden.bs.modal', function () {
+        document.body.classList.remove('modal-open');
+        let backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(b => b.parentNode.removeChild(b));
+    });
+});
+</script>
+
 {% endblock %}

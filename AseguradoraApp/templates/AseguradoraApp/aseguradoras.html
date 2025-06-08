@@ -6,11 +6,12 @@
    
 <section class="page-section cta">
     <div class="container">
+        <h3 class="text-center my-4">Conocé las Aseguradoras con las que trabajamos</h3>
         <!-- Tarjetas -->
         <div class="row">
             {% for aseg in aseguradoras %}
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 p-2" style="max-width: 500px; width: 100%;">
+                <div class="card h-100 shadow p-2" style="max-width: 500px; width: 100%;">
                     <div class="d-flex justify-content-center align-items-center" style="height: 100px;">
                         {% if aseg.logoUrl %}
                             <img src="{{ aseg.logoUrl }}" alt="{{ aseg.nombre }}" style="max-height: 90px; max-width: 90%; object-fit: contain;">

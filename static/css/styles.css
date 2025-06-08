@@ -9,15 +9,13 @@
     text-decoration: underline;
 }
 
-
-
 .bg-coral {
     background-color: lightcoral !important;
 }
 
 /* static/css/styles.css */
 .header-bg {
-    background-image: url('static/img/fondo encabezado.jpg');
+    background-image: url('../img/fondo encabezado.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
