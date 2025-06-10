@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from .models import Cliente, ClientePersonaFisica, ClientePersonaJuridica
+from .models import Cliente, ClientePersonaFisica, ClientePersonaJuridica, MedioPago, TarjetaCredito, TransferenciaBancaria
 from MainApp.models import Address, AdressType
 from .models import TelefonoCte, EmailCte
 
@@ -69,6 +69,7 @@ def cliente_edit(request, id):
         telefonos = cliente_pf.telefonos.all()
         emails = cliente_pf.emails.all()
         cond_choices = cliente_pf._meta.get_field('condicion_iva').choices
+        medios_de_pago = MedioPago.objects.filter(Cliente=cliente_pf)
         
 
         return render(request, 'ClientesApp/clientes_pf_edit.html', {
@@ -77,6 +78,7 @@ def cliente_edit(request, id):
             'emails': emails,
             'cond_choices': cond_choices,
             'addtype_choices': addtype_choices,	
+            'medios_de_pago': medios_de_pago,
         })
 
     # Si no es PF, debe ser Jurídica (o 404)
@@ -111,6 +113,7 @@ def cliente_edit(request, id):
         telefonos = cliente_pj.telefonos.all()
         emails = cliente_pj.emails.all()
         cond_choices = cliente_pj._meta.get_field('condicion_iva').choices
+        medios_de_pago = MedioPago.objects.filter(Cliente=cliente_pj)
 
     return render(request, 'ClientesApp/clientes_pj_edit.html', {
         'cliente': cliente_pj,
@@ -118,6 +121,7 @@ def cliente_edit(request, id):
         'emails': emails,
         'cond_choices': cond_choices,
         'addtype_choices': addtype_choices,
+        'medios_de_pago': medios_de_pago,
     })
 
 
@@ -184,8 +188,13 @@ def cliente_create(request, typ):
                       {'cond_choices': cond_choices, 
                        'addtype_choices': addtype_choices})
 
+
 def cliente_delete(request, id):
-    pass
+
+    cliente = get_object_or_404(Cliente, id=id)
+    cliente.delete()
+    return redirect('clientes_main')
+
 
 @login_required(login_url='/login/login/')
 def cliente_edit_teladd(request, id):
@@ -247,3 +256,82 @@ def cliente_edit_maildel(request, id):
     email.delete()
     return redirect('cliente_edit', id=cliente.id)
 
+@login_required(login_url='/login/login/')
+def cliente_edit_tarjetaadd(request, id):
+    cliente = get_object_or_404(Cliente, id=id)
+    if request.method == 'POST':
+        numero = request.POST.get('numero_tarjeta')
+        titular = request.POST.get('titular_tarjeta')
+        vencimiento = request.POST.get('fecha_vencimiento')
+        tipo = request.POST.get('tipotarjeta')
+        tarjeta = TarjetaCredito.objects.create(
+            Cliente=cliente,
+            tipo = "TC",
+            tarjeta = tipo,
+            numero_tarjeta = numero,
+            titular = titular,
+            vencimiento = vencimiento
+        )
+        return redirect('cliente_edit', id=cliente.id)
+    return render(request, 'ClientesApp/cliente_edit_tarjetaadd.html', {'cliente': cliente})
+
+@login_required(login_url='/login/login/')
+def cliente_edit_transferenciaadd(request, id):
+    cliente = get_object_or_404(Cliente, id=id)
+    if request.method == 'POST':
+        cbu = request.POST.get('cbu')
+        titular = request.POST.get('titular_cuenta')
+        transferencia = TransferenciaBancaria.objects.create(
+            Cliente=cliente,
+            tipo = "TB",
+            cbu=cbu,
+            titular_cuenta=titular
+        )
+        return redirect('cliente_edit', id=cliente.id)
+    return render(request, 'ClientesApp/cliente_edit_transferenciaadd.html', {'cliente': cliente})
+
+@login_required(login_url='/login/login/')
+def cliente_edit_tarjetadel(request, id):
+    tarjeta = get_object_or_404(TarjetaCredito, id=id)
+    cliente = tarjeta.Cliente
+    tarjeta.delete()
+    return redirect('cliente_edit', id=cliente.id)
+
+@login_required(login_url='/login/login/')
+def cliente_edit_transferenciadel(request, id):
+    transferencia = get_object_or_404(TransferenciaBancaria, id=id)
+    cliente = transferencia.Cliente
+    transferencia.delete()
+    return redirect('cliente_edit', id=cliente.id)
+
+@login_required(login_url='/login/login/')
+def cliente_edit_tarjetaedit(request, id):
+    tarjeta = get_object_or_404(TarjetaCredito, id=id)
+    cliente = tarjeta.Cliente
+    if request.method == 'POST':
+        tarjeta.tarjeta = request.POST.get('edit_tipotarjeta', tarjeta.tarjeta)
+        tarjeta.numero_tarjeta = request.POST.get('edit_numeroTarjeta', tarjeta.numero_tarjeta)
+        tarjeta.titular = request.POST.get('edit_titularTarjeta', tarjeta.titular)
+        tarjeta.vencimiento = request.POST.get('edit_fechaVencimiento', tarjeta.vencimiento)
+        tarjeta.save()
+        return redirect('cliente_edit', id=cliente.id)
+    return redirect('cliente_edit', id=cliente.id)
+
+
+@login_required(login_url='/login/login/')
+def cliente_edit_transferenciaedit(request, id):
+    transferencia = get_object_or_404(TransferenciaBancaria, id=id)
+    cliente = transferencia.Cliente
+    if request.method == 'POST':
+        transferencia.cbu = request.POST.get('edit_cbu', transferencia.cbu)
+        transferencia.titular_cuenta = request.POST.get('edit_titularCuenta', transferencia.titular_cuenta)
+        transferencia.save()
+        return redirect('cliente_edit', id=cliente.id)
+    return redirect('cliente_edit', id=cliente.id)
+
+@login_required(login_url='/login/login/')
+def cliente_edit_mediodel(request, id):
+    medio_pago = get_object_or_404(MedioPago, id=id)
+    cliente = medio_pago.Cliente
+    medio_pago.delete()
+    return redirect('cliente_edit', id=cliente.id)

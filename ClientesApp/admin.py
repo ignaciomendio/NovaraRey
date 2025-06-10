@@ -2,11 +2,13 @@ from django.contrib import admin
 
 from .models import (
     TelefonoCte, EmailCte,
-    ClientePersonaFisica, ClientePersonaJuridica
+    ClientePersonaFisica, ClientePersonaJuridica, TarjetaCredito, TransferenciaBancaria
 )
 
 admin.site.register(TelefonoCte)
 admin.site.register(EmailCte)
+admin.site.register(TarjetaCredito)
+admin.site.register(TransferenciaBancaria)
 
 @admin.register(ClientePersonaFisica)
 class ClientePersonaFisicaAdmin(admin.ModelAdmin):

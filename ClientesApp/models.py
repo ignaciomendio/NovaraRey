@@ -3,6 +3,40 @@ from MainApp.models import Address
 
 # --- Modelos compartidos ---
 
+class TipoMedioPago(models.TextChoices):
+    TARJETA_CREDITO = 'TC', 'Tarjeta de Crédito'
+    TRANSFERENCIA_BANCARIA = 'TB', 'Transferencia Bancaria'
+
+class MedioPago(models.Model):
+    tipo = models.CharField(max_length=2, choices=TipoMedioPago.choices)
+    Cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE, related_name='medios_pago')
+
+    def __str__(self):
+        return f"{self.tipo}"
+
+class TarjetaCredito(MedioPago):
+    tarjeta = models.CharField(max_length=30) # Visa, Mastercard, etc.
+    numero_tarjeta = models.CharField(max_length=20)
+    titular = models.CharField(max_length=100)
+    vencimiento = models.CharField(max_length=5)  # Formato MM/AA
+
+    def __str__(self):
+        return f"{self.tarjeta} - {self.numero_tarjeta}"
+    
+    def vencida(self):
+        from datetime import datetime
+        hoy = datetime.now()
+        mes, anio = map(int, self.vencimiento.split('/'))
+        vencimiento = datetime((anio + 2000) + (mes // 12), mes % 12 + 1, 1)
+        return hoy > vencimiento
+
+class TransferenciaBancaria(MedioPago):
+    cbu = models.CharField(max_length=20)
+    titular_cuenta = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"CBU: {self.cbu}"
+    
 class CondicionIVA(models.TextChoices):
     RESPONSABLE_INSCRIPTO = 'RI', 'Responsable Inscripto'
     MONOTRIBUTO = 'MO', 'Monotributo'

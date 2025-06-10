@@ -106,6 +106,77 @@
                 </button>
             </div>
         </div>
+        <!-- Medios de Pago del cliente -->
+        <div class="mb-3">
+            <label class="form-label">Medios de Pago</label>
+            <!-- Tabla de medios de Pago-->
+            <table id="tabla_medios" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Número</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medio in medios_de_pago %}
+                        <tr  {% if medio.tarjetacredito %} {% if medio.tarjetacredito.vencida %} class="table-danger" {% endif %} {% endif %}>
+                            <td>{{ medio.tipo }}{% if medio.tarjetacredito %} {% if medio.tarjetacredito.vencida %} &nbsp;- Vencida {% endif %} {% endif %}</td>
+                            <td>  
+                              {% if medio.tarjetacredito %}
+                                {{ medio.tarjetacredito }}
+                              {% elif medio.transferenciabancaria %}
+                                {{ medio.transferenciabancaria }}
+                              {% else %}
+                                {{ medio }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-copiar-medio"
+                                data-tipo="{{ medio.tipo|lower }}"
+                                data-id="{{ medio.id }}"
+                                {% if medio.tarjetacredito %}
+                                  data-tipo-medio="tarjeta"
+                                {% elif medio.transferenciabancaria %}
+                                  data-tipo-medio="transferencia"
+                                {% else %}
+                                  data-tipo-medio="otro"
+                                {% endif %}
+                                {% if medio.tarjetacredito %}
+                                  data-numero="{{ medio.tarjetacredito.numero_tarjeta }}"
+                                  data-tipotarjeta="{{ medio.tarjetacredito.tarjeta }}"
+                                  data-titular="{{ medio.tarjetacredito.titular }}"
+                                  data-vencimiento="{{ medio.tarjetacredito.vencimiento }}"
+                                {% elif medio.transferenciabancaria %}
+                                  data-cbu="{{ medio.transferenciabancaria.cbu }}"
+                                  data-titular="{{ medio.transferenciabancaria.titular_cuenta }}"
+                                {% endif %}
+                                title="Copiar al portapapeles">
+                                <i class="bi bi-clipboard"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-borrar-medio"
+                                data-id="{{ medio.id }}"
+                                title="Eliminar medio de pago">
+                                <i class="bi bi-trash"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No hay medios de pago registrados.</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+                <button type="button" class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalAgregarTarjeta" style="min-width: 150px;">
+                  Agregar Tarjeta
+                </button>
+                <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalAgregarTransferencia" style="min-width: 150px;">
+                  Agregar CBU 
+                </button>
+        </div>
+
         <div class="mb-3">
             <label class="form-label">Notas sobre el cliente</label>
             <textarea name="notas" class="form-control" rows="4">{{ cliente.notas }}</textarea>
@@ -254,6 +325,143 @@
   </div>
 </div>
 
+<!-- Modal para agregar tarjeta de crédito -->
+<div class="modal fade" id="modalAgregarTarjeta" tabindex="-1" aria-labelledby="modalAgregarTarjetaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'tarjeta_add_cte' cliente.id %}" autocomplete="off">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarTarjetaLabel">Agregar Tarjeta de Crédito</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="tipotarjeta" class="form-label">Tipo de Tarjeta (VISA, MASTER, AMEX...)</label>
+            <input type="text" class="form-control" id="tipotarjeta" name="tipotarjeta", required>
+          </div>
+          <div class="mb-3">
+            <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+            <input type="text" class="form-control" id="numeroTarjeta" name="numero_tarjeta" autocomplete="off" required>  
+          </div>
+          <div class="mb-3">
+            <label for="titularTarjeta" class="form-label">Titular de la Tarjeta</label>
+            <input type="text" class="form-control" id="titularTarjeta" name="titular_tarjeta" autocomplete="off" required>  
+          </div>
+          <div class="mb-3">
+            <label for="fechaVencimiento" class="form-label">Fecha de Vencimiento (Formato: MM/AA)</label>
+            <input type="text" class="form-control" id="fechaVencimiento" name="fecha_vencimiento"
+              pattern="^(0[1-9]|1[0-2])\/\d{2}$" placeholder="MM/AA" autocomplete="off" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Tarjeta</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar transferencia bancaria -->
+<div class="modal fade" id="modalAgregarTransferencia" tabindex="-1" aria-labelledby="modalAgregarTransferenciaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'transferencia_add_cte' cliente.id %}" autocomplete="off">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarTransferenciaLabel">Agregar Transferencia Bancaria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="cbu" class="form-label">CBU</label>
+            <input type="text" class="form-control" id="cbu" name="cbu" pattern="\d{22}" placeholder="22 dígitos" required>
+          </div>
+          <div class="mb-3">
+            <label for="titularCuenta" class="form-label">Titular de la Cuenta</label>
+            <input type="text" class="form-control" id="titularCuenta" name="titular_cuenta" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Transferencia</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para editar tarjeta de crédito-->
+ <div class="modal fade" id="modalEditTarjeta" tabindex="-1" aria-labelledby="modalEditTarjetaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" id="formEditTarjeta" action="">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditTarjetaLabel">Editar Tarjeta de Crédito</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="edit_tarjeta_id" name="edit_tarjeta_id">
+          <div class="mb-3">
+            <label for="edit_tipotarjeta" class="form-label">Tipo de Tarjeta (VISA, MASTER, AMEX...)</label>
+            <input type="text" class="form-control" id="edit_tipotarjeta" name="edit_tipotarjeta", required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_numeroTarjeta" class="form-label">Número de Tarjeta</label>
+            <input type="text" class="form-control" id="edit_numeroTarjeta" name="edit_numeroTarjeta" required>  
+          </div>
+          <div class="mb-3">
+            <label for="edit_titularTarjeta" class="form-label">Titular de la Tarjeta</label>
+            <input type="text" class="form-control" id="edit_titularTarjeta" name="edit_titularTarjeta" required>  
+          </div>
+          <div class="mb-3">
+            <label for="edit_fechaVencimiento" class="form-label">Fecha de Vencimiento (Formato: MM/AA)</label>
+            <input type="text" class="form-control" id="edit_fechaVencimiento" name="edit_fechaVencimiento"
+              pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-danger" id="btnEliminarTarjeta">Eliminar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para editar transferencia bancaria -->
+<div class="modal fade" id="modalEditTransferencia" tabindex="-1" aria-labelledby="modalEditTransferenciaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" id="formEditTransferencia" action="">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditTransferenciaLabel">Editar Transferencia Bancaria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="edit_transferencia_id" name="edit_transferencia_id">
+          <div class="mb-3">
+            <label for="edit_cbu" class="form-label">CBU</label>
+            <input type="text" class="form-control" id="edit_cbu" name="edit_cbu" pattern="\d{22}" placeholder="22 dígitos" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_titularCuenta" class="form-label">Titular de la Cuenta</label>
+            <input type="text" class="form-control" id="edit_titularCuenta" name="edit_titularCuenta" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-danger" id="btnEliminarTransferencia">Eliminar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <input type="hidden" id="cliente_id" value="{{ cliente.id }}">
 
 <script>
@@ -320,6 +528,107 @@ document.addEventListener('DOMContentLoaded', function ()
       modalmail.show();
     });
 });
+
+// Script para copiar números de medios de pago al portapapeles
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-copiar-medio').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const numero = btn.getAttribute('data-numero');
+            if (numero && numero.trim() !== "") {
+                navigator.clipboard.writeText(numero).then(function() {
+                    btn.classList.remove('btn-outline-secondary');
+                    btn.classList.add('btn-success');
+                    btn.title = "¡Copiado!";
+                    setTimeout(function() {
+                        btn.classList.remove('btn-success');
+                        btn.classList.add('btn-outline-secondary');
+                        btn.title = "Copiar al portapapeles";
+                    }, 1200);
+                });
+            } else {
+                alert("No hay número para copiar.");
+            }
+        });
+    });
+    document.querySelectorAll('.btn-borrar-medio').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const idmedio = btn.getAttribute('data-id');
+            if (idmedio && idmedio.trim() !== "") {
+                if (confirm("¿Deseas eliminar este medio de pago?")) {
+                    window.location.href = `/staff/clientes/edit/medioDelete/${idmedio}/`; // Ajusta la URL según tu routing
+                }
+            } else {
+                alert("No hay número para copiar.");
+            }
+        });
+    });
+});
+
+// Script para manejar el doble clic en filas de medios de pago
+document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona la tabla de medios de pago
+    const tablaMedios = document.getElementById('tabla_medios');
+    if (!tablaMedios) return;
+
+    tablaMedios.querySelectorAll('tbody tr').forEach(function(fila) {
+        fila.addEventListener('dblclick', function () {
+            // Obtiene el tipo y los datos del medio de pago
+            const tipo = fila.querySelector('button.btn-copiar-medio')?.getAttribute('data-tipo');
+            // Puedes agregar más atributos data-* en el botón o en la fila para pasar los datos necesarios
+
+            if (tipo === 'tc' || tipo === 'tarjeta' || tipo === 'tarjeta de crédito') {
+                // Completa los campos del modal de edición de tarjeta
+                // Aquí deberías pasar los datos de la tarjeta a los inputs del modal
+                // Por ejemplo, si tienes data-numero, data-titular, etc. en el botón:
+                const btn = fila.querySelector('button.btn-copiar-medio');
+                document.getElementById('edit_tipotarjeta').value = btn.getAttribute('data-tipotarjeta') || '';
+                document.getElementById('edit_numeroTarjeta').value = btn.getAttribute('data-numero') || '';
+                document.getElementById('edit_titularTarjeta').value = btn.getAttribute('data-titular') || '';
+                document.getElementById('edit_fechaVencimiento').value = btn.getAttribute('data-vencimiento') || '';
+                document.getElementById('edit_tarjeta_id').value = btn.getAttribute('data-id') || '';
+                document.getElementById('formEditTarjeta').action = `/staff/clientes/edit/tarjetaEdit/${btn.getAttribute('data-id')}/`; // Ajusta la URL según tu routing
+                // Muestra el modal de edición de tarjeta
+                new bootstrap.Modal(document.getElementById('modalEditTarjeta')).show();
+            } else if (tipo === 'tb' || tipo === 'transferencia' || tipo === 'transferencia bancaria') {
+                // Completa los campos del modal de edición de transferencia
+                const btn = fila.querySelector('button.btn-copiar-medio');
+                document.getElementById('edit_cbu').value = btn.getAttribute('data-cbu') || '';
+                document.getElementById('edit_titularCuenta').value = btn.getAttribute('data-titular') || '';
+                document.getElementById('edit_transferencia_id').value = btn.getAttribute('data-id') || '';
+                document.getElementById('formEditTransferencia').action = `/staff/clientes/edit/transferenciaEdit/${btn.getAttribute('data-id')}/`; // Ajusta la URL según tu routing
+
+                // Muestra el modal de edición de transferencia
+                new bootstrap.Modal(document.getElementById('modalEditTransferencia')).show();
+            }
+        });
+    });
+});
+
+// Scripts para manejar botones de modales de edición y eliminación de medios de pago
+document.addEventListener('DOMContentLoaded', function () {
+    const btnEliminarTarjeta = document.getElementById('btnEliminarTarjeta');
+
+    if (btnEliminarTarjeta) {
+        btnEliminarTarjeta.onclick = function () {
+            const tarjetaId = document.getElementById('edit_tarjeta_id').value;
+            if (tarjetaId && confirm('¿Deseas eliminar esta tarjeta de crédito?')) {
+                // Redirige a la URL de borrado (ajusta la URL según tu routing)
+                window.location.href = `/staff/clientes/edit/tarjetaDelete/${tarjetaId}/`;
+            }
+        };
+    }
+    const btnEliminarTransferencia = document.getElementById('btnEliminarTransferencia');
+    if (btnEliminarTransferencia) {
+        btnEliminarTransferencia.onclick = function () {
+            const transferenciaId = document.getElementById('edit_transferencia_id').value;
+            if (transferenciaId && confirm('¿Deseas eliminar este CBU?')) {
+                // Redirige a la URL de borrado (ajusta la URL según tu routing)
+                window.location.href = `/staff/clientes/edit/transferenciaDelete/${transferenciaId}/`;
+            }
+        };
+    }
+});
+
 </script>
 
 {% endblock %}
