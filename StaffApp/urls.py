@@ -22,5 +22,6 @@ urlpatterns = [
     path('aseguradoras/edit/mailEdit/<int:id>/', vista_aseguradoras_edit_mailEdit, name='mail_edit'),
     path('aseguradoras/edit/telDelete/<int:id>/', vista_aseguradoras_edit_telDelete, name='tel_delete'),
     path('aseguradoras/edit/mailDelete/<int:id>/', vista_aseguradoras_edit_mailDelete, name='mail_delete'),
+    
 ]
 

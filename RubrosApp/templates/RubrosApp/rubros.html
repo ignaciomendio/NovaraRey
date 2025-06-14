@@ -27,7 +27,10 @@
                         <p class="card-title">{{ rubro.nombre }}</p>
                         <div class="mt-auto w-100 d-flex flex-column align-items-center">
                             <a href="#ficha-{{ rubro.id }}" class="btn btn-primary btn-sm custom-btn">Más detalles</a>
-                            <a href="#" class="btn btn-success btn-sm custom-btn">Solicitar Cotización</a>
+                            <button type="button" class="btn btn-success btn-sm custom-btn btn-solicitar-cotizacion"
+                                data-bs-rubro-id="{{ rubro.id }}">
+                                Solicitar Cotización
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -60,8 +63,11 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button href="#" class="btn btn-success btn-sm custom-btn mx-4">Solicitar Cotización</button>
-                        <button type="button" class="btn btn-primary btn-sm custom-btn btn-info-adicional mx-4"
+                        <button type="button" class="btn btn-success btn-sm btn-solicitar-cotizacion mx-4"
+                            data-bs-rubro-id="{{ rubro.id }}">
+                            Solicitar Cotización
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm btn-info-adicional mx-4"
                             data-bs-toggle="modal"
                             data-bs-target="#infoModal"
                             data-bs-rubro="{{ rubro.nombre }}"
@@ -121,6 +127,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    //poner evento click en los botones de info adicional
     document.querySelectorAll('.btn-info-adicional').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             // No e.preventDefault(); aquí, deja que Bootstrap abra el modal
@@ -133,6 +140,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('campoWhatsapp').classList.add('d-none');
             document.getElementById('btnEnviarInfo').classList.remove('d-none');
             // No abrir el modal manualmente aquí
+        });
+    });
+
+    //poner evento click en los botones de solicitar cotizacion
+    document.querySelectorAll('.btn-solicitar-cotizacion').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            const rubroId = btn.getAttribute('data-bs-rubro-id') || '';
+            window.location.href = `/rubros/solicitarQ/${rubroId}`;
         });
     });
 

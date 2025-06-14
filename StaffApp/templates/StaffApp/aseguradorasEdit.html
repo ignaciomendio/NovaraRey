@@ -1,73 +1,79 @@
 {% extends "StaffApp/baseStaff.html" %}
 
 {% block content %}
-<div class="container mt-4" style="max-width: 700px;">
-    <h3 class="mb-4">Editar Compañía Aseguradora</h3>
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Editar Compañía Aseguradora</h3>
 
     <form method="post">
         {% csrf_token %}
+        <hr class="staff-form-hr">
         
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Nombre</label>
             <input type="text" name="nombre" class="form-control" value="{{ cia.nombre }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">CUIT</label>
             <input type="text" name="cuit" class="form-control" value="{{ cia.cuit }}">
         </div>
 
-        <div class="form-check form-switch mb-3">
+        <div class="form-check form-switch staff-form-control-container">
             <input class="form-check-input" type="checkbox" name="activa" id="activaSwitch" {% if cia.activa %}checked{% endif %}>
             <label class="form-check-label" for="activaSwitch">Compañía activa</label>
         </div>
 
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Logo (URL)</label>
             <input type="url" name="logoUrl" class="form-control" value="{{ cia.logoUrl }}">
         </div>
 
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Sitio Web</label>
             <input type="url" name="url" class="form-control" value="{{ cia.url }}">
         </div>
 
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Descripción</label>
             <textarea name="desc" class="form-control" rows="4">{{ cia.desc }}</textarea>
         </div>
-        <div>
-            <p>Dirección</p>
-            <div class="mb-3">
-                <label class="form-label" for="calle">Calle</label>
+        <div class="staff-form-control-container">
+            <p class="form-label">Dirección</p>
+            <div class="row align-items-center my-3">
+              <label class="col-auto col-form-label px-0" for="calle">Calle:</label>
+              <div class="col-3 px-1">
                 <input type="text" name="calle" class="form-control" value="{{ direccion.calle }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="numero">Número</label>
+              </div>
+              <label class="col-auto col-form-label px-0" for="numero">Número:</label>
+              <div class="col-2 px-1">
                 <input type="text" name="numero" class="form-control" value="{{ direccion.numero }}">   
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="piso">Piso</label>   
+              </div>
+              <label class="col-auto col-form-label px-0" for="piso">Piso:</label> 
+              <div class="col-2 px-1">
                 <input type="text" name="piso" class="form-control" value="{{ direccion.piso }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="depto">Departamento</label>      
+              </div>
+              <label class="col-auto col-form-label px-0" for="depto">Dpto:</label>
+              <div class="col-2 px-1">
                 <input type="text" name="depto" class="form-control" value="{{ direccion.depto }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="localidad">Localidad</label>
-                <input type="text" name="localidad" class="form-control" value="{{ direccion.localidad }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="provincia">Provincia</label>
+              </div>    
+            </div>  
+            <div class="row align-items-center my-3">
+              <label class="col-auto col-form-label px-0" for="localidad">Localidad:</label>
+              <div class="col-4 px-1">
+                 <input type="text" name="localidad" class="form-control" value="{{ direccion.localidad }}">               
+              </div>
+              <label class="col-auto col-form-label px-0" for="provincia">Provincia:</label>
+              <div class="col-3 px-1">
                 <input type="text" name="provincia" class="form-control" value="{{ direccion.provincia }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="codigoPostal">Código Postal</label>
+              </div>
+              <label class="col-auto col-form-label px-0" for="codigoPostal">CP:</label>
+              <div class="col-2 px-1">
                 <input type="text" name="codigoPostal" class="form-control" value="{{ direccion.cp }}">
+              </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Tipo de direccion</label>
+            <div class="row align-items-center my-3">
+              <label class="col-auto col-form-label px-0">Tipo de direccion:</label>
+              <div class="col-2 px-1">
                 <select name="addtype" id="addtype">
                     {% for tipo in addtypes %}
                         <option value="{{ tipo }}" {% if tipo == direccion.tipo %}selected{% endif %}>
@@ -75,11 +81,12 @@
                         </option>
                     {% endfor %}
                 </select>
+              </div>
             </div>
                 
         </div>
-
-        <div class="mb-3">
+        <hr class="staff-form-hr">
+        <div class="staff-form-control-container">
             <label class="form-label">Agenda de contactos telefónicos (doble click para modificar)</label>
             <select name="contactotel" id="contactotel" class="form-select" size="5">
                 {% for tel in telefonos %}
@@ -94,13 +101,14 @@
                     <option disabled>No hay teléfonos para mostrar.</option>
                 {% endfor %}
             </select>
-            <div class="mb-3 d-flex justify-content-end">
+            <div class="mb-3 d-flex justify-content-end mt-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregarTelefono">
                     Agregar contacto telefónico
                 </button>
             </div>
         </div>
-        <div class="mb-3">
+        <hr class="staff-form-hr">
+        <div class="staff-form-control-container">
             <label class="form-label">Agenda de correos electrónicos (doble click para modificar)</label>
             <select name="contactomail_sel" id="contactomail_sel" class="form-select" size="5">
                 {% for mail in mails %}
@@ -114,12 +122,13 @@
                     <option disabled>No hay emails registrados.</option>
                 {% endfor %}
             </select>
-            <div class="mb-3 d-flex justify-content-end">
+            <div class="mb-3 d-flex justify-content-end mt-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregarMail">
                     Agregar correo electrónico
                 </button>
             </div>
         </div>
+        <hr class="staff-form-hr">
         <div class="d-flex justify-content-between">
             <a href="{% url 'aseguradoras_main' %}" class="btn btn-secondary">Volver</a>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>

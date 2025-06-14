@@ -1,0 +1,67 @@
+{% extends "MainApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-4 main-form-container">
+    <h3 class="main-form-title">Solicitar Cotizacion - {{categoria}}</h3>
+    <hr class="main-form-hr">
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="main-form-control-container">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+        </div>
+        <div class="main-form-control-container">
+            <label class="form-label">Teléfono de contacto</label>
+            <input type="text" name="telefono" class="form-control" required>    
+        </div>
+        <div class="main-form-control-container">
+            <label class="form-label">E-Mail de contacto</label>
+            <input type="email" name="email" class="form-control" required>    
+        </div>
+        {% for data in data_cotizacion %}
+        <div class="main-form-control-container">
+            <label class="form-label">{{data.nombre_dato}}</label>
+            {% if data.help_text %}
+              <p class="form-help">{{data.help_text}}</p>  
+            {% endif %}
+              {% if data.tipo_dato == 'T' %} 
+                <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control">
+              {% elif data.tipo_dato == 'N' %} 
+                <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="number" class="form-control">
+              {% elif data.tipo_dato == 'B' %} 
+                <select name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} value="" class="form-select">
+                  <option value=""> Seleccione </option>
+                  <option value="SI"> Si </option>
+                  <option value="NO"> No </option>
+                </select>
+              {% elif data.tipo_dato == 'C' %} 
+                  <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control" placeholder="Opciones: {{data.choices}}">
+            {% endif %}
+        </div>
+        {% endfor %}
+        <div class="main-form-control-container">
+            <label class="form-label">Cualquier información extra que nos quiera compartir</label>
+            <textarea name="rawdata" class="form-control" cols="4"></textarea>    
+        </div>
+        <hr class="main-form-hr">
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'rubros' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Solicitar Cotizacion</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

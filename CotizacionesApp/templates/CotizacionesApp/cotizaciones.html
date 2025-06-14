@@ -1,0 +1,185 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-container">
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mt-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <h3 class="staff-form-title">Cotizaciones</h3>
+
+  <!--Zona de Filtro-->
+  <hr class="staff-form-hr">
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label for="tipo" class="form-label">Status de Pedido</label>
+      <select name="status" id="tipo" class="form-select">
+        <option value="">Todos</option>
+        {% for choice in filtro_choices %}
+          <option value="{{choice.0}}" {% if filtro_status == choice.0 %}selected{% endif %}>{{choice.1}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+  </form>
+
+  <!--Zona de Fichas-->
+  <hr class="staff-form-hr">
+  <div class="mt-5">
+    {% for cotizacion in cotizaciones %}
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{cotizacion.rubro.nombre}}</h5>
+          <input type="hidden" name="reqid" value="{{solicitud.id}}">
+          <p><strong>Cliente:&nbsp;</strong>
+          {% if cotizacion.cliente %}
+            {% if cotizacion.cliente.clientepersonafisica %}
+              {{ cotizacion.cliente.clientepersonafisica.apellido }}, {{ cotizacion.cliente.clientepersonafisica.nombre }}
+            {% elif cotizacion.cliente.clientepersonajuridica %}
+              {{ cotizacion.cliente.clientepersonajuridica.razon_social }}
+            {% else %}
+              Cliente sin nombre
+            {% endif %}
+          {% else %} 
+            Cliente no registrado 
+          {% endif %}</p>
+          {% if not cotizacion.cliente %}
+            <p><strong>Datos de Contacto:&nbsp;</strong>{{cotizacion.data_cliente}}</p>
+          {% endif %}
+          <p><strong>Status:&nbsp;</strong>
+            {% for code, label in filtro_choices %}
+              {% if cotizacion.status == code %}
+                {{ label }}
+              {% endif %}
+            {% endfor %} 
+          </p>
+          <p><strong>Detalle de cobertura solicitada:</strong></p>
+          <p>{{cotizacion.sujeto|linebreaksbr}}</p>
+          <div class="d-flex justify-content-between staff-botonera-fichas">
+            <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-emitido mx-4"
+              data-bs-cot-id="{{ cotizacion.id}}"
+              {% if cotizacion.status != 'E' %} hidden {% endif %}>
+              Solicitada Emisión
+            </button> 
+            <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-enviado mx-4"
+              data-bs-cot-id="{{ cotizacion.id}}"
+              data-bs-toggle="modal"
+              data-bs-target="#sendCotModal"
+              {% if cotizacion.status != 'P' %} hidden {% endif %}>
+              Enviado a Cliente
+            </button>            
+            <button type="button" class="btn btn-danger btn-sm custom-btn-ficha btn-cancelar mx-4"
+              data-bs-cot-id="{{ cotizacion.id}}"
+              data-bs-toggle="modal"
+              data-bs-target="#cancelCotModal"
+              {% if cotizacion.status == 'C' %} hidden {% endif %}>
+              Cancelar Cotización
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm custom-btn-ficha btn-editar mx-4"
+              data-bs-cot-id="{{ cotizacion.id }}">
+              Ver / Editar Cotizacion
+            </button>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="alert alert-info mt-2">
+        No hay Cotizaciones que mostrar
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Modal Cancelar la cotización -->
+<div class="modal fade" id="cancelCotModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="cancelForm" method="post" action="">    
+        {% csrf_token %}
+        <div class="modal-header">
+          <span>Cancelar Cotización</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="cot_id" name="cot_id">
+          <div class="mb-3">
+            <label for="notas_cancelacion" class="form-label">Notas de Cancelación</label>
+            <textarea name="notas_cancelacion" id="notas_cancelacion" rows="4" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" id="btnEnviarInfo">Cancelar Cotización</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Enviar cotizacion al cliente -->
+<div class="modal fade" id="sendCotModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="sendForm" method="post" action="">    
+        {% csrf_token %}
+        <div class="modal-header">
+          <span>Cotización enviada a Cliente</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="cot_id" name="cot_id">
+          <div class="mb-3">
+            <label for="notas_envio" class="form-label">Notas de Envio</label>
+            <textarea name="notas_envio" id="notas_envio" rows="4" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" id="btnEnviarInfo">Confirmar Envio a Cliente</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  
+{% endblock %}
+
+{% block script %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  //dando eventos al cancelar
+  document.querySelectorAll('.btn-cancelar').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      document.getElementById('cancelForm').reset();
+      var cot_id = btn.getAttribute('data-bs-cot-id') || '';
+      document.getElementById('cot_id').value = cot_id;
+      document.getElementById('cancelForm').action = `/staff/cotizaciones/cancel/${cot_id}`;
+    });
+  });  //dando eventos al enviar a cliente
+  document.querySelectorAll('.btn-enviado').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      document.getElementById('sendForm').reset();
+      var cot_id = btn.getAttribute('data-bs-cot-id') || '';
+      document.getElementById('cot_id').value = cot_id;
+      document.getElementById('sendForm').action = `/staff/cotizaciones/send/${cot_id}`;
+    });
+  });
+  //dando eventos al ver/edira
+  document.querySelectorAll('.btn-editar').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var cot_id = btn.getAttribute('data-bs-cot-id') || '';
+      window.location.href = `/staff/cotizaciones/edit/${cot_id}`;    
+
+    });
+  });
+});
+</script>
+{% endblock %}

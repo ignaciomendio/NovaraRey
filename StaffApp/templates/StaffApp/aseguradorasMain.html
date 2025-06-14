@@ -1,8 +1,9 @@
 {% extends "StaffApp/baseStaff.html" %}
 {% block content %}
-<div class="container mt-4">
-    <h3 class="mb-4">Aseguradoras</h3>
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Aseguradoras</h3>
     <form method="get" class="row g-3 mb-4">
+        <hr class="staff-form-hr">
         <div class="col-md-4">
             <label for="nombrefilter" class="form-label">Nombre</label>
             <input type="text" name="nombrefilter" id="nombrefilter" class="form-control" value="{{ request.GET.nombrefilter }}">

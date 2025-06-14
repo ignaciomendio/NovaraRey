@@ -1,0 +1,226 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Editar Productor</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <hr class="staff-form-hr">
+        <input type="hidden" name="idproductor" value="{{productor.id}}">
+        <div class="staff-form-control-container">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ productor.nombre }}" required>
+        </div>
+        <div class="staff-form-control-container">
+            <label class="form-label">DNI/CUIT/CUIL</label>
+            <input type="text" name="dni" class="form-control" value="{{ productor.dni }}" required>    
+        </div>
+        <div class="staff-form-control-container">
+            <label for="condicion_iva" class="form-label">Condición frente al IVA</label>
+            <select id="condicion_iva" name="condicion_iva" class="form-select" required>
+              {% for key, value in cond_choices %}
+                <option value="{{ key }}" {% if productor.condicion_iva == key %}selected{% endif %}>{{ value }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        <div class="staff-form-control-container">
+            <label class="form-label">Matrícula</label>
+            <input type="text" name="matricula" class="form-control" value="{{ productor.matricula }}" required>    
+        </div>
+        <div class="staff-form-control-container">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" name="email" class="form-control" value="{{ productor.email }}" >    
+        </div>
+        <div class="staff-form-control-container">
+            <label class="form-label">Teléfono</label>
+            <input type="text" name="telefono" class="form-control" value="{{ productor.telefono }}" >    
+        </div>
+        <div class="staff-form-control-container">
+            <label class="form-label">Dirección</label>
+            <input type="text" name="direccion" class="form-control" value="{{ productor.direccion }}" >    
+        </div>
+        <hr class="staff-form-hr">
+        <!-- Códigos del productor -->
+        <div class="staff-form-control-container">
+            <label class="form-label">Códigos del Productor</label>
+            <!-- Tabla de codigos -->
+            <table id="tabla_codigos" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Compañía</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for codigo in codigos %}
+                        <tr {% if not codigo.activo %} style="color: #767070; font-style: italic;" {% endif %}>
+                            <td>{{ codigo.codigo }}{% if not codigo.activo %} &nbsp;- Inactivo {% endif %} </td>
+                            <td>  
+                              {{codigo.aseguradora}}
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-editar-codigo"
+                                data-id="{{ codigo.id }}"
+                                data-codigo="{{ codigo.codigo }}"
+                                data-aseguradora="{{ codigo.aseguradora.nombre }}"
+                                data-descripcion="{{ codigo.descripcion }}"
+                                title="Editar el código">
+                                <i class="bi bi-pen"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-toggle-active"
+                                data-id="{{ codigo.id }}"
+                                {% if codigo.activo %} title="Inactivar código" {% else %} title="Activar código" {% endif %}>
+                                <i {% if codigo.activo %} class="bi bi-toggle-on" style="color: green;" {% else %} class="bi bi-toggle-off" style="color: red;" {% endif %}></i>
+                              </button>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No hay códigos registrados.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                <button type="button" class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalAgregarCodigo" style="min-width: 150px;">
+                  Agregar Código
+                </button>
+        </div>
+        <hr class="staff-form-hr">
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'productores' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal para agregar un código nuevo -->
+<div class="modal fade" id="modalAgregarCodigo" tabindex="-1" aria-labelledby="modalAgregarProductorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'add_codigo' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarCodigoLabel">Agregar Código de Productor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <input type="hidden" value="{{ productor.id }}" name="productorid">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Código</label>
+            <input type="text" class="form-control" id="codigo" name="codigo" required>
+          </div>
+          <div class="mb-3">
+            <label for="aseguradora" class="form-label">Aseguradora</label>
+            <select class="form-select" id="aseguradora" name="aseguradora" required>
+              <option value="" disabled selected>Seleccione una aseguradora</option>
+              {% for aseguradora in aseguradoras %}
+              <option value="{{ aseguradora.id }}">{{ aseguradora.nombre }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea name="descripcion" id="descripcion" class="form-control" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Agregar Código</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para editar un código  -->
+<div class="modal fade" id="modalEditarCodigo" tabindex="-1" aria-labelledby="modalAgregarProductorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="" id="formEditCodigo">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarCodigoLabel">Editar Código de Productor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="edit_idcodigo" id="edit_idcodigo">
+          <div class="mb-3">
+            <label for="edit_codigo" class="form-label">Código</label>
+            <input type="text" class="form-control" id="edit_codigo" name="edit_codigo" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_aseguradora" class="form-label">Aseguradora</label>
+            <input type="text" class="form-control" id="edit_aseguradora" name="edit_aseguradora" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="edit_descripcion" class="form-label">Descripción</label>
+            <textarea name="edit_descripcion" id="edit_descripcion" class="form-control" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Modificaciones</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+        const tablaCodigos = document.getElementById('tabla_codigos');
+        if (tablaCodigos) {
+            //Evento click en el boton editar
+            document.querySelectorAll('.btn-editar-codigo').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idcodigo = btn.getAttribute('data-id');
+                    document.getElementById('edit_idcodigo').value = idcodigo;
+                    document.getElementById('edit_codigo').value = btn.getAttribute('data-codigo') || '';
+                    document.getElementById('edit_aseguradora').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('edit_descripcion').value = btn.getAttribute('data-descripcion') || '';
+                    document.getElementById('formEditCodigo').action = `/staff/productores/codigo/edit/${idcodigo}/`;
+                    new bootstrap.Modal(document.getElementById('modalEditarCodigo')).show();
+                });
+            });
+            //Evento click en el boton de activar/desactivar
+            document.querySelectorAll('.btn-toggle-active').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idcodigo = btn.getAttribute('data-id');
+                    window.location.href = `/staff/productores/codigo/toggle/${idcodigo}`;
+                });
+            });
+            //Evento dobleclick en la fila de la tabla
+            tablaCodigos.querySelectorAll('tbody tr').forEach(function(fila){
+                const btn = fila.querySelector('button.btn-editar-codigo');
+                fila.addEventListener('dblclick', function () {
+                    const idcodigo = btn.getAttribute('data-id');
+                    document.getElementById('edit_idcodigo').value = idcodigo;
+                    document.getElementById('edit_codigo').value = btn.getAttribute('data-codigo') || '';
+                    document.getElementById('edit_aseguradora').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('edit_descripcion').value = btn.getAttribute('data-descripcion') || '';
+                    document.getElementById('formEditCodigo').action = `/staff/productores/codigo/edit/${idcodigo}/`;
+                    new bootstrap.Modal(document.getElementById('modalEditarCodigo')).show();
+                });
+            });
+        };
+    });
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

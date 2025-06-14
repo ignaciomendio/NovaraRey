@@ -1,0 +1,170 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-container">
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mt-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <h3 class="staff-form-title">Solicitudes de cotizacion</h3>
+
+  <!--Zona de Filtro-->
+  <hr class="staff-form-hr">
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label for="tipo" class="form-label">Status de Pedido</label>
+      <select name="status" id="tipo" class="form-select">
+        <option value="">Todos</option>
+        <option value="P" {% if filtro_status == 'P' %}selected{% endif %}>Pendiente</option>
+        <option value="F" {% if filtro_status == 'F' %}selected{% endif %}>Cotizada</option>
+        <option value="C" {% if filtro_status == 'C' %}selected{% endif %}>Cancelada</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="nombre" class="form-label">Nombre / Razón Social</label>
+      <input type="text" name="nombre" id="nombre" class="form-control" value="{{ filtro_nombre }}">
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+  </form>
+
+  <!--Zona de Fichas-->
+  <hr class="staff-form-hr">
+  <div class="mt-4">
+    {% for solicitud in solicitudes %}
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{solicitud.rubro.nombre}}</h5>
+          <input type="hidden" name="reqid" value="{{solicitud.id}}">
+          <p><strong>Cliente:&nbsp;</strong>
+          {% if solicitud.cliente %}
+            {% if solicitud.cliente.clientepersonafisica %}
+              {{ solicitud.cliente.clientepersonafisica.apellido }}, {{ solicitud.cliente.clientepersonafisica.nombre }}
+            {% elif solicitud.cliente.clientepersonajuridica %}
+              {{ solicitud.cliente.clientepersonajuridica.razon_social }}
+            {% else %}
+              Cliente sin nombre
+            {% endif %}
+          {% else %} 
+            Cliente no registrado 
+          {% endif %}</p>
+          {% if not solicitud.cliente %}
+            <p><strong>Datos de Contacto:&nbsp;</strong>{{solicitud.data_cliente}}</p>
+          {% endif %}
+          <p><strong>Fecha de solicitud:&nbsp;</strong>{{ solicitud.fecha_creacion }} </p>
+          <p><strong>Usuario:&nbsp;</strong>{{ solicitud.usuario_creacion }} </p>
+          <p><strong>Status:&nbsp;</strong>
+            {% if solicitud.status == 'P' %}
+              Pendiente
+            {% elif solicitud.status == 'F' %}
+              Cotizada
+            {% else %} 
+              Cancelada
+            {% endif %} </p>
+          <p><strong>Detalle de cobertura solicitada:</strong></p>
+          <p>{{solicitud.detalle|linebreaksbr}}</p>
+          <div class="d-flex justify-content-between staff-botonera-fichas">
+            <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-cotizar mx-4"
+              data-bs-sol-id="{{ solicitud.id}}"
+              {% if solicitud.status != "P" %}hidden{% endif %}>
+              Crear Cotizacion
+            </button>            
+            <button type="button" class="btn btn-danger btn-sm custom-btn-ficha btn-cancelar mx-4"
+              data-bs-sol-id="{{ solicitud.id}}"
+              {% if solicitud.status != "P" %}hidden{% endif %}>
+              Cancelar Solicitud
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm custom-btn-ficha btn-editar mx-4"
+              data-bs-toggle="modal"
+              data-bs-target="#editSolicitudModal"
+              data-bs-sol-id="{{ solicitud.id }}"
+              data-bs-sol-contacto="{{solicitud.data_cliente}}"
+              data-bs-sol-detalle="{{solicitud.detalle}}">
+              Editar contacto & Detalles
+            </button>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+    <div class="alert alert-info mt-2">
+        No hay solictudes que mostrar
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Modal Para editar los datos de la solicitud -->
+<div class="modal fade" id="editSolicitudModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="editForm" method="post" action="">    
+        {% csrf_token %}
+        <div class="modal-header">
+          <span>Editar Datos de contacto o detalle de solicitud</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="sol_id" name="sol_id">
+          <div class="mb-3">
+            <label for="data_contacto" class="form-label">Datos de Contacto</label>
+            <input type="text" class="form-control" id="data_contacto" name="data_contacto">
+          </div>
+          <div class="mb-3">
+            <label for="data_detalle" class="form-label">Detalle</label>
+            <textarea name="data_detalle" id="data_detalle" rows="4" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="btnEnviarInfo">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  
+{% endblock %}
+
+{% block script %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  //dando eventos al boton Guardar cambios
+  document.querySelectorAll('.btn-editar').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      document.getElementById('editForm').reset();
+      var sol_id = btn.getAttribute('data-bs-sol-id') || '';
+      var sol_contacto = btn.getAttribute('data-bs-sol-contacto') || '';
+      var sol_detalle = btn.getAttribute('data-bs-sol-detalle') || '';
+      document.getElementById('sol_id').value = sol_id;
+      document.getElementById('data_contacto').value = sol_contacto;
+      document.getElementById('data_detalle').value = sol_detalle;
+      document.getElementById('editForm').action = `/staff/cotizaciones/solicitudes/edit/${sol_id}`;
+    });
+  });
+  // dando eventos al boton cancelar
+  document.querySelectorAll('.btn-cancelar').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var sol_id = btn.getAttribute('data-bs-sol-id') || '';
+      if (confirm('¿Desea cancelar esta solicitud de cotización?')) {
+        window.location.href = `/staff/cotizaciones/solicitudes/cancel/${sol_id}`;
+      }      
+    });
+  });
+    // dando eventos al boton cotizar
+  document.querySelectorAll('.btn-cotizar').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var sol_id = btn.getAttribute('data-bs-sol-id') || '';
+      window.location.href = `/staff/cotizaciones/solicitudes/cotizar/${sol_id}`;    
+    });
+  });
+});
+</script>
+{% endblock %}

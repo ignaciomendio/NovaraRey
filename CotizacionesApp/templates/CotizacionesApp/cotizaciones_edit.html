@@ -1,0 +1,255 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 700px;">
+    <h3 class="mb-4">Editar Cotización</h3>
+
+    <form method="post">
+        {% csrf_token %}
+          <p><strong>Rubro:&nbsp;</strong>{{cotizacion.rubro.nombre}}</p>
+          <input type="hidden" id="reqid" name="reqid" value="{{cotizacion.id}}">
+          <p><strong>Cliente:&nbsp;</strong>
+          {% if cotizacion.cliente %}
+            {% if cotizacion.cliente.clientepersonafisica %}
+              {{ cotizacion.cliente.clientepersonafisica.apellido }}, {{ cotizacion.cliente.clientepersonafisica.nombre }}
+            {% elif cotizacion.cliente.clientepersonajuridica %}
+              {{ cotizacion.cliente.clientepersonajuridica.razon_social }}
+            {% else %}
+              Cliente sin nombre
+            {% endif %}
+          {% else %} 
+            Cliente no registrado 
+          {% endif %}</p>
+          {% if not cotizacion.cliente %}
+            <p><strong>Datos de Contacto:&nbsp;</strong>{{cotizacion.data_cliente}}</p>
+          {% endif %}
+          <p><strong>Status:&nbsp;</strong>
+            {% for code, label in filtro_choices %}
+              {% if cotizacion.status == code %}
+                {{ label }}
+              {% endif %}
+            {% endfor %} 
+          </p>
+          <div class="mb-3">
+            <label class="form-label">Detalle del riesgo</label>
+            <textarea name="detalle" id="detalle" class="form-control" rows="6">
+              {{ cotizacion.sujeto }}
+            </textarea>
+          </div>
+          <hr>
+          <!-- Cotizaciones de las compañias -->
+          <div class="mb-3">
+            <label class="form-label">Cotizaciones de las compañias</label>
+            <!-- Tabla de cotizaciones -->
+            <table id="tabla_cotizaciones" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Compañia</th>
+                        <th>Premio</th>
+                        <th>Nro. Cotizacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cot_cia in cotizaciones_cia %}
+                        <tr>
+                            <td>
+                              {{ cot_cia.fecha }}
+                            </td>
+                            <td>  
+                              {{cot_cia.aseguradora}}
+                            </td>
+                            <td>  
+                              {{cot_cia.premio}}
+                            </td>
+                            <td>  
+                              {{cot_cia.numero}}
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-editar-cot"
+                                data-id="{{ cot_cia.id }}"
+                                data-aseguradora="{{ cot_cia.aseguradora.nombre }}"
+                                data-premio="{{ cot_cia.premio }}"
+                                data-numero="{{ cot_cia.numero }}"
+                                title="Editar cotizacion">
+                                <i class="bi bi-pen"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary btn-sm btn-delete"
+                                data-id="{{ cot_cia.id }}"
+                                title="Eliminar Cotizacion">
+                                <i  class="bi bi-trash"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center">No hay cotizaciones registradas.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#modalAgregarCotizacion" style="min-width: 150px;">
+                  Agregar Cotización
+            </button>
+        </div>
+
+          <hr>
+          <p><strong>Fecha de Creación:&nbsp;</strong>{{cotizacion.fecha_creacion}}</p>
+          <p><strong>Usuario Creador:&nbsp;</strong>{{cotizacion.usuario_creacion}}</p>
+          <hr>
+          <p><strong>Fecha de Envío a Cliente:&nbsp;</strong>{{cotizacion.fecha_envio}}</p>
+          <p><strong>Usuario Envío a Cliante:&nbsp;</strong>{{cotizacion.usuario_envio}}</p>
+          <p><strong>Detalle de Envio a Cliente:</strong></p>
+          <p>{{cotizacion.detalles_envio|linebreaksbr}}</p>
+          <hr>
+          <p><strong>Fecha de Solicitud de emisión:&nbsp;</strong>{{cotizacion.fecha_sol_emision}}</p>
+          <p><strong>Usuario Solicitud de emisión:&nbsp;</strong>{{cotizacion.usuario_sol_emision}}</p>
+          <p><strong>Detalle de Solicitud de emisión:</strong></p>
+          <p>{{cotizacion.detalles_sol_emision|linebreaksbr}}</p>
+          <hr>
+          <p><strong>Fecha de Cancelación:&nbsp;</strong>{{cotizacion.fecha_cancelacion}}</p>
+          <p><strong>Usuario Cancelación:&nbsp;</strong>{{cotizacion.usuario_cancelacion}}</p>
+          <p><strong>Detalle de Cancelación:</strong></p>
+          <p>{{cotizacion.notas_cancelacion|linebreaksbr}}</p>
+          <hr>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'ver_cotizaciones' %}?status=P" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal para agregar una cotizacion nueva -->
+<div class="modal fade" id="modalAgregarCotizacion" tabindex="-1" aria-labelledby="modalAgregarProductorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'add_cotizacion_cia' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarCodigoLabel">Agregar Cotización de companía</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <input type="hidden" value="{{ cotizacion.id }}" name="cotizacionid">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Compañia</label>
+            <select name="cia" id="cia" class="form-select" required>
+              <option value="" disabled selected>Seleccione una aseguradora</option>
+              {% for cia in companias %}
+                <option value="{{cia.id}}">{{cia.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="premio" class="form-label">Premio</label>
+            <input type="number" name="premio" id="premio" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Nro o Código de Cotizacion</label>
+            <input type="text" name="codigo" id="codigo" class="form-control" >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para editar una cotizacion -->
+<div class="modal fade" id="modalEditarCotizacion" tabindex="-1" aria-labelledby="modalAgregarProductorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="" id="formeditcot">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarCodigoLabel">Editar Cotización de companía</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <input type="hidden" id="cotid" name="cotid" value="{{cotizacion.id}}">
+        <input type="hidden" id="cot_cia_id" name="cot_cia_id">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Compañia</label>
+            <input type="text" id="cia_edit" name="cia_edit" class="form-control" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="premio_edit" class="form-label">Premio</label>
+            <input type="text" name="premio_edit" id="premio_edit" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="codigo_edit" class="form-label">Numero de Cotizacion</label>
+            <input type="text" name="codigo_edit" id="codigo_edit" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+        const tablaCodigos = document.getElementById('tabla_cotizaciones');
+        if (tablaCodigos) {
+            //Evento click en el boton editar
+            document.querySelectorAll('.btn-editar-cot').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var idcot = btn.getAttribute('data-id');
+                    document.getElementById('cot_cia_id').value = idcot;
+                    document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
+                    document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
+                    document.getElementById('formeditcot').action = `/staff/cotizaciones/cot_cias/edit/${idcot}/`;
+                    new bootstrap.Modal(document.getElementById('modalEditarCotizacion')).show();
+                });
+            });
+            //Evento click en el boton eliminar
+            document.querySelectorAll('.btn-delete').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idcot_cia = btn.getAttribute('data-id');
+                    const idcot = document.getElementById('reqid').value
+                    if (confirm("¿Desea eliminar esta cotización?")){
+                       window.location.href = `/staff/cotizaciones/cot_cias/delete/${idcot}/${idcot_cia}/`;
+                    }
+                });
+            });
+            //Evento dobleclick en la fila de la tabla
+            tablaCodigos.querySelectorAll('tbody tr').forEach(function(fila){
+                const btn = fila.querySelector('button.btn-editar-cot');
+                fila.addEventListener('dblclick', function () {
+                    var idcot = btn.getAttribute('data-id');
+                    document.getElementById('cot_cia_id').value = idcot;
+                    document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
+                    document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
+                    document.getElementById('formeditcot').action = `/staff/cotizaciones/cot_cias/edit/${idcodigo}/`;
+                    new bootstrap.Modal(document.getElementById('modalEditarCotizacion')).show();
+                });
+            });
+        };
+    });
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

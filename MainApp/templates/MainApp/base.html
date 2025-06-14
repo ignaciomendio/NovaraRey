@@ -16,7 +16,7 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="main-body">
     <!-- Encabezado -->
     <header class="container-fluid bg-light.bg-gradient text-dark y-2 border-bottom header-bg">
         <div class="d-flex justify-content-between align-items-center">
@@ -69,8 +69,8 @@
                             <li class="nav-item {% if request.path == '/aseguradoras/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded text-white" href="{% url 'aseguradoras' %}">Aseguradoras</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded text-white" href="#">Cotizar</a>
+                            <li class="nav-item {% if request.path == '/rubros/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link text-uppercase text-expanded text-white" href="{% url 'rubros' %}">Cotizar</a>
                             </li>
                             <li class="nav-item {% if request.path == '/blog/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded text-white" href="#">Contactanos</a>
@@ -88,7 +88,7 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="container mb-5">
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>

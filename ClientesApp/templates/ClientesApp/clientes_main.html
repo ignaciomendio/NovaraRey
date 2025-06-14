@@ -5,11 +5,12 @@
 {% load cliente_extras %}
 
 {% block content %}
-<div class="container mt-4">
-  <h3 class="mb-4">Listado de Clientes</h3>
+<div class="container staff-form-container">
+  <h3 class="staff-form-title">Listado de Clientes</h3>
 
   <!-- Filtros -->
   <form method="get" class="row g-3 mb-4">
+    <hr class="staff-form-hr">
     <div class="col-md-3">
       <label for="tipo" class="form-label">Tipo de Cliente</label>
       <select name="tipo" id="tipo" class="form-select">
@@ -32,6 +33,14 @@
   </form>
 
   <!-- Tabla de clientes -->
+   <hr class="staff-form-hr">
+     <!-- Botón agregar nuevo -->
+  <div class="d-flex justify-content-between mt-4">
+    <a href="{% url 'cliente_create' 'PF' %}" class="btn btn-success">Agregar Cliente Persona Física</a>
+    <a href="{% url 'cliente_create' 'PJ' %}" class="btn btn-primary">Agregar Cliente Persona Jurídica</a>
+  </div>
+   <hr class="staff-form-hr">
+
   <table class="table table-hover">
     <thead class="table-light">
       <tr>
@@ -69,13 +78,6 @@
     </tbody>
   </table>
 
-  <!-- Botón agregar nuevo -->
-  <div class="d-flex justify-content-end mt-4">
-    <a href="{% url 'cliente_create' 'PF' %}" class="btn btn-success">Agregar Cliente Persona Física</a>
-  </div>
-  <div class="d-flex justify-content-end mt-4">
-    <a href="{% url 'cliente_create' 'PJ' %}" class="btn btn-primary">Agregar Cliente Persona Jurídica</a>
-  </div>
 </div>
 
 <script>

@@ -172,7 +172,7 @@ def vista_prestadores_edit(request, id):
         direccion = request.POST.get('direccion')
         sitio_web = request.POST.get('sitio_web')
         observaciones = request.POST.get('observaciones')
-        activo = request.POST.get('activo') == 'on'
+        activo = (request.POST.get('activo','0') == '1')
 
         rubro = RubroPrestador.objects.get(id=rubro_id)
         

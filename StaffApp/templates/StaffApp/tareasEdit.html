@@ -1,40 +1,37 @@
 {% extends "StaffApp/baseStaff.html" %}
 {% block content %}
-<div class="container mt-4" style="max-width: 600px;">
-    <h3 class="mb-4">Gestión de Tarea</h3>
-    <form method="post">
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Gestión de Tarea</h3>
+    <form method="post" class="">
         {% csrf_token %}
-        <div class="mb-3 row" style="font-weight: bold; background-color: beige;">
+        <hr class="staff-form-hr">
+        <div class="mb-3 row" style="font-weight: bold;">
             <h5>{{ tarea.titulo }}</h5>
         </div>
-        <div class="mb-3 row" >
+        <div class="staff-form-control-container" >
             Creado el {{ tarea.fecha_creacion|date:'d/m/Y' }} por el usuario: {{ tarea.usuario_creacion.get_username }}
         </div>
-        <div class="mb-3 row">
+        <div class="staff-form-control-container">
             Fecha de vencimiento: {{ tarea.fecha_vencimiento|date:'d/m/Y' }} 
         </div>
-        <div class="mb-3 row">
-            <div class="col-6">
-                <button type="submit" name="accion" value="cancelar" class="btn btn-danger custom-btn">Cancelar Tarea</button>
-            </div>
-            <div class="col-6">
-                <button type="submit" name="accion" value="finalizar" class="btn btn-success custom-btn">Finalizar Tarea</button>
-            </div>
-        </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Notas</label>
             <textarea class="form-control" rows="6" readonly>{{ tarea.notas }}</textarea>
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label class="form-label">Agregar Nota</label>
-            <textarea class="form-control" name="comentario" rows="3" placeholder="Escribe una nota adicional..." style="background-color: aquamarine;"></textarea>
+            <textarea class="form-control" name="comentario" rows="3" placeholder="Escribe una nota adicional..." style="background-color: white;"></textarea>
         </div>
-            <div class="d-flex justify-content-center mb-3">
-                <button type="submit" name="accion" value="addcomment" class="btn btn-primary custom-btn">Agregar comentarios a la tarea</button>
-            </div>
-        </form>
-    <div class="mt-3">
-        <a href="{% url 'tareas_main' %}">Volver al listado de tareas</a>
-    </div>
+        <div class="d-flex justify-content-center mb-3">
+            <button type="submit" name="accion" value="addcomment" class="btn btn-primary custom-btn">Agregar comentarios a la tarea</button>
+        </div>
+        <hr class="staff-form-hr">
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'tareas_main' %}" class="btn btn-secondary btn-sm">Volver al listado de tareas</a>
+            <button type="submit" name="accion" value="cancelar" class="btn btn-danger btn-sm">Cancelar Tarea</button>
+            <button type="submit" name="accion" value="finalizar" class="btn btn-success btn-sm">Finalizar Tarea</button>
+        </div>
+
+    </form>
 </div>
 {% endblock %}

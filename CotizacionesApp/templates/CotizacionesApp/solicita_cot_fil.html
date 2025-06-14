@@ -1,0 +1,58 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-container">
+  <h3 class="staff-form-title">Cargar Solicitud de cotizacion</h3>
+  <form method="post">
+        {% csrf_token %}
+        <hr class="staff-form-hr">
+        <div class="staff-form-control-container">
+          <label class="form-label">Rubro a Cotizar</label>
+          <select name="rubro" class="form-control" required>
+            {% for categoria in categorias %}
+              <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+            {% endfor %}
+          </select>       
+        </div>
+        <div class="staff-form-control-container">
+          <label class="form-label">Cliente (Dejar en blanco si es un cliente nuevo)</label>
+          <select id="cliente-select" name="cliente" class="form-select">
+            <option value="">Seleccione un cliente</option>
+            {% for id, nombre in client_list %}
+                <option value="{{ id }}">{{ nombre }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <hr class="staff-form-hr">
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </div>
+    </form>
+</div>
+
+  
+{% endblock %}
+
+{% block script %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+        const clienteSelect = $('#cliente-select');
+        if (clienteSelect.length) {
+            clienteSelect.select2({
+                placeholder: 'Seleccione un cliente',
+                allowClear: true,
+                width: '100%'
+            });
+        } else {
+            console.error('Elemento #cliente-select no encontrado');
+        }
+    }, 100); // Espera un poco a que se renderice todo bien
+});
+</script>
+{% endblock %}

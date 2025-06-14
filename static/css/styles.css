@@ -1,5 +1,108 @@
+
+
+/* Estilos para la parte de Staff */
+.staff-body{
+    background-color: rgb(250, 247, 152);
+}
+
+.staff-form-container{
+    background-color: rgb(245, 234, 83);
+    max-width: 900px;
+    border-radius:10px;
+    padding: 20px;
+}
+
+.staff-form-title{
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.staff-form-control-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.staff-form-control-container .form-label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+.staff-form-hr{
+    border: none;
+    height: 2px;
+    background-color: rgb(177, 165, 33); /* Color de fondo */
+    box-shadow: 0px 2px 0px rgba(255, 255, 255, 0.7), /* Resaltado */
+              0px -2px 0px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.staff-list-container{
+    border: 1px;
+    border-color: black;
+    border-radius:10px;
+    padding: 20px;
+    background-color: white;
+}
+
+.staff-botonera-fichas{
+    background-color: rgb(250, 247, 152);
+    padding: 10px;
+}
+
+
+/* Estilos para la parte de Clientes */
+
+.main-body{
+    background-color: rgb(234, 239, 240);
+}
+
+.main-form-container{
+    background-color: rgb(138, 190, 198);
+    max-width: 900px;
+    border-radius:10px;
+    padding: 20px;
+}
+
+.main-form-title{
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.main-form-control-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-form-control-container .form-label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-help{
+    font-size: small;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.main-form-hr{
+    border: none;
+    height: 2px;
+    background-color: rgb(62, 103, 109); /* Color de fondo */
+    box-shadow: 0px 2px 0px rgba(255, 255, 255, 0.7), /* Resaltado */
+              0px -2px 0px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+
 .custom-btn {
     width: 80%;
+    border-radius:5px;
+    margin: 5px 0;
+}
+
+.custom-btn-ficha {
+    width: 160px;
     border-radius:5px;
     margin: 5px 0;
 }

@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from RubrosApp.models import Categoria
 from django.http import HttpResponse, HttpRequest
 from StaffApp.models import Tarea    
 from django.contrib.auth.models import User
 from datetime import timedelta, datetime
+from CotizacionesApp.models import DataCotizacion, QuotRequest
 
 
 # Create your views here.
@@ -50,3 +51,22 @@ def more_info(request:HttpRequest)->HttpResponse:
         return render(request, 'RubrosApp/rubros.html', {'rubros': rubros, 'mensaje_exito': mensaje_exito})
     else:
         return HttpResponse("Invalid request method.", status=405)
+    
+def vista_solicitar_cotizacion(req:HttpRequest, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    if req.method=="POST":
+        data_from_post = ""
+        for key, value in req.POST.items():
+            if key not in ['nombre', 'telefono', 'email','csrfmiddlewaretoken']:
+                if value:
+                    data_from_post += f'{key}: {value}\n'
+        QuotRequest.objects.create(
+            rubro = categoria,
+            data_cliente = req.POST.get('nombre') + " - Tel: " + req.POST.get('telefono') + " - E-mail: " + req.POST.get('email'),
+            usuario_creacion = User.objects.get(username="auto"),
+            detalle = data_from_post)
+        mensaje_exito = "¡Gracias por tu solicitud! En breve nuestro equipo se estrá comunicando con la cotización solicitada o para profundizar sobre los detalles de sus necesidades."
+        rubros = Categoria.objects.all()
+        return render(req, 'RubrosApp/rubros.html', {'rubros': rubros, 'mensaje_exito': mensaje_exito})
+    data_cotizacion = DataCotizacion.objects.filter(rubro_id=id)
+    return render(req, 'RubrosApp/solicita_cot.html',{"data_cotizacion": data_cotizacion, "categoria": categoria.nombre})

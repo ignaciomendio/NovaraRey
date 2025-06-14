@@ -1,14 +1,15 @@
 {% extends "StaffApp/baseStaff.html" %}
 {% block content %}
-<div class="container mt-4" style="max-width: 600px;">
-    <h3 class="mb-4">Agregar Prestador</h3>
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Agregar Prestador</h3>
     <form method="post">
         {% csrf_token %}
-        <div class="mb-3">
+        <hr class="staff-form-hr">
+        <div class="staff-form-control-container">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="rubro" class="form-label">Rubro</label>
             <select class="form-select" id="rubro" name="rubro" required>
                 <option value="">Seleccione un rubro</option>
@@ -17,31 +18,31 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="contacto" class="form-label">Persona de Contacto</label>
             <input type="text" class="form-control" id="contacto" name="contacto">
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="telefono" class="form-label">Teléfono</label>
             <input type="text" class="form-control" id="telefono" name="telefono">
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email">
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" class="form-control" id="direccion" name="direccion">
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="sitio_web" class="form-label">Sitio Web</label>
             <input type="url" class="form-control" id="sitio_web" name="sitio_web">
         </div>
-        <div class="mb-3">
+        <div class="staff-form-control-container">
             <label for="observaciones" class="form-label">Observaciones</label>
             <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Guardar Prestador</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3">Guardar Prestador</button>
     </form>
     <div class="mt-3">
         <a href="{% url 'prestadores_main' %}">Volver al listado de prestadores</a>

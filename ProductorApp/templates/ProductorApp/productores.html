@@ -1,0 +1,153 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-container">
+  <h3 class="staff-form-title">Listado de Productores</h3>
+
+  <hr class="staff-form-hr">
+
+  <div class="staff-list-container ">
+  <table id="tabla_productores">
+    <thead>    
+        <tr>
+            <th>Productor</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for productor in productores %}
+        <tr>
+            <td style="min-width: 400px;">
+                {{productor}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm btn-edit-productor"
+                    data-id="{{ productor.id }}"
+                    title="Editar productor">
+                    <i class="bi bi-pen"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm btn-borrar-productor"
+                    data-id="{{ productor.id }}"
+                    title="Eliminar productor">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2" class="text-center">NNo hay productores Registrados.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalAgregarProductor">
+                    Agregar Productor
+                </button>
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+</div>
+</div>
+   
+
+<!-- Modal para agregar un productor nuevo -->
+<div class="modal fade" id="modalAgregarProductor" tabindex="-1" aria-labelledby="modalAgregarProductorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'add_productor' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarProductorLabel">Agregar Productor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="nombreProductor" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombreProductor" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="dniProductor" class="form-label">DNI/CUIL/CUIT</label>
+            <input type="text" class="form-control" id="dniProductor" name="dni" required>
+          </div>
+          <div class="mb-3">
+            <label for="condicionIVAProductor" class="form-label">Condición IVA</label>
+            <select class="form-select" id="condicionIVAProductor" name="condicion_iva" required>
+              <option value="MO">Monotributo</option>
+              <option value="RI">Responsable Inscripto</option>
+              <option value="EX">Exento</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="matriculaProductor" class="form-label">Matrícula</label>
+            <input type="text" class="form-control" id="matriculaProductor" name="matricula" required>
+          </div>
+          <div class="mb-3">
+            <label for="emailProductor" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailProductor" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="telefonoProductor" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefonoProductor" name="telefono">
+          </div>
+          <div class="mb-3">
+            <label for="direccionProductor" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="direccionProductor" name="direccion">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+        const tablaProductores = document.getElementById('tabla_productores');
+        if (tablaProductores) {
+            //Evento click en el boton editar
+            document.querySelectorAll('.btn-edit-productor').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idproductor = btn.getAttribute('data-id');
+                    window.location.href = `/staff/productores/edit/${idproductor}`;
+                });
+            });
+            //Evento click en el boton borrar
+            document.querySelectorAll('.btn-borrar-productor').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idproductor = btn.getAttribute('data-id');
+                    if (confirm("¿Deseas eliminar este productor?")) {
+                        window.location.href = `/staff/productores/delete/${idproductor}`;
+                    }
+                });
+            });
+            //Evento dobleclick en la fila de la tabla
+            tablaProductores.querySelectorAll('tbody tr').forEach(function(fila){
+                const btn = fila.querySelector('button.btn-edit-productor');
+                fila.addEventListener('dblclick', function () {
+                    const idproductor = btn.getAttribute('data-id');
+                    window.location.href = `/staff/productores/edit/${idproductor}/`;
+                });
+            });
+            //Evento click en el boton Guardar cambios
+            document.querySelectorAll('.btn-edit-productor').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const idproductor = btn.getAttribute('data-id');
+                    window.location.href = `/staff/productores/edit/${idproductor}`;
+                });
+            });
+        };
+    });
+
+</script>
+{% endblock %}

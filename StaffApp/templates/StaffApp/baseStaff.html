@@ -9,6 +9,7 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     
@@ -17,7 +18,7 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="staff-body">
     <!-- Encabezado -->
     <header class="bg-warning text-dark mb-4">
         <div class="container">
@@ -41,20 +42,40 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %} px-lg-4">
+                            <li class="nav-item {% if request.path == '/staff/dashboard/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="#">Dashboard</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/tareas/' %}active{% endif %} px-lg-4">
+                            <li class="nav-item {% if request.path == '/staff/tareas/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'tareas_main' %}">Tareas</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/clientes/' %}active{% endif %} px-lg-4">
+                            <li class="nav-item {% if request.path == '/staff/clientes/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'clientes_main' %}">Clientes</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/aseguradoras/' %}active{% endif %} px-lg-4">
+                            <li class="nav-item {% if request.path == '/staff/aseguradoras/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'aseguradoras_main' %}">Aseguradoras</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/prestadores/' %}active{% endif %} px-lg-4">
+                            <li class="nav-item {% if request.path == '/staff/prestadores/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'prestadores_main' %}">Prestadores</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/staff/productores/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link text-uppercase text-expanded" href="{% url 'productores' %}">Productores</a>
+                            </li>
+                            <li class="nav-item dropdown {% if request.path == '/staff/cotizaciones/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="cotizacionesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cotizaciones
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="cotizacionesDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'crear_solicitud_cotizacion' %}">Crear solicitud de cotización</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'ver_solicitudes_cotizacion' %}?status=P">Ver solicitudes de cotización</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'ver_cotizaciones' %}?status=P">Ver cotizaciones</a>
+                                    </li>
+
+                                </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto">
@@ -75,10 +96,15 @@
     </main>
 
     
-    <!-- Bootstrap JS (opcional para interactividad como dropdowns) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         {% block script %}
         {% endblock %}
-</body>
+
+        <!-- Bootstrap JS (opcional para interactividad como dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+    </body>
 </html>

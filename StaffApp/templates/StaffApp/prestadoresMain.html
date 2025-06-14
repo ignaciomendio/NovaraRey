@@ -1,8 +1,10 @@
 {% extends "StaffApp/baseStaff.html" %}
 {% block content %}
-<div class="container mt-4">
-    <h3 class="mb-4">Prestadores</h3>
-    <form method="get" class="row g-3 mb-4">
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Prestadores</h3>
+    <form method="get" class="row g-2 mb-4">
+        <hr class="staff-form-hr">
+        <!-- Parte de filtro -->
         <div class="col-md-3">
             <label for="rubrofilter" class="form-label">Rubro</label>
             <select name="rubrofilter" id="rubrofilter" class="form-select">
@@ -30,8 +32,10 @@
     </form>
     <form method="post" action="{% url 'prestadores_doc' %}">
         {% csrf_token %}
-        <div class="mb-3">
-            <label class="form-label">Lista de Prestadores</label>
+        <hr class="staff-form-hr">
+
+        <div class="staff-form-control-container">
+            <label class="form-label">Lista de Prestadores (doble click para Ver/Editar)</label>
             <select name="prestadores" id="prestadores" class="form-select" multiple size="10" required>
                 {% for prestador in prestadores %}
                     <option value="{{ prestador.id }}">{{ prestador.nombre }} ({{ prestador.rubro.nombre }}){% if not prestador.activo %} - Inactivo{% endif %}</option>
@@ -40,7 +44,8 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="mb-3 d-flex justify-content-between">
+        
+        <div class="my-4 d-flex justify-content-between">
             <a href="{% url 'prestadores_create' %}" class="btn btn-success">Agregar Prestador</a>
             <button type="submit" class="btn btn-secondary">Generar documento con Prestadores seleccionados</button>
         </div>

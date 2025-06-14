@@ -1,0 +1,77 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Solicitar Cotizacion - {{rubro.nombre}}</h3>
+
+    <form method="post" action="{% url 'solicita_cot' %}">
+        {% csrf_token %}
+        <hr class="staff-form-hr">
+        <input type="hidden" name="rubroid" value="{{rubro.id}}">
+        {% if cliente_nuevo %}
+          <div class="staff-form-control-container">
+              <label class="form-label">Nombre</label>
+              <input type="text" name="nombre" class="form-control" required>
+          </div>
+          <div class="staff-form-control-container">
+              <label class="form-label">Teléfono de contacto</label>
+              <input type="text" name="telefono" class="form-control" required>    
+          </div>
+          <div class="staff-form-control-container">
+              <label class="form-label">E-Mail de contacto</label>
+              <input type="email" name="email" class="form-control" required>    
+          </div>
+          <input type="hidden" name="clientid" value="">
+        {% else %}
+          <input type="hidden" name="nombre" value="">
+          <input type="hidden" name="telefono" value="">    
+          <input type="hidden" name="email" value="">   
+          <input type="hidden" name="clientid" value={{clientid}}>
+        {% endif %} 
+        
+        {% for data in data_cotizacion %}
+          <div class="staff-form-control-container">
+            <label class="form-label">{{data.nombre_dato}}</label>
+            {% if data.help_text %}
+              <p class="form-help">{{data.help_text}}</p>  
+            {% endif %}
+            {% if data.tipo_dato == 'T' %} 
+              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control">
+            {% elif data.tipo_dato == 'N' %} 
+              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="number" class="form-control">
+            {% elif data.tipo_dato == 'B' %} 
+              <select name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} value="" class="form-select">
+                <option value="SI"> Si </option>
+                <option value="NO"> No </option>
+              </select>
+            {% elif data.tipo_dato == 'C' %} 
+              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control" placeholder="Opciones: {{data.choices}}">
+            {% endif %}
+        </div>
+        {% endfor %}
+        <div class="staff-form-control-container">
+            <label class="form-label">Información adicional</label>
+            <textarea name="extradata" class="form-control" cols="4"></textarea>    
+        </div>
+        <hr class="staff-form-hr">
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'crear_solicitud_cotizacion' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Solicitar Cotizacion</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
