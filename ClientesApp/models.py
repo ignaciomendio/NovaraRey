@@ -1,5 +1,7 @@
 from django.db import models
 from MainApp.models import Address
+from datetime import date, datetime
+
 
 # --- Modelos compartidos ---
 
@@ -15,6 +17,9 @@ class MedioPago(models.Model):
         return f"{self.tipo}"
 
 class TarjetaCredito(MedioPago):
+
+    MAX_AVISO_VENCIMIENTO = 45
+
     tarjeta = models.CharField(max_length=30) # Visa, Mastercard, etc.
     numero_tarjeta = models.CharField(max_length=20)
     titular = models.CharField(max_length=100)
@@ -24,11 +29,19 @@ class TarjetaCredito(MedioPago):
         return f"{self.tarjeta} - {self.numero_tarjeta}"
     
     def vencida(self):
-        from datetime import datetime
         hoy = datetime.now()
         mes, anio = map(int, self.vencimiento.split('/'))
         vencimiento = datetime((anio + 2000) + (mes // 12), mes % 12 + 1, 1)
         return hoy > vencimiento
+
+    def dias_a_vencimiento(self)->int:
+        hoy = datetime.now()
+        mes, anio = map(int, self.vencimiento.split('/'))
+        vencimiento = datetime((anio + 2000) + (mes // 12), mes % 12 + 1, 1)
+        return (vencimiento - hoy).days
+    
+    def avisar_vencimiento(self)->bool:
+        return self.dias_a_vencimiento() < self.MAX_AVISO_VENCIMIENTO
 
 class TransferenciaBancaria(MedioPago):
     cbu = models.CharField(max_length=20)
@@ -81,6 +94,9 @@ class Cliente(models.Model):
 # --- Persona Física ---
 
 class ClientePersonaFisica(Cliente):
+
+    MAX_DIAS_CUMPLE = 15
+
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     dni = models.CharField(max_length=20)
@@ -89,7 +105,24 @@ class ClientePersonaFisica(Cliente):
     def __str__(self):
         return f"{self.apellido}, {self.nombre}"
 
+    def dias_para_cumple(self):
+        if not self.fecha_nacimiento:
+            return None  # o podrías lanzar una excepción si es obligatorio
 
+        hoy = date.today()
+        cumple_este_anio = self.fecha_nacimiento.replace(year=hoy.year)
+
+        # Si ya pasó este año, tomamos el del año siguiente
+        if cumple_este_anio < hoy:
+            cumple_este_anio = cumple_este_anio.replace(year=hoy.year + 1)
+
+        return (cumple_este_anio - hoy).days
+    
+    def aviso_cumple(self)-> bool:
+        if self.dias_para_cumple():
+            return self.dias_para_cumple() < self.MAX_DIAS_CUMPLE
+        return False
+    
 # --- Persona Jurídica ---
 
 class ClientePersonaJuridica(Cliente):

@@ -1,0 +1,74 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Nueva Emisión</h3>
+    <hr class="staff-form-hr">
+
+    {% if not cotizaciones_cia %}
+      <div class="alert alert-danger mt-2">
+        Esta cotización no tiene cotizaciones de compañías asociadas, imposible emitir.
+        <a href="{% url 'editar_cotizacion' cotizacion.id %}">Agregar Cotizaciones de Aseguradoras</a>
+      </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="{% if not cotizaciones_cia %}d-none{% endif %}">
+      
+      {% csrf_token %}
+
+      <input type="hidden" id="reqid" name="reqid" value="{{cotizacion.id}}">
+      <p><strong>Rubro:&nbsp;</strong>{{cotizacion.rubro.nombre}}</p>
+      <p><strong>Cliente:&nbsp;</strong>
+        {% if cotizacion.cliente.clientepersonafisica %}
+          {{ cotizacion.cliente.clientepersonafisica.apellido }}, {{ cotizacion.cliente.clientepersonafisica.nombre }}
+        {% elif cotizacion.cliente.clientepersonajuridica %}
+          {{ cotizacion.cliente.clientepersonajuridica.razon_social }}
+        {% else %}
+          Cliente sin nombre
+        {% endif %}</p>
+        <p><strong>Detalle de cobertura solicitada:</strong></p>
+        <p>{{cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
+        <p><strong>Notas sobre el riesgo solicitud de Cotizacion:</strong></p>
+        <p>{{cotizacion.solicitud_cotizacion.extradata|linebreaksbr}}</p>
+
+      <hr class="staff-form-hr">
+
+      <!-- Selección de la cotización de la compañia -->
+      <div class="staff-form-control-container">
+        <label class="form-label">Cotización Seleccionada</label>
+        <select name="cotid" id="cotid" class="form-select" required>
+          <option value="">Seleccione la cotizacion a aplicar</option>
+          {% for cot in cotizaciones_cia %}
+            <option value="{{cot.id}}">{{cot.aseguradora.nombre}}-{{cot.cobertura}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <hr class="staff-form-hr">
+
+      <!-- Agregar archivo de aceptación del cliente -->
+      <div class="staff-form-control-container">
+        <label class="form-label">Cotización Seleccionada</label>
+        <input type="file" name="file_aceptacion">
+      </div> 
+
+      <hr class="staff-form-hr">
+
+      <div class="d-flex justify-content-between">
+            <a href="{% url 'ver_cotizaciones' %}?status=P" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

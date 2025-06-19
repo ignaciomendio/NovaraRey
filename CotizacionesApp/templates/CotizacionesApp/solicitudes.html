@@ -56,7 +56,8 @@
             Cliente no registrado 
           {% endif %}</p>
           {% if not solicitud.cliente %}
-            <p><strong>Datos de Contacto:&nbsp;</strong>{{solicitud.data_cliente}}</p>
+            <p><strong>Datos de Nuevo Cliente:</strong></p>
+            <p>{{solicitud.str_cliente|linebreaksbr}}</p>
           {% endif %}
           <p><strong>Fecha de solicitud:&nbsp;</strong>{{ solicitud.fecha_creacion }} </p>
           <p><strong>Usuario:&nbsp;</strong>{{ solicitud.usuario_creacion }} </p>
@@ -64,12 +65,14 @@
             {% if solicitud.status == 'P' %}
               Pendiente
             {% elif solicitud.status == 'F' %}
-              Cotizada
+              Pasada a Cotizacion por {{solicitud.usuario_finalizacion}} el {{solicitud.fecha_finalizacion}}
             {% else %} 
-              Cancelada
+              Cancelada por {{solicitud.usuario_finalizacion}} el {{solicitud.fecha_finalizacion}}
             {% endif %} </p>
           <p><strong>Detalle de cobertura solicitada:</strong></p>
-          <p>{{solicitud.detalle|linebreaksbr}}</p>
+          <p>{{solicitud.str_detalle|linebreaksbr}}</p>
+          <p><strong>Notas extra sobre el riesgo:</strong></p>
+          <p>{{solicitud.extradata|linebreaksbr}}</p>
           <div class="d-flex justify-content-between staff-botonera-fichas">
             <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-cotizar mx-4"
               data-bs-sol-id="{{ solicitud.id}}"
@@ -85,9 +88,8 @@
               data-bs-toggle="modal"
               data-bs-target="#editSolicitudModal"
               data-bs-sol-id="{{ solicitud.id }}"
-              data-bs-sol-contacto="{{solicitud.data_cliente}}"
-              data-bs-sol-detalle="{{solicitud.detalle}}">
-              Editar contacto & Detalles
+              data-bs-sol-detalle="{{solicitud.extradata}}">
+              Editar Detalles
             </button>
           </div>
         </div>
@@ -108,15 +110,11 @@
       <form id="editForm" method="post" action="">    
         {% csrf_token %}
         <div class="modal-header">
-          <span>Editar Datos de contacto o detalle de solicitud</span>
+          <span>Editar Datos extra de solicitud</span>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <input type="hidden" class="form-control" id="sol_id" name="sol_id">
-          <div class="mb-3">
-            <label for="data_contacto" class="form-label">Datos de Contacto</label>
-            <input type="text" class="form-control" id="data_contacto" name="data_contacto">
-          </div>
           <div class="mb-3">
             <label for="data_detalle" class="form-label">Detalle</label>
             <textarea name="data_detalle" id="data_detalle" rows="4" class="form-control"></textarea>
@@ -141,10 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function(e) {
       document.getElementById('editForm').reset();
       var sol_id = btn.getAttribute('data-bs-sol-id') || '';
-      var sol_contacto = btn.getAttribute('data-bs-sol-contacto') || '';
       var sol_detalle = btn.getAttribute('data-bs-sol-detalle') || '';
       document.getElementById('sol_id').value = sol_id;
-      document.getElementById('data_contacto').value = sol_contacto;
       document.getElementById('data_detalle').value = sol_detalle;
       document.getElementById('editForm').action = `/staff/cotizaciones/solicitudes/edit/${sol_id}`;
     });

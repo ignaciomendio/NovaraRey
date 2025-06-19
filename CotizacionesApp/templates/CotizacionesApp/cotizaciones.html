@@ -26,6 +26,11 @@
         {% endfor %}
       </select>
     </div>
+    <div class="col-md-4">
+      <label for="nombre" class="form-label">Nombre / Razón Social</label>
+      <input type="text" name="nombre" id="nombre" class="form-control" value="{{ filtro_nombre }}">
+    </div>
+
     <div class="col-md-2 d-flex align-items-end">
       <button type="submit" class="btn btn-primary w-100">Filtrar</button>
     </div>
@@ -49,24 +54,37 @@
               Cliente sin nombre
             {% endif %}
           {% else %} 
-            Cliente no registrado 
+            Cliente no registrado
           {% endif %}</p>
           {% if not cotizacion.cliente %}
-            <p><strong>Datos de Contacto:&nbsp;</strong>{{cotizacion.data_cliente}}</p>
+            <p><strong>Datos de Nuevo Cliente:</strong></p>
+            {{cotizacion.solicitud_cotizacion.str_cliente|linebreaksbr}}</p>
           {% endif %}
           <p><strong>Status:&nbsp;</strong>
             {% for code, label in filtro_choices %}
               {% if cotizacion.status == code %}
-                {{ label }}
+                {{ label }} 
+                {% if cotizacion.status == "E" %}
+                  &nbsp;por {{cotizacion.usuario_envio}} el {{cotizacion.fecha_envio}}
+                {% elif cotizacion.status == "S" %}
+                  &nbsp;por {{cotizacion.usuario_sol_emision}} el {{cotizacion.fecha_sol_emision}}
+                {% elif cotizacion.status == "C" %}
+                  &nbsp;por {{cotizacion.usuario_cancelacion}} el {{cotizacion.fecha_cancelacion}}
+                {% endif %}
               {% endif %}
             {% endfor %} 
           </p>
           <p><strong>Detalle de cobertura solicitada:</strong></p>
-          <p>{{cotizacion.sujeto|linebreaksbr}}</p>
+          <p>{{cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
+          <p><strong>Notas sobre el riesgo solicitud de Cotizacion:</strong></p>
+          <p>{{cotizacion.solicitud_cotizacion.extradata|linebreaksbr}}</p>
+          <p><strong>Notas sobre la cotizacion:</strong></p>
+          <p>{{cotizacion.extradata|linebreaksbr}}</p>
           <div class="d-flex justify-content-between staff-botonera-fichas">
             <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-emitido mx-4"
               data-bs-cot-id="{{ cotizacion.id}}"
-              {% if cotizacion.status != 'E' %} hidden {% endif %}>
+              data-bs-cliente="{% if cotizacion.cliente %}SI{% else %}NO{% endif %}"
+               {% if cotizacion.status != 'E' %} hidden {% endif %}>
               Solicitada Emisión
             </button> 
             <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-enviado mx-4"
@@ -75,7 +93,12 @@
               data-bs-target="#sendCotModal"
               {% if cotizacion.status != 'P' %} hidden {% endif %}>
               Enviado a Cliente
-            </button>            
+            </button>       
+            <button type="button" class="btn btn-info btn-sm custom-btn-ficha btn-backtop mx-4"
+              data-bs-cot-id="{{ cotizacion.id}}"
+              {% if cotizacion.status != 'E' %} hidden {% endif %}>
+              Volver a Preparación
+            </button>       
             <button type="button" class="btn btn-danger btn-sm custom-btn-ficha btn-cancelar mx-4"
               data-bs-cot-id="{{ cotizacion.id}}"
               data-bs-toggle="modal"
@@ -85,7 +108,7 @@
             </button>
             <button type="button" class="btn btn-secondary btn-sm custom-btn-ficha btn-editar mx-4"
               data-bs-cot-id="{{ cotizacion.id }}">
-              Ver / Editar Cotizacion
+              Editar Cotizacion
             </button>
           </div>
         </div>
@@ -163,7 +186,15 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('cot_id').value = cot_id;
       document.getElementById('cancelForm').action = `/staff/cotizaciones/cancel/${cot_id}`;
     });
-  });  //dando eventos al enviar a cliente
+  });  
+    //dando eventos al volver a preparación
+  document.querySelectorAll('.btn-backtop').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var cot_id = btn.getAttribute('data-bs-cot-id') || '';
+      window.location.href = `/staff/cotizaciones/back_to_p/${cot_id}`;  
+    });
+  });  
+  //dando eventos al enviar a cliente
   document.querySelectorAll('.btn-enviado').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       document.getElementById('sendForm').reset();
@@ -172,6 +203,21 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('sendForm').action = `/staff/cotizaciones/send/${cot_id}`;
     });
   });
+  //dando eventos al boton emitir
+  document.querySelectorAll('.btn-emitido').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var cot_id = btn.getAttribute('data-bs-cot-id') || '';
+      var has_cte = btn.getAttribute('data-bs-cliente') || '';
+      if (has_cte === 'NO'){
+        if (confirm("No se puede mandar a emitir una cotización para un cliente no registrado. ¿Desea editar la cotización para asignarle un cliente?")){
+          window.location.href = `/staff/cotizaciones/edit/${cot_id}`;
+        }
+      } else {
+        window.location.href = `/staff/emisiones/add/${cot_id}`;
+      }
+    });
+  });
+  
   //dando eventos al ver/edira
   document.querySelectorAll('.btn-editar').forEach(function(btn) {
     btn.addEventListener('click', function(e) {

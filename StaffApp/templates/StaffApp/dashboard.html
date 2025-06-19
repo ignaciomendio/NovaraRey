@@ -6,23 +6,30 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/staff.css' %}">
 {% endblock %}
+
 {% block content %}
    
-   
-   <!-- Heading -->
-   <section class="page-section clearfix">
-        <div>
-            <p class="mb-3">Prueba DASHBOARD</p>   
-        </div>
-    </section>
-
-
   
     <!-- Message -->
     <section class="page-section cta">
-      <div class="container">
-              <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vitae magnam natus sit ea voluptates illo quod dolorum, beatae nobis eaque officiis labore id amet. Placeat distinctio tempore voluptates animi. </p>
+    <div class="ds-cards-container">
+      {% for ds_ctx in ds_context %}
+        <div class="card ds-card" >
+          <div class="card-body ds-card-body" style="background-color: {{ds_ctx.status}};">
+            <h5 class="card-title ds-card-Title">{{ds_ctx.title}}</h5>
+            <div class="ds-card-content" style="min-height: 140px;">
+              <ul>
+                {% for param in ds_ctx.params %}
+                  <li>{{param.name}}:&nbsp;{{param.value}}</li>
+                {% endfor %}
+              </ul>            
+            </div>  
+            <div class="ds-card-buttons">
+                <a href="{{ds_ctx.URL}}" class="btn btn-primary">Ir a {{ds_ctx.title}}</a>
+            </div>
+          </div>
         </div>
+      {% endfor %}
       </div>
     </section>
 

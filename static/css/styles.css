@@ -1,6 +1,42 @@
+/* Estilos para las tarjetas del dashboard */
 
+.ds-cards-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ds-card{
+    width: 20rem;
+    background-color: transparent;
+    border: none;
+}
+
+.ds-card-body{
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px gray;
+    margin: 20px;
+}
+
+.ds-card-title{
+    color: black;
+}
+
+.ds-card-content{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ds-card-buttons{
+    margin-top: 10px;
+    display: flex; 
+    justify-content: center
+
+}
 
 /* Estilos para la parte de Staff */
+
 .staff-body{
     background-color: rgb(250, 247, 152);
 }
@@ -10,6 +46,7 @@
     max-width: 900px;
     border-radius:10px;
     padding: 20px;
+    margin-top: 20px;
 }
 
 .staff-form-title{
@@ -52,6 +89,10 @@
 
 
 /* Estilos para la parte de Clientes */
+
+#mainNav{
+    background: linear-gradient(to right, #185c5a, #2a9c98);
+}
 
 .main-body{
     background-color: rgb(234, 239, 240);

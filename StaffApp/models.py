@@ -69,6 +69,7 @@ class Tarea(models.Model):
         verbose_name_plural = 'Tareas'
         ordering = ['-fecha_creacion']
 
+
     def __str__(self):
         return self.titulo
     
@@ -81,3 +82,11 @@ class Tarea(models.Model):
             vencimiento = self.fecha_vencimiento.date()
             return (vencimiento - hoy).days
         return None
+    
+    def vencida(self)->bool:
+        if self.fecha_vencimiento:
+            hoy = timezone.now().date()
+            vencimiento = self.fecha_vencimiento.date()
+            return vencimiento < hoy
+        return False
+

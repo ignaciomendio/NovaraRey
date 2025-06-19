@@ -7,19 +7,188 @@ from docx import Document
 from django.http import HttpResponse
 from AseguradoraApp.models import Cia, CiaTelContact, CiaMailContact
 from MainApp.models import Address, AdressType
+from django.urls import reverse
+from CotizacionesApp.models import QuotRequest, Cotizacion
+from EmisionesApp.models import Emision
+from ClientesApp.models import ClientePersonaFisica, TarjetaCredito, Cliente, ClientePersonaJuridica
+
+DASHBOARD_COLORS={
+    "critic": "#e35d6a",
+    "warning": "#ffc107",
+    "OK": "#5ece4d"}
+
+class Dashboard_Param():
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+class Dashboard_data():
+    title:str = ""
+    params:list[Dashboard_Param] = []
+    status:int = 0
+    URL:str = ""
+
+    def __init__(self, title, status,  URL):
+        self.title = title
+        self.status = status
+        self.URL = URL
+
+    def add_param(self, param:Dashboard_Param):
+        self.params.append(param)
+
+    def clean_params(self):
+        self.params = []
+
 
 @login_required(login_url='/login/login/')
 def vista_dashboard(request):
-    """
-    Render the dashboard view.
-    """
-    return render(request, 'StaffApp/dashboard.html')
+
+    ds_context: list[Dashboard_data] = []
+
+    #Código para el dasboard de cumpleaños
+    clientes_cumple = list(filter(lambda x: x.aviso_cumple(), ClientePersonaFisica.objects.all()))
+    if len(clientes_cumple) > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+        ds_tareas: Dashboard_data = Dashboard_data(
+            title="Clientes",
+            status=status_tareas, 
+            URL= reverse('clientes_main'))
+        ds_tareas.clean_params()
+        for cliente in clientes_cumple:
+            ds_tareas.add_param(Dashboard_Param(f"{cliente.nombre} {cliente.apellido} cumple años el", f"{cliente.fecha_nacimiento.strftime('%d/%m')}"))
+        ds_context.append(ds_tareas)
+
+
+    #Código para el dasboard de tarjetas de crédito
+    tarjetas_a_vencer = list(filter(lambda x: x.avisar_vencimiento(), TarjetaCredito.objects.all()))
+    if len(tarjetas_a_vencer) > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+        ds_tareas: Dashboard_data = Dashboard_data(
+            title="Tarjetas",
+            status=status_tareas, 
+            URL= reverse('clientes_main'))
+        ds_tareas.clean_params()
+        for tarjeta in tarjetas_a_vencer:    
+            if ClientePersonaFisica.objects.filter(id=tarjeta.Cliente.id).exists():
+                cliente = ClientePersonaFisica.objects.filter(id=tarjeta.Cliente.id)
+                nombre_cte = f'{cliente[0].nombre} {cliente[0].apellido}'
+            else:
+                cliente = ClientePersonaJuridica.objects.filter(id=tarjeta.Cliente.id)
+                nombre_cte = f'{cliente[0].razon_social}'            
+            ds_tareas.add_param(Dashboard_Param(f"{tarjeta.tarjeta} Nro. {tarjeta.numero_tarjeta} de {nombre_cte}", f"Vence: {tarjeta.vencimiento}"))
+        ds_context.append(ds_tareas)
+
+
+    #Código para el dasboard de Tareas
+    tareas = Tarea.objects.filter(status="P")
+    n_pend = len(tareas)
+    n_venc = 0
+
+    for tarea in tareas:
+        if tarea.vencida():
+            n_venc += 1
+
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title=Tarea._meta.verbose_name_plural,
+        status=status_tareas, 
+        URL= reverse('tareas_main'))
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param("Tareas Pendientes", n_pend))
+    ds_tareas.add_param(Dashboard_Param("Tareas Vencidas", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    #Código para el dasboard de solicitudes de cotización
+    solicitudes = QuotRequest.objects.filter(status="P")
+    n_pend = len(solicitudes)
+    n_venc = len(list(filter(lambda x: x.cotizar_vencida(), solicitudes)))
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title=QuotRequest._meta.verbose_name_plural,
+        status=status_tareas, 
+        URL= reverse('ver_solicitudes_cotizacion')+"?status=P")
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param("Solicitudes Pendientes", n_pend))
+    ds_tareas.add_param(Dashboard_Param(f"Solicitudes Vencidas (más de {QuotRequest.DIAS_MAX_SOLICITUD} días)", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    #Código para el dasboard de cotizaciones en preparacion
+    cot_prep = Cotizacion.objects.filter(status="P")
+    n_pend = len(cot_prep)
+    n_venc = len(list(filter(lambda x: x.preparar_vencida(), cot_prep)))
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title="Cotizaciones en Preparacion",
+        status=status_tareas, 
+        URL= reverse('ver_cotizaciones')+"?status=P")
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param("Cotizaciones en Preparacion", n_pend))
+    ds_tareas.add_param(Dashboard_Param(f"Cotizaciones en Preparacion Vencidas (más de {Cotizacion.DIAS_MAX_PREPARACION} días)", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    #Código para el dasboard de cotizaciones enviadas
+    cot_prep = Cotizacion.objects.filter(status="E")
+    n_pend = len(cot_prep)
+    n_venc = len(list(filter(lambda x: x.enviar_vencida(), cot_prep)))
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title="Cotizaciones sin Emitir",
+        status=status_tareas, 
+        URL= reverse('ver_cotizaciones')+"?status=E")
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param("Cotizaciones enviadas a clientes sin emitir", n_pend))
+    ds_tareas.add_param(Dashboard_Param(f"Cotizaciones sin emitir Vencidas (más de {Cotizacion.DIAS_MAX_RESPUESTA_CTE} días)", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    #Código para el dasboard de emisiones sin pólizas
+    emisiones_sin_poliza = Emision.objects.filter(tiene_poliza=False)
+    n_pend = len(emisiones_sin_poliza)
+    n_venc = len(list(filter(lambda x: x.cotizar_vencida(), emisiones_sin_poliza)))
+
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title="Emisiones sin póliza",
+        status=status_tareas, 
+        URL= reverse('ver_emisiones')+"?filtro_poliza=SP")
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param("Emisiones sin poliza asignada", n_pend))
+    ds_tareas.add_param(Dashboard_Param(f"Emisiones Vencidas (más de {Emision.MAX_DIAS_SIN_POLIZA} días)", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    return render(request, 'StaffApp/dashboard.html',{
+        "ds_context":ds_context,})
 
 @login_required(login_url='/login/login/')
 def vista_enter(request):
     if request.user.is_authenticated:
         # If the user is authenticated, redirect to the dashboard
-        return render(request, 'StaffApp/dashboard.html')
+        return redirect('dashboard')
     else:
         return redirect('login')
     
@@ -342,7 +511,9 @@ def vista_aseguradoras_edit_telDelete(request, id):
 
 @login_required(login_url='/login/login/')
 def vista_aseguradoras_edit_mailDelete(request, id):
+
     mail_contact = CiaMailContact.objects.get(id=id)
     cia = mail_contact.cia
     mail_contact.delete()
     return redirect('aseguradoras_edit', id=cia.id)
+

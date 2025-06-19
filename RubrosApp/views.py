@@ -5,6 +5,7 @@ from StaffApp.models import Tarea
 from django.contrib.auth.models import User
 from datetime import timedelta, datetime
 from CotizacionesApp.models import DataCotizacion, QuotRequest
+import json
 
 
 # Create your views here.
@@ -55,16 +56,32 @@ def more_info(request:HttpRequest)->HttpResponse:
 def vista_solicitar_cotizacion(req:HttpRequest, id):
     categoria = get_object_or_404(Categoria, id=id)
     if req.method=="POST":
-        data_from_post = ""
-        for key, value in req.POST.items():
-            if key not in ['nombre', 'telefono', 'email','csrfmiddlewaretoken']:
-                if value:
-                    data_from_post += f'{key}: {value}\n'
+        #Carga la data de los controles dinamicos
+        data_json = {}
+        i = 0
+        while True:
+            label = req.POST.get(f"label{i}")
+            value = req.POST.get(f"data{i}")
+            if label is None:
+                break  # Ya no hay más datos
+            data_json[label] = value
+            i += 1
+
+        json_str = json.dumps(data_json, ensure_ascii=False)
+
+        clt_json = {}
+        clt_json["Nombre"]=req.POST.get('nombre')
+        clt_json["Tel"]=req.POST.get('telefono')
+        clt_json["email"]=req.POST.get('email')
+
+        json_cte = json.dumps(clt_json, ensure_ascii=False)
+
         QuotRequest.objects.create(
             rubro = categoria,
-            data_cliente = req.POST.get('nombre') + " - Tel: " + req.POST.get('telefono') + " - E-mail: " + req.POST.get('email'),
+            data_cliente = json_cte,
             usuario_creacion = User.objects.get(username="auto"),
-            detalle = data_from_post)
+            detalle = json_str,
+            extradata = req.POST.get('rawdata'))
         mensaje_exito = "¡Gracias por tu solicitud! En breve nuestro equipo se estrá comunicando con la cotización solicitada o para profundizar sobre los detalles de sus necesidades."
         rubros = Categoria.objects.all()
         return render(req, 'RubrosApp/rubros.html', {'rubros': rubros, 'mensaje_exito': mensaje_exito})

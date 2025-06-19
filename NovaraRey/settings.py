@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'StaffApp',
     'ClientesApp',
     'CotizacionesApp',
-    'ProductorApp'
+    'ProductorApp',
+    'EmisionesApp',
 ]
 
 MIDDLEWARE = [

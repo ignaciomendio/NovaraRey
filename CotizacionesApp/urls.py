@@ -16,5 +16,7 @@ urlpatterns = [
     path('cot_cias/add/', vista_add_cot_cia, name='add_cotizacion_cia'),
     path('edit/<int:id>', vista_editar_cotizacion, name='editar_cotizacion'),
     path('send/<int:id>', vista_send_cotizacion, name='send_cotizacion'),
+    path('emit/<int:id>', vista_emit_cotizacion, name='emit_cotizacion'),
+    path('back_to_p/<int:id>', vista_backtop, name="acktop"),
 ]
 

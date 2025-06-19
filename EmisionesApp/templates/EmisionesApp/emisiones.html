@@ -1,0 +1,99 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-container">
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mt-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <h3 class="staff-form-title">Solicitudes de Emisión</h3>
+
+  <!--Zona de Filtro-->
+  <hr class="staff-form-hr">
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label for="filtro_poliza" class="form-label">Status de Emisión</label>
+      <select name="filtro_poliza" id="filtro_poliza" class="form-select">
+        {% for choice in filter_options %}
+          <option value="{{choice.0}}" {% if filtro_poliza == choice.0 %}selected{% endif %}>{{choice.1}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="nombre" class="form-label">Nombre / Razón Social</label>
+      <input type="text" name="nombre" id="nombre" class="form-control" value="{{ filtro_nombre }}">
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+  </form>
+
+  <!--Zona de Fichas-->
+  <hr class="staff-form-hr">
+  <div class="mt-5">
+    {% for emision in emisiones %}
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{emision.Cotizacion.rubro.nombre}}</h5>
+          <input type="hidden" name="emisionid" value="{{emision.id}}">
+          <p><strong>Cliente:&nbsp;</strong>
+            {% if emision.Cotizacion.cliente.clientepersonafisica %}
+              {{ emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+            {% elif emision.Cotizacion.cliente.clientepersonajuridica %}
+              {{ emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+            {% endif %}</p>
+          <p><strong>Status:&nbsp;</strong>
+            {% if emision.tiene_poliza %}
+              Ya posee póliza asignada
+            {% else %}
+              No posee póliza asignada
+            {% endif %} 
+          </p>
+          <p><strong>Aseguradora:</strong>{{emision.cot_cia.aseguradora.nombre}}</p>
+          <p><strong>Detalle de cobertura solicitada:</strong></p>
+          <p>{{emision.Cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
+          <p><strong>Archivo de aceptación:</strong>
+            {% if emision.aceptacion %}
+              <a href="{{ emision.aceptacion.url }}" target="_blank">
+                Ver archivo de aceptación
+              </a>
+            {% else %}
+              <span class="text-muted">Sin archivo de aceptación</span>
+            {% endif %}
+          </p>
+          {% if emision.extradata %}
+            <p><strong>Datos extras de emisión:</strong></p>
+            <p>{{emision.str_extradata|linebreaksbr}}</p>
+          {% endif %}
+          <div class="d-flex justify-content-between staff-botonera-fichas">
+            <button type="button" class="btn btn-success btn-sm custom-btn-ficha btn-poliza mx-4"
+              data-bs-cot-id="{{ emision.id}}"
+              {% if emision.tiene_poliza %}hidden{% endif %}>
+              Ingresar Poliza
+            </button>            
+            <button type="button" class="btn btn-danger btn-sm custom-btn-ficha btn-cancelar mx-4"
+              data-bs-cot-id="{{ emision.id}}">
+              Cancelar Emisión
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm custom-btn-ficha btn-editar mx-4"
+              data-bs-cot-id="{{ emision.id }}">
+              Ver/Editar Emisión
+            </button>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="alert alert-info mt-2">
+        No hay Solicitudes de emisión que mostrar
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

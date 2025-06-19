@@ -19,6 +19,7 @@ class RubroCat(models.Model):
 class Categoria(models.Model):
     created = models.DateField(verbose_name="Fecha de pedido", auto_now_add=True)
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
+    alias = models.CharField(max_length=10, verbose_name="Short Alias", null=True, blank=True)
     descripcion = models.TextField(verbose_name="Descripción")
     imagen = models.ImageField(upload_to="RubrosMedia", verbose_name="Imagen")
     rubro = models.ForeignKey(RubroCat, on_delete=models.CASCADE, verbose_name="Rubro", related_name="categorias")

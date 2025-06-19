@@ -20,7 +20,7 @@
 
 <body class="staff-body">
     <!-- Encabezado -->
-    <header class="bg-warning text-dark mb-4">
+    <header class="container-fluid bg-warning text-dark border-bottom">
         <div class="container">
             <div class="row align-items-center py-3">
                 <div class="col-6 col-md-4">
@@ -34,32 +34,69 @@
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg bg-warning py-lg-3" id="mainNav">
+            <nav class="navbar navbar-expand-lg bg-warning py-lg-3" id="staffNav">
                 <div class="container px-0">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav me-auto">
+                            <!--Menu Dashboard-->
                             <li class="nav-item {% if request.path == '/staff/dashboard/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="#">Dashboard</a>
+                                <a class="nav-link text-uppercase text-expanded" href="{% url 'dashboard' %}">Dashboard</a>
                             </li>
+                            <!--Menu Tareas-->
                             <li class="nav-item {% if request.path == '/staff/tareas/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link text-uppercase text-expanded" href="{% url 'tareas_main' %}">Tareas</a>
                             </li>
-                            <li class="nav-item {% if request.path == '/staff/clientes/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="{% url 'clientes_main' %}">Clientes</a>
+                            <!--Menu Clientes-->
+                            <li class="nav-item dropdown {% if request.path == '/staff/clientes/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Clientes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="clientesDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'clientes_main' %}">Gestión de Clientes</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'cliente_create' 'PF' %}">Crear cliente Persona Física</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'cliente_create' 'PJ' %}">Crear cliente Persona Jurídica</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item {% if request.path == '/staff/aseguradoras/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="{% url 'aseguradoras_main' %}">Aseguradoras</a>
+                           <!--Menu Aseguradoras-->
+                            <li class="nav-item dropdown {% if request.path == '/staff/aseguradoras/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="aseguradorasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Aseguradoras
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="aseguradorasDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'aseguradoras_main' %}">Gestión Aseguradoras</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'productores' %}">Gestión Productores</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item {% if request.path == '/staff/prestadores/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="{% url 'prestadores_main' %}">Prestadores</a>
+                            <!--Menu Prestadores-->
+                            <li class="nav-item dropdown {% if request.path == '/staff/prestadores/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="prestadoresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Prestadores
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="prestadoresDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'prestadores_main' %}">Gestión Prestadores</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'prestadores_create' %}">Crear Prestador</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item {% if request.path == '/staff/productores/' %}active{% endif %} px-lg-4">
-                                <a class="nav-link text-uppercase text-expanded" href="{% url 'productores' %}">Productores</a>
-                            </li>
+                            <!--Menu Cotizaciones-->
                             <li class="nav-item dropdown {% if request.path == '/staff/cotizaciones/' %}active{% endif %} px-lg-4">
                                 <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="cotizacionesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Cotizaciones
@@ -74,9 +111,20 @@
                                     <li>
                                         <a class="dropdown-item" href="{% url 'ver_cotizaciones' %}?status=P">Ver cotizaciones</a>
                                     </li>
-
                                 </ul>
                             </li>
+                            <!--Menu Polizas-->
+                            <li class="nav-item dropdown {% if request.path == '/staff/emisionaes/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="emisionesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Polizas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="emisionesDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'ver_emisiones' %}">Gestión Emisiones</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                         </ul>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item px-lg-2">
@@ -86,7 +134,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
     </header>
 
     <!-- Contenido principal -->

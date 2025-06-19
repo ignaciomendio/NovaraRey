@@ -37,17 +37,19 @@
             {% if data.help_text %}
               <p class="form-help">{{data.help_text}}</p>  
             {% endif %}
+            <input type="hidden" name="label{{ forloop.counter0 }}" value="{{ data.nombre_dato }}">
             {% if data.tipo_dato == 'T' %} 
-              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control">
+              <input name="data{{ forloop.counter0 }}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control">
             {% elif data.tipo_dato == 'N' %} 
-              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="number" class="form-control">
+              <input name="data{{ forloop.counter0 }}" {% if data.mandatorio %} required {% endif %} type="number" class="form-control">
             {% elif data.tipo_dato == 'B' %} 
-              <select name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} value="" class="form-select">
+              <select name="data{{ forloop.counter0 }}" {% if data.mandatorio %} required {% endif %} value="" class="form-select">
+                <option value="">Seleccione Si/NO</option>
                 <option value="SI"> Si </option>
                 <option value="NO"> No </option>
               </select>
             {% elif data.tipo_dato == 'C' %} 
-              <input name="{{data.nombre_dato}}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control" placeholder="Opciones: {{data.choices}}">
+              <input name="data{{ forloop.counter0 }}" {% if data.mandatorio %} required {% endif %} type="text" class="form-control" placeholder="Opciones: {{data.choices}}">
             {% endif %}
         </div>
         {% endfor %}

@@ -2,6 +2,8 @@ from django.db import models
 from RubrosApp.models import Categoria
 from ClientesApp.models import Cliente
 from AseguradoraApp.models import Cia
+from django.utils import timezone
+import json
 
 DATA_CHOICES = (    
     ('T', 'Texto'),
@@ -14,7 +16,7 @@ class DataCotizacion(models.Model):
     nombre_dato=models.CharField(max_length=50, verbose_name="Nombre del dato")
     tipo_dato=models.CharField(max_length=1, choices=DATA_CHOICES)
     mandatorio = models.BooleanField()
-    choices = models.CharField(max_length=150, null=True, blank=True)
+    choices = models.CharField(max_length=50, null=True, blank=True)
     help_text = models.CharField(max_length=250, null=True, blank=True)
 
 class QuotRequest(models.Model):
@@ -24,6 +26,8 @@ class QuotRequest(models.Model):
         ('F', 'Cotizada'),
         ('C', 'Cancelada'),
     ]
+
+    DIAS_MAX_SOLICITUD = 3
 
     rubro = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Rubro")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
@@ -38,12 +42,50 @@ class QuotRequest(models.Model):
         default='P',
         verbose_name='Estado'
     )
-    detalle = models.TextField(verbose_name='Detalle a cotizar')
+    detalle = models.TextField(verbose_name='Detalle a cotizar', null=True, blank=True)
+    extradata = models.TextField(verbose_name="Datos extra sobre el riesgo", null=True, blank=True)
     usuario_finalizacion = models.ForeignKey(
         'auth.User', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Usuario de Finalización', related_name='cotizaciones_finalizadas'
     )
     fecha_finalizacion = models.DateTimeField(null=True, blank=True, verbose_name='Fecha de Finalización')
     notas_finalización = models.CharField(max_length=250, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Solicitud de Cotización'
+        verbose_name_plural = 'Solicitudes de Cotización'
+
+    def aging_creation(self)->int:
+        if self.fecha_creacion:
+            ahora = timezone.now()
+            return (ahora.date() - self.fecha_creacion.date()).days
+        return 0
+    
+    def cotizar_vencida(self)->bool:
+        return self.aging_creation() > self.DIAS_MAX_SOLICITUD
+    
+    def dict_detalle(self)->dict:
+        return json.loads(self.detalle)
+    
+    def str_detalle(self)->str:
+        dic: dict = self.dict_detalle()
+        aux_str = ""
+        for clave, valor in dic.items():
+            if valor:
+                aux_str += clave + ": " + str(valor) + "\n"
+        return aux_str
+    
+    def dict_cliente(self)->dict:
+        return json.loads(self.data_cliente)
+    
+    def str_cliente(self)->str:
+        dic: dict = self.dict_cliente()
+        aux_str = ""
+        for clave, valor in dic.items():
+            if valor !="":
+                aux_str += clave + ": " + str(valor) + "\n"
+        return aux_str
+
+
     
 class Cotizacion(models.Model):
 
@@ -54,12 +96,15 @@ class Cotizacion(models.Model):
         ('C', 'Cancelada'),
     ]
 
+    DIAS_MAX_PREPARACION = 5
+    DIAS_MAX_RESPUESTA_CTE = 7
+
     rubro = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Rubro")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
     data_cliente = models.CharField(max_length=200, null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creación')
-    solicitud_cotizacion = models.ForeignKey(QuotRequest,on_delete=models.CASCADE, verbose_name="Solicitud de Cotizacion", null=True, blank=True)
-    sujeto = models.TextField(verbose_name='Detalle a cotizar')
+    solicitud_cotizacion = models.ForeignKey(QuotRequest,on_delete=models.CASCADE, verbose_name="Solicitud de Cotizacion")
+    extradata = models.TextField(verbose_name='Detalle extra de Cotización', null=True, blank=True)
     usuario_creacion = models.ForeignKey(
         'auth.User', on_delete=models.CASCADE, verbose_name='Usuario Creador',related_name='nuevas_cotizaciones'
     )
@@ -91,9 +136,38 @@ class Cotizacion(models.Model):
     fecha_cancelacion = models.DateTimeField(null=True, blank=True, verbose_name='Fecha de Cancelacion')
     notas_cancelacion = models.TextField(verbose_name='Notas de cancelacion de cotizacion', null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Cotización'
+        verbose_name_plural = 'Cotizaciónes'
+
+    def aging_creation(self)->int:
+        if self.fecha_creacion:
+            ahora = timezone.now()
+            return (ahora.date() - self.fecha_creacion.date()).days
+        return 0
+    
+    def aging_envion(self)->int:
+        if self.fecha_envio:
+            ahora = timezone.now()
+            return (ahora.date() - self.fecha_envio.date()).days
+        return 0
+    
+    def preparar_vencida(self)->bool:
+        return self.aging_creation() > self.DIAS_MAX_PREPARACION
+    
+    def enviar_vencida(self)->bool:
+        return self.aging_envion() > self.DIAS_MAX_RESPUESTA_CTE
+    
+
 class CotizacionCia(models.Model):
     cotizacion = models.ForeignKey(Cotizacion,on_delete=models.CASCADE, verbose_name="cotización")
     aseguradora = models.ForeignKey(Cia, on_delete=models.CASCADE, verbose_name="Compañia Aseguradora")
     fecha = models.DateField(verbose_name="Fechas de cotización")
     premio = models.FloatField(verbose_name="Premio en pesos")
+    cobertura = models.CharField(max_length=15, verbose_name="Tipo de cobertura (TR, TC, etc...)", null=True, blank=True)
     numero = models.CharField(max_length=20, null=True, blank=True)
+
+class DataEmision(models.Model):
+    rubro = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Rubro")
+    data = models.CharField(max_length=30, verbose_name="Nombre del dato")
+    requerido = models.BooleanField(verbose_name="Es dato obligatorio")

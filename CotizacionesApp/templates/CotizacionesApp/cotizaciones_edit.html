@@ -1,10 +1,11 @@
 {% extends "StaffApp/baseStaff.html" %}
 
 {% block content %}
-<div class="container mt-4" style="max-width: 700px;">
-    <h3 class="mb-4">Editar Cotización</h3>
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Editar Cotización</h3>
 
     <form method="post">
+      <hr class="staff-form-hr">
         {% csrf_token %}
           <p><strong>Rubro:&nbsp;</strong>{{cotizacion.rubro.nombre}}</p>
           <input type="hidden" id="reqid" name="reqid" value="{{cotizacion.id}}">
@@ -19,26 +20,28 @@
             {% endif %}
           {% else %} 
             Cliente no registrado 
+            <div class="staff-form-control-container">
+              <label class="form-label">Cliente (Dejar en blanco si es un cliente nuevo)</label>
+              <select id="cliente-select" name="cliente" class="form-select">
+                <option value="">Seleccione un cliente</option>
+                {% for id, nombre in client_list %}
+                  <option value="{{ id }}">{{ nombre }}</option>
+                {% endfor %}
+              </select>
+            </div>
           {% endif %}</p>
           {% if not cotizacion.cliente %}
-            <p><strong>Datos de Contacto:&nbsp;</strong>{{cotizacion.data_cliente}}</p>
+            <p><strong>Datos de Nuevo Cliente:</strong></p>
+            <p>{{cotizacion.solicitud_cotizacion.str_cliente|linebreaksbr}}</p>
           {% endif %}
-          <p><strong>Status:&nbsp;</strong>
-            {% for code, label in filtro_choices %}
-              {% if cotizacion.status == code %}
-                {{ label }}
-              {% endif %}
-            {% endfor %} 
-          </p>
-          <div class="mb-3">
-            <label class="form-label">Detalle del riesgo</label>
-            <textarea name="detalle" id="detalle" class="form-control" rows="6">
-              {{ cotizacion.sujeto }}
-            </textarea>
-          </div>
-          <hr>
+          <p><strong>Detalle de cobertura solicitada:</strong></p>
+          <p>{{cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
+          <p><strong>Notas sobre el riesgo solicitud de Cotizacion:</strong></p>
+          <p>{{cotizacion.solicitud_cotizacion.extradata|linebreaksbr}}</p>
+
+          <hr class="staff-form-hr">
           <!-- Cotizaciones de las compañias -->
-          <div class="mb-3">
+          <div class="staff-form-control-container">
             <label class="form-label">Cotizaciones de las compañias</label>
             <!-- Tabla de cotizaciones -->
             <table id="tabla_cotizaciones" class="table table-striped">
@@ -48,6 +51,7 @@
                         <th>Compañia</th>
                         <th>Premio</th>
                         <th>Nro. Cotizacion</th>
+                        <th>Cobertura</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -67,11 +71,15 @@
                               {{cot_cia.numero}}
                             </td>
                             <td>
+                              {{cot_cia.cobertura}}
+                            </td>
+                            <td>
                               <button type="button" class="btn btn-outline-secondary btn-sm btn-editar-cot"
                                 data-id="{{ cot_cia.id }}"
                                 data-aseguradora="{{ cot_cia.aseguradora.nombre }}"
                                 data-premio="{{ cot_cia.premio }}"
                                 data-numero="{{ cot_cia.numero }}"
+                                data-cobertura="{{cot_cia.cobertura}}"
                                 title="Editar cotizacion">
                                 <i class="bi bi-pen"></i>
                               </button>
@@ -84,7 +92,7 @@
                         </tr>
                     {% empty %}
                         <tr>
-                            <td colspan="5" class="text-center">No hay cotizaciones registradas.</td>
+                            <td colspan="6" class="text-center">No hay cotizaciones registradas.</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -94,25 +102,17 @@
             </button>
         </div>
 
-          <hr>
+          <hr class="staff-form-hr">
+          <div class="staff-form-control-container">
+            <label class="form-label">Notas sobre la cotización</label>
+            <textarea name="detalle" id="detalle" class="form-control" rows="6">
+              {{ cotizacion.extradata }}
+            </textarea>
+          </div>
+          <hr class="staff-form-hr">
           <p><strong>Fecha de Creación:&nbsp;</strong>{{cotizacion.fecha_creacion}}</p>
           <p><strong>Usuario Creador:&nbsp;</strong>{{cotizacion.usuario_creacion}}</p>
-          <hr>
-          <p><strong>Fecha de Envío a Cliente:&nbsp;</strong>{{cotizacion.fecha_envio}}</p>
-          <p><strong>Usuario Envío a Cliante:&nbsp;</strong>{{cotizacion.usuario_envio}}</p>
-          <p><strong>Detalle de Envio a Cliente:</strong></p>
-          <p>{{cotizacion.detalles_envio|linebreaksbr}}</p>
-          <hr>
-          <p><strong>Fecha de Solicitud de emisión:&nbsp;</strong>{{cotizacion.fecha_sol_emision}}</p>
-          <p><strong>Usuario Solicitud de emisión:&nbsp;</strong>{{cotizacion.usuario_sol_emision}}</p>
-          <p><strong>Detalle de Solicitud de emisión:</strong></p>
-          <p>{{cotizacion.detalles_sol_emision|linebreaksbr}}</p>
-          <hr>
-          <p><strong>Fecha de Cancelación:&nbsp;</strong>{{cotizacion.fecha_cancelacion}}</p>
-          <p><strong>Usuario Cancelación:&nbsp;</strong>{{cotizacion.usuario_cancelacion}}</p>
-          <p><strong>Detalle de Cancelación:</strong></p>
-          <p>{{cotizacion.notas_cancelacion|linebreaksbr}}</p>
-          <hr>
+          <hr class="staff-form-hr">
 
         <div class="d-flex justify-content-between">
             <a href="{% url 'ver_cotizaciones' %}?status=P" class="btn btn-secondary">Volver</a>
@@ -151,6 +151,10 @@
             <label for="codigo" class="form-label">Nro o Código de Cotizacion</label>
             <input type="text" name="codigo" id="codigo" class="form-control" >
           </div>
+          <div class="mb-3">
+            <label for="cobertura" class="form-label">Tipo de Cobertura (TC, TR, etc...)</label>
+            <input type="text" name="cobertura" id="cobertura" class="form-control" >
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -187,6 +191,10 @@
             <label for="codigo_edit" class="form-label">Numero de Cotizacion</label>
             <input type="text" name="codigo_edit" id="codigo_edit" class="form-control">
           </div>
+          <div class="mb-3">
+            <label for="cobertura_edit" class="form-label">Tipo de Cobertura (TC, TR, etc...)</label>
+            <input type="text" name="cobertura_edit" id="cobertura_edit" class="form-control">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -211,6 +219,7 @@
                     document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
                     document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
                     document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
+                    document.getElementById('cobertura_edit').value = btn.getAttribute('data-cobertura') || '';
                     document.getElementById('formeditcot').action = `/staff/cotizaciones/cot_cias/edit/${idcot}/`;
                     new bootstrap.Modal(document.getElementById('modalEditarCotizacion')).show();
                 });
@@ -234,6 +243,7 @@
                     document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
                     document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
                     document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
+                    document.getElementById('cobertura_edit').value = btn.getAttribute('data-cobertura') || '';
                     document.getElementById('formeditcot').action = `/staff/cotizaciones/cot_cias/edit/${idcodigo}/`;
                     new bootstrap.Modal(document.getElementById('modalEditarCotizacion')).show();
                 });
