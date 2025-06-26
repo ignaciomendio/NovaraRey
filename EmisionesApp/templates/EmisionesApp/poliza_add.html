@@ -1,0 +1,135 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Nueva Póliza
+      {% if numero_previa %}
+        &nbsp;- Renovación Poliza N° {{numero_previa}}
+      {% endif %}
+    </h3>
+    <hr class="staff-form-hr">
+
+    <form method="post">
+      
+      {% csrf_token %}
+
+      <input type="hidden" id="emid" name="emid" value="{{emision.id}}">
+      <!-- Mostrar los datos de la emision-->
+      <p><strong>Rubro:&nbsp;</strong>{{emision.Cotizacion.rubro.nombre}}</p>
+      <p><strong>Cliente:&nbsp;</strong>
+        {% if emision.Cotizacion.cliente.clientepersonafisica %}
+          {{ emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+        {% elif emision.Cotizacion.cliente.clientepersonajuridica %}
+          {{ emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+        {% else %}
+          Cliente sin nombre
+        {% endif %}
+      </p>
+      <p><strong>Compañia:&nbsp;</strong>{{emision.cot_cia.aseguradora.nombre}}</p>
+      <!-- Selección de código de productor -->
+      <div class="staff-form-control-container">
+        <label for="pol_prod_in" class="form-label">Código de Productor</label>
+        <select name="pol_prod_in" id="pol_prod_in" required class="form-select">
+          <option value="">Seleccione el código de productor</option>
+          {% for cod in cod_prod %}
+            <option value="{{ cod.id}}">{{cod}}</option>
+          {% empty %}
+            <p>No hay código de productor para esta compañía. <a href="{% url 'add_productor' %}">Agregar</a></p><a href=""></a>
+          {% endfor %} 
+        </select>
+      </div>
+      <hr class="staff-form-hr">
+      <p><strong>Detalle de cobertura solicitada:</strong></p>
+      <p>{{emision.Cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
+      <p><strong>Notas sobre el riesgo solicitud de Cotizacion:</strong></p>
+      <p>{{emision.Cotizacion.solicitud_cotizacion.extradata|linebreaksbr}}</p>
+      <p><strong>Datos Extra:</strong></p>
+      <p>{{ emision.str_extradata|linebreaksbr }}</p>
+      <hr class="staff-form-hr">
+
+      <!-- Ingreso de datos -->
+
+      <div class="staff-form-control-container">
+        <label for="pol_num_in" class="form-label">Número de Poliza</label>
+        <input type="text" class="form-control" id="pol_num_in" name="pol_num_in" required>
+        <label for="pol_desde_in" class="form-label">Comienzo Vigencia</label>
+        <input type="date" class="form-control" id="pol_desde_in" name="pol_desde_in" required>
+        <label for="pol_hasta_in" class="form-label">Fin de Vigencia</label>
+        <input type="date" class="form-control" id="pol_hasta_in" name="pol_hasta_in" required>
+        <label for="pol_refact_in" class="form-label">Período de Refacturación</label>
+        <select name="pol_refact_in" id="pol_refact_in" required class="form-select">
+          <option value="">Seleccione el período de Refcaturación</option>
+            {% for codigo, descripcion in PolizaRefacturacion %}
+              <option value="{{ codigo }}">{{ descripcion }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <hr class="staff-form-hr">
+
+      <!-- Seleccionar medio de pago -->
+      <div class="staff-form-control-container">
+        <label class="form-label" for="pf_mp_in">Medio de Pago</label>
+
+        <select name="pf_mp_in" id="pf_mp_in" class="form-select">
+          <option value="CONTADO">CONTADO</option>
+          {% for mp in medios_pago %}
+            <option value="{{mp.id}}">
+              {% if mp.tarjetacredito %}
+                Trajeta {{mp.tarjetacredito}}
+              {% elif mp.transferenciabancaria %}
+                TB {{mp.transferenciabancaria}}
+              {% endif %}
+            </option>
+          {% endfor %}
+        </select>
+        <label for="pol_venc1_in" class="form-label">Vencimiento 1er cupón</label>
+        <input type="date" class="form-control" id="pol_venc1_in" name="pol_venc1_in" disabled>
+        <label for="pol_cuotas_in" class="form-label">Cantidad de cuotas</label>
+        <input type="number" class="form-control" id="pol_cuotas_in" name="pol_cuotas_in" disabled>
+      </div> 
+
+      <hr class="staff-form-hr">
+
+      <div class="d-flex justify-content-between">
+            <a href="{% url 'ver_emisiones' %}?filtro_poliza=SP" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Grabar Póliza</button>
+        </div>
+    </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const medioPagoSelect = document.getElementById('pf_mp_in');
+    const venc1Input = document.getElementById('pol_venc1_in');
+    const cuotasInput = document.getElementById('pol_cuotas_in');
+
+    function toggleCamposPago() {
+      const seleccion = medioPagoSelect.value;
+      const esContado = (seleccion === "" || seleccion === "CONTADO");
+      if (esContado) {
+        venc1Input.disabled = false;
+        cuotasInput.disabled = false;
+      } else {
+        venc1Input.disabled = true;
+        cuotasInput.disabled = true;
+        venc1Input.value = null;
+        cuotasInput.value = null;
+      }
+
+
+    }
+
+    medioPagoSelect.addEventListener('change', toggleCamposPago);
+    toggleCamposPago(); // ejecuta al cargar por si hay datos precargados
+  });
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+

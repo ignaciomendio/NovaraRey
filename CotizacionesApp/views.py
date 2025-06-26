@@ -228,6 +228,7 @@ def vista_edit_cot_cia(req:HttpRequest, id):
     if req.method=="POST":
         print(cot_cia)
         idcot = req.POST.get('cotid')
+        cot_cia.prima = req.POST.get('prima_edit').replace(',', '.') #convierte formato
         cot_cia.premio = req.POST.get('premio_edit').replace(',', '.') #convierte formato
         cot_cia.numero = req.POST.get('codigo_edit')
         cot_cia.cobertura = req.POST.get('cobertura_edit')
@@ -249,6 +250,7 @@ def vista_add_cot_cia(req:HttpRequest):
             cotizacion = get_object_or_404(Cotizacion, id=idcot),
             aseguradora = get_object_or_404(Cia,id=req.POST.get('cia')),
             fecha = timezone.now(),
+            prima = req.POST.get('prima'),
             premio = req.POST.get('premio'),
             numero = req.POST.get('codigo'),
             cobertura = req.POST.get('cobertura')

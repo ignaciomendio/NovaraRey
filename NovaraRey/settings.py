@@ -10,33 +10,48 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ==============================================================================
+# CONFIGURACIÓN DE ENTORNO
+# ==============================================================================
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Detectar si estamos en desarrollo o producción
+DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_b*ure!#bjw76t-@p5co4t^lr71^814fqlmen1tp*#%&e0#_m1'
+# Secret Key - En producción debe venir de variable de entorno
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-_b*ure!#bjw76t-@p5co4t^lr71^814fqlmen1tp*#%&e0#_m1')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Hosts permitidos
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+else:
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-ALLOWED_HOSTS = []
+# ==============================================================================
+# APLICACIONES
+# ==============================================================================
 
-
-# Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',  # Para formatear números, fechas, etc.
+]
+
+THIRD_PARTY_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap4',
+]
+
+LOCAL_APPS = [
     'MainApp',
     'RubrosApp',
     'AseguradoraApp',
@@ -48,9 +63,16 @@ INSTALLED_APPS = [
     'EmisionesApp',
 ]
 
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# ==============================================================================
+# MIDDLEWARE
+# ==============================================================================
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Para i18n
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -60,16 +82,22 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'NovaraRey.urls'
 
+# ==============================================================================
+# TEMPLATES
+# ==============================================================================
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Carpeta global de templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  # Para acceder a MEDIA_URL en templates
             ],
         },
     },
@@ -77,20 +105,33 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NovaraRey.wsgi.application'
 
+# ==============================================================================
+# BASE DE DATOS
+# ==============================================================================
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    # Configuración para PostgreSQL en producción
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+        }
+    }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+# ==============================================================================
+# VALIDACIÓN DE CONTRASEÑAS
+# ==============================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,6 +139,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,  # Mínimo 8 caracteres
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -107,36 +151,189 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# ==============================================================================
+# INTERNACIONALIZACIÓN
+# ==============================================================================
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
-LANGUAGE_CODE = 'es-ar'  # O el código de tu país, por ejemplo 'es-es' para España
-
-TIME_ZONE = 'America/Argentina/Buenos_Aires'  # O tu zona horaria
-
+LANGUAGE_CODE = 'es-ar'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# Idiomas disponibles (si planeas multiidioma en el futuro)
+LANGUAGES = [
+    ('es', 'Español'),
+    ('en', 'English'),
+]
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
+# ==============================================================================
+# ARCHIVOS ESTÁTICOS Y MEDIA
+# ==============================================================================
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para producción
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
+# ==============================================================================
+# CONFIGURACIÓN DE FORMULARIOS
+# ==============================================================================
+
+# Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# ==============================================================================
+# AUTENTICACIÓN Y SESIONES
+# ==============================================================================
+
+LOGIN_URL = '/login/login'
+LOGIN_REDIRECT_URL = '/staff/'  # Redirigir staff después del login
+LOGOUT_REDIRECT_URL = '/'  # Redirigir a home después del logout
+
+# Configuración de sesiones
+SESSION_COOKIE_AGE = 3600  # 1 hora
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# ==============================================================================
+# CONFIGURACIÓN DE SEGURIDAD
+# ==============================================================================
+
+# Configuraciones de seguridad para producción
+if not DEBUG:
+    # HTTPS
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
+    # Cookies seguras
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    
+    # Headers de seguridad
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    
+    # HSTS (HTTP Strict Transport Security)
+    SECURE_HSTS_SECONDS = 31536000  # 1 año
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+# ==============================================================================
+# LOGGING
+# ==============================================================================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        # Logs específicos de tu aplicación
+        'NovaraRey': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+# ==============================================================================
+# CONFIGURACIONES ESPECÍFICAS DEL NEGOCIO
+# ==============================================================================
+
+# Configuraciones para seguros (puedes expandir según necesites)
+SEGUROS_SETTINGS = {
+    'DIAS_AVISO_VENCIMIENTO_POLIZA': 30,
+    'DIAS_AVISO_CUMPLE_CLIENTE': 15,
+    'MONEDA_DEFAULT': 'ARS',
+    'FORMATO_FECHA_ARGENTINA': '%d/%m/%Y',
+}
+
+# ==============================================================================
+# CONFIGURACIONES DE EMAIL (para futuras notificaciones)
+# ==============================================================================
+
+if DEBUG:
+    # En desarrollo, mostrar emails en consola
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    # En producción, configurar SMTP real
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.getenv('EMAIL_HOST')
+    EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@novararey.com')
+
+# ==============================================================================
+# CONFIGURACIONES ADICIONALES
+# ==============================================================================
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / "media"
+# Tamaño máximo de archivos subidos (en bytes) - 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
 
-LOGIN_URL = '/login/login'
+# Formatos de fecha y hora para Argentina
+DATE_FORMAT = 'd/m/Y'
+DATETIME_FORMAT = 'd/m/Y H:i'
+SHORT_DATE_FORMAT = 'd/m/Y'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static", # Si tienes una carpeta 'static' en la raíz del proyecto
-]
+# Cache (para desarrollo usar dummy, en producción Redis/Memcached)
+if DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1'),
+        }
+    }

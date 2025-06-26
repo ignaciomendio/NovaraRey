@@ -9,7 +9,7 @@ from AseguradoraApp.models import Cia, CiaTelContact, CiaMailContact
 from MainApp.models import Address, AdressType
 from django.urls import reverse
 from CotizacionesApp.models import QuotRequest, Cotizacion
-from EmisionesApp.models import Emision
+from EmisionesApp.models import Emision, Poliza
 from ClientesApp.models import ClientePersonaFisica, TarjetaCredito, Cliente, ClientePersonaJuridica
 
 DASHBOARD_COLORS={
@@ -178,6 +178,35 @@ def vista_dashboard(request):
     ds_tareas.clean_params()
     ds_tareas.add_param(Dashboard_Param("Emisiones sin poliza asignada", n_pend))
     ds_tareas.add_param(Dashboard_Param(f"Emisiones Vencidas (más de {Emision.MAX_DIAS_SIN_POLIZA} días)", n_venc))
+
+    ds_context.append(ds_tareas)
+
+    #Código para el dasboard de polizas a vencer
+    DIAS_MAX_VENCIMIENTO = 20
+    polizas = Poliza.objects.all()
+    polizas_a_vencer = []
+    polizas_vencidas = []
+    for poliza in polizas:
+        if poliza.vigente() and poliza.get_vigente().vigente():
+                endoso = poliza.get_vigente()
+                if endoso.dias_vigencia() <= DIAS_MAX_VENCIMIENTO:
+                    polizas_a_vencer.append(poliza)
+                if endoso.dias_vigencia() <= 0:
+                    polizas_vencidas.append(poliza)
+    n_pend = len(polizas_a_vencer)
+    n_venc = len(polizas_vencidas)
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title="Vencimiento de Pólizas",
+        status=status_tareas, 
+        URL= reverse('list_polizas')+"?fil_dias_vencimiento="+str(DIAS_MAX_VENCIMIENTO))
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param(f"Polizas que vencen en los próximos {DIAS_MAX_VENCIMIENTO} días", n_pend))
+    ds_tareas.add_param(Dashboard_Param("Polizas vencidas", n_venc))
 
     ds_context.append(ds_tareas)
 
@@ -401,7 +430,7 @@ def vista_aseguradoras_main(request):
 
 @login_required(login_url='/login/login/')
 def vista_aseguradoras_create(request):
-    pass
+    return redirect('/admin/AseguradoraApp/cia/add/')
 
 @login_required(login_url='/login/login/')
 def vista_aseguradoras_edit(request, id):

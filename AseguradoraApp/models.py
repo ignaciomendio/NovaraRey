@@ -12,7 +12,7 @@ class CiaTelContact(models.Model):
         verbose_name_plural="Teléfonos de contacto"
 
     def __str__(self):
-        return self.telefono + " - " + self.contacto + " - " + self.desc
+        return f"{self.telefono} - {self.contacto}" + (f" - {self.desc}" if self.desc else "")
     
 
 class CiaMailContact(models.Model):
@@ -26,11 +26,12 @@ class CiaMailContact(models.Model):
         verbose_name_plural="Mails de contacto"
 
     def __str__(self):
-        return self.mail + " - " + self.contacto + " - " + self.desc
+        return f"{self.telefono} - {self.contacto}" + (f" - {self.desc}" if self.desc else "")
     
 class Cia(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre de la compañía")
     cuit = models.CharField(max_length=15, verbose_name="CUIT de la compañía")
+    ciaid = models.CharField(max_length=4, verbose_name="ID de la compañía")
     activa = models.BooleanField(default=True, verbose_name="Compañía activa")
     logoUrl = models.CharField(verbose_name="URL del logo de la compañía", null=True, blank=True)
     url = models.CharField(max_length=100, verbose_name="URL de la compañía", null=True, blank=True)

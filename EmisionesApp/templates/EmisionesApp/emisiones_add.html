@@ -30,6 +30,19 @@
         <p>{{cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
         <p><strong>Notas sobre el riesgo solicitud de Cotizacion:</strong></p>
         <p>{{cotizacion.solicitud_cotizacion.extradata|linebreaksbr}}</p>
+            <p><strong>Detalle del riesgo a asegurar:</strong></p>
+        <p>{{ emision.Cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr }}</p>
+        <!-- Selección de extradata -->
+        {% if extradata %}
+          <p><strong>Datos adicionales:</strong></p>
+          {% for idata in extradata %}
+            <div class="staff-form-control-container">
+              <label class="form-label">{{ idata.data }}:</label>
+              <input type="hidden" name="label{{ forloop.counter0 }}" value="{{ idata.data }}">
+              <input type="text" name="data{{ forloop.counter0 }}" {% if idata.requerido %}required{% endif %}>
+            </div>
+          {% endfor %}
+        {% endif %}
 
       <hr class="staff-form-hr">
 
@@ -44,11 +57,9 @@
         </select>
       </div>
 
-      <hr class="staff-form-hr">
-
       <!-- Agregar archivo de aceptación del cliente -->
       <div class="staff-form-control-container">
-        <label class="form-label">Cotización Seleccionada</label>
+        <label class="form-label">Aceptación del Cliente:</label>
         <input type="file" name="file_aceptacion">
       </div> 
 

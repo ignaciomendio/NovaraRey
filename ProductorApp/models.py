@@ -23,7 +23,7 @@ class CodigoProductor(models.Model):
     activo = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"Código: {self.codigo} - Productor: {self.productor.nombre} - Aseguradora: {self.aseguradora.nombre}"
+        return f"Código: {self.codigo} - Productor: {self.productor.nombre}"
     
     class Meta:
         verbose_name = "Código de Productor"

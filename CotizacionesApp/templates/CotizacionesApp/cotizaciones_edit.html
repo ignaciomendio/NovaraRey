@@ -49,6 +49,7 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Compañia</th>
+                        <th>Prima</th>
                         <th>Premio</th>
                         <th>Nro. Cotizacion</th>
                         <th>Cobertura</th>
@@ -65,6 +66,10 @@
                               {{cot_cia.aseguradora}}
                             </td>
                             <td>  
+                              {{cot_cia.prima}}
+                            </td>
+
+                            <td>  
                               {{cot_cia.premio}}
                             </td>
                             <td>  
@@ -77,6 +82,7 @@
                               <button type="button" class="btn btn-outline-secondary btn-sm btn-editar-cot"
                                 data-id="{{ cot_cia.id }}"
                                 data-aseguradora="{{ cot_cia.aseguradora.nombre }}"
+                                data-prima="{{ cot_cia.prima }}"
                                 data-premio="{{ cot_cia.premio }}"
                                 data-numero="{{ cot_cia.numero }}"
                                 data-cobertura="{{cot_cia.cobertura}}"
@@ -144,6 +150,10 @@
             </select>
           </div>
           <div class="mb-3">
+            <label for="prima" class="form-label">Prima</label>
+            <input type="number" name="prima" id="prima" class="form-control" required>
+          </div>
+          <div class="mb-3">
             <label for="premio" class="form-label">Premio</label>
             <input type="number" name="premio" id="premio" class="form-control" required>
           </div>
@@ -184,8 +194,12 @@
             <input type="text" id="cia_edit" name="cia_edit" class="form-control" readonly>
           </div>
           <div class="mb-3">
+            <label for="prima_edit" class="form-label">Prima</label>
+            <input type="number" name="prima_edit" id="prima_edit" class="form-control" required>
+          </div>
+          <div class="mb-3">
             <label for="premio_edit" class="form-label">Premio</label>
-            <input type="text" name="premio_edit" id="premio_edit" class="form-control" required>
+            <input type="number" name="premio_edit" id="premio_edit" class="form-control" required>
           </div>
           <div class="mb-3">
             <label for="codigo_edit" class="form-label">Numero de Cotizacion</label>
@@ -217,6 +231,7 @@
                     var idcot = btn.getAttribute('data-id');
                     document.getElementById('cot_cia_id').value = idcot;
                     document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('prima_edit').value = btn.getAttribute('data-prima') || '';
                     document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
                     document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
                     document.getElementById('cobertura_edit').value = btn.getAttribute('data-cobertura') || '';
@@ -241,6 +256,7 @@
                     var idcot = btn.getAttribute('data-id');
                     document.getElementById('cot_cia_id').value = idcot;
                     document.getElementById('cia_edit').value = btn.getAttribute('data-aseguradora') || '';
+                    document.getElementById('prima_edit').value = btn.getAttribute('data-prima') || '';
                     document.getElementById('premio_edit').value = btn.getAttribute('data-premio') || '';
                     document.getElementById('codigo_edit').value = btn.getAttribute('data-numero') || '';
                     document.getElementById('cobertura_edit').value = btn.getAttribute('data-cobertura') || '';

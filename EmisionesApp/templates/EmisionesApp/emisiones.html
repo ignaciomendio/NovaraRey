@@ -60,7 +60,7 @@
           <p>{{emision.Cotizacion.solicitud_cotizacion.str_detalle|linebreaksbr}}</p>
           <p><strong>Archivo de aceptación:</strong>
             {% if emision.aceptacion %}
-              <a href="{{ emision.aceptacion.url }}" target="_blank">
+              <a href="{{ emision.aceptacion.url }} target="_blank" rel="noopener noreferrer"" target="_blank">
                 Ver archivo de aceptación
               </a>
             {% else %}
@@ -96,4 +96,31 @@
   </div>
 
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+      document.querySelectorAll('.btn-poliza').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const emid = btn.getAttribute('data-bs-cot-id');
+          window.location.href = `/staff/emisiones/addPoliza/${emid}/`;
+        });
+      });
+      document.querySelectorAll('.btn-editar').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const emid = btn.getAttribute('data-bs-cot-id');
+          window.location.href = `/staff/emisiones/editemision/${emid}/`;
+        });
+      });
+      document.querySelectorAll('.btn-cancelar').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const emid = btn.getAttribute('data-bs-cot-id');
+          if (confirm('¿Seguro que desea Cancelar esta emisión?, La cotización volverá al status ENVIADO A CLINTE')){
+            window.location.href = `/staff/emisiones/cancelemision/${emid}/`;
+          }
+        });
+      });
+    });
+</script>
 {% endblock %}

@@ -37,6 +37,11 @@
 
 /* Estilos para la parte de Staff */
 
+.staff-button{
+    min-width: 160px;
+    border-radius:5px;
+}
+
 .staff-body{
     background-color: rgb(250, 247, 152);
 }

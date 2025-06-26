@@ -1,0 +1,62 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Nueva Endoso de {{tipo}}</h3>
+    <hr class="staff-form-hr">
+
+    <!--Formulario para cargar nuevos endosos-->
+    <form method="post" id="new_endoso_form">
+      
+      {% csrf_token %}
+
+      <!-- Mostrar los datos de la POliza-->
+      <p><strong>Poliza N°:&nbsp;</strong>{{poliza.numero}}</p>
+      <p><strong>Rubro:&nbsp;</strong>{{poliza.emision.Cotizacion.rubro.nombre}}</p>
+      <p><strong>Cliente:&nbsp;</strong>
+        {% if poliza.emision.Cotizacion.cliente.clientepersonafisica %}
+          {{ poliza.emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ poliza.emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+        {% elif poliza.emision.Cotizacion.cliente.clientepersonajuridica %}
+          {{ poliza.emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+        {% else %}
+          Cliente sin nombre
+        {% endif %}
+      </p>
+      <p><strong>Compañia:&nbsp;</strong>{{poliza.emision.cot_cia.aseguradora.nombre}}</p>
+      <hr class="staff-form-hr">
+
+      <!-- Ingreso de datos -->
+
+      <div class="staff-form-control-container">
+        <input type="hidden" id="polizaid" name="polizaid" value="{{poliza.id}}">
+        <label for="pol_desde_in" class="form-label">Comienzo Vigencia</label>
+        <input type="date" class="form-control" id="pol_desde_in" name="pol_desde_in" required value="{% now 'Y-m-d' %}" {% if tipo == 'Anulación' %}disabled{% endif %}>
+        <label for="pol_hasta_in" class="form-label">Fin de Vigencia</label>
+        <input type="date" class="form-control" id="pol_hasta_in" name="pol_hasta_in" required value="{{poliza.vigencia_hasta|date:'Y-m-d'}}" {% if tipo == 'Anulación' %}disabled{% endif %}>
+        <label for="pol_prima_in" class="form-label">Prima</label>
+        <input type="number" class="form-control" id="pol_prima_in" name="pol_prima_in" required value="{{poliza.get_prima}}" {% if tipo == 'Anulación' %}disabled{% endif %}>
+        <label for="pol_premio_in" class="form-label">Premio</label>
+        <input type="number" class="form-control" id="pol_premio_in" name="pol_premio_in" required value="{{poliza.get_premio}}" {% if tipo == 'Anulación' %}disabled{% endif %}>
+        <label for="pol_motivo_in" class="form-label">Motivo</label>
+        <textarea class="form-control" id="pol_motivo_in" name="pol_motivo_in" placeholder="Ingrese el motivo del endodo"></textarea>
+      </div>
+      <hr class="staff-form-hr">
+
+      <div class="d-flex justify-content-between">
+            <a href="{% url 'ver_poliza' poliza.id %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Grabar Endoso</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

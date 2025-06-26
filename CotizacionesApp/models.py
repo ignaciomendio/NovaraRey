@@ -63,15 +63,19 @@ class QuotRequest(models.Model):
     def cotizar_vencida(self)->bool:
         return self.aging_creation() > self.DIAS_MAX_SOLICITUD
     
-    def dict_detalle(self)->dict:
-        return json.loads(self.detalle)
+    def dict_detalle(self)->dict | None:
+        if self.detalle:
+            return json.loads(self.detalle)
+        else:
+            return None
     
     def str_detalle(self)->str:
-        dic: dict = self.dict_detalle()
+        dic: dict | None = self.dict_detalle()
         aux_str = ""
-        for clave, valor in dic.items():
-            if valor:
-                aux_str += clave + ": " + str(valor) + "\n"
+        if dic:
+            for clave, valor in dic.items():
+                if valor:
+                    aux_str += clave + ": " + str(valor) + "\n"
         return aux_str
     
     def dict_cliente(self)->dict:
@@ -163,6 +167,7 @@ class CotizacionCia(models.Model):
     cotizacion = models.ForeignKey(Cotizacion,on_delete=models.CASCADE, verbose_name="cotización")
     aseguradora = models.ForeignKey(Cia, on_delete=models.CASCADE, verbose_name="Compañia Aseguradora")
     fecha = models.DateField(verbose_name="Fechas de cotización")
+    prima = models.FloatField(verbose_name="Prima en pesos", default=0.0)
     premio = models.FloatField(verbose_name="Premio en pesos")
     cobertura = models.CharField(max_length=15, verbose_name="Tipo de cobertura (TR, TC, etc...)", null=True, blank=True)
     numero = models.CharField(max_length=20, null=True, blank=True)

@@ -11,7 +11,7 @@
         <div class="row">
             {% for aseg in aseguradoras %}
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 shadow p-2" style="max-width: 500px; width: 100%;">
+                <div class="card h-100 shadow p-2" style="max-width: 500px; width: 100%;" title="{{ aseg.nombre }}">
                     <div class="d-flex justify-content-center align-items-center" style="height: 100px;">
                         {% if aseg.logoUrl %}
                             <img src="{{ aseg.logoUrl }}" alt="{{ aseg.nombre }}" style="max-height: 90px; max-width: 90%; object-fit: contain;">
@@ -20,15 +20,15 @@
                         {% endif %}
                     </div>
                     <div class="card-body d-flex flex-column align-items-center text-center p-2">
-                        <p class="card-title">{{ aseg.nombre }}</p>
+                        <h6 class="card-title text-primary fw-semibold">{{ aseg.nombre }}</h6>
                         <div class="mt-auto w-100 d-flex flex-column align-items-center">
-                            <a href="{{ aseg.url }}" class="btn btn-success btn-sm custom-btn">Visitar</a>
+                            <a href="{{ aseg.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-sm custom-btn">Visitar</a>
                         </div>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <p>No hay rubros disponibles.</p>
+            <p>No hay aseguradoras disponibles.</p>
             {% endfor %}
         </div>
         <!-- Fin de tarjetas -->

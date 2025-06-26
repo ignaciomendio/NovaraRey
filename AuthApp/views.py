@@ -9,23 +9,22 @@ def vista_logout(req):
     return redirect("home")
 
 def vista_login(req):
-    if req.method=="POST":
-        form = AuthenticationForm(req, data=req.POST)
+    form = AuthenticationForm(req, data=req.POST or None)
+    form.fields['username'].widget.attrs.update({'class': 'form-control'})
+    form.fields['password'].widget.attrs.update({'class': 'form-control'})
+    if req.method == "POST":
         if form.is_valid():
-            user=form.cleaned_data.get("username")
-            password=form.cleaned_data.get("password")
-            usuario=authenticate(username=user, password=password)
-            if usuario:
-                login(req,usuario)
-                return redirect("home")
+            user = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            usuario = authenticate(username=user, password=password)
+            if not req.POST.get("remember_me"):
+                req.session.set_expiry(0)  # expira al cerrar navegador
+            if usuario is not None:
+                login(req, usuario)
+                redirect_to = req.GET.get("next", "home")
+                return redirect(redirect_to)
             else:
-                messages.error(req, "Usuario no Valido")
-                form = AuthenticationForm()
-                return render(req, "AuthApp/login.html", {"form": form})
+                messages.error(req, "Credenciales inválidas.")
         else:
-            messages.error(req, "Usuario no Valido")
-            form = AuthenticationForm()
-            return render(req, "AuthApp/login.html", {"form": form})
-    else:
-        form = AuthenticationForm()
-        return render(req, "AuthApp/login.html", {"form": form})
+            messages.error(req, "Formulario inválido.")
+    return render(req, "AuthApp/login.html", {"form": form})
