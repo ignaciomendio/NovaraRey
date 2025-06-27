@@ -28,4 +28,5 @@ urlpatterns = [
     path('staff/productores/', include('ProductorApp.urls')),
     path('staff/cotizaciones/', include('CotizacionesApp.urls')),
     path('staff/emisiones/', include('EmisionesApp.urls')),
+    path('staff/pagos/', include('ContadoApp.urls')),
 ]

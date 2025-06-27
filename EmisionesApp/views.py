@@ -12,6 +12,8 @@ from django.db.models import Q
 import os
 from ProductorApp.models import CodigoProductor
 from RubrosApp.models import Categoria
+from ContadoApp.models import Pago, PlanPagos
+from datetime import datetime
 
 
 @login_required(login_url='/login/login/')
@@ -61,7 +63,7 @@ def vista_ver_emisiones(req:HttpRequest):
         ("CP", "Con Poliza"),
         ("ALL", "Todas")]
 
-    filtro_poliza = req.GET.get('filtro_poliza')
+    filtro_poliza = req.GET.get('filtro_poliza','ALL')
     filtro_nombre = req.GET.get('nombre', '').strip()
 
     if filtro_poliza=="SP":
@@ -128,8 +130,8 @@ def vista_add_file_emision(req:HttpRequest, id):
             emision = emision,
         )
         print("descrpcion: ", req.POST.get("descripcion"))
-        return redirect('ver_emisiones')
-    return redirect('ver_emisiones')
+        return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")
+    return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")
 
 
 @login_required(login_url='/login/login/')
@@ -169,7 +171,7 @@ def vista_editar_emision_completa(req:HttpRequest, id):
             emision.aceptacion = req.FILES.get("file_aceptacion")
         emision.save()
         messages.success(req, "Emision Correctamente Modificada")
-        return redirect('ver_emisiones')
+        return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")
 
     extradata = emision.dict_extradata()
     docsEmision = DocEmision.objects.filter(emision=emision)
@@ -187,7 +189,7 @@ def vista_cancelar_emision(req:HttpRequest, id):
     emision:Emision = get_object_or_404(Emision, id=id)
     if emision.tiene_poliza:
         messages.error(req, "No se piede cancelar una solictud que ya tiene poliza asignada")
-        return redirect('ver_emisiones')
+        return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")
     else:
         emision.Cotizacion.status = "E"
         emision.Cotizacion.fecha_sol_emision = None
@@ -196,7 +198,7 @@ def vista_cancelar_emision(req:HttpRequest, id):
         emision.Cotizacion.save()
         emision.delete()
         messages.success(req, "Emision Cancelada Correctamente")
-        return redirect('ver_emisiones')
+        return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")
 
 @login_required(login_url='/login/login/')
 def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
@@ -210,7 +212,6 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
         rel_emision=emision,
         renovable=True
     ).first()
-    numero_previa = poliza_previa.numero if poliza_previa else None
     if req.method == "POST":
         mp = req.POST.get("pf_mp_in")
         if mp == "CONTADO":
@@ -230,9 +231,9 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
             rel_medio_pago = medio_pago,
             rel_cod_prod = get_object_or_404(CodigoProductor, id=req.POST.get("pol_prod_in")),
             refacturacion = req.POST.get("pol_refact_in"),
-            vencimiento_cuota1 = venc,
+            vencimiento_cuota1 = datetime.fromisoformat(venc).date(),
             cant_cuotas = cuotas,
-            pol_previa = poliza_previa.numero if poliza_previa else None)
+            pol_previa = poliza_previa.id if poliza_previa else None)
 
         #Creando el endoso de alta
         Endoso.objects.create(
@@ -246,6 +247,38 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
             premio = emision.cot_cia.premio,
             motivo = "Alta"
         )
+
+        #Creando el plan de pagos
+        if not medio_pago:
+            plan_pago = PlanPagos.objects.create(
+                poliza = new_poliza,
+                cantidad_cuotas = int(cuotas),
+                status = PlanPagos.Status.ACTIVO,
+            )
+
+            #Creando los pagos
+            anio = new_poliza.vencimiento_cuota1.year
+            mes = new_poliza.vencimiento_cuota1.month
+            dia = new_poliza.vencimiento_cuota1.day
+            for i in range(int(cuotas)):
+                while True:
+                    try:
+                        nueva_fecha = datetime(anio, mes, dia)
+                        break
+                    except ValueError:
+                        dia -= 1  # Ajusta el día si es inválido
+                Pago.objects.create(
+                    plan_pago = plan_pago,
+                    cuota = i + 1,
+                    vencimiento = nueva_fecha,
+                    status = Pago.Status.PENDIENTE,
+                )
+                mes += 1
+                if mes > 12:
+                    mes = 1
+                    anio += 1   
+                dia = new_poliza.vencimiento_cuota1.day  # Mantiene el mismo día del mes
+
         #cambiando status de la emision
         emision.tiene_poliza = True
         emision.save()
@@ -262,7 +295,7 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
                    "cod_prod": cod_prod,
                    "medios_pago": medios_pago,
                    'PolizaRefacturacion': Poliza.PolizaRefacturacion.choices,
-                   'numero_previa': numero_previa,})
+                   'poliza_previa': poliza_previa,})
 
 @login_required(login_url='/login/login/')
 def vista_list_polizas(req:HttpRequest):
@@ -347,10 +380,14 @@ def vista_ver_poliza(req:HttpRequest, id):
     poliza = get_object_or_404(Poliza, id=id)
     endosos = Endoso.objects.filter(poliza=poliza).order_by('-numero')
     docs_emision = DocEmision.objects.filter(emision=poliza.rel_emision)
+    medios_pago = MedioPago.objects.filter(Cliente=poliza.rel_emision.Cotizacion.cliente)
+    plan_pagos = PlanPagos.objects.filter(poliza=poliza)
     return render(req, 'EmisionesApp/poliza_view.html', {
         'poliza': poliza,   
         'endosos': endosos,
         'docs_emision'  : docs_emision,
+        'medios_pago':medios_pago,
+        'pagos_vencidos': any(plan.pagos_vencidos() for plan in plan_pagos),
     })
 
 @login_required(login_url='/login/login/')
@@ -432,9 +469,118 @@ def vista_anular_poliza(req:HttpRequest, id):
         poliza.activa = False
         poliza.renovable = False
         poliza.save()
+        planes_pago_actuales = PlanPagos.objects.filter(poliza=poliza)
+        if planes_pago_actuales.exists():
+            planes_pago_actuales.cancelar()
         messages.success(req, "Poliza anulada correctamente")
         return redirect('ver_poliza', poliza.id)
     
+    return redirect('ver_poliza', poliza.id)
+
+@login_required(login_url='/login/login/')
+def vista_reactivar_poliza(req:HttpRequest, id):
+    poliza:Poliza = get_object_or_404(Poliza, id=id)
+    if req.method == "POST":
+        Endoso.objects.create(
+            poliza=poliza,
+            numero=poliza.cant_endosos + 1,
+            usuario_creacion=req.user,
+            tipo=Endoso.EndosoTipo.REHABILITACION,
+            vigencia_desde=req.POST.get("reac_vigencia_desde"),
+            vigencia_hasta=req.POST.get("reac_vigencia_hasta"),
+            prima=req.POST.get("reac_prima"),
+            premio=req.POST.get("reac_premio"),
+            motivo=req.POST.get("reac_motivo", f"Reactivación de Póliza por {req.user} el {timezone.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        )
+        poliza.cant_endosos += 1
+        poliza.activa = True
+        poliza.renovable = True
+        poliza.save()
+        #si hay planes de pagos cancelados, reactiva el último plan de pagos
+        ultimo_plan = PlanPagos.objects.filter(poliza=poliza, status= PlanPagos.Status.ANULADO).last()
+        if ultimo_plan.exists():
+            ultimo_plan.reactivar()
+
+        messages.success(req, "Poliza rehabilitada correctamente")
+        return redirect('ver_poliza', poliza.id)
+    
+    return redirect('ver_poliza', poliza.id)
+
+@login_required(login_url='/login/login/')
+def vista_modificar_conducto(req:HttpRequest, id):
+    poliza = get_object_or_404(Poliza, id=id)
+    if req.method == "POST":
+        Endoso.objects.create(
+            poliza=poliza,
+            numero=poliza.cant_endosos + 1,
+            usuario_creacion=req.user,
+            tipo=Endoso.EndosoTipo.MODIFICACION,
+            vigencia_desde=poliza.get_vigente().vigencia_desde,
+            vigencia_hasta=poliza.get_vigente().vigencia_hasta,
+            prima=poliza.get_prima(),
+            premio=poliza.get_premio(),
+            motivo= "Modificación de Conducto\n" + req.POST.get("mod_conducto_motivo", "")
+        )
+
+        mp = req.POST.get("mod_conducto_id")
+        if mp == "CONTADO":
+            medio_pago = None
+            venc =  req.POST.get("mod_venc1_in")
+            cuotas = req.POST.get("mod_cuotas_in")
+        else:
+            medio_pago = get_object_or_404(MedioPago, id=mp)
+            venc = None
+            cuotas = None
+
+        #Modificando la poliza
+        poliza.rel_medio_pago = medio_pago
+        poliza.vencimiento_cuota1 = datetime.fromisoformat(venc).date()
+        poliza.cant_cuotas = cuotas
+        poliza.cant_endosos += 1
+        poliza.save()
+
+        #verificando si la poliza ya tiene un plan de pagos activo, si está activo cancela todos los pagos pendientes
+        #y cambia el estado del plan a cancelado
+        planes_pago_actuales = PlanPagos.objects.filter(poliza=poliza)
+        if planes_pago_actuales.exists():
+            for plan in planes_pago_actuales:
+                plan.cancelar()
+
+
+        #Creando el nuevo plan de pagos
+        if not medio_pago:
+            plan_pago = PlanPagos.objects.create(
+                poliza = poliza,
+                cantidad_cuotas = int(cuotas),
+                status = PlanPagos.Status.ACTIVO,
+            )
+
+            #Creando los pagos
+            anio = poliza.vencimiento_cuota1.year
+            mes = poliza.vencimiento_cuota1.month
+            dia = poliza.vencimiento_cuota1.day
+            for i in range(int(cuotas)):
+                while True:
+                    try:
+                        nueva_fecha = datetime(anio, mes, dia)
+                        break
+                    except ValueError:
+                        dia -= 1  # Ajusta el día si es inválido
+                Pago.objects.create(
+                    plan_pago = plan_pago,
+                    cuota = i + 1,
+                    vencimiento = nueva_fecha,
+                    status = Pago.Status.PENDIENTE,
+                )
+                mes += 1
+                if mes > 12:
+                    mes = 1
+                    anio += 1   
+                dia = poliza.vencimiento_cuota1.day  # Mantiene el mismo día del mes
+
+
+        messages.success(req, "Endoso de modificación de conducto cargado correctamente")
+        return redirect('ver_poliza', poliza.id)
     return redirect('ver_poliza', poliza.id)
 
 @login_required(login_url='/login/login/')
@@ -473,4 +619,4 @@ def vista_add_observacion_emision(req:HttpRequest, id):
         messages.success(req, "Observación agregada correctamente")
         return redirect('editar_emision_completa', emision.id)
     
-    return redirect('ver_emisiones')
+    return redirect(f"{reverse('ver_emisiones')}?filtro_poliza=SP")

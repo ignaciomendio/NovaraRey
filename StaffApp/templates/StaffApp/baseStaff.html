@@ -121,10 +121,13 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="emisionesDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'ver_emisiones' %}">Gestión Emisiones</a>
+                                        <a class="dropdown-item" href="{% url 'ver_emisiones' %}?filtro_poliza=SP">Gestión Emisiones</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'list_polizas' %}">Listado Polizas</a>
+                                        <a class="dropdown-item" href="{% url 'list_polizas' %}?fil_status=V">Listado Polizas</a>
+                                    </li>                                    
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'ver_pagos' %}?fil_status=P">Gestión de Pagos</a>
                                     </li>
                                 </ul>
                             </li>

@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container staff-form-container">
     <h3 class="staff-form-title">Nueva Póliza
-      {% if numero_previa %}
-        &nbsp;- Renovación Poliza N° {{numero_previa}}
+      {% if poliza_previa %}
+        &nbsp;- Renovación Poliza N° {{poliza_previa.numero}}
       {% endif %}
     </h3>
     <hr class="staff-form-hr">
@@ -53,7 +53,10 @@
         <label for="pol_num_in" class="form-label">Número de Poliza</label>
         <input type="text" class="form-control" id="pol_num_in" name="pol_num_in" required>
         <label for="pol_desde_in" class="form-label">Comienzo Vigencia</label>
-        <input type="date" class="form-control" id="pol_desde_in" name="pol_desde_in" required>
+        <input type="date" class="form-control" id="pol_desde_in" name="pol_desde_in" required
+          {% if poliza_previa %}
+            value="{{poliza_previa.get_vigencia_hasta|date:'Y-m-d'}}"
+          {% endif %}>
         <label for="pol_hasta_in" class="form-label">Fin de Vigencia</label>
         <input type="date" class="form-control" id="pol_hasta_in" name="pol_hasta_in" required>
         <label for="pol_refact_in" class="form-label">Período de Refacturación</label>

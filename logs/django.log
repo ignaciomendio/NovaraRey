@@ -2329,3 +2329,1449 @@ INFO 2025-06-26 11:50:35,406 basehttp 25956 7800 "POST /staff/emisiones/addobser
 INFO 2025-06-26 11:50:35,481 basehttp 25956 7800 "GET /staff/emisiones/editemision/4/ HTTP/1.1" 200 15595
 INFO 2025-06-26 11:50:53,783 autoreload 25956 3052 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
 INFO 2025-06-26 11:50:55,484 autoreload 13536 24316 Watching for file changes with StatReloader
+INFO 2025-06-26 14:35:06,315 autoreload 13536 24316 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 14:35:07,784 autoreload 12676 27856 Watching for file changes with StatReloader
+INFO 2025-06-26 14:35:14,773 autoreload 12676 27856 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 14:35:15,721 autoreload 24288 23656 Watching for file changes with StatReloader
+INFO 2025-06-26 14:35:23,581 basehttp 24288 7252 "GET /staff/emisiones/editemision/4/ HTTP/1.1" 302 0
+INFO 2025-06-26 14:35:23,651 basehttp 24288 7252 "GET /login/login/?next=/staff/emisiones/editemision/4/ HTTP/1.1" 200 6879
+INFO 2025-06-26 14:35:23,752 basehttp 24288 7252 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-06-26 14:35:26,410 basehttp 24288 15512 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-06-26 14:35:29,743 basehttp 24288 15512 "POST /login/login/?next=/staff/emisiones/editemision/4/ HTTP/1.1" 302 0
+INFO 2025-06-26 14:35:29,817 basehttp 24288 15512 "GET /staff/emisiones/editemision/4/ HTTP/1.1" 200 15595
+INFO 2025-06-26 14:35:34,074 basehttp 24288 18636 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 17631
+INFO 2025-06-26 14:35:45,036 basehttp 24288 9180 "GET /staff/emisiones/listpolizas?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 15140
+ERROR 2025-06-26 14:35:55,790 log 24288 18116 Internal Server Error: /staff/emisiones/verPoliza/4/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 350, in vista_ver_poliza
+    return render(req, 'EmisionesApp/poliza_view.html', {
+        'poliza': poliza,
+        'endosos': endosos,
+        'docs_emision'  : docs_emision,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'reactivar_poliza' not found. 'reactivar_poliza' is not a valid view function or pattern name.
+ERROR 2025-06-26 14:35:55,804 basehttp 24288 18116 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 500 182177
+INFO 2025-06-26 14:36:13,239 autoreload 24288 23656 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\urls.py changed, reloading.
+INFO 2025-06-26 14:36:14,468 autoreload 5620 9340 Watching for file changes with StatReloader
+INFO 2025-06-26 14:36:16,012 basehttp 5620 340 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 28564
+INFO 2025-06-26 14:37:14,570 basehttp 5620 21304 "POST /staff/emisiones/poliza/reactivar/4/ HTTP/1.1" 302 0
+INFO 2025-06-26 14:37:14,635 basehttp 5620 21304 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 29577
+INFO 2025-06-26 14:37:30,319 basehttp 5620 14348 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 29476
+INFO 2025-06-26 14:40:08,850 autoreload 5620 9340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\models.py changed, reloading.
+INFO 2025-06-26 14:40:09,778 autoreload 6972 7636 Watching for file changes with StatReloader
+INFO 2025-06-26 14:40:12,864 basehttp 6972 21428 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 29484
+INFO 2025-06-26 15:25:12,441 autoreload 6972 7636 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-06-26 15:25:13,716 autoreload 20604 23600 Watching for file changes with StatReloader
+INFO 2025-06-26 16:01:35,182 autoreload 20604 23600 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:01:37,204 autoreload 10500 21136 Watching for file changes with StatReloader
+INFO 2025-06-26 16:31:57,446 autoreload 10500 21136 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:31:59,918 autoreload 14372 17616 Watching for file changes with StatReloader
+INFO 2025-06-26 16:32:07,168 autoreload 14372 17616 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:32:09,057 autoreload 984 20572 Watching for file changes with StatReloader
+INFO 2025-06-26 16:32:23,758 basehttp 984 21712 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 302 0
+INFO 2025-06-26 16:32:23,819 basehttp 984 21712 "GET /login/login/?next=/staff/emisiones/verPoliza/4/ HTTP/1.1" 200 6879
+INFO 2025-06-26 16:32:23,881 basehttp 984 21712 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-06-26 16:32:26,229 basehttp 984 21712 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-06-26 16:32:30,533 basehttp 984 11432 "POST /login/login/?next=/staff/emisiones/verPoliza/4/ HTTP/1.1" 302 0
+ERROR 2025-06-26 16:32:30,776 log 984 11432 Internal Server Error: /staff/emisiones/verPoliza/4/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 385, in vista_ver_poliza
+    return render(req, 'EmisionesApp/poliza_view.html', {
+        'poliza': poliza,
+    ...<2 lines>...
+        'medios_pago':medios_pago,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'modificar_conducto' not found. 'modificar_conducto' is not a valid view function or pattern name.
+ERROR 2025-06-26 16:32:30,792 basehttp 984 11432 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 500 184082
+INFO 2025-06-26 16:33:17,529 autoreload 984 20572 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\urls.py changed, reloading.
+INFO 2025-06-26 16:33:19,595 autoreload 3232 19756 Watching for file changes with StatReloader
+INFO 2025-06-26 16:33:52,140 autoreload 3232 19756 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:33:53,746 autoreload 3592 15644 Watching for file changes with StatReloader
+INFO 2025-06-26 16:33:54,762 basehttp 3592 5268 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 32118
+INFO 2025-06-26 16:34:55,458 basehttp 3592 22044 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 32140
+INFO 2025-06-26 16:39:20,356 basehttp 3592 13296 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 32962
+INFO 2025-06-26 16:50:12,825 autoreload 3592 15644 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:50:15,261 autoreload 21080 4252 Watching for file changes with StatReloader
+INFO 2025-06-26 16:53:30,772 autoreload 21080 4252 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 16:53:32,665 autoreload 23792 27020 Watching for file changes with StatReloader
+INFO 2025-06-26 17:00:17,349 autoreload 23792 27020 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:00:19,399 autoreload 28316 13880 Watching for file changes with StatReloader
+INFO 2025-06-26 17:00:32,781 autoreload 28316 13880 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:00:34,580 autoreload 868 7304 Watching for file changes with StatReloader
+INFO 2025-06-26 17:01:19,167 autoreload 868 7304 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:01:21,208 autoreload 9020 17896 Watching for file changes with StatReloader
+INFO 2025-06-26 17:06:30,765 autoreload 9020 17896 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-26 17:06:33,199 autoreload 14076 6164 Watching for file changes with StatReloader
+INFO 2025-06-26 17:08:39,360 autoreload 14076 6164 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-26 17:08:41,171 autoreload 11540 20700 Watching for file changes with StatReloader
+INFO 2025-06-26 17:11:15,612 autoreload 11540 20700 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:11:17,632 autoreload 4768 25640 Watching for file changes with StatReloader
+INFO 2025-06-26 17:17:05,560 basehttp 4768 14428 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 33647
+INFO 2025-06-26 17:17:05,925 basehttp 4768 14428 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+ERROR 2025-06-26 17:18:04,934 log 4768 27440 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/4/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 533, in vista_modificar_conducto
+    poliza.save()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1283, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2059, in execute_sql
+    row_count = super().execute_sql(result_type)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1609, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2022, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1012, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1683, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1661, in get_prep_value
+    value = super().get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1537, in get_prep_value
+    return self.to_python(value)
+           ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1622, in to_python
+    parsed = parse_datetime(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\dateparse.py", line 114, in parse_datetime
+    return datetime.datetime.fromisoformat(value)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: fromisoformat: argument must be str
+ERROR 2025-06-26 17:18:04,950 basehttp 4768 27440 "POST /staff/emisiones/poliza/modificar_conducto/4/ HTTP/1.1" 500 144071
+INFO 2025-06-26 17:22:09,449 basehttp 4768 18100 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 34638
+INFO 2025-06-26 17:22:33,089 basehttp 4768 8632 "GET /admin/ HTTP/1.1" 200 28190
+INFO 2025-06-26 17:23:10,293 basehttp 4768 8884 "GET /admin/ HTTP/1.1" 200 28190
+INFO 2025-06-26 17:23:36,008 autoreload 4768 25640 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\admin.py changed, reloading.
+INFO 2025-06-26 17:23:38,273 autoreload 18040 9072 Watching for file changes with StatReloader
+INFO 2025-06-26 17:23:40,942 basehttp 18040 24604 "GET /admin/ HTTP/1.1" 200 29931
+INFO 2025-06-26 17:23:55,499 basehttp 18040 24652 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 22909
+INFO 2025-06-26 17:23:55,726 basehttp 18040 24652 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:24:06,191 basehttp 18040 23736 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27212
+INFO 2025-06-26 17:24:06,271 basehttp 18040 23736 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:24:10,019 basehttp 18040 23736 "GET /admin/EmisionesApp/endoso/11/change/ HTTP/1.1" 200 32321
+INFO 2025-06-26 17:24:10,079 basehttp 18040 23736 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:24:18,045 basehttp 18040 13624 "GET /admin/EmisionesApp/poliza/4/change/?_to_field=id HTTP/1.1" 200 32931
+INFO 2025-06-26 17:24:18,120 basehttp 18040 13624 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:24:27,849 basehttp 18040 9372 "POST /admin/EmisionesApp/poliza/4/change/?_to_field=id HTTP/1.1" 302 0
+INFO 2025-06-26 17:24:27,905 basehttp 18040 9372 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25641
+INFO 2025-06-26 17:24:27,995 basehttp 18040 9372 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:25:54,039 autoreload 18040 9072 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:25:55,947 autoreload 25356 14844 Watching for file changes with StatReloader
+INFO 2025-06-26 17:26:08,152 autoreload 25356 14844 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:26:10,178 autoreload 11512 14408 Watching for file changes with StatReloader
+INFO 2025-06-26 17:26:38,955 basehttp 11512 11968 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 17429
+INFO 2025-06-26 17:26:57,856 basehttp 11512 14820 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 30270
+ERROR 2025-06-26 17:27:36,630 log 11512 26912 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 533, in vista_modificar_conducto
+    poliza.save()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1283, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2059, in execute_sql
+    row_count = super().execute_sql(result_type)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1609, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2022, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1012, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1683, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1661, in get_prep_value
+    value = super().get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1537, in get_prep_value
+    return self.to_python(value)
+           ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1622, in to_python
+    parsed = parse_datetime(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\dateparse.py", line 114, in parse_datetime
+    return datetime.datetime.fromisoformat(value)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: fromisoformat: argument must be str
+ERROR 2025-06-26 17:27:36,645 basehttp 11512 26912 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 144228
+INFO 2025-06-26 17:28:04,198 autoreload 11512 14408 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:28:06,170 autoreload 23272 27992 Watching for file changes with StatReloader
+INFO 2025-06-26 17:31:57,122 basehttp 23272 21896 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27512
+INFO 2025-06-26 17:31:57,218 basehttp 23272 21896 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:32:01,692 basehttp 23272 21896 "GET /admin/EmisionesApp/endoso/12/change/ HTTP/1.1" 200 32323
+INFO 2025-06-26 17:32:01,797 basehttp 23272 21896 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:32:10,944 basehttp 23272 21896 "GET /admin/EmisionesApp/endoso/12/delete/ HTTP/1.1" 200 22915
+INFO 2025-06-26 17:32:10,994 basehttp 23272 21896 "GET /static/admin/js/cancel.js HTTP/1.1" 304 0
+INFO 2025-06-26 17:32:17,891 basehttp 23272 21896 "POST /admin/EmisionesApp/endoso/12/delete/ HTTP/1.1" 302 0
+INFO 2025-06-26 17:32:17,965 basehttp 23272 21896 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27377
+INFO 2025-06-26 17:32:18,039 basehttp 23272 21896 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:32:30,475 basehttp 23272 17708 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 30252
+ERROR 2025-06-26 17:32:52,670 log 23272 17708 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 533, in vista_modificar_conducto
+    poliza.save()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1283, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2059, in execute_sql
+    row_count = super().execute_sql(result_type)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1609, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2022, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1012, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1683, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1661, in get_prep_value
+    value = super().get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1537, in get_prep_value
+    return self.to_python(value)
+           ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1622, in to_python
+    parsed = parse_datetime(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\dateparse.py", line 114, in parse_datetime
+    return datetime.datetime.fromisoformat(value)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: fromisoformat: argument must be str
+ERROR 2025-06-26 17:32:52,687 basehttp 23272 17708 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 144054
+INFO 2025-06-26 17:33:47,861 basehttp 23272 26032 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27512
+INFO 2025-06-26 17:33:47,938 basehttp 23272 26032 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:33:56,802 basehttp 23272 10644 "POST /admin/EmisionesApp/endoso/ HTTP/1.1" 200 23057
+INFO 2025-06-26 17:33:58,256 basehttp 23272 10644 "POST /admin/EmisionesApp/endoso/ HTTP/1.1" 302 0
+INFO 2025-06-26 17:33:58,324 basehttp 23272 10644 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27358
+INFO 2025-06-26 17:33:58,402 basehttp 23272 10644 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:37:51,084 autoreload 23272 27992 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:37:53,308 autoreload 23156 3592 Watching for file changes with StatReloader
+INFO 2025-06-26 17:38:28,351 autoreload 23156 3592 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:38:30,207 autoreload 23756 26512 Watching for file changes with StatReloader
+INFO 2025-06-26 17:38:34,385 basehttp 23756 11376 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27212
+INFO 2025-06-26 17:38:34,432 basehttp 23756 11376 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:38:42,467 basehttp 23756 27840 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 30252
+ERROR 2025-06-26 17:39:05,721 log 23756 8048 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 559, in vista_modificar_conducto
+    anio = poliza.vencimiento_cuota1.year,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+ERROR 2025-06-26 17:39:05,728 basehttp 23756 8048 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 74082
+INFO 2025-06-26 17:41:02,830 autoreload 23756 26512 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:41:04,704 autoreload 11124 12036 Watching for file changes with StatReloader
+INFO 2025-06-26 17:42:34,493 autoreload 11124 12036 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:42:36,397 autoreload 8792 17936 Watching for file changes with StatReloader
+INFO 2025-06-26 17:42:41,190 basehttp 8792 23124 "GET /admin/EmisionesApp/endoso/ HTTP/1.1" 200 27512
+INFO 2025-06-26 17:42:41,274 basehttp 8792 23124 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:43:17,050 basehttp 8792 19260 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 24273
+INFO 2025-06-26 17:43:17,134 basehttp 8792 19260 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:43:18,522 basehttp 8792 19260 "GET /admin/ContadoApp/planpagos/1/change/ HTTP/1.1" 200 26675
+INFO 2025-06-26 17:43:18,622 basehttp 8792 19260 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:43:38,319 basehttp 8792 17788 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 22869
+INFO 2025-06-26 17:43:38,394 basehttp 8792 17788 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:43:42,309 basehttp 8792 17788 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 24273
+INFO 2025-06-26 17:43:42,386 basehttp 8792 17788 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:43:46,809 basehttp 8792 17788 "POST /admin/ContadoApp/planpagos/ HTTP/1.1" 200 23072
+INFO 2025-06-26 17:43:48,408 basehttp 8792 17788 "POST /admin/ContadoApp/planpagos/ HTTP/1.1" 302 0
+INFO 2025-06-26 17:43:48,461 basehttp 8792 17788 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 23059
+INFO 2025-06-26 17:43:48,538 basehttp 8792 17788 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:44:05,594 basehttp 8792 24548 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 31197
+ERROR 2025-06-26 17:44:18,858 log 8792 24508 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 565, in vista_modificar_conducto
+    nueva_fecha = datetime(anio, mes, dia)
+TypeError: 'tuple' object cannot be interpreted as an integer
+ERROR 2025-06-26 17:44:18,867 basehttp 8792 24508 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 74739
+INFO 2025-06-26 17:45:20,533 autoreload 8792 17936 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 17:45:22,673 autoreload 5536 17520 Watching for file changes with StatReloader
+INFO 2025-06-26 17:45:25,118 basehttp 5536 22796 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 24273
+INFO 2025-06-26 17:45:25,179 basehttp 5536 22796 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:45:34,193 basehttp 5536 11512 "POST /admin/ContadoApp/planpagos/ HTTP/1.1" 200 23072
+INFO 2025-06-26 17:45:35,561 basehttp 5536 11512 "POST /admin/ContadoApp/planpagos/ HTTP/1.1" 302 0
+INFO 2025-06-26 17:45:35,619 basehttp 5536 11512 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 23059
+INFO 2025-06-26 17:45:35,691 basehttp 5536 11512 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:45:38,316 basehttp 5536 10764 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 22869
+INFO 2025-06-26 17:45:38,387 basehttp 5536 10764 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:45:56,943 basehttp 5536 18540 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 32104
+INFO 2025-06-26 17:46:22,759 basehttp 5536 20548 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 302 0
+INFO 2025-06-26 17:46:22,833 basehttp 5536 20548 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 33137
+INFO 2025-06-26 17:46:42,985 basehttp 5536 17932 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 25359
+INFO 2025-06-26 17:46:43,058 basehttp 5536 17932 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 17:46:51,494 basehttp 5536 13172 "GET /admin/ContadoApp/pago/1/change/ HTTP/1.1" 200 27895
+INFO 2025-06-26 17:46:51,573 basehttp 5536 13172 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 18:25:17,292 autoreload 5536 17520 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-26 18:25:20,506 autoreload 17844 2912 Watching for file changes with StatReloader
+INFO 2025-06-26 18:34:41,972 autoreload 17844 2912 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\urls.py changed, reloading.
+INFO 2025-06-26 18:34:44,355 autoreload 26360 26096 Watching for file changes with StatReloader
+INFO 2025-06-26 18:35:27,453 autoreload 26360 26096 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-26 18:35:29,250 autoreload 8484 18876 Watching for file changes with StatReloader
+INFO 2025-06-26 18:43:20,829 autoreload 8484 18876 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:43:22,852 autoreload 11576 13236 Watching for file changes with StatReloader
+INFO 2025-06-26 18:43:55,003 autoreload 11576 13236 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:43:56,832 autoreload 11408 9008 Watching for file changes with StatReloader
+INFO 2025-06-26 18:45:30,973 autoreload 11408 9008 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:45:33,104 autoreload 20572 15732 Watching for file changes with StatReloader
+INFO 2025-06-26 18:45:43,377 autoreload 20572 15732 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:45:45,449 autoreload 23852 18712 Watching for file changes with StatReloader
+INFO 2025-06-26 18:45:51,515 autoreload 23852 18712 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-26 18:45:53,115 autoreload 24828 27988 Watching for file changes with StatReloader
+INFO 2025-06-26 18:46:19,809 basehttp 24828 10040 "GET /staff/pagos/listpagos HTTP/1.1" 200 13797
+INFO 2025-06-26 18:46:23,871 basehttp 24828 956 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:46:50,868 basehttp 24828 28208 "GET /admin/ HTTP/1.1" 200 29873
+INFO 2025-06-26 18:46:54,821 basehttp 24828 28208 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 25359
+INFO 2025-06-26 18:46:54,908 basehttp 24828 28208 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 18:47:24,153 autoreload 24828 27988 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:47:26,232 autoreload 27692 21340 Watching for file changes with StatReloader
+INFO 2025-06-26 18:47:29,450 basehttp 27692 22880 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:47:29,536 basehttp 27692 22880 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-06-26 18:48:18,368 autoreload 27692 21340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:48:20,270 autoreload 1668 9944 Watching for file changes with StatReloader
+INFO 2025-06-26 18:48:22,909 basehttp 1668 19088 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:48:46,355 autoreload 1668 9944 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:48:48,047 autoreload 18188 12592 Watching for file changes with StatReloader
+INFO 2025-06-26 18:48:51,224 basehttp 18188 21404 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:49:21,432 autoreload 18188 12592 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:49:23,204 autoreload 22584 18088 Watching for file changes with StatReloader
+INFO 2025-06-26 18:49:25,779 basehttp 22584 13632 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:49:41,956 autoreload 22584 18088 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:49:43,823 autoreload 1132 5956 Watching for file changes with StatReloader
+INFO 2025-06-26 18:49:48,205 basehttp 1132 25372 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:50:14,645 autoreload 1132 5956 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:50:16,456 autoreload 7408 19788 Watching for file changes with StatReloader
+INFO 2025-06-26 18:51:48,012 basehttp 7408 4768 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:51:51,212 basehttp 7408 4768 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:51:56,023 basehttp 7408 23348 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:51:58,120 basehttp 7408 23348 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 13797
+INFO 2025-06-26 18:52:55,221 autoreload 7408 19788 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 18:52:57,141 autoreload 25868 4148 Watching for file changes with StatReloader
+INFO 2025-06-26 18:53:00,368 basehttp 25868 28172 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 15517
+INFO 2025-06-26 18:53:11,185 basehttp 25868 4620 "GET /staff/pagos/listpagos HTTP/1.1" 200 12856
+INFO 2025-06-26 18:53:18,499 basehttp 25868 21296 "GET /staff/pagos/listpagos HTTP/1.1" 200 12856
+INFO 2025-06-26 18:53:20,502 basehttp 25868 21296 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15517
+INFO 2025-06-26 18:54:03,600 basehttp 25868 9260 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 12856
+INFO 2025-06-26 18:54:06,783 basehttp 25868 21628 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 12856
+INFO 2025-06-26 18:54:09,163 basehttp 25868 21628 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15517
+INFO 2025-06-26 18:56:34,206 basehttp 25868 23792 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15574
+INFO 2025-06-26 18:57:11,370 basehttp 25868 23280 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15573
+INFO 2025-06-26 18:57:13,324 basehttp 25868 23280 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15573
+INFO 2025-06-26 18:58:05,165 basehttp 25868 9088 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15573
+INFO 2025-06-26 18:59:19,128 basehttp 25868 15048 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15541
+INFO 2025-06-26 19:00:21,661 basehttp 25868 14196 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15541
+INFO 2025-06-26 19:01:44,415 basehttp 25868 24332 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15542
+INFO 2025-06-26 19:03:26,174 basehttp 25868 6844 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15527
+INFO 2025-06-26 19:04:03,991 basehttp 25868 27096 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15524
+INFO 2025-06-26 19:23:29,174 basehttp 25868 27880 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 16876
+INFO 2025-06-26 19:25:08,109 basehttp 25868 20684 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 17931
+ERROR 2025-06-26 19:32:13,173 log 25868 25584 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 51, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' not found. 'editar_observaciones_cuota' is not a valid view function or pattern name.
+ERROR 2025-06-26 19:32:13,195 basehttp 25868 25584 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 179457
+INFO 2025-06-26 19:33:15,428 autoreload 25868 4148 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-26 19:33:18,011 autoreload 27900 20072 Watching for file changes with StatReloader
+INFO 2025-06-26 19:38:38,849 autoreload 27900 20072 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:38:41,048 autoreload 17924 23020 Watching for file changes with StatReloader
+INFO 2025-06-26 19:39:02,888 autoreload 17924 23020 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:39:04,761 autoreload 27924 3548 Watching for file changes with StatReloader
+INFO 2025-06-26 19:39:09,188 basehttp 27924 19892 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+ERROR 2025-06-26 19:39:10,854 log 27924 19892 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' with no arguments not found. 1 pattern(s) tried: ['staff/pagos/addComment/(?P<pk>[0-9]+)\\Z']
+ERROR 2025-06-26 19:39:10,874 basehttp 27924 19892 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 178681
+INFO 2025-06-26 19:39:29,341 autoreload 27924 3548 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-26 19:39:31,206 autoreload 17008 7800 Watching for file changes with StatReloader
+ERROR 2025-06-26 19:39:38,570 log 17008 12988 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' with no arguments not found. 1 pattern(s) tried: ['staff/pagos/addComment/(?P<pk>[0-9]+)\\Z']
+ERROR 2025-06-26 19:39:38,585 basehttp 17008 12988 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 178681
+INFO 2025-06-26 19:40:16,477 autoreload 17008 7800 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:40:18,309 autoreload 9592 26108 Watching for file changes with StatReloader
+INFO 2025-06-26 19:40:51,345 autoreload 9592 26108 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-26 19:40:53,180 autoreload 14228 14348 Watching for file changes with StatReloader
+ERROR 2025-06-26 19:40:56,149 log 14228 15624 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' with no arguments not found. 1 pattern(s) tried: ['staff/pagos/addComment/(?P<pk>[0-9]+)\\Z']
+ERROR 2025-06-26 19:40:56,166 basehttp 14228 15624 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 178681
+ERROR 2025-06-26 19:41:29,675 log 14228 20060 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' with no arguments not found. 1 pattern(s) tried: ['staff/pagos/addComment/(?P<pk>[0-9]+)\\Z']
+ERROR 2025-06-26 19:41:29,682 basehttp 14228 20060 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 178683
+ERROR 2025-06-26 19:43:44,250 log 14228 23852 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'ContadoApp'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'ContadoApp' is not a registered namespace
+ERROR 2025-06-26 19:43:44,259 basehttp 14228 23852 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 179000
+ERROR 2025-06-26 19:45:49,263 log 14228 23928 Internal Server Error: /staff/pagos/listpagos
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\ContadoApp\views.py", line 52, in vista_ver_pagos
+    return render(req, 'ContadoApp/pagos.html', {
+        'cuotas': selected,
+    ...<5 lines>...
+        'filtro_nro_poliza': fil_nro_poliza,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_observaciones_cuota' with no arguments not found. 1 pattern(s) tried: ['staff/pagos/addComment/(?P<pk>[0-9]+)\\Z']
+ERROR 2025-06-26 19:45:49,271 basehttp 14228 23928 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 500 178681
+INFO 2025-06-26 19:46:58,021 basehttp 14228 8584 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 14413
+INFO 2025-06-26 19:47:01,551 basehttp 14228 8584 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18849
+WARNING 2025-06-26 19:47:16,714 log 14228 4156 Not Found: /staff/pagos/addComment/null
+WARNING 2025-06-26 19:47:16,716 basehttp 14228 4156 "POST /staff/pagos/addComment/null HTTP/1.1" 404 9861
+INFO 2025-06-26 19:48:43,431 basehttp 14228 20588 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18849
+INFO 2025-06-26 19:48:59,722 basehttp 14228 25076 "POST /staff/pagos/addComment/1 HTTP/1.1" 302 0
+INFO 2025-06-26 19:48:59,777 basehttp 14228 25076 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:49:03,075 basehttp 14228 8428 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18907
+INFO 2025-06-26 19:49:54,763 basehttp 14228 6872 "POST /staff/pagos/addComment/1 HTTP/1.1" 302 0
+INFO 2025-06-26 19:49:54,800 basehttp 14228 6872 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:49:57,212 basehttp 14228 6872 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18968
+INFO 2025-06-26 19:51:00,561 basehttp 14228 5864 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18971
+INFO 2025-06-26 19:52:43,687 basehttp 14228 768 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:53:52,242 autoreload 14228 14348 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:53:54,755 autoreload 7628 17764 Watching for file changes with StatReloader
+INFO 2025-06-26 19:53:55,735 basehttp 7628 16276 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:53:58,209 basehttp 7628 11500 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:54:28,113 autoreload 7628 17764 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:54:29,997 autoreload 10812 17084 Watching for file changes with StatReloader
+INFO 2025-06-26 19:54:32,730 basehttp 10812 13764 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:55:07,389 autoreload 10812 17084 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:55:09,191 autoreload 21456 11592 Watching for file changes with StatReloader
+INFO 2025-06-26 19:55:12,140 basehttp 21456 12112 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:55:13,969 basehttp 21456 12112 "GET /staff/pagos/listpagos HTTP/1.1" 200 14413
+INFO 2025-06-26 19:55:45,584 autoreload 21456 11592 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:55:47,371 autoreload 10664 14296 Watching for file changes with StatReloader
+INFO 2025-06-26 19:56:16,289 autoreload 10664 14296 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-26 19:56:18,509 autoreload 17008 14196 Watching for file changes with StatReloader
+INFO 2025-06-26 19:56:19,494 basehttp 17008 8352 "GET /staff/pagos/listpagos HTTP/1.1" 200 18971
+INFO 2025-06-26 19:57:13,214 basehttp 17008 8352 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=man&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 14416
+INFO 2025-06-26 19:57:15,629 basehttp 17008 8352 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18971
+INFO 2025-06-26 19:58:28,577 basehttp 17008 20556 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 19:58:28,656 basehttp 17008 20556 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 19:58:40,131 basehttp 17008 16952 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11623
+INFO 2025-06-26 19:58:52,384 basehttp 17008 4252 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 9881
+INFO 2025-06-26 19:59:03,480 basehttp 17008 14240 "POST /staff/cotizaciones/solicita/ HTTP/1.1" 302 0
+INFO 2025-06-26 19:59:03,567 basehttp 17008 14240 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 13961
+INFO 2025-06-26 19:59:08,002 basehttp 17008 14240 "GET /staff/cotizaciones/solicitudes/cotizar/9 HTTP/1.1" 302 0
+INFO 2025-06-26 19:59:08,067 basehttp 17008 14240 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16637
+INFO 2025-06-26 19:59:28,396 basehttp 17008 14852 "POST /staff/cotizaciones/send/8 HTTP/1.1" 302 0
+INFO 2025-06-26 19:59:28,463 basehttp 17008 14852 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14533
+INFO 2025-06-26 19:59:35,214 basehttp 17008 23596 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 16622
+INFO 2025-06-26 19:59:38,876 basehttp 17008 23596 "GET /staff/emisiones/add/8 HTTP/1.1" 200 10736
+INFO 2025-06-26 19:59:44,358 basehttp 17008 14428 "GET /staff/cotizaciones/edit/8 HTTP/1.1" 302 0
+INFO 2025-06-26 19:59:44,470 basehttp 17008 14428 "GET /staff/cotizaciones/listado/ HTTP/1.1" 200 29140
+INFO 2025-06-26 19:59:52,554 basehttp 17008 14428 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 16622
+INFO 2025-06-26 19:59:56,443 basehttp 17008 18268 "GET /staff/cotizaciones/back_to_p/8 HTTP/1.1" 302 0
+INFO 2025-06-26 19:59:56,485 basehttp 17008 18268 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16651
+INFO 2025-06-26 20:00:00,944 basehttp 17008 18268 "GET /staff/cotizaciones/edit/8 HTTP/1.1" 200 19611
+INFO 2025-06-26 20:00:21,345 basehttp 17008 13764 "POST /staff/cotizaciones/cot_cias/add/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:00:21,405 basehttp 17008 13764 "GET /staff/cotizaciones/edit/8 HTTP/1.1" 200 21149
+INFO 2025-06-26 20:00:25,427 basehttp 17008 25744 "POST /staff/cotizaciones/edit/8 HTTP/1.1" 302 0
+INFO 2025-06-26 20:00:25,472 basehttp 17008 25744 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16672
+INFO 2025-06-26 20:00:31,333 basehttp 17008 25744 "POST /staff/cotizaciones/send/8 HTTP/1.1" 302 0
+INFO 2025-06-26 20:00:31,400 basehttp 17008 25744 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14533
+INFO 2025-06-26 20:00:35,177 basehttp 17008 3400 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 16652
+INFO 2025-06-26 20:00:41,380 basehttp 17008 3400 "GET /staff/emisiones/add/8 HTTP/1.1" 200 10579
+INFO 2025-06-26 20:00:47,272 basehttp 17008 592 "POST /staff/emisiones/add/8 HTTP/1.1" 302 0
+INFO 2025-06-26 20:00:47,336 basehttp 17008 592 "GET /staff/emisiones/editemision/9/ HTTP/1.1" 200 15362
+INFO 2025-06-26 20:00:56,182 basehttp 17008 3648 "POST /staff/emisiones/editemision/9/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:00:56,285 basehttp 17008 3648 "GET /staff/emisiones/list HTTP/1.1" 200 21067
+INFO 2025-06-26 20:01:07,160 basehttp 17008 11868 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 17429
+INFO 2025-06-26 20:01:12,580 basehttp 17008 11868 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14407
+INFO 2025-06-26 20:01:16,373 basehttp 17008 11296 "GET /staff/cotizaciones/listado/?status=S&nombre= HTTP/1.1" 200 29067
+INFO 2025-06-26 20:01:24,978 basehttp 17008 4308 "GET /staff/cotizaciones/listado/?status=S&nombre= HTTP/1.1" 200 29067
+INFO 2025-06-26 20:01:35,917 basehttp 17008 3232 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:01:35,972 basehttp 17008 3232 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:01:38,988 basehttp 17008 20044 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12363
+INFO 2025-06-26 20:01:48,057 basehttp 17008 10224 "GET /staff/emisiones/addPoliza/9/ HTTP/1.1" 200 13306
+INFO 2025-06-26 20:01:58,797 basehttp 17008 13752 "GET /staff/productores/ HTTP/1.1" 200 14687
+INFO 2025-06-26 20:02:04,995 basehttp 17008 12512 "GET /staff/productores/edit/1 HTTP/1.1" 301 0
+INFO 2025-06-26 20:02:05,042 basehttp 17008 16368 "GET /staff/productores/edit/1/ HTTP/1.1" 200 23629
+INFO 2025-06-26 20:02:22,079 basehttp 17008 13296 "POST /staff/productores/addcodigo/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:02:22,138 basehttp 17008 13296 "GET /staff/productores/edit/1/ HTTP/1.1" 200 24801
+INFO 2025-06-26 20:02:25,441 basehttp 17008 27668 "POST /staff/productores/edit/1/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:02:25,484 basehttp 17008 27668 "GET /staff/productores/ HTTP/1.1" 200 14687
+INFO 2025-06-26 20:02:29,117 basehttp 17008 27668 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:02:29,170 basehttp 17008 27668 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:02:30,641 basehttp 17008 2604 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12363
+INFO 2025-06-26 20:02:32,585 basehttp 17008 2604 "GET /staff/emisiones/addPoliza/9/ HTTP/1.1" 200 13263
+ERROR 2025-06-26 20:03:13,690 log 17008 10028 Internal Server Error: /staff/emisiones/addPoliza/9/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 261, in vista_add_poliza
+    anio = new_poliza.vencimiento_cuota1.year,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+ERROR 2025-06-26 20:03:13,698 basehttp 17008 10028 "POST /staff/emisiones/addPoliza/9/ HTTP/1.1" 500 75226
+INFO 2025-06-26 20:04:04,821 autoreload 17008 14196 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 20:04:07,080 autoreload 2692 19704 Watching for file changes with StatReloader
+INFO 2025-06-26 20:04:16,275 basehttp 2692 11972 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18045
+INFO 2025-06-26 20:04:23,321 basehttp 2692 11972 "GET /staff/emisiones/verPoliza/7/ HTTP/1.1" 200 29777
+INFO 2025-06-26 20:04:47,176 basehttp 2692 15864 "POST /staff/emisiones/poliza/modificar_conducto/7/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:04:47,278 basehttp 2692 15864 "GET /staff/emisiones/verPoliza/7/ HTTP/1.1" 200 30805
+INFO 2025-06-26 20:05:02,300 basehttp 2692 6480 "GET /staff/pagos/listpagos HTTP/1.1" 200 27965
+INFO 2025-06-26 20:06:08,842 basehttp 2692 7176 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:06:08,903 basehttp 2692 7176 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:06:13,469 basehttp 2692 3440 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12363
+INFO 2025-06-26 20:06:31,160 basehttp 2692 23688 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18045
+INFO 2025-06-26 20:06:54,878 basehttp 2692 27072 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 28266
+INFO 2025-06-26 20:07:01,041 basehttp 2692 18760 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25721
+INFO 2025-06-26 20:07:01,134 basehttp 2692 18760 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:07:02,713 basehttp 2692 18760 "GET /admin/EmisionesApp/poliza/7/change/ HTTP/1.1" 200 33055
+INFO 2025-06-26 20:07:02,825 basehttp 2692 18760 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:07:08,271 basehttp 2692 18760 "GET /admin/EmisionesApp/poliza/7/delete/ HTTP/1.1" 200 24227
+INFO 2025-06-26 20:07:19,070 basehttp 2692 6516 "POST /admin/EmisionesApp/poliza/7/delete/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:07:19,125 basehttp 2692 6516 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25589
+INFO 2025-06-26 20:07:19,205 basehttp 2692 6516 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:07:24,705 basehttp 2692 6516 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 17429
+INFO 2025-06-26 20:07:40,987 basehttp 2692 23212 "GET /staff/pagos/listpagos HTTP/1.1" 200 18971
+INFO 2025-06-26 20:07:47,647 basehttp 2692 23212 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:07:47,705 basehttp 2692 23212 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:07:52,478 basehttp 2692 3740 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12363
+INFO 2025-06-26 20:07:54,955 basehttp 2692 3740 "GET /staff/emisiones/addPoliza/9/ HTTP/1.1" 200 13263
+ERROR 2025-06-26 20:08:30,183 log 2692 27988 Internal Server Error: /staff/emisiones/addPoliza/9/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\EmisionesApp\views.py", line 261, in vista_add_poliza
+    anio = new_poliza.vencimiento_cuota1.year
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+ERROR 2025-06-26 20:08:30,192 basehttp 2692 27988 "POST /staff/emisiones/addPoliza/9/ HTTP/1.1" 500 75223
+INFO 2025-06-26 20:09:11,741 autoreload 2692 19704 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 20:09:13,709 autoreload 2408 25712 Watching for file changes with StatReloader
+INFO 2025-06-26 20:18:05,764 autoreload 2408 25712 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 20:18:07,345 autoreload 1180 19180 Watching for file changes with StatReloader
+INFO 2025-06-26 20:18:14,539 autoreload 1180 19180 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-26 20:18:16,490 autoreload 17188 1876 Watching for file changes with StatReloader
+INFO 2025-06-26 20:18:22,037 basehttp 17188 19972 "GET /staff/emisiones/addPoliza/9/ HTTP/1.1" 200 13316
+INFO 2025-06-26 20:18:27,484 basehttp 17188 19520 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:18:27,550 basehttp 17188 19520 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:18:30,430 basehttp 17188 26008 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12363
+INFO 2025-06-26 20:18:46,146 basehttp 17188 28144 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25721
+INFO 2025-06-26 20:18:46,253 basehttp 17188 28144 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:18:49,205 basehttp 17188 9864 "GET /admin/EmisionesApp/poliza/8/change/ HTTP/1.1" 200 33056
+INFO 2025-06-26 20:18:49,284 basehttp 17188 9864 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:18:52,625 basehttp 17188 9864 "GET /admin/EmisionesApp/poliza/8/delete/ HTTP/1.1" 200 23173
+INFO 2025-06-26 20:18:54,499 basehttp 17188 9864 "POST /admin/EmisionesApp/poliza/8/delete/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:18:54,581 basehttp 17188 9864 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25589
+INFO 2025-06-26 20:18:54,646 basehttp 17188 9864 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-26 20:19:09,772 basehttp 17188 17576 "GET /staff/emisiones/addPoliza/9/ HTTP/1.1" 200 13263
+INFO 2025-06-26 20:19:38,523 basehttp 17188 25136 "POST /staff/emisiones/addPoliza/9/ HTTP/1.1" 302 0
+INFO 2025-06-26 20:19:38,616 basehttp 17188 25136 "GET /staff/emisiones/verPoliza/9/ HTTP/1.1" 200 29773
+INFO 2025-06-26 20:19:42,888 basehttp 17188 25136 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-26 20:19:42,942 basehttp 17188 25136 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-26 20:19:46,171 basehttp 17188 5800 "GET /staff/emisiones/listpolizas?fil_dias_vencimiento=20 HTTP/1.1" 200 14313
+INFO 2025-06-26 20:19:56,023 basehttp 17188 26456 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 18045
+INFO 2025-06-26 20:20:07,811 basehttp 17188 8352 "GET /staff/pagos/listpagos HTTP/1.1" 200 27973
+INFO 2025-06-26 20:20:24,056 basehttp 17188 15400 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=man&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 23299
+INFO 2025-06-26 20:20:33,672 basehttp 17188 1880 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=men&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 18974
+INFO 2025-06-26 20:20:43,520 basehttp 17188 13900 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 27973
+INFO 2025-06-27 09:49:47,158 basehttp 17188 14356 "GET /staff/dashboard/ HTTP/1.1" 302 0
+INFO 2025-06-27 09:49:47,332 basehttp 17188 14356 "GET /login/login/?next=/staff/dashboard/ HTTP/1.1" 200 6879
+INFO 2025-06-27 09:49:47,541 basehttp 17188 14356 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-06-27 09:49:47,545 basehttp 17188 15784 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-06-27 09:49:53,410 basehttp 17188 7056 "POST /login/login/?next=/staff/dashboard/ HTTP/1.1" 302 0
+INFO 2025-06-27 09:49:53,541 basehttp 17188 7056 "GET /staff/dashboard/ HTTP/1.1" 200 14590
+WARNING 2025-06-27 09:49:53,653 basehttp 17188 7056 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 09:52:37,910 basehttp 17188 18712 "GET /staff/dashboard/ HTTP/1.1" 200 14847
+WARNING 2025-06-27 09:52:38,018 basehttp 17188 18712 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 09:52:38,072 basehttp 17188 18148 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-06-27 09:52:41,302 basehttp 17188 18148 "GET /staff/pagos/listpagos?filtro_status_pago=P HTTP/1.1" 200 28230
+INFO 2025-06-27 09:52:56,507 basehttp 17188 25036 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 28230
+INFO 2025-06-27 09:53:24,327 basehttp 17188 20444 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 28222
+INFO 2025-06-27 09:53:27,316 basehttp 17188 20444 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28222
+INFO 2025-06-27 09:54:05,378 basehttp 17188 21764 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28222
+INFO 2025-06-27 09:54:09,139 basehttp 17188 9084 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28222
+INFO 2025-06-27 09:54:13,163 basehttp 17188 9084 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28222
+INFO 2025-06-27 09:55:03,649 basehttp 17188 6284 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28239
+INFO 2025-06-27 09:55:20,275 basehttp 17188 14988 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28229
+INFO 2025-06-27 09:55:43,835 autoreload 17188 1876 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-27 09:55:46,831 autoreload 4308 26844 Watching for file changes with StatReloader
+INFO 2025-06-27 09:55:48,049 basehttp 4308 10580 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28238
+INFO 2025-06-27 09:56:01,444 basehttp 4308 23136 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28230
+INFO 2025-06-27 10:00:40,518 autoreload 4308 26844 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-27 10:00:41,883 autoreload 23040 25056 Watching for file changes with StatReloader
+INFO 2025-06-27 10:04:47,312 autoreload 23040 25056 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-27 10:04:48,399 autoreload 24560 13412 Watching for file changes with StatReloader
+INFO 2025-06-27 10:10:47,104 autoreload 24560 13412 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-27 10:10:48,175 autoreload 23432 6064 Watching for file changes with StatReloader
+INFO 2025-06-27 10:11:04,958 autoreload 23432 6064 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\urls.py changed, reloading.
+INFO 2025-06-27 10:11:05,888 autoreload 18272 25684 Watching for file changes with StatReloader
+INFO 2025-06-27 10:11:09,460 basehttp 18272 27484 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28688
+INFO 2025-06-27 10:11:20,924 basehttp 18272 10652 "GET /staff/pagos/pagar/2 HTTP/1.1" 302 0
+INFO 2025-06-27 10:11:21,074 basehttp 18272 10652 "GET /staff/pagos/listpagos HTTP/1.1" 200 28815
+INFO 2025-06-27 10:14:55,303 autoreload 18272 25684 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-27 10:14:56,416 autoreload 14508 22212 Watching for file changes with StatReloader
+INFO 2025-06-27 10:17:14,031 autoreload 14508 22212 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:17:15,094 autoreload 27212 18576 Watching for file changes with StatReloader
+INFO 2025-06-27 10:18:36,489 autoreload 27212 18576 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:18:37,640 autoreload 11952 23496 Watching for file changes with StatReloader
+INFO 2025-06-27 10:19:14,120 autoreload 11952 23496 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:19:15,143 autoreload 13656 8688 Watching for file changes with StatReloader
+INFO 2025-06-27 10:29:15,358 autoreload 13656 8688 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-27 10:29:18,335 autoreload 28216 19836 Watching for file changes with StatReloader
+INFO 2025-06-27 10:33:24,655 autoreload 28216 19836 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:33:26,227 autoreload 7184 2128 Watching for file changes with StatReloader
+INFO 2025-06-27 10:39:08,707 basehttp 7184 24112 "GET /staff/pagos/listpagos HTTP/1.1" 200 28680
+INFO 2025-06-27 10:39:15,573 basehttp 7184 16336 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18294
+INFO 2025-06-27 10:39:22,811 basehttp 7184 17936 "GET /staff/emisiones/verPoliza/2/ HTTP/1.1" 200 31420
+INFO 2025-06-27 10:39:40,623 basehttp 7184 972 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 17532
+INFO 2025-06-27 10:39:49,196 basehttp 7184 28320 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31446
+INFO 2025-06-27 10:42:11,976 basehttp 7184 24548 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31455
+INFO 2025-06-27 10:42:22,944 basehttp 7184 27692 "GET /staff/emisiones/addPoliza/5/ HTTP/1.1" 200 13998
+INFO 2025-06-27 10:51:49,384 autoreload 7184 2128 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:51:51,039 autoreload 21628 996 Watching for file changes with StatReloader
+INFO 2025-06-27 10:54:15,862 autoreload 21628 996 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 10:54:17,028 autoreload 20600 1212 Watching for file changes with StatReloader
+INFO 2025-06-27 10:59:16,211 basehttp 20600 27152 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31455
+INFO 2025-06-27 10:59:19,973 basehttp 20600 19588 "GET /staff/emisiones/addPoliza/5/ HTTP/1.1" 200 13999
+INFO 2025-06-27 10:59:53,557 basehttp 20600 10224 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31455
+INFO 2025-06-27 10:59:54,842 basehttp 20600 10224 "GET /staff/emisiones/addPoliza/5/ HTTP/1.1" 200 14051
+INFO 2025-06-27 11:04:56,405 autoreload 20600 1212 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-06-27 11:04:57,700 autoreload 704 13088 Watching for file changes with StatReloader
+INFO 2025-06-27 11:05:48,743 basehttp 704 15660 "GET /staff/dashboard/ HTTP/1.1" 200 14839
+WARNING 2025-06-27 11:05:48,837 basehttp 704 15660 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 11:14:18,570 autoreload 704 13088 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-06-27 11:14:20,252 autoreload 6308 12692 Watching for file changes with StatReloader
+INFO 2025-06-27 11:14:25,210 autoreload 6308 12692 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-06-27 11:14:26,544 autoreload 21704 2092 Watching for file changes with StatReloader
+ERROR 2025-06-27 11:14:28,514 log 21704 11796 Internal Server Error: /staff/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\novararey\StaffApp\views.py", line 63, in vista_dashboard
+    URL= reverse('listpagos')+"?fil_status=P")
+         ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'listpagos' not found. 'listpagos' is not a valid view function or pattern name.
+ERROR 2025-06-27 11:14:28,522 basehttp 21704 11796 "GET /staff/dashboard/ HTTP/1.1" 500 83617
+INFO 2025-06-27 11:14:45,796 autoreload 21704 2092 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-06-27 11:14:46,760 autoreload 3132 444 Watching for file changes with StatReloader
+INFO 2025-06-27 11:14:49,655 basehttp 3132 14832 "GET /staff/dashboard/ HTTP/1.1" 200 15559
+WARNING 2025-06-27 11:14:49,703 basehttp 3132 14832 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 11:15:01,010 basehttp 3132 26916 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28688
+INFO 2025-06-27 11:15:42,057 autoreload 3132 444 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-06-27 11:15:43,322 autoreload 24104 15508 Watching for file changes with StatReloader
+INFO 2025-06-27 11:15:44,350 basehttp 24104 12784 "GET /staff/dashboard/ HTTP/1.1" 200 15564
+WARNING 2025-06-27 11:15:44,394 basehttp 24104 12784 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 11:15:46,019 basehttp 24104 6200 "GET /staff/dashboard/ HTTP/1.1" 200 15564
+WARNING 2025-06-27 11:15:46,053 basehttp 24104 6200 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 11:16:37,888 basehttp 24104 5824 "GET /staff/dashboard/ HTTP/1.1" 200 15836
+WARNING 2025-06-27 11:16:37,923 basehttp 24104 5824 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 12:03:02,443 basehttp 24104 11444 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18294
+INFO 2025-06-27 12:03:11,816 basehttp 24104 11960 "GET /staff/emisiones/verPoliza/2/ HTTP/1.1" 200 31429
+INFO 2025-06-27 12:03:19,315 basehttp 24104 28612 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18294
+INFO 2025-06-27 12:03:53,038 basehttp 24104 5504 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 17532
+INFO 2025-06-27 12:04:20,709 basehttp 24104 24332 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 17546
+INFO 2025-06-27 12:04:23,291 basehttp 24104 24332 "GET /staff/tareas/ HTTP/1.1" 200 12528
+INFO 2025-06-27 12:04:26,706 basehttp 24104 10736 "GET /staff/emisiones/listpolizas??fil_status=V HTTP/1.1" 200 18308
+INFO 2025-06-27 12:04:42,805 basehttp 24104 18516 "GET /staff/dashboard/ HTTP/1.1" 200 15849
+WARNING 2025-06-27 12:04:42,845 basehttp 24104 18516 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 12:04:44,986 basehttp 24104 13876 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17545
+INFO 2025-06-27 12:04:53,216 basehttp 24104 13876 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31468
+INFO 2025-06-27 12:07:49,832 basehttp 24104 15424 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31525
+INFO 2025-06-27 12:10:40,741 basehttp 24104 9608 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 25721
+INFO 2025-06-27 12:10:40,945 basehttp 24104 9608 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-27 12:13:36,068 basehttp 24104 26912 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31876
+INFO 2025-06-27 12:13:36,157 basehttp 24104 26912 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-06-27 12:13:44,086 basehttp 24104 26912 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18307
+INFO 2025-06-27 12:13:58,169 basehttp 24104 26996 "GET /staff/emisiones/verPoliza/2/ HTTP/1.1" 200 31852
+INFO 2025-06-27 12:14:06,148 basehttp 24104 25780 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17545
+INFO 2025-06-27 12:14:16,067 basehttp 24104 8736 "GET /staff/emisiones/verPoliza/3/ HTTP/1.1" 200 31876
+INFO 2025-06-27 12:14:22,125 basehttp 24104 8736 "GET /staff/emisiones/listpolizas HTTP/1.1" 200 18307
+INFO 2025-06-27 12:14:26,611 basehttp 24104 21180 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 17545
+INFO 2025-06-27 12:14:29,545 basehttp 24104 21180 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35295
+INFO 2025-06-27 12:15:14,418 basehttp 24104 26400 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28701
+INFO 2025-06-27 12:16:00,831 basehttp 24104 28376 "GET /staff/emisiones/list HTTP/1.1" 200 21140
+INFO 2025-06-27 12:16:21,563 basehttp 24104 18228 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11154
+INFO 2025-06-27 12:16:34,142 basehttp 24104 25208 "GET /staff/emisiones/list?filtro_poliza=CP&nombre= HTTP/1.1" 200 21148
+INFO 2025-06-27 12:16:42,604 basehttp 24104 27188 "GET /staff/emisiones/list?filtro_poliza=ALL&nombre= HTTP/1.1" 200 21148
+INFO 2025-06-27 12:16:49,581 basehttp 24104 27880 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11154
+INFO 2025-06-27 12:18:40,422 basehttp 24104 24172 "GET /staff/emisiones/list HTTP/1.1" 200 21140
+INFO 2025-06-27 12:19:13,710 basehttp 24104 24964 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11154
+INFO 2025-06-27 12:19:39,532 basehttp 24104 11592 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17562
+INFO 2025-06-27 12:19:43,046 basehttp 24104 11592 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 11171
+INFO 2025-06-27 12:20:04,669 basehttp 24104 15620 "GET /staff/emisiones/list HTTP/1.1" 200 21157
+INFO 2025-06-27 12:20:52,377 autoreload 24104 15508 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 12:20:53,870 autoreload 15384 27496 Watching for file changes with StatReloader
+INFO 2025-06-27 12:21:20,199 autoreload 15384 27496 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 12:21:21,150 autoreload 14632 7048 Watching for file changes with StatReloader
+INFO 2025-06-27 12:21:25,192 basehttp 14632 9948 "GET /staff/emisiones/list HTTP/1.1" 200 21157
+INFO 2025-06-27 12:22:20,470 autoreload 14632 7048 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 12:22:21,506 autoreload 20276 27508 Watching for file changes with StatReloader
+INFO 2025-06-27 12:22:29,372 basehttp 20276 10272 "GET /staff/emisiones/list HTTP/1.1" 200 21165
+INFO 2025-06-27 12:24:18,539 basehttp 20276 23700 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11171
+INFO 2025-06-27 12:25:50,246 autoreload 20276 27508 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 12:25:51,372 autoreload 7816 28276 Watching for file changes with StatReloader
+INFO 2025-06-27 12:26:01,221 autoreload 7816 28276 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-06-27 12:26:02,344 autoreload 4476 12372 Watching for file changes with StatReloader
+INFO 2025-06-27 12:26:07,015 basehttp 4476 22828 "GET /staff/emisiones/list?filtro_poliza=ALL&nombre= HTTP/1.1" 200 21165
+INFO 2025-06-27 12:26:48,036 basehttp 4476 16172 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11171
+INFO 2025-06-27 12:26:57,637 basehttp 4476 4680 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14686
+INFO 2025-06-27 12:27:02,746 basehttp 4476 4680 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 12593
+INFO 2025-06-27 12:27:08,069 basehttp 4476 26132 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 12:27:08,104 basehttp 4476 26132 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 12:27:16,801 basehttp 4476 27468 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 28718
+INFO 2025-06-27 12:27:51,690 basehttp 4476 21188 "GET /staff/pagos/pagar/3 HTTP/1.1" 302 0
+INFO 2025-06-27 12:27:51,797 basehttp 4476 21188 "GET /staff/pagos/listpagos HTTP/1.1" 200 28845
+INFO 2025-06-27 12:28:12,443 basehttp 4476 22404 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=86&fil_rubro=0 HTTP/1.1" 200 19710
+INFO 2025-06-27 12:28:16,615 basehttp 4476 8052 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=86&fil_rubro=0 HTTP/1.1" 200 15160
+INFO 2025-06-27 12:28:19,631 basehttp 4476 8052 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=86&fil_rubro=0 HTTP/1.1" 200 19710
+INFO 2025-06-27 12:28:26,745 basehttp 4476 25012 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 28710
+INFO 2025-06-27 12:28:51,087 basehttp 4476 24444 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=dx&fil_rubro=0 HTTP/1.1" 200 24035
+INFO 2025-06-27 12:29:01,593 basehttp 4476 27388 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=4&fil_rubro=0 HTTP/1.1" 200 19709
+INFO 2025-06-27 12:33:01,795 basehttp 4476 21784 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=4&fil_rubro=0 HTTP/1.1" 200 20512
+INFO 2025-06-27 12:40:00,898 autoreload 4476 12372 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-27 12:40:02,324 autoreload 23148 14008 Watching for file changes with StatReloader
+INFO 2025-06-27 12:40:38,782 autoreload 23148 14008 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-27 12:40:39,779 autoreload 12824 4316 Watching for file changes with StatReloader
+INFO 2025-06-27 12:40:43,192 basehttp 12824 17040 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=4&fil_rubro=0 HTTP/1.1" 200 20307
+INFO 2025-06-27 12:40:51,807 basehttp 12824 16952 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 29979
+INFO 2025-06-27 12:41:14,274 basehttp 12824 4592 "GET /staff/pagos/pagar/16 HTTP/1.1" 302 0
+INFO 2025-06-27 12:41:14,449 basehttp 12824 4592 "GET /staff/pagos/listpagos HTTP/1.1" 200 29979
+INFO 2025-06-27 12:41:21,863 basehttp 12824 7096 "GET /staff/pagos/listpagos HTTP/1.1" 200 29979
+INFO 2025-06-27 12:41:26,970 basehttp 12824 7096 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15420
+INFO 2025-06-27 12:41:45,822 basehttp 12824 19008 "GET /admin/ HTTP/1.1" 200 29732
+INFO 2025-06-27 12:41:49,659 basehttp 12824 18780 "GET /admin/ContadoApp/pago/ HTTP/1.1" 200 28282
+INFO 2025-06-27 12:41:49,731 basehttp 12824 18780 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-27 12:41:58,258 basehttp 12824 25560 "GET /admin/ContadoApp/pago/16/change/ HTTP/1.1" 200 27951
+INFO 2025-06-27 12:41:58,313 basehttp 12824 25560 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-27 12:43:18,215 autoreload 12824 4316 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\views.py changed, reloading.
+INFO 2025-06-27 12:43:19,233 autoreload 26596 5256 Watching for file changes with StatReloader
+INFO 2025-06-27 12:43:29,664 basehttp 26596 3712 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 29979
+INFO 2025-06-27 12:43:39,080 basehttp 26596 21192 "GET /staff/pagos/pagar/16 HTTP/1.1" 302 0
+INFO 2025-06-27 12:43:39,195 basehttp 26596 21192 "GET /staff/pagos/listpagos HTTP/1.1" 200 30170
+INFO 2025-06-27 12:44:18,076 basehttp 26596 21092 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 12:44:18,114 basehttp 26596 21092 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 12:44:30,329 basehttp 26596 23668 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 29020
+INFO 2025-06-27 13:53:14,955 basehttp 26596 5636 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 302 0
+INFO 2025-06-27 13:53:15,067 basehttp 26596 5636 "GET /login/login/?next=/staff/pagos/listpagos%3Ffil_status%3DG%26fil_nombre%3D%26fil_nro_poliza%3D%26fil_rubro%3D0 HTTP/1.1" 200 6879
+INFO 2025-06-27 13:53:21,366 basehttp 26596 28580 "POST /login/login/?next=/staff/pagos/listpagos%3Ffil_status%3DG%26fil_nombre%3D%26fil_nro_poliza%3D%26fil_rubro%3D0 HTTP/1.1" 302 0
+INFO 2025-06-27 13:53:21,423 basehttp 26596 28580 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 16361
+INFO 2025-06-27 13:53:34,399 basehttp 26596 2708 "GET /staff/pagos/listpagos?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 15420
+INFO 2025-06-27 13:53:37,765 basehttp 26596 2708 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 29020
+INFO 2025-06-27 14:09:32,321 basehttp 26596 21688 "GET /admin/ContadoApp/pago/16/change/ HTTP/1.1" 200 28007
+INFO 2025-06-27 14:09:32,415 basehttp 26596 21688 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-06-27 14:10:11,725 basehttp 26596 12700 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 30072
+INFO 2025-06-27 14:10:26,382 basehttp 26596 25908 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 14:10:26,420 basehttp 26596 25908 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:00:15,580 basehttp 26596 28544 "GET /staff/prestadores/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:00:15,610 basehttp 26596 28544 "GET /login/login/?next=/staff/prestadores/ HTTP/1.1" 200 6879
+INFO 2025-06-27 18:00:23,305 basehttp 26596 7720 "POST /login/login/?next=/staff/prestadores/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:00:23,386 basehttp 26596 7720 "GET /staff/prestadores/ HTTP/1.1" 200 12821
+INFO 2025-06-27 18:00:47,482 basehttp 26596 7636 "GET /staff/productores/ HTTP/1.1" 200 14966
+INFO 2025-06-27 18:00:50,529 basehttp 26596 22704 "GET /staff/productores/edit/1/ HTTP/1.1" 200 25080
+INFO 2025-06-27 18:01:30,357 basehttp 26596 19308 "POST /staff/productores/addcodigo/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:01:30,588 basehttp 26596 17796 "GET /staff/productores/edit/1/ HTTP/1.1" 200 26228
+INFO 2025-06-27 18:01:48,408 basehttp 26596 5580 "GET /staff/clientes/nuevo/PF HTTP/1.1" 200 13395
+INFO 2025-06-27 18:03:05,510 basehttp 26596 16012 "POST /staff/clientes/nuevo/PF HTTP/1.1" 302 0
+INFO 2025-06-27 18:03:05,577 basehttp 26596 16012 "GET /staff/clientes/ HTTP/1.1" 200 12303
+INFO 2025-06-27 18:04:27,233 basehttp 26596 27836 "GET /staff/clientes/edit/5/ HTTP/1.1" 200 39146
+INFO 2025-06-27 18:05:17,023 basehttp 26596 3708 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-06-27 18:05:24,113 basehttp 26596 21080 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 12792
+INFO 2025-06-27 18:05:57,569 basehttp 26596 26388 "POST /staff/cotizaciones/solicita/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:05:57,629 basehttp 26596 26388 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 14303
+INFO 2025-06-27 18:06:10,464 basehttp 26596 24624 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:06:10,592 basehttp 26596 24624 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:06:15,180 basehttp 26596 27908 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 14203
+INFO 2025-06-27 18:06:20,599 basehttp 26596 27908 "GET /staff/cotizaciones/solicitudes/cotizar/10 HTTP/1.1" 302 0
+INFO 2025-06-27 18:06:20,650 basehttp 26596 27908 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16989
+INFO 2025-06-27 18:06:30,130 basehttp 26596 14524 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:06:30,177 basehttp 26596 14524 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:06:36,599 basehttp 26596 16868 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16889
+INFO 2025-06-27 18:06:41,546 basehttp 26596 10828 "GET /staff/cotizaciones/edit/9 HTTP/1.1" 200 19963
+INFO 2025-06-27 18:07:10,113 basehttp 26596 27216 "POST /staff/cotizaciones/cot_cias/add/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:07:10,224 basehttp 26596 27216 "GET /staff/cotizaciones/edit/9 HTTP/1.1" 200 21527
+INFO 2025-06-27 18:07:26,963 basehttp 26596 15100 "POST /staff/cotizaciones/edit/9 HTTP/1.1" 302 0
+INFO 2025-06-27 18:07:27,015 basehttp 26596 15100 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 17016
+INFO 2025-06-27 18:07:48,795 basehttp 26596 28000 "POST /staff/cotizaciones/send/9 HTTP/1.1" 302 0
+INFO 2025-06-27 18:07:48,829 basehttp 26596 28000 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14812
+INFO 2025-06-27 18:07:50,963 basehttp 26596 28000 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:07:51,027 basehttp 26596 28000 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:07:57,175 basehttp 26596 10280 "GET /staff/cotizaciones/listado/?status=E HTTP/1.1" 200 16996
+INFO 2025-06-27 18:08:12,707 basehttp 26596 26224 "GET /staff/emisiones/add/9 HTTP/1.1" 200 11813
+INFO 2025-06-27 18:09:02,701 basehttp 26596 26224 "POST /staff/emisiones/add/9 HTTP/1.1" 302 0
+INFO 2025-06-27 18:09:02,958 basehttp 26596 26224 "GET /staff/emisiones/editemision/10/ HTTP/1.1" 200 16636
+INFO 2025-06-27 18:09:38,904 basehttp 26596 18136 "POST /staff/emisiones/addobservacion/10/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:09:38,959 basehttp 26596 18136 "GET /staff/emisiones/editemision/10/ HTTP/1.1" 200 16677
+INFO 2025-06-27 18:09:49,317 basehttp 26596 18768 "POST /staff/emisiones/editemision/10/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:09:49,377 basehttp 26596 18768 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 13115
+INFO 2025-06-27 18:09:53,703 basehttp 26596 18768 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:09:53,753 basehttp 26596 18768 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:10:02,798 basehttp 26596 3316 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12821
+INFO 2025-06-27 18:10:12,254 basehttp 26596 22680 "GET /staff/emisiones/addPoliza/10/ HTTP/1.1" 200 13717
+INFO 2025-06-27 18:11:04,478 basehttp 26596 10612 "POST /staff/emisiones/addPoliza/10/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:11:04,559 basehttp 26596 10612 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 30650
+INFO 2025-06-27 18:11:17,533 basehttp 26596 24836 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18334
+INFO 2025-06-27 18:11:38,200 basehttp 26596 8428 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14736
+INFO 2025-06-27 18:11:51,083 basehttp 26596 2716 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=lion&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14736
+INFO 2025-06-27 18:11:57,751 basehttp 26596 18268 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19096
+INFO 2025-06-27 18:12:09,817 basehttp 26596 18748 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 30650
+INFO 2025-06-27 18:14:24,721 basehttp 26596 23380 "POST /staff/emisiones/poliza/modificar/10/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:14:24,811 basehttp 26596 23380 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 31661
+INFO 2025-06-27 18:14:47,305 basehttp 26596 7960 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18334
+INFO 2025-06-27 18:14:59,913 basehttp 26596 6376 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 36709
+INFO 2025-06-27 18:15:10,320 basehttp 26596 28664 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 22994
+INFO 2025-06-27 18:15:35,444 basehttp 26596 6308 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 37761
+INFO 2025-06-27 18:15:58,704 basehttp 26596 22128 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:15:58,743 basehttp 26596 22128 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-06-27 18:16:09,466 basehttp 26596 6460 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 36709
+INFO 2025-06-27 18:16:50,389 basehttp 26596 17524 "GET /staff/pagos/listpagos?fil_status=G&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 16361
+INFO 2025-06-27 18:17:02,259 basehttp 26596 15716 "GET /staff/pagos/listpagos?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 36709
+INFO 2025-06-27 18:17:16,197 basehttp 26596 9988 "GET /staff/pagos/pagar/26 HTTP/1.1" 302 0
+INFO 2025-06-27 18:17:16,451 basehttp 26596 9988 "GET /staff/pagos/listpagos HTTP/1.1" 200 37952
+INFO 2025-06-27 18:17:30,589 basehttp 26596 8764 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 23079
+INFO 2025-06-27 18:18:01,472 basehttp 26596 12372 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 23079
+INFO 2025-06-27 18:18:04,954 basehttp 26596 8236 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 37854
+INFO 2025-06-27 18:18:33,618 basehttp 26596 27460 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18334
+INFO 2025-06-27 18:18:38,012 basehttp 26596 27460 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14736
+INFO 2025-06-27 18:19:03,828 basehttp 26596 25176 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14728
+INFO 2025-06-27 18:19:13,206 basehttp 26596 26096 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 31547
+INFO 2025-06-27 18:20:39,193 basehttp 26596 14076 "GET / HTTP/1.1" 200 6332
+INFO 2025-06-27 18:20:49,137 basehttp 26596 13036 "GET /aseguradoras/ HTTP/1.1" 200 18297
+WARNING 2025-06-27 18:22:16,062 log 26596 17908 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:22:16,064 basehttp 26596 17908 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-06-27 18:23:23,332 basehttp 26596 16180 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-06-27 18:23:23,556 basehttp 26596 16180 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-06-27 18:23:24,186 basehttp 26596 18948 "GET /static/css/staff.css HTTP/1.1" 404 1853
+WARNING 2025-06-27 18:23:24,252 log 26596 17624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:23:24,286 basehttp 26596 17624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-06-27 18:23:24,572 basehttp 26596 16180 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-06-27 18:23:40,151 basehttp 26596 5072 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18334
+INFO 2025-06-27 18:23:40,255 basehttp 26596 896 "GET /static/css/styles.css HTTP/1.1" 200 3505
+WARNING 2025-06-27 18:23:40,275 log 26596 5072 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:23:40,281 basehttp 26596 5072 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-06-27 18:24:05,549 basehttp 26596 200 "GET /staff/tareas/ HTTP/1.1" 200 12544
+INFO 2025-06-27 18:24:05,656 basehttp 26596 26556 "GET /static/css/styles.css HTTP/1.1" 200 3505
+WARNING 2025-06-27 18:24:05,676 log 26596 200 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:24:05,678 basehttp 26596 200 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-06-27 18:24:21,765 basehttp 26596 7252 "GET /staff/tareas/edit/1/ HTTP/1.1" 200 10975
+INFO 2025-06-27 18:24:21,871 basehttp 26596 27820 "GET /static/css/styles.css HTTP/1.1" 200 3505
+WARNING 2025-06-27 18:24:21,876 log 26596 7252 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:24:21,878 basehttp 26596 7252 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-06-27 18:24:38,524 basehttp 26596 14404 "GET /staff/tareas/ HTTP/1.1" 200 12544
+INFO 2025-06-27 18:24:38,621 basehttp 26596 27104 "GET /static/css/styles.css HTTP/1.1" 200 3505
+WARNING 2025-06-27 18:24:38,631 log 26596 14404 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-27 18:24:38,634 basehttp 26596 14404 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226

@@ -219,7 +219,7 @@ class Endoso(models.Model):
 
     def vigente(self)->bool:
         ahora = timezone.now()
-        return (self.vigencia_desde <= ahora) and (self.vigencia_hasta >= ahora) 
+        return (self.vigencia_hasta >= ahora) 
     
     def dias_vigencia(self)->int:
         ahora = timezone.now()

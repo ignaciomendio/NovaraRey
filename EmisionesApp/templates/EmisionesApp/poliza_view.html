@@ -13,6 +13,8 @@
 
   <h3 class="staff-form-title">Ver Poliza</h3>
   <hr class="staff-form-hr">
+  <input type="hidden" id="dias_vigencia" value="{{ poliza.get_vigente.dias_vigencia }}">
+
 
   <!-- Area de Poliza -->
   <p><strong>Poliza N°:&nbsp;</strong>{{poliza.numero}} - {{poliza.rel_emision.cot_cia.aseguradora.nombre}}</p>
@@ -156,10 +158,16 @@
 
   <hr class="staff-form-hr">
 
+  <!-- Area de botones de acción-->
+
   <div class="d-flex justify-content-between">
     <button class="btn btn-primary staff-button" title="Cargar endoso de modificación"
       {% if poliza.get_status != "Vigente" %}hidden{% endif %}
       id="bot_modificar">Modificar
+    </button>
+    <button class="btn btn-secondary staff-button" title="Cargar endoso de cambio de conducto"
+      {% if poliza.get_status != "Vigente" %}hidden{% endif %}
+      id="bot_conducto">Cambiar Conducto
     </button>
     <button class="btn btn-danger staff-button" title="Cargar endoso de Anulación"
       {% if poliza.get_status != "Vigente" %}hidden{% endif %}
@@ -170,11 +178,10 @@
       id="bot_reactivar">Reactivar
     </button>
     <button class="btn btn-success" title="Renovar Poliza"
-      {% if poliza.get_status != "Vencida" %}hidden{% endif %}
-      method="get" action="{% url 'add_poliza' poliza.rel_emision.id %}"
+      {% if poliza.get_status == "Anulada" %}hidden{% endif %}
       id="bot_renovar">Renovar
     </button>
-      <button class="btn btn-danger" title="Marcar como no renovable"
+    <button class="btn btn-danger" title="Marcar como no renovable"
       {% if poliza.get_status != "Vencida" %}hidden{% endif %}
       method="post"
       id="bot_no_renovar">No Renovar
@@ -311,6 +318,102 @@
   </div>
 </div>
 
+<!-- Modal para cargar un endoso de cambio de connnducto -->
+<div class="modal fade" id="condusctoModal" tabindex="-1" aria-labelledby="conductoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="conductoModalLabel">Cargar endoso de cambio de Conducto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--campo oculto para identificar si la poliza tiene pagos vencidos-->
+        <input type="hidden" id="pagos_vencidos" name="pagos_vencidos" value="{{ pagos_vencidos }}">
+        <form id="conductoForm" method="post" action="{% url 'modificar_conducto' poliza.id %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="mod_conducto_id" class="form-label">Medio de Pago</label>
+            <select class="form-select" id="mod_conducto_id" name="mod_conducto_id" required>
+              <option value="CONTADO">CONTADO</option>
+              {% for mp in medios_pago %}
+                <option value="{{mp.id}}">
+                  {% if mp.tarjetacredito %}
+                    Trajeta {{mp.tarjetacredito}}
+                  {% elif mp.transferenciabancaria %}
+                    TB {{mp.transferenciabancaria}}
+                  {% endif %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="mod_venc1_in" class="form-label">Vencimiento 1er cupón</label>
+            <input type="date" class="form-control" id="mod_venc1_in" name="mod_venc1_in">
+          </div>
+          <div class="mb-3">
+            <label for="mod_cuotas_in" class="form-label">Cantidad de cuotas</label>
+            <input type="number" class="form-control" id="mod_cuotas_in" name="mod_cuotas_in"> 
+          </div>
+          <div class="mb-3">
+            <label for="mod_conducto_motivo" class="form-label">Motivo de Modificación</label>
+            <textarea class="form-control" id="mod_conducto_motivo" name="mod_conducto_motivo" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para cargar un endoso de reactivación -->
+<div class="modal fade" id="reactivacionModal" tabindex="-1" aria-labelledby="reactivacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reactivacionModalLabel">Cargar endoso de reactivación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="modificacionForm" method="post" action="{% url 'reactivar_poliza' poliza.id %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="reac_vigencia_desde" class="form-label">Vigencia Desde</label>
+            <input type="date" class="form-control" id="reac_vigencia_desde" name="reac_vigencia_desde" required
+            value="{% now 'Y-m-d' %}">
+          </div>
+          <div class="mb-3">
+            <label for="reac_vigencia_hasta" class="form-label">Vigencia Hasta</label>
+            <input type="date" class="form-control" id="reac_vigencia_hasta" name="reac_vigencia_hasta" required
+            value="{{ poliza.get_vigencia_hasta|date:'Y-m-d' }}">
+          </div>
+          <div class="mb-3">
+            <label for="reac_prima" class="form-label">Prima</label>
+            <input type="number" class="form-control" id="reac_prima" name="reac_prima" required
+            value="{{poliza.get_prima_str}}">
+          </div>
+          <div class="mb-3">
+            <label for="reac_premio" class="form-label">Premio</label>
+            <input type="number" class="form-control" id="reac_premio" name="reac_premio" required
+            value="{{poliza.get_premio_str}}">
+          </div>
+
+          <div class="mb-3">
+            <label for="reac_motivo" class="form-label">Motivo de Reactivación</label>
+            <textarea class="form-control" id="reac_motivo" name="reac_motivo" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Reactivar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal para mostrar motivos-->
 <div class="modal fade" id="motivosModal" tabindex="-1" aria-labelledby="motivosModalLabel" aria-hidden="true">
@@ -337,6 +440,27 @@
     const motivosModal = document.getElementById('motivosModal');
     const editEndosoForm = document.getElementById('editEndosoForm');
     const tablaEndosos = document.getElementById('tabla_endosos');
+    const medioPagoSelect = document.getElementById('mod_conducto_id');
+    const venc1Input = document.getElementById('mod_venc1_in');
+    const cuotasInput = document.getElementById('mod_cuotas_in');
+
+    //funcion para habilitar o deshabilitar campos de pago
+    function toggleCamposPago() {
+      const seleccion = medioPagoSelect.value;
+      const esContado = (seleccion === "" || seleccion === "CONTADO");
+      if (esContado) {
+        venc1Input.disabled = false;
+        cuotasInput.disabled = false;
+      } else {
+        venc1Input.disabled = true;
+        cuotasInput.disabled = true;
+        venc1Input.value = null;
+        cuotasInput.value = null;
+      }
+    }
+
+    medioPagoSelect.addEventListener('change', toggleCamposPago);
+    toggleCamposPago(); // ejecuta al cargar por si hay datos precargados
 
     //manejo de botones menu
 
@@ -356,6 +480,12 @@
       }
     });
 
+    //Botón REACTIVAR
+    document.getElementById('bot_reactivar').addEventListener('click', function () {
+        const modal = new bootstrap.Modal(reactivacionModal);
+        modal.show();
+    });
+
     //Botón MODIFICAR
     document.getElementById('bot_modificar').addEventListener('click', function () {
      
@@ -364,6 +494,29 @@
       
     });
 
+    //Boton Cambiar Conducto
+    document.getElementById('bot_conducto').addEventListener('click', function () {
+      const plan_vencido = document.getElementById('pagos_vencidos').value;
+      // Verifica si hay pagos vencidos
+      if (plan_vencido === 'True') {
+        alert("No se puede cambiar el conducto de una póliza con pagos vencidos.");
+        return;
+      }
+      if (confirm("¿Está seguro que desea cargar un endoso de cambio de conducto?")) {
+        // Abre modal de cambio de conducto
+        const modal = new bootstrap.Modal(condusctoModal);
+        modal.show();
+      }
+    });
+     
+    //Boton Renovar
+    document.getElementById('bot_renovar').addEventListener('click', function () {
+      const diasVigencia = document.getElementById('dias_vigencia').value;
+      if (confirm(`La poliza aun tiene ${diasVigencia} dias de vigencia. ¿Está seguro que desea RENOVAR la poliza?`)) {
+        // Redirige a la URL de renovación
+        window.location.href = "{% url 'add_poliza' poliza.rel_emision.id %}";
+      }
+    });
 
     //Manejo de los botones de la tabla de archivos
     document.querySelectorAll('.btn-download-file').forEach(function (btn) {

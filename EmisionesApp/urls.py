@@ -18,7 +18,9 @@ urlpatterns = [
     path('addobservacion/<int:id>/', vista_add_observacion_emision, name='add_observacion'),
     path('poliza/no_renovar/<int:id>/', vista_no_renovar_poliza, name='no_renovar_poliza'),
     path('poliza/anular/<int:id>/', vista_anular_poliza, name='anular_poliza'),
+    path('poliza/reactivar/<int:id>/', vista_reactivar_poliza, name='reactivar_poliza'),
     path('poliza/modificar/<int:id>/', vista_modificar_poliza, name='modificar_poliza'),
+    path('poliza/modificar_conducto/<int:id>/', vista_modificar_conducto, name='modificar_conducto'),
 
 ]
 

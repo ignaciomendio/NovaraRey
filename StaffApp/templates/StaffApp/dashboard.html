@@ -20,7 +20,7 @@
             <div class="ds-card-content" style="min-height: 140px;">
               <ul>
                 {% for param in ds_ctx.params %}
-                  <li>{{param.name}}:&nbsp;{{param.value}}</li>
+                  <li>{{param.name}}:&nbsp;<strong>{{param.value}}</strong></li>
                 {% endfor %}
               </ul>            
             </div>  

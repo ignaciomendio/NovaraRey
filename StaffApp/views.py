@@ -11,6 +11,7 @@ from django.urls import reverse
 from CotizacionesApp.models import QuotRequest, Cotizacion
 from EmisionesApp.models import Emision, Poliza
 from ClientesApp.models import ClientePersonaFisica, TarjetaCredito, Cliente, ClientePersonaJuridica
+from ContadoApp.models import Pago
 
 DASHBOARD_COLORS={
     "critic": "#e35d6a",
@@ -44,6 +45,27 @@ class Dashboard_data():
 def vista_dashboard(request):
 
     ds_context: list[Dashboard_data] = []
+
+    #Código para el dashboard de pagos
+    PAGOS_MAX_DIAS_VENCIMIENTO = 7
+    pagos_pendientes = Pago.objects.filter(status="P")
+    n_pend = len([pago for pago in pagos_pendientes if pago.dias_hasta_vencimiento() <= PAGOS_MAX_DIAS_VENCIMIENTO])
+    n_venc = len([pago for pago in pagos_pendientes if pago.vencido()])
+    status_tareas = DASHBOARD_COLORS["OK"]
+    if n_pend > 0:
+        status_tareas = DASHBOARD_COLORS["warning"]
+    if n_venc > 0:
+        status_tareas = DASHBOARD_COLORS["critic"]
+
+    ds_tareas: Dashboard_data = Dashboard_data(
+        title="Pagos Pendientes",
+        status=status_tareas, 
+        URL= reverse('ver_pagos')+"?fil_status=P")
+    ds_tareas.clean_params()
+    ds_tareas.add_param(Dashboard_Param(f"Pagos con fecha de vencimiento menor a {PAGOS_MAX_DIAS_VENCIMIENTO} días", n_pend))
+    ds_tareas.add_param(Dashboard_Param(f"Pagos Vencidos", n_venc))
+
+    ds_context.append(ds_tareas)
 
     #Código para el dasboard de cumpleaños
     clientes_cumple = list(filter(lambda x: x.aviso_cumple(), ClientePersonaFisica.objects.all()))
