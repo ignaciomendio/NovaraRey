@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
@@ -205,16 +205,16 @@ def vista_dashboard(request):
 
     #Código para el dasboard de polizas a vencer
     DIAS_MAX_VENCIMIENTO = 20
-    polizas = Poliza.objects.all()
+    polizas = Poliza.objects.filter(activa=True)
     polizas_a_vencer = []
     polizas_vencidas = []
     for poliza in polizas:
-        if poliza.vigente() and poliza.get_vigente().vigente():
-                endoso = poliza.get_vigente()
-                if endoso.dias_vigencia() <= DIAS_MAX_VENCIMIENTO:
-                    polizas_a_vencer.append(poliza)
-                if endoso.dias_vigencia() <= 0:
-                    polizas_vencidas.append(poliza)
+        endoso = poliza.get_vigente()
+        if endoso:
+            if endoso.dias_vigencia() <= DIAS_MAX_VENCIMIENTO:
+                polizas_a_vencer.append(poliza)
+        else:
+            polizas_vencidas.append(poliza)
     n_pend = len(polizas_a_vencer)
     n_venc = len(polizas_vencidas)
     status_tareas = DASHBOARD_COLORS["OK"]
@@ -256,13 +256,12 @@ def vista_tareas_create(request):
         fecha_vencimiento = request.POST.get('fecha_vencimiento')
         status = 'P'
         
-        tarea = Tarea(
+        Tarea.objects.create(
             titulo=titulo,
             usuario_creacion=request.user,
             fecha_vencimiento=fecha_vencimiento,
             status=status,
         )
-        tarea.save()
         return redirect('tareas_main')
     
     return render(request, 'StaffApp/tareasCreate.html')
@@ -475,7 +474,7 @@ def vista_aseguradoras_edit(request, id):
             cia.direccion = get_object_or_404(Address, id=direccion_id)
 
         cia.save()
-        return redirect('cia_list')  # Asegurate de tener definida esta URL
+        return redirect('aseguradoras_main')  # Asegurate de tener definida esta URL
 
     return render(request, 'StaffApp/aseguradorasEdit.html', {
         'cia': cia,

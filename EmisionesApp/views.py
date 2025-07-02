@@ -231,7 +231,7 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
             rel_medio_pago = medio_pago,
             rel_cod_prod = get_object_or_404(CodigoProductor, id=req.POST.get("pol_prod_in")),
             refacturacion = req.POST.get("pol_refact_in"),
-            vencimiento_cuota1 = datetime.fromisoformat(venc).date(),
+            vencimiento_cuota1 = datetime.fromisoformat(venc).date() if venc else None,
             cant_cuotas = cuotas,
             pol_previa = poliza_previa.id if poliza_previa else None)
 
@@ -314,11 +314,11 @@ def vista_list_polizas(req:HttpRequest):
     # filtro por status
     selected = []
     if fil_status == 'V':
-        selected = [poliza for poliza in polizas if poliza.vigente() and poliza.get_vigente().vigente()]
+        selected = [poliza for poliza in polizas if poliza.activa and poliza.vigente()]
     elif fil_status == 'A':
         selected = [poliza for poliza in polizas if not poliza.activa]
     elif fil_status == 'X':
-        selected = [poliza for poliza in polizas if poliza.vigente() and not poliza.get_vigente().vigente()]
+        selected = [poliza for poliza in polizas if poliza.activa and not poliza.vigente()]
     else:
         selected = list(polizas)
 
@@ -471,7 +471,8 @@ def vista_anular_poliza(req:HttpRequest, id):
         poliza.save()
         planes_pago_actuales = PlanPagos.objects.filter(poliza=poliza)
         if planes_pago_actuales.exists():
-            planes_pago_actuales.cancelar()
+            for plan in planes_pago_actuales:
+                plan.cancelar()
         messages.success(req, "Poliza anulada correctamente")
         return redirect('ver_poliza', poliza.id)
     
@@ -497,8 +498,8 @@ def vista_reactivar_poliza(req:HttpRequest, id):
         poliza.renovable = True
         poliza.save()
         #si hay planes de pagos cancelados, reactiva el último plan de pagos
-        ultimo_plan = PlanPagos.objects.filter(poliza=poliza, status= PlanPagos.Status.ANULADO).last()
-        if ultimo_plan.exists():
+        ultimo_plan = PlanPagos.objects.filter(poliza=poliza, status= PlanPagos.Status.CANCELADO).last()
+        if ultimo_plan:
             ultimo_plan.reactivar()
 
         messages.success(req, "Poliza rehabilitada correctamente")
@@ -521,23 +522,30 @@ def vista_modificar_conducto(req:HttpRequest, id):
             premio=poliza.get_premio(),
             motivo= "Modificación de Conducto\n" + req.POST.get("mod_conducto_motivo", "")
         )
+        print("Endoso Creado")
 
         mp = req.POST.get("mod_conducto_id")
         if mp == "CONTADO":
             medio_pago = None
             venc =  req.POST.get("mod_venc1_in")
             cuotas = req.POST.get("mod_cuotas_in")
+            print("Nuevo Medio de pago CONTADO")
         else:
             medio_pago = get_object_or_404(MedioPago, id=mp)
             venc = None
             cuotas = None
+            print("Nuevo Medio de pago REGISTRO")
 
         #Modificando la poliza
         poliza.rel_medio_pago = medio_pago
-        poliza.vencimiento_cuota1 = datetime.fromisoformat(venc).date()
+        if venc:
+            poliza.vencimiento_cuota1 = datetime.fromisoformat(venc).date()
+        else:
+            poliza.vencimiento_cuota1 = None
         poliza.cant_cuotas = cuotas
         poliza.cant_endosos += 1
         poliza.save()
+        print("POliza Modificada")
 
         #verificando si la poliza ya tiene un plan de pagos activo, si está activo cancela todos los pagos pendientes
         #y cambia el estado del plan a cancelado
@@ -545,6 +553,7 @@ def vista_modificar_conducto(req:HttpRequest, id):
         if planes_pago_actuales.exists():
             for plan in planes_pago_actuales:
                 plan.cancelar()
+        print("Planes de pagos anteriores anulados")
 
 
         #Creando el nuevo plan de pagos
@@ -554,6 +563,7 @@ def vista_modificar_conducto(req:HttpRequest, id):
                 cantidad_cuotas = int(cuotas),
                 status = PlanPagos.Status.ACTIVO,
             )
+            print("Nuevo Plan de pagos creado")
 
             #Creando los pagos
             anio = poliza.vencimiento_cuota1.year
@@ -577,6 +587,7 @@ def vista_modificar_conducto(req:HttpRequest, id):
                     mes = 1
                     anio += 1   
                 dia = poliza.vencimiento_cuota1.day  # Mantiene el mismo día del mes
+            print("Pagos Creados")
 
 
         messages.success(req, "Endoso de modificación de conducto cargado correctamente")

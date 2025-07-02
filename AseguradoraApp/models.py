@@ -26,7 +26,7 @@ class CiaMailContact(models.Model):
         verbose_name_plural="Mails de contacto"
 
     def __str__(self):
-        return f"{self.telefono} - {self.contacto}" + (f" - {self.desc}" if self.desc else "")
+        return f"{self.mail} - {self.contacto}" + (f" - {self.desc}" if self.desc else "")
     
 class Cia(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre de la compañía")

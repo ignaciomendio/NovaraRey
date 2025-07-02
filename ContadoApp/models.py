@@ -25,7 +25,10 @@ class PlanPagos(models.Model):
         for pago in pagos_plan:
             if pago.status == Pago.Status.PENDIENTE:
                 pago.status = Pago.Status.ANULADO
-                pago.observaciones += "\nPlan de pagos cancelado."
+                if pago.observaciones:
+                    pago.observaciones += "\nPlan de pagos cancelado."
+                else:
+                    pago.observaciones = "\nPlan de pagos cancelado."
                 pago.save()
         self.status = self.Status.CANCELADO
         self.save()

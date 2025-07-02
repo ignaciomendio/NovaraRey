@@ -3775,3 +3775,662 @@ INFO 2025-06-27 18:24:38,524 basehttp 26596 14404 "GET /staff/tareas/ HTTP/1.1" 
 INFO 2025-06-27 18:24:38,621 basehttp 26596 27104 "GET /static/css/styles.css HTTP/1.1" 200 3505
 WARNING 2025-06-27 18:24:38,631 log 26596 14404 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-06-27 18:24:38,634 basehttp 26596 14404 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4226
+INFO 2025-07-02 10:17:03,988 autoreload 20748 24032 Watching for file changes with StatReloader
+INFO 2025-07-02 10:17:37,828 basehttp 20748 26840 "GET / HTTP/1.1" 200 6243
+INFO 2025-07-02 10:17:37,942 basehttp 20748 14324 "GET /media/logos/tuem%20sin%20fondo.png HTTP/1.1" 304 0
+INFO 2025-07-02 10:17:37,943 basehttp 20748 7616 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-07-02 10:17:38,119 basehttp 20748 26840 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-07-02 10:17:38,137 basehttp 20748 26840 "GET /static/img/fondo%20encabezado.jpg HTTP/1.1" 304 0
+INFO 2025-07-02 10:17:41,960 basehttp 20748 29816 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:17:42,066 basehttp 20748 29816 "GET /login/login/?next=/staff/ HTTP/1.1" 200 6879
+INFO 2025-07-02 10:17:47,492 basehttp 20748 7396 "POST /login/login/?next=/staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:17:47,516 basehttp 20748 7396 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:17:47,647 basehttp 20748 7396 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 10:17:47,733 basehttp 20748 7396 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 10:18:35,620 basehttp 20748 17008 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17696
+INFO 2025-07-02 10:18:42,904 basehttp 20748 19388 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35312
+INFO 2025-07-02 10:18:49,038 basehttp 20748 19388 "GET /staff/emisiones/verPoliza/5/ HTTP/1.1" 200 30702
+INFO 2025-07-02 10:18:56,293 basehttp 20748 15736 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 33704
+INFO 2025-07-02 10:19:08,505 basehttp 20748 21524 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 35748
+INFO 2025-07-02 10:19:12,332 basehttp 20748 3216 "GET /staff/pagos/pagar/1 HTTP/1.1" 302 0
+INFO 2025-07-02 10:19:12,587 basehttp 20748 3216 "GET /staff/pagos/listpagos HTTP/1.1" 200 38028
+INFO 2025-07-02 10:19:23,348 basehttp 20748 20948 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17696
+INFO 2025-07-02 10:19:27,144 basehttp 20748 20948 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 33705
+ERROR 2025-07-02 10:19:41,601 log 20748 10036 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 550, in vista_modificar_conducto
+    plan.cancelar()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py", line 28, in cancelar
+    pago.observaciones += "\nPlan de pagos cancelado."
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'str'
+ERROR 2025-07-02 10:19:41,613 basehttp 20748 10036 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 77350
+INFO 2025-07-02 10:23:37,564 basehttp 20748 29372 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 34594
+INFO 2025-07-02 10:23:37,673 basehttp 20748 29372 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+ERROR 2025-07-02 10:24:06,985 log 20748 18128 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/6/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 550, in vista_modificar_conducto
+    plan.cancelar()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py", line 28, in cancelar
+    pago.observaciones += "\nPlan de pagos cancelado."
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'str'
+ERROR 2025-07-02 10:24:06,993 basehttp 20748 18128 "POST /staff/emisiones/poliza/modificar_conducto/6/ HTTP/1.1" 500 77362
+INFO 2025-07-02 10:29:56,919 autoreload 20748 24032 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 10:29:59,217 autoreload 5264 20040 Watching for file changes with StatReloader
+INFO 2025-07-02 10:31:12,051 autoreload 5264 20040 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-07-02 10:31:13,048 autoreload 27048 1708 Watching for file changes with StatReloader
+INFO 2025-07-02 10:31:23,376 basehttp 27048 17272 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 35513
+INFO 2025-07-02 10:31:46,220 basehttp 27048 11504 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17696
+INFO 2025-07-02 10:31:53,740 basehttp 27048 11504 "GET /staff/emisiones/listpolizas?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14730
+INFO 2025-07-02 10:31:58,715 basehttp 27048 28296 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14083
+INFO 2025-07-02 10:32:03,599 basehttp 27048 28296 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19096
+INFO 2025-07-02 10:32:14,676 basehttp 27048 12192 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 17696
+INFO 2025-07-02 10:32:24,794 basehttp 27048 14224 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19096
+INFO 2025-07-02 10:32:39,811 basehttp 27048 13472 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14083
+INFO 2025-07-02 10:32:44,864 basehttp 27048 13472 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 10:32:44,900 basehttp 27048 13472 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 10:33:34,837 basehttp 27048 27980 "GET /staff/emisiones/listpolizas?fil_dias_vencimiento=20 HTTP/1.1" 200 14077
+INFO 2025-07-02 10:33:42,139 basehttp 27048 18896 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19096
+INFO 2025-07-02 10:33:49,138 basehttp 27048 14180 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14083
+INFO 2025-07-02 10:33:56,539 basehttp 27048 29916 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19096
+INFO 2025-07-02 10:34:01,369 basehttp 27048 29916 "GET /staff/emisiones/verPoliza/6/ HTTP/1.1" 200 35513
+INFO 2025-07-02 10:34:08,266 basehttp 27048 19792 "GET /staff/emisiones/verPoliza/9/ HTTP/1.1" 200 30465
+INFO 2025-07-02 10:34:25,432 basehttp 27048 27436 "GET /staff/clientes/ HTTP/1.1" 200 12303
+INFO 2025-07-02 10:34:28,801 basehttp 27048 4908 "GET /staff/clientes/edit/4/ HTTP/1.1" 200 39410
+INFO 2025-07-02 10:35:06,478 basehttp 27048 10708 "POST /staff/clientes/edit/tarjetaAdd/4/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:35:06,525 basehttp 27048 10708 "GET /staff/clientes/edit/4/ HTTP/1.1" 200 40742
+INFO 2025-07-02 10:35:15,213 basehttp 27048 10708 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 17696
+INFO 2025-07-02 10:35:18,344 basehttp 27048 11388 "GET /staff/emisiones/verPoliza/9/ HTTP/1.1" 200 30635
+INFO 2025-07-02 10:35:30,414 basehttp 27048 18108 "POST /staff/emisiones/poliza/modificar_conducto/9/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:35:30,489 basehttp 27048 18108 "GET /staff/emisiones/verPoliza/9/ HTTP/1.1" 200 31681
+INFO 2025-07-02 10:36:18,113 basehttp 27048 3772 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:36:30,136 basehttp 27048 14408 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 12792
+INFO 2025-07-02 10:37:13,411 basehttp 27048 17208 "POST /staff/cotizaciones/solicita/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:37:13,557 basehttp 27048 17208 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 14269
+INFO 2025-07-02 10:37:19,701 basehttp 27048 2176 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:37:24,712 basehttp 27048 2176 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 13240
+INFO 2025-07-02 10:37:45,405 basehttp 27048 29540 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:37:49,107 basehttp 27048 24204 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 14910
+INFO 2025-07-02 10:38:03,611 basehttp 27048 16188 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:38:09,933 basehttp 27048 23164 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10628
+INFO 2025-07-02 10:38:57,086 basehttp 27048 17272 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:39:04,632 basehttp 27048 17272 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 16553
+INFO 2025-07-02 10:39:11,549 basehttp 27048 24360 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:39:42,651 basehttp 27048 24996 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10629
+INFO 2025-07-02 10:40:07,009 basehttp 27048 27056 "GET /admin/ HTTP/1.1" 200 29732
+INFO 2025-07-02 10:40:07,076 basehttp 27048 21652 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,076 basehttp 27048 27056 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,076 basehttp 27048 28868 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,088 basehttp 27048 21652 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,089 basehttp 27048 28868 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,089 basehttp 27048 27056 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,128 basehttp 27048 27056 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,150 basehttp 27048 28868 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,151 basehttp 27048 27056 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:07,151 basehttp 27048 21652 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,732 basehttp 27048 9896 "GET /admin/CotizacionesApp/datacotizacion/ HTTP/1.1" 200 46295
+INFO 2025-07-02 10:40:22,761 basehttp 27048 9896 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,781 basehttp 27048 19788 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,782 basehttp 27048 25528 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,792 basehttp 27048 19788 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,795 basehttp 27048 25528 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,799 basehttp 27048 19788 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,799 basehttp 27048 25528 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,804 basehttp 27048 19788 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,807 basehttp 27048 25528 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,810 basehttp 27048 19788 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,823 basehttp 27048 19788 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,917 basehttp 27048 9896 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:40:22,970 basehttp 27048 9896 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:22,973 basehttp 27048 9896 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:28,178 basehttp 27048 1320 "GET /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 200 28792
+INFO 2025-07-02 10:40:28,211 basehttp 27048 1320 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:28,222 basehttp 27048 25780 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:28,227 basehttp 27048 25780 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:28,235 basehttp 27048 25780 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-07-02 10:40:28,246 basehttp 27048 1320 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:40:58,838 basehttp 27048 24056 "POST /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:40:58,919 basehttp 27048 24056 "GET /admin/CotizacionesApp/datacotizacion/ HTTP/1.1" 200 46946
+INFO 2025-07-02 10:40:58,976 basehttp 27048 24056 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:40:58,998 basehttp 27048 24056 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-07-02 10:41:01,031 basehttp 27048 24056 "GET /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 200 28792
+INFO 2025-07-02 10:41:01,097 basehttp 27048 24056 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:41:22,757 basehttp 27048 19560 "POST /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:41:22,838 basehttp 27048 19560 "GET /admin/CotizacionesApp/datacotizacion/ HTTP/1.1" 200 47346
+INFO 2025-07-02 10:41:22,887 basehttp 27048 19560 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:41:24,930 basehttp 27048 19560 "GET /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 200 28792
+INFO 2025-07-02 10:41:24,984 basehttp 27048 19560 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:41:47,633 basehttp 27048 29336 "POST /admin/CotizacionesApp/datacotizacion/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:41:47,745 basehttp 27048 29336 "GET /admin/CotizacionesApp/datacotizacion/ HTTP/1.1" 200 47747
+INFO 2025-07-02 10:41:47,800 basehttp 27048 29336 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:41:51,961 basehttp 27048 29336 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11820
+INFO 2025-07-02 10:42:14,056 basehttp 27048 14832 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:42:18,329 basehttp 27048 29140 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10634
+INFO 2025-07-02 10:42:21,634 basehttp 27048 29140 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:42:26,720 basehttp 27048 3740 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10646
+INFO 2025-07-02 10:42:34,696 basehttp 27048 3740 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:42:56,521 basehttp 27048 2208 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10639
+INFO 2025-07-02 10:42:58,639 basehttp 27048 2208 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 10:43:04,116 basehttp 27048 2208 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 12295
+INFO 2025-07-02 10:43:39,950 basehttp 27048 30520 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 27255
+INFO 2025-07-02 10:43:40,015 basehttp 27048 30520 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:43:40,153 basehttp 27048 2096 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-07-02 10:43:42,543 basehttp 27048 2096 "GET /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 200 26715
+INFO 2025-07-02 10:43:42,595 basehttp 27048 2096 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:43:54,410 basehttp 27048 14168 "POST /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:43:54,455 basehttp 27048 14168 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 27926
+INFO 2025-07-02 10:43:54,505 basehttp 27048 14168 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 10:49:33,354 basehttp 27048 27844 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 10:49:33,405 basehttp 27048 27844 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 10:54:25,828 basehttp 27048 25412 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 14169
+INFO 2025-07-02 10:54:34,839 basehttp 27048 13952 "GET /staff/cotizaciones/solicitudes/cotizar/11 HTTP/1.1" 302 0
+INFO 2025-07-02 10:54:35,060 basehttp 27048 13952 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16968
+INFO 2025-07-02 10:54:38,392 basehttp 27048 29548 "GET /staff/cotizaciones/edit/10 HTTP/1.1" 200 19939
+INFO 2025-07-02 10:54:56,053 basehttp 27048 26420 "POST /staff/cotizaciones/cot_cias/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:54:56,112 basehttp 27048 26420 "GET /staff/cotizaciones/edit/10 HTTP/1.1" 200 21504
+INFO 2025-07-02 10:55:00,717 basehttp 27048 16932 "POST /staff/cotizaciones/edit/10 HTTP/1.1" 302 0
+INFO 2025-07-02 10:55:00,757 basehttp 27048 16932 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 17003
+INFO 2025-07-02 10:55:06,772 basehttp 27048 16932 "POST /staff/cotizaciones/send/10 HTTP/1.1" 302 0
+INFO 2025-07-02 10:55:06,800 basehttp 27048 16932 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14812
+INFO 2025-07-02 10:55:09,945 basehttp 27048 30160 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 16982
+INFO 2025-07-02 10:55:22,605 basehttp 27048 24348 "GET /staff/emisiones/add/10 HTTP/1.1" 200 11788
+INFO 2025-07-02 10:55:38,244 basehttp 27048 5772 "POST /staff/emisiones/add/10 HTTP/1.1" 302 0
+INFO 2025-07-02 10:55:38,362 basehttp 27048 5772 "GET /staff/emisiones/editemision/11/ HTTP/1.1" 200 16610
+INFO 2025-07-02 10:55:48,849 basehttp 27048 9652 "POST /staff/emisiones/editemision/11/ HTTP/1.1" 302 0
+INFO 2025-07-02 10:55:48,952 basehttp 27048 9652 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12997
+INFO 2025-07-02 11:00:06,540 basehttp 27048 21860 "GET /staff/emisiones/addPoliza/11/ HTTP/1.1" 200 14141
+INFO 2025-07-02 11:00:43,847 basehttp 27048 27788 "POST /staff/emisiones/addPoliza/11/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:00:43,911 basehttp 27048 27788 "GET /staff/emisiones/verPoliza/11/ HTTP/1.1" 200 30950
+INFO 2025-07-02 11:07:46,448 basehttp 27048 8524 "POST /staff/emisiones/poliza/modificar_conducto/11/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:07:46,523 basehttp 27048 8524 "GET /staff/emisiones/verPoliza/11/ HTTP/1.1" 200 31981
+ERROR 2025-07-02 11:08:02,217 log 27048 22032 Internal Server Error: /staff/emisiones/poliza/anular/11/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 474, in vista_anular_poliza
+    planes_pago_actuales.cancelar()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'cancelar'
+ERROR 2025-07-02 11:08:02,234 basehttp 27048 22032 "POST /staff/emisiones/poliza/anular/11/ HTTP/1.1" 500 72301
+INFO 2025-07-02 11:17:00,025 autoreload 27048 1708 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:17:02,203 autoreload 15920 7492 Watching for file changes with StatReloader
+INFO 2025-07-02 11:17:26,884 basehttp 15920 27064 "GET /staff/emisiones/verPoliza/11/ HTTP/1.1" 200 32728
+ERROR 2025-07-02 11:17:38,489 log 15920 21592 Internal Server Error: /staff/emisiones/poliza/reactivar/11/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 501, in vista_reactivar_poliza
+    ultimo_plan = PlanPagos.objects.filter(poliza=poliza, status= PlanPagos.Status.ANULADO).last()
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Status' has no attribute 'ANULADO'. Did you mean: 'CANCELADO'?
+ERROR 2025-07-02 11:17:38,497 basehttp 15920 21592 "POST /staff/emisiones/poliza/reactivar/11/ HTTP/1.1" 500 72742
+INFO 2025-07-02 11:17:52,147 basehttp 15920 13396 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18454
+INFO 2025-07-02 11:18:01,478 basehttp 15920 21784 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 31547
+INFO 2025-07-02 11:18:09,437 basehttp 15920 15668 "POST /staff/emisiones/poliza/anular/10/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:18:09,508 basehttp 15920 15668 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 32517
+ERROR 2025-07-02 11:18:21,840 log 15920 1532 Internal Server Error: /staff/emisiones/poliza/reactivar/10/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 501, in vista_reactivar_poliza
+    ultimo_plan = PlanPagos.objects.filter(poliza=poliza, status= PlanPagos.Status.ANULADO).last()
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Status' has no attribute 'ANULADO'. Did you mean: 'CANCELADO'?
+ERROR 2025-07-02 11:18:21,844 basehttp 15920 1532 "POST /staff/emisiones/poliza/reactivar/10/ HTTP/1.1" 500 72745
+INFO 2025-07-02 11:19:26,495 autoreload 15920 7492 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:19:27,566 autoreload 18600 27608 Watching for file changes with StatReloader
+INFO 2025-07-02 11:19:34,515 basehttp 18600 14460 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 33263
+INFO 2025-07-02 11:19:41,568 basehttp 18600 14460 "POST /staff/emisiones/poliza/anular/10/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:19:41,639 basehttp 18600 14460 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 34233
+INFO 2025-07-02 11:19:56,197 basehttp 18600 10740 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 19198
+INFO 2025-07-02 11:20:09,102 basehttp 18600 12692 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 27689
+INFO 2025-07-02 11:20:20,084 basehttp 18600 25076 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=23456&fil_rubro=0 HTTP/1.1" 200 33893
+INFO 2025-07-02 11:20:47,101 basehttp 18600 27236 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=23456&fil_rubro=0 HTTP/1.1" 200 23545
+ERROR 2025-07-02 11:21:01,358 log 18600 1352 Internal Server Error: /staff/emisiones/poliza/reactivar/10/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 502, in vista_reactivar_poliza
+    if ultimo_plan.exists():
+       ^^^^^^^^^^^^^^^^^^
+AttributeError: 'PlanPagos' object has no attribute 'exists'
+ERROR 2025-07-02 11:21:01,367 basehttp 18600 1352 "POST /staff/emisiones/poliza/reactivar/10/ HTTP/1.1" 500 72617
+INFO 2025-07-02 11:21:44,248 basehttp 18600 25284 "GET /admin/ContadoApp/planpagos/ HTTP/1.1" 200 25183
+INFO 2025-07-02 11:21:44,316 basehttp 18600 25284 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 11:21:46,121 basehttp 18600 5300 "GET /admin/ContadoApp/planpagos/9/change/ HTTP/1.1" 200 26824
+INFO 2025-07-02 11:21:46,251 basehttp 18600 5300 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 11:23:12,091 autoreload 18600 27608 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:23:13,533 autoreload 2780 22740 Watching for file changes with StatReloader
+INFO 2025-07-02 11:23:33,454 basehttp 2780 12396 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 34979
+INFO 2025-07-02 11:23:45,502 basehttp 2780 10832 "GET /admin/ContadoApp/planpagos/9/change/ HTTP/1.1" 200 26824
+INFO 2025-07-02 11:23:45,550 basehttp 2780 10832 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 11:23:55,893 basehttp 2780 29156 "POST /staff/emisiones/poliza/anular/10/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:23:55,966 basehttp 2780 29156 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 35949
+INFO 2025-07-02 11:24:02,575 basehttp 2780 29156 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=23456&fil_rubro=0 HTTP/1.1" 200 23545
+INFO 2025-07-02 11:24:05,758 basehttp 2780 9348 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=23456&fil_rubro=0 HTTP/1.1" 200 23545
+INFO 2025-07-02 11:24:13,338 basehttp 2780 9348 "POST /staff/emisiones/poliza/reactivar/10/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:24:13,427 basehttp 2780 9348 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 36796
+INFO 2025-07-02 11:24:21,509 basehttp 2780 29448 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=mess&fil_nro_poliza=23456&fil_rubro=0 HTTP/1.1" 200 23490
+INFO 2025-07-02 11:24:49,922 basehttp 2780 21760 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14686
+INFO 2025-07-02 11:24:56,553 basehttp 2780 17696 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 11171
+INFO 2025-07-02 11:24:58,631 basehttp 2780 17696 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 11171
+INFO 2025-07-02 11:25:01,408 basehttp 2780 17696 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18454
+INFO 2025-07-02 11:25:02,835 basehttp 2780 17696 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 11171
+INFO 2025-07-02 11:25:11,114 basehttp 2780 28920 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14686
+INFO 2025-07-02 11:25:16,637 basehttp 2780 10624 "GET /staff/cotizaciones/listado/?status=&nombre= HTTP/1.1" 200 34178
+INFO 2025-07-02 11:25:20,566 basehttp 2780 10624 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 14686
+INFO 2025-07-02 11:25:23,832 basehttp 2780 10624 "GET /staff/cotizaciones/listado/?status=S&nombre= HTTP/1.1" 200 34186
+INFO 2025-07-02 11:25:37,670 basehttp 2780 8380 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 11972
+INFO 2025-07-02 11:25:47,442 basehttp 2780 15400 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 10160
+INFO 2025-07-02 11:25:48,842 basehttp 2780 15400 "POST /staff/cotizaciones/solicita/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:25:48,884 basehttp 2780 15400 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 14198
+INFO 2025-07-02 11:25:51,646 basehttp 2780 15400 "GET /staff/cotizaciones/solicitudes/cotizar/12 HTTP/1.1" 302 0
+INFO 2025-07-02 11:25:51,676 basehttp 2780 15400 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16897
+INFO 2025-07-02 11:25:55,068 basehttp 2780 11356 "GET /staff/cotizaciones/edit/11 HTTP/1.1" 200 19868
+INFO 2025-07-02 11:26:06,445 basehttp 2780 26052 "POST /staff/cotizaciones/cot_cias/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:26:06,491 basehttp 2780 26052 "GET /staff/cotizaciones/edit/11 HTTP/1.1" 200 21421
+INFO 2025-07-02 11:26:08,888 basehttp 2780 26052 "POST /staff/cotizaciones/edit/11 HTTP/1.1" 302 0
+INFO 2025-07-02 11:26:08,924 basehttp 2780 26052 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 16932
+INFO 2025-07-02 11:26:13,292 basehttp 2780 26052 "POST /staff/cotizaciones/send/11 HTTP/1.1" 302 0
+INFO 2025-07-02 11:26:13,316 basehttp 2780 26052 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 14812
+INFO 2025-07-02 11:26:16,404 basehttp 2780 18912 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 16911
+INFO 2025-07-02 11:26:18,713 basehttp 2780 18912 "GET /staff/emisiones/add/11 HTTP/1.1" 200 10838
+INFO 2025-07-02 11:26:22,991 basehttp 2780 18912 "POST /staff/emisiones/add/11 HTTP/1.1" 302 0
+INFO 2025-07-02 11:26:23,047 basehttp 2780 18912 "GET /staff/emisiones/editemision/12/ HTTP/1.1" 200 15627
+INFO 2025-07-02 11:26:30,231 basehttp 2780 6800 "POST /staff/emisiones/editemision/12/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:26:30,271 basehttp 2780 6800 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 12841
+INFO 2025-07-02 11:26:35,485 basehttp 2780 13372 "GET /staff/emisiones/addPoliza/12/ HTTP/1.1" 200 13985
+ERROR 2025-07-02 11:26:54,878 log 2780 18000 Internal Server Error: /staff/emisiones/addPoliza/12/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 234, in vista_add_poliza
+    vencimiento_cuota1 = datetime.fromisoformat(venc).date(),
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: fromisoformat: argument must be str
+ERROR 2025-07-02 11:26:54,887 basehttp 2780 18000 "POST /staff/emisiones/addPoliza/12/ HTTP/1.1" 500 73836
+INFO 2025-07-02 11:28:09,966 autoreload 2780 22740 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:28:11,284 autoreload 15784 22704 Watching for file changes with StatReloader
+INFO 2025-07-02 11:28:17,552 basehttp 15784 22412 "GET /staff/emisiones/addPoliza/12/ HTTP/1.1" 200 13985
+INFO 2025-07-02 11:28:33,664 basehttp 15784 22724 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 18454
+INFO 2025-07-02 11:28:37,771 basehttp 15784 14860 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=guada&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 15412
+INFO 2025-07-02 11:29:01,534 basehttp 15784 11556 "POST /staff/emisiones/addPoliza/12/ HTTP/1.1" 302 0
+INFO 2025-07-02 11:29:01,675 basehttp 15784 11556 "GET /staff/emisiones/verPoliza/12/ HTTP/1.1" 200 30784
+INFO 2025-07-02 11:29:08,931 basehttp 15784 14608 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=guada&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 16028
+INFO 2025-07-02 11:29:25,434 basehttp 15784 20276 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:29:44,649 basehttp 15784 26832 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14083
+INFO 2025-07-02 11:34:06,177 autoreload 15784 22704 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:34:07,364 autoreload 18220 15048 Watching for file changes with StatReloader
+ERROR 2025-07-02 11:34:14,105 log 18220 17616 Internal Server Error: /staff/emisiones/listpolizas
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 321, in vista_list_polizas
+    selected = [poliza for poliza in polizas if poliza.activa and not poliza.get_vigente().vigente()]
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vigente'
+ERROR 2025-07-02 11:34:14,110 basehttp 18220 17616 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 500 74792
+ERROR 2025-07-02 11:35:46,545 log 18220 14608 Internal Server Error: /staff/emisiones/listpolizas
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 317, in vista_list_polizas
+    selected = [poliza for poliza in polizas if poliza.activa and poliza.get_vigente().vigente()]
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vigente'
+ERROR 2025-07-02 11:35:46,549 basehttp 18220 14608 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 500 74646
+INFO 2025-07-02 11:35:53,543 basehttp 18220 7632 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:35:56,182 basehttp 18220 7632 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:35:59,526 basehttp 18220 7632 "GET /staff/emisiones/listpolizas?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14730
+INFO 2025-07-02 11:36:04,443 basehttp 18220 24824 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+ERROR 2025-07-02 11:36:09,429 log 18220 24824 Internal Server Error: /staff/emisiones/listpolizas
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 317, in vista_list_polizas
+    selected = [poliza for poliza in polizas if poliza.activa and poliza.get_vigente().vigente()]
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vigente'
+ERROR 2025-07-02 11:36:09,432 basehttp 18220 24824 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 500 74646
+ERROR 2025-07-02 11:36:15,180 log 18220 19380 Internal Server Error: /staff/emisiones/listpolizas
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 321, in vista_list_polizas
+    selected = [poliza for poliza in polizas if poliza.activa and not poliza.get_vigente().vigente()]
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vigente'
+ERROR 2025-07-02 11:36:15,183 basehttp 18220 19380 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 500 74655
+INFO 2025-07-02 11:37:52,164 autoreload 18220 15048 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:37:53,324 autoreload 25352 8332 Watching for file changes with StatReloader
+INFO 2025-07-02 11:37:57,897 basehttp 25352 21668 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:38:00,137 basehttp 25352 21668 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:38:04,533 basehttp 25352 21668 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19708
+INFO 2025-07-02 11:38:09,699 basehttp 25352 23488 "GET /staff/emisiones/listpolizas?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14730
+INFO 2025-07-02 11:38:12,803 basehttp 25352 23488 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19708
+INFO 2025-07-02 11:40:08,528 autoreload 25352 8332 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:40:09,607 autoreload 28288 23732 Watching for file changes with StatReloader
+INFO 2025-07-02 11:40:13,852 basehttp 28288 6684 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19708
+INFO 2025-07-02 11:40:18,740 basehttp 28288 6684 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19070
+INFO 2025-07-02 11:40:36,256 autoreload 28288 23732 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py changed, reloading.
+INFO 2025-07-02 11:40:37,332 autoreload 9856 24740 Watching for file changes with StatReloader
+INFO 2025-07-02 11:40:40,396 basehttp 9856 13584 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19070
+INFO 2025-07-02 11:40:43,708 basehttp 9856 25788 "GET /staff/emisiones/listpolizas?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 20470
+INFO 2025-07-02 11:40:46,075 basehttp 9856 25788 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 19070
+INFO 2025-07-02 11:40:50,079 basehttp 9856 25788 "GET /staff/emisiones/listpolizas?fil_status=A&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14730
+INFO 2025-07-02 11:40:53,808 basehttp 9856 24304 "GET /staff/emisiones/listpolizas?fil_status=X&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento= HTTP/1.1" 200 14598
+INFO 2025-07-02 11:40:58,942 basehttp 9856 24304 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 11:40:58,982 basehttp 9856 24304 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 11:43:04,557 autoreload 9856 24740 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 11:43:05,587 autoreload 21440 22324 Watching for file changes with StatReloader
+ERROR 2025-07-02 11:43:11,462 log 21440 19592 Internal Server Error: /staff/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py", line 214, in vista_dashboard
+    if endoso.dias_vigencia() <= DIAS_MAX_VENCIMIENTO:
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'dias_vigencia'
+ERROR 2025-07-02 11:43:11,469 basehttp 21440 19592 "GET /staff/dashboard/ HTTP/1.1" 500 76347
+INFO 2025-07-02 11:47:55,935 autoreload 21440 22324 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 11:47:57,482 autoreload 12968 3052 Watching for file changes with StatReloader
+ERROR 2025-07-02 11:48:01,235 log 12968 14640 Internal Server Error: /staff/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py", line 213, in vista_dashboard
+    if endoso.dias_vigencia() <= DIAS_MAX_VENCIMIENTO:
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'dias_vigencia'
+ERROR 2025-07-02 11:48:01,240 basehttp 12968 14640 "GET /staff/dashboard/ HTTP/1.1" 500 76302
+INFO 2025-07-02 11:49:08,241 autoreload 12968 3052 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 11:49:09,456 autoreload 30328 3128 Watching for file changes with StatReloader
+INFO 2025-07-02 11:49:12,373 basehttp 30328 4680 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 11:49:12,437 basehttp 30328 4680 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 11:49:23,744 basehttp 30328 492 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-02 11:49:29,017 basehttp 30328 492 "GET /staff/emisiones/listpolizas?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_rubro=0&fil_modelo=&fil_patente=&fil_dias_vencimiento=20 HTTP/1.1" 200 14578
+INFO 2025-07-02 11:49:33,689 basehttp 30328 18940 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 11:49:33,725 basehttp 30328 18940 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 12:07:41,674 basehttp 30328 17380 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:07:44,251 basehttp 30328 17380 "GET /staff/tareas/create/ HTTP/1.1" 200 10049
+INFO 2025-07-02 12:08:03,856 basehttp 30328 12584 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:10:15,868 autoreload 30328 3128 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 12:10:17,411 autoreload 24836 17340 Watching for file changes with StatReloader
+INFO 2025-07-02 12:10:24,252 basehttp 24836 13144 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:10:26,424 basehttp 24836 13144 "GET /staff/tareas/create/ HTTP/1.1" 200 10049
+INFO 2025-07-02 12:10:39,975 basehttp 24836 18960 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:10:42,939 basehttp 24836 2752 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:10:46,158 basehttp 24836 2752 "GET /staff/tareas/edit/3/ HTTP/1.1" 200 10950
+INFO 2025-07-02 12:10:52,657 basehttp 24836 13924 "POST /staff/tareas/edit/3/ HTTP/1.1" 302 0
+INFO 2025-07-02 12:10:52,685 basehttp 24836 13924 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:10:54,001 basehttp 24836 13924 "GET /staff/tareas/edit/3/ HTTP/1.1" 200 10988
+INFO 2025-07-02 12:10:59,600 basehttp 24836 13924 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:13:21,338 basehttp 24836 5584 "GET /staff/tareas/ HTTP/1.1" 200 12545
+INFO 2025-07-02 12:13:24,921 basehttp 24836 5584 "GET /staff/tareas/create/ HTTP/1.1" 200 10080
+INFO 2025-07-02 12:14:28,823 basehttp 24836 18340 "GET /staff/tareas/create/ HTTP/1.1" 200 10097
+INFO 2025-07-02 12:14:34,917 basehttp 24836 18608 "POST /staff/tareas/create/ HTTP/1.1" 302 0
+INFO 2025-07-02 12:14:34,953 basehttp 24836 18608 "GET /staff/tareas/ HTTP/1.1" 200 13072
+INFO 2025-07-02 12:14:42,422 basehttp 24836 12340 "GET /staff/tareas/edit/8/ HTTP/1.1" 200 10754
+INFO 2025-07-02 12:16:04,103 basehttp 24836 21684 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 12:16:05,980 basehttp 24836 21684 "GET /staff/aseguradoras/edit/7/ HTTP/1.1" 200 24889
+INFO 2025-07-02 12:16:09,351 basehttp 24836 21684 "GET /staff/aseguradoras/edit/5/ HTTP/1.1" 200 28767
+INFO 2025-07-02 12:16:12,499 basehttp 24836 10300 "GET /staff/aseguradoras/edit/6/ HTTP/1.1" 200 24859
+ERROR 2025-07-02 12:16:15,669 log 24836 10300 Internal Server Error: /staff/aseguradoras/edit/2/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py", line 479, in vista_aseguradoras_edit
+    return render(request, 'StaffApp/aseguradorasEdit.html', {
+        'cia': cia,
+    ...<3 lines>...
+        'addtypes': addtypes,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1081, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1058, in render_value_in_context
+    value = str(value)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\AseguradoraApp\models.py", line 29, in __str__
+    return f"{self.telefono} - {self.contacto}" + (f" - {self.desc}" if self.desc else "")
+              ^^^^^^^^^^^^^
+AttributeError: 'CiaMailContact' object has no attribute 'telefono'
+ERROR 2025-07-02 12:16:15,708 basehttp 24836 10300 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 500 175216
+INFO 2025-07-02 12:35:22,522 autoreload 24836 17340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\AseguradoraApp\models.py changed, reloading.
+INFO 2025-07-02 12:35:24,191 autoreload 25352 6192 Watching for file changes with StatReloader
+INFO 2025-07-02 12:35:26,320 basehttp 25352 26904 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27472
+INFO 2025-07-02 12:36:02,495 basehttp 25352 25056 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27472
+INFO 2025-07-02 12:36:04,419 basehttp 25352 25056 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27472
+INFO 2025-07-02 12:36:05,437 basehttp 25352 25056 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27472
+INFO 2025-07-02 12:36:11,410 basehttp 25352 1900 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27472
+INFO 2025-07-02 12:36:11,586 basehttp 25352 1900 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-07-02 12:36:11,733 basehttp 25352 1900 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-02 12:38:10,877 basehttp 25352 27808 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27521
+INFO 2025-07-02 12:38:13,096 basehttp 25352 27808 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27521
+INFO 2025-07-02 12:38:16,542 basehttp 25352 28156 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27521
+INFO 2025-07-02 12:38:16,580 basehttp 25352 28156 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-07-02 12:38:16,791 basehttp 25352 28156 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-02 12:39:07,808 basehttp 25352 14292 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27568
+INFO 2025-07-02 12:39:07,854 basehttp 25352 14292 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-07-02 12:39:08,062 basehttp 25352 14292 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-02 12:42:17,633 basehttp 25352 23912 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27736
+INFO 2025-07-02 12:42:50,483 basehttp 25352 12112 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27740
+INFO 2025-07-02 12:43:17,792 basehttp 25352 8088 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 27744
+INFO 2025-07-02 12:43:50,686 basehttp 25352 14660 "POST /staff/aseguradoras/edit/telAdd/2/ HTTP/1.1" 302 0
+INFO 2025-07-02 12:43:50,720 basehttp 25352 14660 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 28480
+ERROR 2025-07-02 12:44:06,620 log 25352 13752 Internal Server Error: /staff/aseguradoras/edit/2/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py", line 477, in vista_aseguradoras_edit
+    return redirect('cia_list')  # Asegurate de tener definida esta URL
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'cia_list' not found. 'cia_list' is not a valid view function or pattern name.
+ERROR 2025-07-02 12:44:06,633 basehttp 25352 13752 "POST /staff/aseguradoras/edit/2/ HTTP/1.1" 500 94519
+WARNING 2025-07-02 12:44:06,769 log 25352 13752 Not Found: /favicon.ico
+WARNING 2025-07-02 12:44:06,770 basehttp 25352 13752 "GET /favicon.ico HTTP/1.1" 404 4115
+INFO 2025-07-02 12:45:23,270 autoreload 25352 6192 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 12:45:24,815 autoreload 5196 29244 Watching for file changes with StatReloader
+INFO 2025-07-02 12:45:26,148 basehttp 5196 24900 "POST /staff/aseguradoras/edit/2/ HTTP/1.1" 302 0
+INFO 2025-07-02 12:45:26,197 basehttp 5196 24900 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 12:45:29,890 basehttp 5196 24900 "GET /staff/aseguradoras/edit/7/ HTTP/1.1" 200 25794
+INFO 2025-07-02 12:45:38,569 basehttp 5196 17448 "GET /staff/aseguradoras/edit/5/ HTTP/1.1" 200 29672
+INFO 2025-07-02 12:45:43,128 basehttp 5196 17448 "GET /staff/aseguradoras/edit/6/ HTTP/1.1" 200 25764
+INFO 2025-07-02 12:45:47,805 basehttp 5196 20680 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 28480
+INFO 2025-07-02 12:45:52,487 basehttp 5196 20680 "GET /staff/aseguradoras/edit/3/ HTTP/1.1" 200 26361
+INFO 2025-07-02 12:45:57,665 basehttp 5196 21668 "GET /staff/aseguradoras/edit/4/ HTTP/1.1" 200 25746
+INFO 2025-07-02 12:46:02,664 basehttp 5196 21668 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28778
+INFO 2025-07-02 12:46:37,830 autoreload 5196 29244 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-02 12:46:38,922 autoreload 6848 4356 Watching for file changes with StatReloader
+INFO 2025-07-02 13:09:19,740 basehttp 6848 2596 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30343
+INFO 2025-07-02 13:09:30,032 basehttp 6848 7468 "POST /staff/aseguradoras/edit/telEdit/3/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:09:30,071 basehttp 6848 7468 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30357
+INFO 2025-07-02 13:09:40,882 basehttp 6848 18784 "POST /staff/aseguradoras/edit/telEdit/3/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:09:40,914 basehttp 6848 18784 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30373
+INFO 2025-07-02 13:09:51,954 basehttp 6848 5272 "POST /staff/aseguradoras/edit/telEdit/7/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:09:51,987 basehttp 6848 5272 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30393
+INFO 2025-07-02 13:09:58,761 basehttp 6848 5272 "GET /staff/aseguradoras/edit/telDelete/7/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:09:58,799 basehttp 6848 5272 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29463
+INFO 2025-07-02 13:10:26,156 basehttp 6848 10532 "POST /staff/aseguradoras/edit/telAdd/1/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:10:26,188 basehttp 6848 10532 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30357
+INFO 2025-07-02 13:10:33,301 basehttp 6848 9112 "POST /staff/aseguradoras/edit/telEdit/9/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:10:33,334 basehttp 6848 9112 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 30359
+INFO 2025-07-02 13:17:18,060 basehttp 6848 10836 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29483
+INFO 2025-07-02 13:18:37,442 basehttp 6848 2084 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29483
+INFO 2025-07-02 13:18:37,688 basehttp 6848 2084 "GET /static/css/styles.css HTTP/1.1" 200 3505
+INFO 2025-07-02 13:18:37,823 basehttp 6848 2084 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-02 13:20:17,858 basehttp 6848 2776 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29483
+INFO 2025-07-02 13:20:29,330 basehttp 6848 23744 "GET /staff/aseguradoras/edit/mailDelete/4/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:20:29,362 basehttp 6848 23744 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28536
+INFO 2025-07-02 13:22:30,101 basehttp 6848 24820 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28537
+INFO 2025-07-02 13:22:37,822 basehttp 6848 28788 "POST /staff/aseguradoras/edit/mailEdit/3/?cia=1 HTTP/1.1" 302 0
+INFO 2025-07-02 13:22:37,855 basehttp 6848 28788 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28551
+INFO 2025-07-02 13:23:59,735 basehttp 6848 28488 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28839
+INFO 2025-07-02 13:25:23,004 basehttp 6848 8428 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 28846
+INFO 2025-07-02 13:28:12,420 basehttp 6848 25024 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29141
+INFO 2025-07-02 13:29:33,525 basehttp 6848 13912 "GET /admin/ContadoApp/planpagos/9/change/ HTTP/1.1" 200 26874
+WARNING 2025-07-02 13:29:34,242 log 6848 13912 Not Found: /favicon.ico
+WARNING 2025-07-02 13:29:34,245 basehttp 6848 13912 "GET /favicon.ico HTTP/1.1" 404 4115
+INFO 2025-07-02 13:29:39,960 basehttp 6848 25292 "GET /staff/aseguradoras/edit/1/ HTTP/1.1" 200 29141
+INFO 2025-07-02 13:29:54,974 basehttp 6848 27888 "POST /staff/aseguradoras/edit/1/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:29:55,164 basehttp 6848 27888 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:30:05,560 basehttp 6848 27796 "GET /staff/aseguradoras/edit/7/ HTTP/1.1" 200 26055
+INFO 2025-07-02 13:30:09,013 basehttp 6848 15812 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:30:10,299 basehttp 6848 15812 "GET /staff/aseguradoras/edit/5/ HTTP/1.1" 200 29933
+INFO 2025-07-02 13:30:12,588 basehttp 6848 15812 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:30:14,168 basehttp 6848 15812 "GET /staff/aseguradoras/edit/6/ HTTP/1.1" 200 26025
+INFO 2025-07-02 13:30:16,194 basehttp 6848 15812 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:30:17,996 basehttp 6848 764 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 30074
+INFO 2025-07-02 13:31:18,015 basehttp 6848 2936 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 13:31:18,084 basehttp 6848 2936 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 13:34:52,060 basehttp 6848 12740 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:34:54,572 basehttp 6848 14224 "GET /staff/aseguradoras/edit/7/ HTTP/1.1" 200 26055
+INFO 2025-07-02 13:34:58,680 basehttp 6848 14224 "POST /staff/aseguradoras/edit/7/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:34:58,707 basehttp 6848 14224 "GET /staff/aseguradoras/ HTTP/1.1" 200 11674
+INFO 2025-07-02 13:35:03,545 basehttp 6848 30584 "GET /staff/aseguradoras/edit/7/ HTTP/1.1" 200 26048
+INFO 2025-07-02 13:35:06,843 basehttp 6848 30584 "POST /staff/aseguradoras/edit/7/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:35:06,875 basehttp 6848 30584 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:35:09,283 basehttp 6848 30584 "GET /staff/aseguradoras/edit/5/ HTTP/1.1" 200 29933
+INFO 2025-07-02 13:35:13,730 basehttp 6848 5820 "POST /staff/aseguradoras/edit/5/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:35:13,757 basehttp 6848 5820 "GET /staff/aseguradoras/ HTTP/1.1" 200 11674
+INFO 2025-07-02 13:35:19,557 basehttp 6848 5820 "GET /staff/aseguradoras/edit/5/ HTTP/1.1" 200 29926
+INFO 2025-07-02 13:35:26,583 basehttp 6848 12560 "POST /staff/aseguradoras/edit/5/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:35:26,611 basehttp 6848 12560 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:35:28,797 basehttp 6848 12560 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 30074
+INFO 2025-07-02 13:35:32,274 basehttp 6848 12560 "POST /staff/aseguradoras/edit/2/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:35:32,311 basehttp 6848 12560 "GET /staff/aseguradoras/ HTTP/1.1" 200 11674
+INFO 2025-07-02 13:35:36,395 basehttp 6848 2848 "GET /staff/aseguradoras/edit/2/ HTTP/1.1" 200 30067
+INFO 2025-07-02 13:35:39,979 basehttp 6848 2848 "POST /staff/aseguradoras/edit/2/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:35:40,007 basehttp 6848 2848 "GET /staff/aseguradoras/ HTTP/1.1" 200 11663
+INFO 2025-07-02 13:42:24,949 basehttp 6848 8284 "GET /admin/ HTTP/1.1" 200 29771
+INFO 2025-07-02 13:42:38,558 basehttp 6848 2612 "GET /admin/CotizacionesApp/datacotizacion/ HTTP/1.1" 200 47499
+INFO 2025-07-02 13:42:38,737 basehttp 6848 2612 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 13:42:53,770 basehttp 6848 9060 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 27689
+INFO 2025-07-02 13:42:53,846 basehttp 6848 9060 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 13:43:06,023 basehttp 6848 15860 "GET /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 200 26715
+INFO 2025-07-02 13:43:06,088 basehttp 6848 15860 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 13:43:33,192 basehttp 6848 11000 "POST /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:43:33,248 basehttp 6848 11000 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 28365
+INFO 2025-07-02 13:43:33,303 basehttp 6848 11000 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 13:43:36,151 basehttp 6848 23996 "GET /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 200 26715
+INFO 2025-07-02 13:43:36,209 basehttp 6848 23996 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 13:43:46,638 basehttp 6848 17844 "POST /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 302 0
+INFO 2025-07-02 13:43:46,686 basehttp 6848 17844 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 28797
+INFO 2025-07-02 13:43:46,741 basehttp 6848 17844 "GET /admin/jsi18n/ HTTP/1.1" 200 9282

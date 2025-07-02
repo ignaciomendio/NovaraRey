@@ -86,9 +86,9 @@
           {% endfor %}
         </select>
         <label for="pol_venc1_in" class="form-label">Vencimiento 1er cupón</label>
-        <input type="date" class="form-control" id="pol_venc1_in" name="pol_venc1_in" disabled>
+        <input type="date" class="form-control" id="pol_venc1_in" name="pol_venc1_in" disabled required>
         <label for="pol_cuotas_in" class="form-label">Cantidad de cuotas</label>
-        <input type="number" class="form-control" id="pol_cuotas_in" name="pol_cuotas_in" disabled>
+        <input type="number" class="form-control" id="pol_cuotas_in" name="pol_cuotas_in" disabled required>
       </div> 
 
       <hr class="staff-form-hr">
@@ -111,12 +111,17 @@
       const esContado = (seleccion === "" || seleccion === "CONTADO");
       if (esContado) {
         venc1Input.disabled = false;
+        venc1Input.required = true;
         cuotasInput.disabled = false;
+        cuotasInput.required = true;
+
       } else {
         venc1Input.disabled = true;
         cuotasInput.disabled = true;
         venc1Input.value = null;
         cuotasInput.value = null;
+        venc1Input.required = false;
+        cuotasInput.required = false;
       }
 
 
