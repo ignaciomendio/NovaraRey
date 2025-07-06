@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-_b*ure!#bjw76t-@p5co4t^lr7
 
 # Hosts permitidos
 if DEBUG:
-    ALLOWED_HOSTS = ['imendiola.pythonanywhere.com/', '127.0.0.1', 'localhost']
+    ALLOWED_HOSTS = ['imendiola.pythonanywhere.com', '127.0.0.1', 'localhost']
 else:
     ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
@@ -62,6 +62,7 @@ LOCAL_APPS = [
     'ProductorApp',
     'EmisionesApp',
     'ContadoApp',
+    'SiniestrosApp',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

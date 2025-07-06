@@ -12,6 +12,7 @@ from CotizacionesApp.models import QuotRequest, Cotizacion
 from EmisionesApp.models import Emision, Poliza
 from ClientesApp.models import ClientePersonaFisica, TarjetaCredito, Cliente, ClientePersonaJuridica
 from ContadoApp.models import Pago
+from SiniestrosApp.models import Siniestro
 
 DASHBOARD_COLORS={
     "critic": "#e35d6a",
@@ -45,6 +46,31 @@ class Dashboard_data():
 def vista_dashboard(request):
 
     ds_context: list[Dashboard_data] = []
+
+    #Código para el dashboard de siniestros en Preparacion
+    n_pend = len(Siniestro.objects.filter(status='P'))
+    if n_pend > 0:
+        ds_tareas = Dashboard_data(
+            title="Siniestros en Relevamiento",
+            status=DASHBOARD_COLORS["warning"],
+            URL=reverse('list_siniestros')+'?fil_status=P'
+        )
+        ds_tareas.clean_params()
+        ds_tareas.add_param(Dashboard_Param(f"Siniestros en relevamiento", n_pend))
+        ds_context.append(ds_tareas)
+
+    
+    #Código para el dashboard de siniestros informados
+    n_pend = len(Siniestro.objects.filter(status='I'))
+    if n_pend > 0:
+        ds_tareas = Dashboard_data(
+            title="Siniestros informados pendientes",
+            status=DASHBOARD_COLORS["warning"],
+            URL=reverse('list_siniestros')+'?fil_status=I'
+        )
+        ds_tareas.clean_params()
+        ds_tareas.add_param(Dashboard_Param(f"Siniestros informados pendientes de resulución", n_pend))
+        ds_context.append(ds_tareas)    
 
     #Código para el dashboard de pagos
     PAGOS_MAX_DIAS_VENCIMIENTO = 7
@@ -85,6 +111,8 @@ def vista_dashboard(request):
     tarjetas_a_vencer = list(filter(lambda x: x.avisar_vencimiento(), TarjetaCredito.objects.all()))
     if len(tarjetas_a_vencer) > 0:
         status_tareas = DASHBOARD_COLORS["warning"]
+        if any([tarjeta.vencida() for tarjeta in tarjetas_a_vencer]):
+            status_tareas = DASHBOARD_COLORS['critic']
         ds_tareas: Dashboard_data = Dashboard_data(
             title="Tarjetas",
             status=status_tareas, 

@@ -1,0 +1,102 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+    <h3 class="staff-form-title">Nueva Siniestro
+    </h3>
+    <hr class="staff-form-hr">
+
+    <form method="post">
+      
+      {% csrf_token %}
+
+      <input type="hidden" id="emid" name="emid" value="{{poliza.id}}">
+      <!-- Mostrar los datos de la poliza y el cliente-->
+      <p><strong>Cliente:&nbsp;</strong>
+        {% if poliza.rel_emision.Cotizacion.cliente.clientepersonafisica %}
+          {{ poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+        {% elif poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica %}
+          {{ poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+        {% else %}
+          Cliente sin nombre
+        {% endif %}
+      </p>
+      <p><strong>Compañia:&nbsp;</strong>{{poliza.rel_emision.cot_cia.aseguradora.nombre}}</p>
+      <p><strong>Nro de Póliza:&nbsp;</strong>{{poliza.numero}}</p>
+      <hr class="staff-form-hr">
+
+      <!-- Sección de ingreso de datos del siniesstro -->
+
+      <div class="staff-form-control-container">
+        <div class="mb-3">
+          <label for="cobertura" class="form-label">Cobertura del asegurado</label>
+          <input type="text" id="cobertura" name="cobertura" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="suma_aseg" class="form-label">Suma Asegurada (AR$)</label>
+          <input type="number" id="suma_aseg" name="suma_aseg" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="franquicia_porc" class="form-label">Pranquicia Porcentual (%)</label>
+          <input type="number" id="franquicia_porc" name="franquicia_porc" class="form-control">
+        </div>        
+        <div class="mb-3">
+          <label for="franquicia_fija" class="form-label">Pranquicia Fija (AR$)</label>
+          <input type="number" id="franquicia_fija" name="franquicia_fija" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="id_fecha_ocurrencia" class="form-label">Fecha y hora del siniestro</label>
+          <input type="datetime-local" class="form-control" id="id_fecha_ocurrencia" name="fecha_ocurrencia" required>
+        </div>
+        <div class="mb-3">
+          <label for="lugar_ocurrencia" class="form-label">Lugar de ocurrencia del siniestro</label>
+          <input type="text" class="form-control" id="lugar_ocurrencia" name="lugar_ocurrencia" required>
+        </div>
+        <div class="mb-3">
+          <label for="short_desc" class="form-label">Descripción CORTA del siniestro</label>
+          <input type="text" id="short_desc" name="short_desc" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="desc_ocurrencia" class="form-label">Descripción del siniestro</label>
+          <textarea name="desc_ocurrencia" id="desc_ocurrencia" rows="4" class="form-control" required></textarea>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="denunciado" name="denunciado" checked>
+          <label class="form-check-label" for="id_denunciado"> Con denuncia policia </label>
+        </div>
+        <div class="mb-3">
+          <label for="danios_propios" class="form-label">Descripción de de daños propios</label>
+          <textarea name="danios_propios" id="danios_propios" rows="4" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="id_tercero" class="form-label">Tipo de intervención de tercero</label>
+          <select class="form-select" id="id_tercero" name="tercero" required>
+            <option value="">Seleccionar terceros</option>
+            {% for key, label in terceros_choices %}
+              <option value="{{ key }}">{{ label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <hr class="staff-form-hr">
+
+      <div class="d-flex justify-content-between">
+            <a href="{% url 'ver_poliza' poliza.id %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Crear Siniestro</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+

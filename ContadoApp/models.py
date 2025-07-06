@@ -26,9 +26,9 @@ class PlanPagos(models.Model):
             if pago.status == Pago.Status.PENDIENTE:
                 pago.status = Pago.Status.ANULADO
                 if pago.observaciones:
-                    pago.observaciones += "\nPlan de pagos cancelado."
+                    pago.observaciones += f"\n{timezone.now().strftime('%Y-%m-%d %H:%M')} - Plan de pagos cancelado."
                 else:
-                    pago.observaciones = "\nPlan de pagos cancelado."
+                    pago.observaciones = f"{timezone.now().strftime('%Y-%m-%d %H:%M')} - Plan de pagos cancelado."
                 pago.save()
         self.status = self.Status.CANCELADO
         self.save()
@@ -39,7 +39,7 @@ class PlanPagos(models.Model):
         if pagos_plan:
             for pago in pagos_plan:
                 pago.status = Pago.Status.PENDIENTE
-                pago.observaciones += "\nPlan de pagos reactivado."
+                pago.observaciones += f"\n{timezone.now().strftime('%Y-%m-%d %H:%M')} - Plan de pagos reactivado."
                 pago.save()
             self.status = self.Status.ACTIVO
             self.save()

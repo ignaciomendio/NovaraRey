@@ -1,0 +1,2 @@
+source ~/.virtualenvs/venv/bin/activate
+git pull

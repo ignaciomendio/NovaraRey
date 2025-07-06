@@ -186,6 +186,11 @@
       method="post"
       id="bot_no_renovar">No Renovar
     </button>
+    <button class="btn btn-primary" title="Crear Siniestro"
+      {% if poliza.get_status != "Vigente" %}hidden{% endif %}
+      method="post"
+      id="bot_siniestro">Nuevo Siniestro
+    </button>
     <button class="btn btn-secondary staff-button" id="bot_volver" title="Volver" onclick="window.location.href='{% url 'list_polizas' %}'" >Volver</button>
   </div>
   </form>
@@ -515,6 +520,14 @@
       if (confirm(`La poliza aun tiene ${diasVigencia} dias de vigencia. ¿Está seguro que desea RENOVAR la poliza?`)) {
         // Redirige a la URL de renovación
         window.location.href = "{% url 'add_poliza' poliza.rel_emision.id %}";
+      }
+    });
+
+    //Boton Nuevo siniestro
+    document.getElementById('bot_siniestro').addEventListener('click', function () {
+      if (confirm(`¿Está seguro de asociar un sinistro a esta Poliza?`)) {
+        // Redirige a la URL de renovación
+        window.location.href = "{% url 'nuevo_siniestro' poliza.id %}";
       }
     });
 

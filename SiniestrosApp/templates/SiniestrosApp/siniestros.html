@@ -1,0 +1,392 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container staff-form-wide-container">
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mt-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <h3 class="staff-form-title">Siniestros</h3>
+
+  <!--Zona de Filtros-->
+  <hr class="staff-form-hr">
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-2">
+      <label for="fil_status" class="form-label">Status de Siniestro</label>
+      <select name="fil_status" id="fil_status" class="form-select">  
+        <option value="ALL">TODOS</option>
+        {% for choice in status_options %}
+          <option value="{{choice.0}}" {% if filtro_status_siniestro == choice.0 %}selected{% endif %}>{{choice.1}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="fil_nombre" class="form-label">Nombre / Razón Social</label>
+      <input type="text" name="fil_nombre" id="fil_nombre" class="form-control" value="{{ filtro_nombre }}">
+    </div>
+    <div class="col-md-2">
+      <label for="fil_nro_poliza" class="form-label">Nro de Poliza</label>
+      <input type="text" name="fil_nro_poliza" id="fil_nro_poliza" class="form-control" value="{{ filtro_nro_poliza }}">
+    </div>
+    <div class="col-md-2">
+      <label for="fil_siniestro" class="form-label">Nro de Sinistro</label>
+      <input type="text" name="fil_siniestro" id="fil_siniestro" class="form-control" value="{{ filtro_siniestro}}">
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="button" class="btn btn-secondary w-100" id="btnlimpiarfiltros">Limpiar Filtros</button>
+    </div>
+  </form>
+
+  <!--Zona de tabla-->
+  <hr class="staff-form-hr">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-sm" style="font-size: 0.85rem;">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nro. Siniestro</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Nro. Poliza</th>
+          <th scope="col">Status</th>
+          <th scope="col">Aseguradora</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for siniestro in siniestros %}
+          <tr>
+            <td>{{ siniestro.nro_siniestro }}</td>
+            <td>{{ siniestro.short_desc }}</td>
+            <td>
+              {% if siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica %}
+                {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+              {% elif siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica %}
+                {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+              {% endif %}
+            </td>
+            <td>{{ siniestro.poliza.numero }}</td>
+            <td>{{ siniestro.get_status_display }}</td>
+            <td>{{ siniestro.poliza.rel_emision.cot_cia.aseguradora.nombre  }}</td>
+            <td>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-edit-siniestro" data-id="{{ siniestro.id }}"
+              title="Editar Siniestro">
+              <i class="bi bi-pen"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-note-siniestro" 
+              data-id="{{ siniestro.id }}"
+              data-note="{{ siniestro.notas }}"
+              title="Editar Notas de Siniestro">
+              <i class="bi bi-journal-text"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-voucher {% if siniestro.status != 'I' %}d-none{% endif %} " 
+              style="background-color: lightgreen;"
+              data-id="{{ siniestro.id }}"
+              title="Resolver mediante Voucher">
+              <i class="bi bi-ticket-perforated"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-inform {% if siniestro.status != 'P' %}d-none{% endif %}" 
+              data-id="{{ siniestro.id }}"
+              title="Informado a la Compañia">
+              <i class="bi bi-info-circle"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-resuelto {% if siniestro.status != 'I' %}d-none{% endif %}" 
+              style="background-color: lightgreen;"
+              data-id="{{ siniestro.id }}"
+              title="Resuelto">
+              <i class="bi bi-check2-square"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm btn-rechazo {% if siniestro.status != 'I' %}d-none{% endif %}"
+              style="background-color: lightcoral;" 
+              data-id="{{ siniestro.id }}"
+              title="Rechazado por la Compañia">
+              <i class="bi bi-ban"></i>
+            </button>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="7" class="text-center">No hay siniestros que mostrar.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<!-- Modal para editar notas -->
+<div class="modal fade" id="editNotasModal" tabindex="-1" aria-labelledby="editNotasModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editNotasModalLabel">Editar Notas de siniestro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editNotasForm" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="siniestro_id" id="siniestro_id">
+          <div class="mb-3">
+            <label for="notas_siniestro" class="form-label">Notas de siniestro</label>
+            <textarea name="notas_siniestro" id="notas_siniestro" class="form-control" rows="6" readonly></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="nueva_nota" class="form-label">Nueva nota</label>
+            <input type="text" class="form-control" id="nueva_nota" name="nueva_nota" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Agregar Nota</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para resolver con voucher -->
+<div class="modal fade" id="voucherModal" tabindex="-1" aria-labelledby="voucherModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="voucherModalLabel">Resolución de siniestro con Voucher</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="voucherForm" method="post" enctype="multipart/form-data" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="nro_voucher" class="form-label">Número de Voucher</label>
+            <input type="text" id="nro_voucher" name="nro_voucher" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="voucher_file" class="form-label">Archivo de Voucher</label>
+            <input type="file" name="voucher_file" id="voucher_file">
+          </div>
+          <div class="mb-3">
+            <label for="voucher_nota" class="form-label">Anotaciones de cierre</label>
+            <input type="text" class="form-control" id="voucher_nota" name="voucher_nota">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Confirmar Cierre con Voucher</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para informar a compañía -->
+<div class="modal fade" id="informarModal" tabindex="-1" aria-labelledby="informarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="informarModalLabel">Informe de Siniestro a la compañia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="informarForm" method="post" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="info_nro" class="form-label">Número de Siniestro</label>
+            <input type="text" id="info_nro" name="info_nro" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="info_liq_nombre" class="form-label">Nombre y apellido de liquidador</label>
+            <input type="text" id="info_liq_nombre" name="info_liq_nombre" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="info_liq_tel" class="form-label">Teléfono del liquidador</label>
+            <input type="text" id="info_liq_tel" name="info_liq_tel" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="info_liq_mail" class="form-label">Mail del liquidador</label>
+            <input type="text" id="info_liq_mail" name="info_liq_mail" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="info_inspec_fecha" class="form-label">Fecha de inspección</label>
+            <input type="date" id="info_inspec_fecha" name="info_inspec_fecha" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="info_inspec_lugar" class="form-label">Lugar de inspección</label>
+            <input type="text" id="info_inspec_lugar" name="info_inspec_lugar" class="form-control" >
+          </div>
+          <div class="mb-3">
+            <label for="info_taller" class="form-label">Taller o Servicio técnico asignado</label>
+            <input type="text" id="info_taller" name="info_taller" class="form-control" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Confirmar Informe a compañia</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para resolver -->
+<div class="modal fade" id="resolverModal" tabindex="-1" aria-labelledby="resolverModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resolverModalLabel">Resolución de siniestro </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="resolverForm" method="post" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="resolver_nota" class="form-label">Anotaciones de cierre</label>
+            <input type="text" class="form-control" id="resolver_nota" name="resolver_nota">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Confirmar Resolución de siniestro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para rechazo de sinistro -->
+<div class="modal fade" id="rechazarModal" tabindex="-1" aria-labelledby="rechazarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rechazarModalLabel">Rechazo de siniestro </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="rechazarForm" method="post" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="rechazar_nota" class="form-label">Anotaciones de Rechazo</label>
+            <input type="text" class="form-control" id="rechazar_nota" name="rechazar_nota">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Confirmar Rechazo de siniestro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+      //evento click en limpiar filtros
+      const btnLimpiarFiltros = document.getElementById('btnlimpiarfiltros');
+      btnLimpiarFiltros.addEventListener('click', function() {
+        document.getElementById('fil_status').value = 'ALL';
+        document.getElementById('fil_nombre').value = ''; 
+        document.getElementById('fil_nro_poliza').value = '';
+        document.getElementById('fil_siniestro').value = '';
+      });
+      //evento click en editar siniestro
+      const btnEditSiniestro = document.querySelectorAll('.btn-edit-siniestro');
+      btnEditSiniestro.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const siniestroId = this.getAttribute('data-id');
+          window.location.href = `/staff/siniestros/edit/${siniestroId}`;
+        });
+      });
+      //evento click en editar notas
+      const modalNotas = document.getElementById('editNotasModal');
+      const formNotas = document.getElementById('editNotasForm');
+      
+      const btnEditNotes = document.querySelectorAll('.btn-note-siniestro');
+      btnEditNotes.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const siniestroId = this.getAttribute('data-id');
+          document.getElementById('siniestro_id').value = siniestroId
+          document.getElementById('notas_siniestro').value = this.getAttribute('data-note');
+          formNotas.action = "{% url 'add_note' 0 %}".replace('0', siniestroId);
+          const modal = new bootstrap.Modal(modalNotas);
+          modal.show();
+        });
+      });
+
+      //Eventos para resolver mediante envio de Voucher
+      const modalVoucher = document.getElementById('voucherModal');
+      const formVoucher = document.getElementById('voucherForm');
+
+      const btnVoucher = document.querySelectorAll('.btn-voucher');
+      btnVoucher.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          const siniestroId = this.getAttribute('data-id');
+          if (confirm('¿Resolver siniestro con emisión de Voucher?')){
+            formVoucher.action = "{% url 'add_voucher' 0 %}".replace('0', siniestroId);
+            const modal = new bootstrap.Modal(modalVoucher);
+            modal.show();
+          }
+        })
+      })
+
+      //Eventos para enviar a la compañia
+      const modalInformar = document.getElementById('informarModal');
+      const formInformar = document.getElementById('informarForm');
+
+      const btnInformar = document.querySelectorAll('.btn-inform');
+      btnInformar.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          console.log("Clic en botón informar");
+          const siniestroId = this.getAttribute('data-id');
+          if (confirm('¿El siniestro ha sido informado a la compañía?')){
+            formInformar.action = "{% url 'informar_sin' 0 %}".replace('0', siniestroId);
+            const modal = new bootstrap.Modal(modalInformar);
+            modal.show();
+          }
+        })
+      })
+
+      //Eventos para resolver siniestro
+      const modalResolver= document.getElementById('resolverModal');
+      const formResolver = document.getElementById('resolverForm');
+
+      const btnResolver = document.querySelectorAll('.btn-resuelto');
+      btnResolver.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          const siniestroId = this.getAttribute('data-id');
+          if (confirm('¿Dar por rresuelto el siniestro?')){
+            formResolver.action = "{% url 'resolver_siniestro' 0 %}".replace('0', siniestroId);
+            const modal = new bootstrap.Modal(modalResolver);
+            modal.show();
+          }
+        })
+      })
+
+      //Eventos para rechazar siniestro
+      const modalRechazar= document.getElementById('rechazarModal');
+      const formRechazar = document.getElementById('rechazarForm');
+
+      const btnRechazar = document.querySelectorAll('.btn-rechazo');
+      btnRechazar.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          const siniestroId = this.getAttribute('data-id');
+          if (confirm('¿Marcar el sinistro como rechazado?')){
+            formRechazar.action = "{% url 'rechazar_siniestro' 0 %}".replace('0', siniestroId);
+            const modal = new bootstrap.Modal(modalRechazar);
+            modal.show();
+          }
+        })
+      })
+
+    });
+</script>
+{% endblock %}

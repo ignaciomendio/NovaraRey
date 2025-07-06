@@ -4434,3 +4434,1740 @@ INFO 2025-07-02 13:43:36,209 basehttp 6848 23996 "GET /admin/jsi18n/ HTTP/1.1" 2
 INFO 2025-07-02 13:43:46,638 basehttp 6848 17844 "POST /admin/CotizacionesApp/dataemision/add/ HTTP/1.1" 302 0
 INFO 2025-07-02 13:43:46,686 basehttp 6848 17844 "GET /admin/CotizacionesApp/dataemision/ HTTP/1.1" 200 28797
 INFO 2025-07-02 13:43:46,741 basehttp 6848 17844 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-07-02 16:19:45,084 autoreload 6848 4356 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-07-02 16:19:51,935 autoreload 14600 15508 Watching for file changes with StatReloader
+INFO 2025-07-02 17:43:59,788 basehttp 14600 23056 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-07-02 17:44:00,026 basehttp 14600 23056 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4249
+INFO 2025-07-02 17:44:00,295 basehttp 14600 23056 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-07-02 17:44:02,759 basehttp 14600 23056 "GET / HTTP/1.1" 200 6246
+INFO 2025-07-02 17:44:02,832 basehttp 14600 23056 "GET /static/img/Tuem%20sin%20fondo.png HTTP/1.1" 200 11346
+INFO 2025-07-02 20:38:31,889 autoreload 14600 15508 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\urls.py changed, reloading.
+INFO 2025-07-02 20:38:33,978 autoreload 26380 23912 Watching for file changes with StatReloader
+INFO 2025-07-02 20:38:48,507 autoreload 26380 23912 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-07-02 20:38:49,492 autoreload 16288 26336 Watching for file changes with StatReloader
+INFO 2025-07-02 20:41:01,480 autoreload 16288 26336 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:41:02,551 autoreload 29344 15808 Watching for file changes with StatReloader
+INFO 2025-07-02 20:42:58,598 autoreload 29344 15808 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-02 20:42:59,568 autoreload 17384 28868 Watching for file changes with StatReloader
+INFO 2025-07-02 20:43:29,661 autoreload 17384 28868 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-02 20:43:30,596 autoreload 20540 23032 Watching for file changes with StatReloader
+INFO 2025-07-02 20:43:40,604 autoreload 20540 23032 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-02 20:43:41,566 autoreload 30044 8692 Watching for file changes with StatReloader
+INFO 2025-07-02 20:48:30,845 autoreload 30044 8692 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:48:32,473 autoreload 3772 7336 Watching for file changes with StatReloader
+INFO 2025-07-02 20:48:40,547 autoreload 3772 7336 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:48:41,906 autoreload 27656 30400 Watching for file changes with StatReloader
+INFO 2025-07-02 20:48:45,602 basehttp 27656 4932 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 20:48:45,826 basehttp 27656 4932 "GET /login/login/?next=/staff/ HTTP/1.1" 200 6882
+INFO 2025-07-02 20:48:52,108 basehttp 27656 2448 "POST /login/login/?next=/staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 20:48:52,129 basehttp 27656 2448 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-02 20:48:52,209 basehttp 27656 2448 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-02 20:48:52,325 basehttp 27656 2448 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-02 20:48:56,075 basehttp 27656 28344 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-02 20:49:00,930 basehttp 27656 17716 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35763
+ERROR 2025-07-02 20:49:09,504 log 27656 16904 Internal Server Error: /staff/siniestros/add/4
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 12, in vista_nuevo_siniestro
+    return render(req, 'SiniestrosApp/siniestro_add.html',{
+        "poliza": poliza,
+        "terceros_choices": terceros_choices,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: SiniestrosApp/siniestro_add.html
+ERROR 2025-07-02 20:49:09,512 basehttp 27656 16904 "GET /staff/siniestros/add/4 HTTP/1.1" 500 92115
+WARNING 2025-07-02 20:49:09,693 log 27656 16904 Not Found: /favicon.ico
+WARNING 2025-07-02 20:49:09,694 basehttp 27656 16904 "GET /favicon.ico HTTP/1.1" 404 4275
+INFO 2025-07-02 20:50:53,964 autoreload 27656 30400 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:50:55,203 autoreload 23600 25544 Watching for file changes with StatReloader
+INFO 2025-07-02 20:50:58,548 basehttp 23600 6004 "GET /staff/siniestros/add/4 HTTP/1.1" 200 12581
+INFO 2025-07-02 20:52:07,597 basehttp 23600 11144 "POST /staff/siniestros/add/4 HTTP/1.1" 200 12581
+INFO 2025-07-02 20:52:12,557 basehttp 23600 6636 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35763
+INFO 2025-07-02 20:57:30,627 autoreload 23600 25544 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:57:32,570 autoreload 23596 24988 Watching for file changes with StatReloader
+INFO 2025-07-02 20:57:34,598 autoreload 23596 24988 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 20:57:35,804 autoreload 28752 19944 Watching for file changes with StatReloader
+INFO 2025-07-02 21:00:09,293 autoreload 28752 19944 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 21:00:10,776 autoreload 26148 20124 Watching for file changes with StatReloader
+INFO 2025-07-02 21:01:26,729 autoreload 26148 20124 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 21:01:27,842 autoreload 6620 22760 Watching for file changes with StatReloader
+INFO 2025-07-02 21:10:32,053 autoreload 6620 22760 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-02 21:10:33,934 autoreload 26656 27812 Watching for file changes with StatReloader
+INFO 2025-07-02 21:11:38,483 autoreload 26656 27812 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 21:11:39,626 autoreload 11068 29720 Watching for file changes with StatReloader
+INFO 2025-07-02 21:13:22,645 autoreload 11068 29720 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-02 21:13:24,203 autoreload 23032 11508 Watching for file changes with StatReloader
+INFO 2025-07-03 10:52:40,984 autoreload 23032 11508 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 10:52:44,035 autoreload 29668 30012 Watching for file changes with StatReloader
+INFO 2025-07-03 10:53:42,373 autoreload 29668 30012 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 10:53:43,749 autoreload 1992 25092 Watching for file changes with StatReloader
+INFO 2025-07-03 10:54:02,902 basehttp 1992 23448 "GET /staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-03 10:54:02,975 basehttp 1992 23448 "GET /login/login/?next=/staff/siniestros/list HTTP/1.1" 200 6882
+INFO 2025-07-03 10:54:03,214 basehttp 1992 23448 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-03 10:54:10,024 basehttp 1992 18516 "POST /login/login/?next=/staff/siniestros/list HTTP/1.1" 302 0
+ERROR 2025-07-03 10:54:10,178 log 1992 18516 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 45, in vista_list_siniestros
+    selected = [siniestro for siniestro in siniestro if siniestro.status == fil_status]
+                                           ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'siniestro' where it is not associated with a value
+ERROR 2025-07-03 10:54:10,189 basehttp 1992 18516 "GET /staff/siniestros/list HTTP/1.1" 500 71904
+INFO 2025-07-03 10:55:19,838 autoreload 1992 25092 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 10:55:22,015 autoreload 10832 19664 Watching for file changes with StatReloader
+ERROR 2025-07-03 10:55:23,149 log 10832 208 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: SiniestrosApp_siniestro
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 45, in vista_list_siniestros
+    selected = [siniestro for siniestro in siniestros if siniestro.status == fil_status]
+                                           ^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: SiniestrosApp_siniestro
+ERROR 2025-07-03 10:55:23,163 basehttp 10832 208 "GET /staff/siniestros/list HTTP/1.1" 500 146479
+INFO 2025-07-03 10:56:09,723 basehttp 10832 24156 "GET /staff/siniestros/list HTTP/1.1" 200 12431
+INFO 2025-07-03 10:56:17,612 basehttp 10832 2292 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 12431
+INFO 2025-07-03 12:07:30,012 basehttp 10832 5964 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 302 0
+INFO 2025-07-03 12:07:30,329 basehttp 10832 5964 "GET /login/login/?next=/staff/emisiones/listpolizas%3Ffil_status%3DV HTTP/1.1" 200 6882
+INFO 2025-07-03 12:07:39,136 basehttp 10832 16240 "POST /login/login/?next=/staff/emisiones/listpolizas%3Ffil_status%3DV HTTP/1.1" 302 0
+INFO 2025-07-03 12:07:39,632 basehttp 10832 16240 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-03 12:07:43,949 basehttp 10832 12544 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35763
+INFO 2025-07-03 12:07:50,728 basehttp 10832 13180 "GET /staff/siniestros/add/4 HTTP/1.1" 200 11617
+INFO 2025-07-03 12:08:33,605 basehttp 10832 24228 "POST /staff/siniestros/add/4 HTTP/1.1" 302 0
+INFO 2025-07-03 12:08:33,751 basehttp 10832 24228 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35763
+INFO 2025-07-03 12:08:48,839 basehttp 10832 9584 "GET /staff/siniestros/list HTTP/1.1" 200 12431
+INFO 2025-07-03 12:08:52,576 basehttp 10832 9584 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 12842
+INFO 2025-07-03 12:09:48,967 basehttp 10832 2488 "GET /staff/siniestros/list HTTP/1.1" 200 12431
+INFO 2025-07-03 12:10:05,532 autoreload 10832 19664 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 12:10:08,919 autoreload 26000 10340 Watching for file changes with StatReloader
+INFO 2025-07-03 12:10:10,177 basehttp 26000 29912 "GET /staff/siniestros/list HTTP/1.1" 200 12842
+INFO 2025-07-03 12:10:10,247 basehttp 26000 29912 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-07-03 12:35:53,377 autoreload 26000 10340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 12:35:54,849 autoreload 984 16340 Watching for file changes with StatReloader
+INFO 2025-07-03 12:35:58,808 autoreload 984 16340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 12:35:59,852 autoreload 27516 19196 Watching for file changes with StatReloader
+ERROR 2025-07-03 12:43:55,597 log 27516 16260 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 69, in vista_list_siniestros
+    return render(req, 'SiniestrosApp/siniestros.html', {
+        'siniestros': selected,
+    ...<4 lines>...
+        'filtro_siniestro': fil_siniestro,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'add_note' not found. 'add_note' is not a valid view function or pattern name.
+ERROR 2025-07-03 12:43:55,609 basehttp 27516 16260 "GET /staff/siniestros/list HTTP/1.1" 500 170543
+INFO 2025-07-03 12:54:23,647 autoreload 27516 19196 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 12:54:25,319 autoreload 29532 27104 Watching for file changes with StatReloader
+INFO 2025-07-03 12:54:37,707 basehttp 29532 29368 "GET /admin/ HTTP/1.1" 200 29901
+ERROR 2025-07-03 12:54:49,082 log 29532 20728 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 70, in vista_list_siniestros
+    return render(req, 'SiniestrosApp/siniestros.html', {
+        'siniestros': selected,
+    ...<4 lines>...
+        'filtro_siniestro': fil_siniestro,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'add_note' not found. 'add_note' is not a valid view function or pattern name.
+ERROR 2025-07-03 12:54:49,097 basehttp 29532 20728 "GET /staff/siniestros/list HTTP/1.1" 500 170406
+INFO 2025-07-03 12:54:58,108 autoreload 29532 27104 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 12:54:59,340 autoreload 29316 18896 Watching for file changes with StatReloader
+INFO 2025-07-03 12:55:00,527 basehttp 29316 1180 "GET /staff/siniestros/list HTTP/1.1" 200 15348
+INFO 2025-07-03 12:57:28,317 basehttp 29316 5744 "GET /staff/siniestros/list HTTP/1.1" 200 15344
+INFO 2025-07-03 12:58:11,530 basehttp 29316 18900 "GET /staff/siniestros/list HTTP/1.1" 200 15350
+INFO 2025-07-03 12:58:35,153 basehttp 29316 13396 "POST /staff/siniestros/add_note/1 HTTP/1.1" 302 0
+INFO 2025-07-03 12:58:35,184 basehttp 29316 13396 "GET /staff/siniestros/list HTTP/1.1" 200 15384
+INFO 2025-07-03 12:59:08,802 basehttp 29316 17384 "POST /staff/siniestros/add_note/1 HTTP/1.1" 302 0
+INFO 2025-07-03 12:59:08,832 basehttp 29316 17384 "GET /staff/siniestros/list HTTP/1.1" 200 15424
+INFO 2025-07-03 12:59:59,959 basehttp 29316 15664 "GET /staff/siniestros/list HTTP/1.1" 200 15433
+INFO 2025-07-03 13:16:07,069 basehttp 29316 19644 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=sd&fil_siniestro= HTTP/1.1" 200 14679
+INFO 2025-07-03 13:16:11,918 basehttp 29316 26608 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15433
+INFO 2025-07-03 13:16:16,548 basehttp 29316 23196 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=g&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15434
+INFO 2025-07-03 13:16:29,952 basehttp 29316 11356 "GET /staff/siniestros/list?fil_status=P&fil_nombre=g&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15442
+INFO 2025-07-03 13:16:33,926 basehttp 29316 12768 "GET /staff/siniestros/list?fil_status=I&fil_nombre=g&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 14686
+INFO 2025-07-03 13:16:36,803 basehttp 29316 12768 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=g&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15434
+INFO 2025-07-03 13:17:21,466 autoreload 29316 18896 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 13:17:22,910 autoreload 3896 15512 Watching for file changes with StatReloader
+INFO 2025-07-03 13:17:54,554 autoreload 3896 15512 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 13:17:55,478 autoreload 9736 26932 Watching for file changes with StatReloader
+INFO 2025-07-03 13:18:53,312 autoreload 9736 26932 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 13:18:54,236 autoreload 6336 27924 Watching for file changes with StatReloader
+INFO 2025-07-03 13:19:33,400 basehttp 6336 2732 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15295
+INFO 2025-07-03 13:41:14,742 autoreload 6336 27924 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 13:41:16,511 autoreload 20728 25908 Watching for file changes with StatReloader
+INFO 2025-07-03 13:42:16,713 basehttp 20728 22956 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15298
+WARNING 2025-07-03 13:42:18,570 log 20728 22956 Not Found: /staff/siniestros/edit/1/
+WARNING 2025-07-03 13:42:18,572 basehttp 20728 22956 "GET /staff/siniestros/edit/1/ HTTP/1.1" 404 10289
+INFO 2025-07-03 13:45:42,714 autoreload 20728 25908 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 13:45:44,138 autoreload 25952 9856 Watching for file changes with StatReloader
+WARNING 2025-07-03 13:45:45,333 log 25952 8808 Not Found: /staff/siniestros/edit/1/
+WARNING 2025-07-03 13:45:45,334 basehttp 25952 8808 "GET /staff/siniestros/edit/1/ HTTP/1.1" 404 10289
+INFO 2025-07-03 13:45:52,036 autoreload 25952 9856 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 13:45:53,093 autoreload 18320 26120 Watching for file changes with StatReloader
+WARNING 2025-07-03 13:45:53,610 log 18320 9228 Not Found: /staff/siniestros/edit/1/
+WARNING 2025-07-03 13:45:53,611 basehttp 18320 9228 "GET /staff/siniestros/edit/1/ HTTP/1.1" 404 10583
+WARNING 2025-07-03 13:46:19,344 log 18320 28392 Not Found: /staff/siniestros/edit/1/
+WARNING 2025-07-03 13:46:19,346 basehttp 18320 28392 "GET /staff/siniestros/edit/1/ HTTP/1.1" 404 10583
+INFO 2025-07-03 13:46:27,169 basehttp 18320 2572 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15298
+WARNING 2025-07-03 13:46:28,694 log 18320 2572 Not Found: /staff/siniestros/edit/1/
+WARNING 2025-07-03 13:46:28,695 basehttp 18320 2572 "GET /staff/siniestros/edit/1/ HTTP/1.1" 404 10583
+INFO 2025-07-03 13:47:00,967 basehttp 18320 14596 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15297
+ERROR 2025-07-03 13:47:02,455 log 18320 14596 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 95, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+        'status_options': Siniestro.SiniestroStatus.choices,
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ver_poliza' with arguments '('',)' not found. 1 pattern(s) tried: ['staff/emisiones/verPoliza/(?P<id>[0-9]+)/\\Z']
+ERROR 2025-07-03 13:47:02,471 basehttp 18320 14596 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 170325
+INFO 2025-07-03 13:48:35,902 autoreload 18320 26120 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 13:48:37,006 autoreload 25196 14660 Watching for file changes with StatReloader
+ERROR 2025-07-03 13:48:39,013 log 25196 3088 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 95, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+        'status_options': Siniestro.SiniestroStatus.choices,
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ver_poliza' with arguments '('',)' not found. 1 pattern(s) tried: ['staff/emisiones/verPoliza/(?P<id>[0-9]+)/\\Z']
+ERROR 2025-07-03 13:48:39,023 basehttp 25196 3088 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 170462
+INFO 2025-07-03 13:48:41,976 basehttp 25196 3088 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15297
+ERROR 2025-07-03 13:48:43,541 log 25196 3088 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 95, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+        'status_options': Siniestro.SiniestroStatus.choices,
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ver_poliza' with arguments '('',)' not found. 1 pattern(s) tried: ['staff/emisiones/verPoliza/(?P<id>[0-9]+)/\\Z']
+ERROR 2025-07-03 13:48:43,548 basehttp 25196 3088 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 170325
+INFO 2025-07-03 13:49:54,700 basehttp 25196 29768 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12300
+INFO 2025-07-03 13:50:37,034 basehttp 25196 6308 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12019
+INFO 2025-07-03 13:51:58,355 autoreload 25196 14660 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 13:51:59,610 autoreload 18540 16072 Watching for file changes with StatReloader
+INFO 2025-07-03 13:52:01,906 basehttp 18540 13088 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12258
+ERROR 2025-07-03 13:53:54,442 log 18540 13816 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 95, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+        'terceros_choices': Siniestro.TercerosOpciones.choices
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ':'Y-m-d\\TH:i' from 'siniestro.fecha_ocurrencia|date:'Y-m-d\\TH:i'
+ERROR 2025-07-03 13:53:54,453 basehttp 18540 13816 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 214935
+INFO 2025-07-03 13:54:51,135 basehttp 18540 24628 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12243
+INFO 2025-07-03 13:55:27,579 autoreload 18540 16072 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 13:55:28,787 autoreload 10272 27704 Watching for file changes with StatReloader
+INFO 2025-07-03 13:58:05,440 basehttp 10272 21404 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12219
+INFO 2025-07-03 13:58:07,932 basehttp 10272 21404 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12219
+INFO 2025-07-03 13:58:53,250 basehttp 10272 7936 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 12206
+INFO 2025-07-03 14:11:18,018 autoreload 10272 27704 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 14:11:20,228 autoreload 20508 10072 Watching for file changes with StatReloader
+INFO 2025-07-03 14:13:58,537 autoreload 20508 10072 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 14:13:59,620 autoreload 25292 24876 Watching for file changes with StatReloader
+INFO 2025-07-03 14:46:59,667 autoreload 25292 24876 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 14:47:01,382 autoreload 29548 27384 Watching for file changes with StatReloader
+INFO 2025-07-03 14:47:06,981 basehttp 29548 15764 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 15297
+INFO 2025-07-03 14:47:08,771 basehttp 29548 15764 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 13907
+INFO 2025-07-03 14:47:49,873 basehttp 29548 14072 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 13934
+INFO 2025-07-03 14:48:39,487 basehttp 29548 21792 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 13969
+INFO 2025-07-03 15:46:26,913 autoreload 29548 27384 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 15:46:28,860 autoreload 22280 30068 Watching for file changes with StatReloader
+INFO 2025-07-03 15:52:25,284 autoreload 22280 30068 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 15:52:27,093 autoreload 29936 19540 Watching for file changes with StatReloader
+INFO 2025-07-03 15:52:31,561 basehttp 29936 23956 "GET /staff/siniestros/edit/1 HTTP/1.1" 302 0
+INFO 2025-07-03 15:52:31,851 basehttp 29936 23956 "GET /login/login/?next=/staff/siniestros/edit/1 HTTP/1.1" 200 6882
+INFO 2025-07-03 15:52:41,241 basehttp 29936 3616 "POST /login/login/?next=/staff/siniestros/edit/1 HTTP/1.1" 302 0
+INFO 2025-07-03 15:52:41,343 basehttp 29936 3616 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 17383
+INFO 2025-07-03 15:54:19,443 basehttp 29936 10656 "POST /staff/siniestros/add_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 15:54:19,491 basehttp 29936 10656 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18122
+ERROR 2025-07-03 16:02:20,526 log 29936 30096 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'len'
+ERROR 2025-07-03 16:02:20,546 basehttp 29936 30096 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 233259
+WARNING 2025-07-03 16:02:20,901 log 29936 30096 Not Found: /favicon.ico
+WARNING 2025-07-03 16:02:20,902 basehttp 29936 30096 "GET /favicon.ico HTTP/1.1" 404 4275
+INFO 2025-07-03 16:03:17,971 basehttp 29936 18752 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18178
+INFO 2025-07-03 16:09:56,264 basehttp 29936 12736 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18355
+INFO 2025-07-03 16:11:40,859 basehttp 29936 7320 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18389
+INFO 2025-07-03 16:12:30,005 basehttp 29936 29344 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18388
+INFO 2025-07-03 16:13:00,665 basehttp 29936 4692 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18388
+INFO 2025-07-03 16:14:39,899 basehttp 29936 6240 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18391
+INFO 2025-07-03 16:21:09,059 basehttp 29936 5680 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 18684
+INFO 2025-07-03 17:03:07,270 autoreload 29936 19540 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 17:03:09,591 autoreload 14592 13784 Watching for file changes with StatReloader
+INFO 2025-07-03 17:03:24,614 autoreload 14592 13784 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:03:25,618 autoreload 6992 2936 Watching for file changes with StatReloader
+INFO 2025-07-03 17:09:50,539 autoreload 6992 2936 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:09:52,695 autoreload 920 24628 Watching for file changes with StatReloader
+INFO 2025-07-03 17:10:02,217 basehttp 920 28316 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23410
+INFO 2025-07-03 17:10:21,855 basehttp 920 20328 "POST /staff/siniestros/edit_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:10:21,898 basehttp 920 20328 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23426
+INFO 2025-07-03 17:10:49,304 basehttp 920 9844 "POST /staff/siniestros/edit_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:10:49,342 basehttp 920 9844 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23428
+INFO 2025-07-03 17:11:14,389 basehttp 920 24968 "POST /staff/siniestros/edit_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:11:14,425 basehttp 920 24968 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23452
+INFO 2025-07-03 17:17:53,751 autoreload 920 24628 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 17:17:55,477 autoreload 3472 1556 Watching for file changes with StatReloader
+INFO 2025-07-03 17:19:58,763 autoreload 3472 1556 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:19:59,809 autoreload 19792 900 Watching for file changes with StatReloader
+INFO 2025-07-03 17:20:04,169 basehttp 19792 13872 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23888
+INFO 2025-07-03 17:20:43,802 basehttp 19792 20148 "POST /staff/siniestros/add_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:20:43,842 basehttp 19792 20148 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 25089
+INFO 2025-07-03 17:20:57,761 basehttp 19792 29072 "POST /staff/siniestros/edit_tercero/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:20:57,800 basehttp 19792 29072 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 25048
+WARNING 2025-07-03 17:21:11,514 log 19792 20312 Not Found: /staff/siniestros/del/1/2
+WARNING 2025-07-03 17:21:11,515 basehttp 19792 20312 "GET /staff/siniestros/del/1/2 HTTP/1.1" 404 11494
+INFO 2025-07-03 17:21:38,885 basehttp 19792 6848 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 25056
+INFO 2025-07-03 17:21:44,869 basehttp 19792 3460 "GET /staff/siniestros/del_tercero/1/2 HTTP/1.1" 302 0
+INFO 2025-07-03 17:21:44,907 basehttp 19792 3460 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 23896
+INFO 2025-07-03 17:32:44,749 autoreload 19792 900 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-03 17:32:46,551 autoreload 11096 27520 Watching for file changes with StatReloader
+ERROR 2025-07-03 17:37:51,790 log 11096 24700 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: SiniestrosApp_docsiniestro
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 199, in render
+    len_values = len(values)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: SiniestrosApp_docsiniestro
+ERROR 2025-07-03 17:37:51,807 basehttp 11096 24700 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 218894
+INFO 2025-07-03 17:38:42,693 basehttp 11096 28636 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 24811
+INFO 2025-07-03 17:39:55,535 basehttp 11096 12936 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 24843
+INFO 2025-07-03 17:45:04,195 autoreload 11096 27520 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:45:06,110 autoreload 26188 18896 Watching for file changes with StatReloader
+ERROR 2025-07-03 17:45:07,571 log 26188 20096 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'add_file_siniestro' not found. 'add_file_siniestro' is not a valid view function or pattern name.
+ERROR 2025-07-03 17:45:07,585 basehttp 26188 20096 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 173540
+INFO 2025-07-03 17:46:07,553 autoreload 26188 18896 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 17:46:08,563 autoreload 19248 30432 Watching for file changes with StatReloader
+INFO 2025-07-03 17:46:13,169 basehttp 19248 29480 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26256
+INFO 2025-07-03 17:46:59,300 basehttp 19248 9084 "POST /staff/siniestros/add_file/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:46:59,338 basehttp 19248 9084 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26627
+INFO 2025-07-03 17:47:06,948 basehttp 19248 28216 "GET /media/siniestros/Captura_de_pantalla_2025-05-07_120703.png HTTP/1.1" 200 7623
+INFO 2025-07-03 17:50:26,159 autoreload 19248 30432 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 17:50:27,725 autoreload 13760 22444 Watching for file changes with StatReloader
+INFO 2025-07-03 17:51:20,332 autoreload 13760 22444 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:51:21,308 autoreload 26920 20860 Watching for file changes with StatReloader
+INFO 2025-07-03 17:51:29,862 basehttp 26920 1940 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 27073
+INFO 2025-07-03 17:55:04,916 basehttp 26920 22416 "GET /staff/siniestros/list HTTP/1.1" 200 15297
+INFO 2025-07-03 17:55:07,645 basehttp 26920 9504 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 27073
+INFO 2025-07-03 17:55:13,432 basehttp 26920 30672 "GET /staff/siniestros/del_archivo/1/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:56:24,711 autoreload 26920 20860 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 17:56:34,436 basehttp 26920 15860 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+INFO 2025-07-03 17:57:02,556 autoreload 13648 24156 Watching for file changes with StatReloader
+INFO 2025-07-03 17:57:30,662 basehttp 13648 26916 "GET /admin/ HTTP/1.1" 200 29901
+INFO 2025-07-03 17:57:34,666 basehttp 13648 8736 "GET / HTTP/1.1" 200 6335
+INFO 2025-07-03 17:57:36,971 basehttp 13648 13172 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-03 17:57:37,062 basehttp 13648 13172 "GET /staff/dashboard/ HTTP/1.1" 200 15866
+WARNING 2025-07-03 17:57:37,128 basehttp 13648 13172 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-03 17:57:46,134 basehttp 13648 18496 "GET /staff/siniestros/list HTTP/1.1" 200 15297
+INFO 2025-07-03 17:57:47,936 basehttp 13648 18496 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26702
+INFO 2025-07-03 17:58:03,269 basehttp 13648 27572 "POST /staff/siniestros/add_file/1 HTTP/1.1" 302 0
+INFO 2025-07-03 17:58:03,316 basehttp 13648 27572 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 27068
+INFO 2025-07-03 17:58:07,339 basehttp 13648 27572 "GET /media/siniestros/Captura_de_pantalla_2025-05-07_120703.png HTTP/1.1" 200 7623
+INFO 2025-07-03 17:58:17,441 basehttp 13648 16228 "GET /staff/siniestros/del_archivo/1/2 HTTP/1.1" 302 0
+INFO 2025-07-03 17:58:17,483 basehttp 13648 16228 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26702
+INFO 2025-07-03 18:03:32,274 basehttp 13648 29480 "GET /staff/siniestros/list HTTP/1.1" 200 15297
+INFO 2025-07-03 18:06:40,152 basehttp 13648 3432 "GET /staff/siniestros/list HTTP/1.1" 200 15536
+INFO 2025-07-03 18:08:06,391 basehttp 13648 21852 "GET /staff/siniestros/list HTTP/1.1" 200 15767
+INFO 2025-07-03 20:42:15,728 autoreload 13648 24156 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 20:42:17,478 autoreload 28868 29912 Watching for file changes with StatReloader
+INFO 2025-07-03 20:56:02,411 autoreload 28868 29912 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 20:56:04,264 autoreload 27504 8904 Watching for file changes with StatReloader
+INFO 2025-07-03 20:56:51,755 basehttp 27504 19480 "GET /staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-03 20:56:51,793 basehttp 27504 19480 "GET /login/login/?next=/staff/siniestros/list HTTP/1.1" 200 6882
+INFO 2025-07-03 20:56:51,995 basehttp 27504 19480 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-07-03 20:56:58,907 basehttp 27504 19480 "POST /login/login/?next=/staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-03 20:56:58,977 basehttp 27504 19480 "GET /staff/siniestros/list HTTP/1.1" 200 18110
+INFO 2025-07-03 20:57:59,133 basehttp 27504 11760 "GET /staff/siniestros/list HTTP/1.1" 200 18120
+INFO 2025-07-03 20:58:55,188 basehttp 27504 21172 "POST /staff/siniestros/add_voucher/1 HTTP/1.1" 302 0
+INFO 2025-07-03 20:58:55,224 basehttp 27504 21172 "GET /staff/siniestros/list HTTP/1.1" 200 18235
+INFO 2025-07-03 22:04:02,520 basehttp 27504 11020 "GET /staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-03 22:04:02,596 basehttp 27504 11020 "GET /login/login/?next=/staff/siniestros/list HTTP/1.1" 200 6882
+INFO 2025-07-03 22:04:08,871 basehttp 27504 14260 "POST /login/login/?next=/staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-03 22:04:08,959 basehttp 27504 14260 "GET /staff/siniestros/list HTTP/1.1" 200 18243
+INFO 2025-07-03 22:04:43,679 basehttp 27504 30048 "GET /staff/siniestros/list HTTP/1.1" 200 18250
+INFO 2025-07-03 22:04:53,697 basehttp 27504 12036 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-03 22:04:59,137 basehttp 27504 11236 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 35763
+INFO 2025-07-03 22:05:07,815 basehttp 27504 11236 "GET /staff/siniestros/add/4 HTTP/1.1" 200 11862
+INFO 2025-07-03 22:06:36,406 basehttp 27504 17604 "POST /staff/siniestros/add/4 HTTP/1.1" 302 0
+INFO 2025-07-03 22:06:36,462 basehttp 27504 17604 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:06:54,934 basehttp 27504 28996 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 27092
+INFO 2025-07-03 22:07:02,523 basehttp 27504 28996 "GET /staff/siniestros/del_tercero/1/1 HTTP/1.1" 302 0
+INFO 2025-07-03 22:07:02,564 basehttp 27504 28996 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 25886
+INFO 2025-07-03 22:07:12,513 basehttp 27504 5052 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:07:20,527 basehttp 27504 5052 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 25568
+INFO 2025-07-03 22:07:54,687 basehttp 27504 4148 "POST /staff/siniestros/add_tercero/2 HTTP/1.1" 302 0
+INFO 2025-07-03 22:07:54,727 basehttp 27504 4148 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 26728
+INFO 2025-07-03 22:09:41,346 basehttp 27504 25744 "POST /staff/siniestros/add_tercero/2 HTTP/1.1" 302 0
+INFO 2025-07-03 22:09:41,391 basehttp 27504 25744 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 28022
+INFO 2025-07-03 22:10:26,020 basehttp 27504 28740 "POST /staff/siniestros/add_file/2 HTTP/1.1" 302 0
+INFO 2025-07-03 22:10:26,061 basehttp 27504 28740 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 28402
+INFO 2025-07-03 22:10:46,675 basehttp 27504 13096 "POST /staff/siniestros/add_file/2 HTTP/1.1" 302 0
+INFO 2025-07-03 22:10:46,718 basehttp 27504 13096 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 28916
+INFO 2025-07-03 22:11:01,066 basehttp 27504 7292 "POST /staff/siniestros/edit/2 HTTP/1.1" 200 28916
+INFO 2025-07-03 22:11:07,830 basehttp 27504 21900 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:11:10,428 basehttp 27504 21900 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 25886
+INFO 2025-07-03 22:11:17,557 basehttp 27504 13624 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:19:45,723 basehttp 27504 6404 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:19:49,137 basehttp 27504 6404 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26372
+INFO 2025-07-03 22:20:41,231 basehttp 27504 23164 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 26370
+INFO 2025-07-03 22:21:11,028 basehttp 27504 19248 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:21:16,018 basehttp 27504 27464 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 29392
+INFO 2025-07-03 22:21:23,586 basehttp 27504 27464 "GET /staff/siniestros/list HTTP/1.1" 200 19529
+INFO 2025-07-03 22:21:35,092 basehttp 27504 20892 "GET /staff/siniestros/list?fil_status=P&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 18057
+INFO 2025-07-03 22:21:38,766 basehttp 27504 20892 "GET /staff/siniestros/list?fil_status=I&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 16902
+INFO 2025-07-03 22:21:46,617 basehttp 27504 26036 "GET /staff/siniestros/list?fil_status=V&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 18258
+INFO 2025-07-03 22:21:50,285 basehttp 27504 26036 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 19529
+INFO 2025-07-03 22:43:56,586 autoreload 27504 8904 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-03 22:43:58,694 autoreload 15440 15372 Watching for file changes with StatReloader
+INFO 2025-07-03 22:57:01,276 autoreload 15440 15372 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 22:57:03,076 autoreload 1524 2096 Watching for file changes with StatReloader
+INFO 2025-07-03 22:57:08,351 autoreload 1524 2096 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-03 22:57:09,404 autoreload 22188 28416 Watching for file changes with StatReloader
+INFO 2025-07-03 23:04:15,060 basehttp 22188 2132 "GET /staff/siniestros/list?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 22889
+WARNING 2025-07-03 23:04:20,289 log 22188 11204 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-03 23:04:20,291 basehttp 22188 11204 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4386
+INFO 2025-07-03 23:05:31,325 basehttp 22188 13096 "POST /staff/siniestros/informar_sin/2 HTTP/1.1" 302 0
+INFO 2025-07-03 23:05:31,361 basehttp 22188 13096 "GET /staff/siniestros/list HTTP/1.1" 200 22959
+ERROR 2025-07-03 23:15:15,581 log 22188 19348 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "['P','V']"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '['P','V']' from '['P','V']'
+ERROR 2025-07-03 23:15:15,612 basehttp 22188 19348 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 256522
+ERROR 2025-07-03 23:16:38,555 log 22188 29620 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "('P','V')"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '('P','V')' from '('P','V')'
+ERROR 2025-07-03 23:16:38,562 basehttp 22188 29620 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 256659
+ERROR 2025-07-03 23:18:01,024 log 22188 26172 Internal Server Error: /staff/siniestros/edit/1
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "['P','V']"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 98, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '['P','V']' from '['P','V']'
+ERROR 2025-07-03 23:18:01,031 basehttp 22188 26172 "GET /staff/siniestros/edit/1 HTTP/1.1" 500 256659
+INFO 2025-07-03 23:18:45,267 basehttp 22188 21440 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 28168
+INFO 2025-07-03 23:18:52,545 basehttp 22188 13872 "GET /staff/siniestros/list HTTP/1.1" 200 22959
+INFO 2025-07-03 23:18:55,088 basehttp 22188 13872 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 31208
+INFO 2025-07-03 23:45:56,490 basehttp 22188 984 "GET /staff/siniestros/list HTTP/1.1" 200 23865
+INFO 2025-07-03 23:48:14,828 basehttp 22188 27860 "GET /staff/siniestros/list HTTP/1.1" 200 23889
+INFO 2025-07-03 23:49:04,307 basehttp 22188 23156 "GET /staff/siniestros/list HTTP/1.1" 200 23923
+INFO 2025-07-03 23:49:06,474 basehttp 22188 23156 "GET /staff/siniestros/list HTTP/1.1" 200 23923
+INFO 2025-07-03 23:49:51,605 basehttp 22188 29668 "GET /staff/siniestros/list HTTP/1.1" 200 23915
+INFO 2025-07-03 23:50:42,900 basehttp 22188 3460 "GET /staff/siniestros/list HTTP/1.1" 200 23911
+INFO 2025-07-03 23:51:49,506 basehttp 22188 22512 "GET /staff/siniestros/list HTTP/1.1" 200 23907
+INFO 2025-07-03 23:53:08,721 basehttp 22188 13296 "GET /staff/siniestros/list HTTP/1.1" 200 23989
+INFO 2025-07-03 23:54:14,659 basehttp 22188 2176 "GET /staff/siniestros/list HTTP/1.1" 200 24073
+INFO 2025-07-04 00:23:14,212 autoreload 22188 28416 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-04 00:23:18,401 autoreload 6132 19800 Watching for file changes with StatReloader
+INFO 2025-07-04 00:24:49,435 autoreload 6132 19800 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-04 00:24:50,635 autoreload 15912 25800 Watching for file changes with StatReloader
+ERROR 2025-07-04 00:24:56,074 log 15912 24432 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 70, in vista_list_siniestros
+    return render(req, 'SiniestrosApp/siniestros.html', {
+        'siniestros': selected,
+    ...<4 lines>...
+        'filtro_siniestro': fil_siniestro,
+    })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'resolver_siniestro' not found. 'resolver_siniestro' is not a valid view function or pattern name.
+ERROR 2025-07-04 00:24:56,086 basehttp 15912 24432 "GET /staff/siniestros/list HTTP/1.1" 500 175214
+INFO 2025-07-04 00:25:04,189 autoreload 15912 25800 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\urls.py changed, reloading.
+INFO 2025-07-04 00:25:05,390 autoreload 8972 12544 Watching for file changes with StatReloader
+INFO 2025-07-04 00:25:07,967 basehttp 8972 29816 "GET /staff/siniestros/list HTTP/1.1" 200 27933
+INFO 2025-07-04 00:25:41,568 basehttp 8972 11552 "POST /staff/siniestros/resolver_sin/2 HTTP/1.1" 302 0
+INFO 2025-07-04 00:25:41,617 basehttp 8972 11552 "GET /staff/siniestros/list HTTP/1.1" 200 28007
+INFO 2025-07-04 10:46:45,441 basehttp 8972 25564 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 302 0
+INFO 2025-07-04 10:46:46,180 basehttp 8972 25564 "GET /login/login/?next=/staff/emisiones/listpolizas%3Ffil_status%3DV HTTP/1.1" 200 6882
+INFO 2025-07-04 10:46:46,574 basehttp 8972 25564 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-04 10:46:56,854 basehttp 8972 7056 "POST /login/login/?next=/staff/emisiones/listpolizas%3Ffil_status%3DV HTTP/1.1" 302 0
+INFO 2025-07-04 10:46:57,209 basehttp 8972 7056 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-04 10:47:55,267 basehttp 8972 29740 "GET /staff/emisiones/verPoliza/5/ HTTP/1.1" 200 31153
+INFO 2025-07-04 10:48:20,547 basehttp 8972 30124 "GET /staff/siniestros/add/5 HTTP/1.1" 200 11866
+INFO 2025-07-04 10:50:10,861 basehttp 8972 23384 "POST /staff/siniestros/add/5 HTTP/1.1" 302 0
+INFO 2025-07-04 10:50:10,986 basehttp 8972 23384 "GET /staff/siniestros/list HTTP/1.1" 200 29905
+INFO 2025-07-04 10:53:27,515 basehttp 8972 23756 "POST /staff/siniestros/add_note/3 HTTP/1.1" 302 0
+INFO 2025-07-04 10:53:27,616 basehttp 8972 23756 "GET /staff/siniestros/list HTTP/1.1" 200 29931
+INFO 2025-07-04 10:53:47,168 basehttp 8972 22608 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 27755
+INFO 2025-07-04 10:54:52,076 basehttp 8972 23048 "POST /staff/siniestros/add_tercero/3 HTTP/1.1" 302 0
+INFO 2025-07-04 10:54:52,132 basehttp 8972 23048 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 28909
+INFO 2025-07-04 10:55:13,997 basehttp 8972 3188 "POST /staff/siniestros/edit/3 HTTP/1.1" 200 28909
+INFO 2025-07-04 10:55:22,368 basehttp 8972 3188 "GET /staff/siniestros/list HTTP/1.1" 200 29931
+INFO 2025-07-04 10:56:25,616 basehttp 8972 19592 "POST /staff/siniestros/informar_sin/3 HTTP/1.1" 302 0
+INFO 2025-07-04 10:56:25,686 basehttp 8972 19592 "GET /staff/siniestros/list HTTP/1.1" 200 29993
+INFO 2025-07-04 10:56:44,642 basehttp 8972 8148 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 28948
+INFO 2025-07-04 10:56:53,823 basehttp 8972 8148 "GET /staff/siniestros/list HTTP/1.1" 200 29993
+INFO 2025-07-04 10:59:06,019 basehttp 8972 11128 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 28948
+INFO 2025-07-04 11:15:19,799 basehttp 8972 17808 "GET /staff/siniestros/list HTTP/1.1" 200 29993
+INFO 2025-07-04 11:17:10,620 basehttp 8972 9244 "GET /staff/siniestros/edit/1 HTTP/1.1" 200 28168
+INFO 2025-07-04 13:43:57,152 autoreload 8972 12544 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-04 13:44:01,279 autoreload 3680 27264 Watching for file changes with StatReloader
+INFO 2025-07-04 13:54:06,746 autoreload 3680 27264 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-07-04 13:54:10,061 autoreload 22928 16912 Watching for file changes with StatReloader
+INFO 2025-07-04 18:09:57,925 basehttp 22928 23228 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 302 0
+INFO 2025-07-04 18:09:58,254 basehttp 22928 23228 "GET /login/login/?next=/staff/cotizaciones/solicitudes/%3Fstatus%3DP HTTP/1.1" 200 6882
+INFO 2025-07-04 18:10:04,281 basehttp 22928 19220 "POST /login/login/?next=/staff/cotizaciones/solicitudes/%3Fstatus%3DP HTTP/1.1" 302 0
+INFO 2025-07-04 18:10:04,526 basehttp 22928 19220 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 12593
+INFO 2025-07-04 18:10:09,682 basehttp 22928 8312 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19070
+INFO 2025-07-04 18:10:22,973 basehttp 22928 25116 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 37147
+INFO 2025-07-04 18:10:30,581 basehttp 22928 28816 "GET /staff/siniestros/add/10 HTTP/1.1" 200 12971
+INFO 2025-07-04 18:11:05,784 basehttp 22928 9812 "GET /staff/emisiones/verPoliza/10/ HTTP/1.1" 200 37147
+INFO 2025-07-04 18:21:58,455 autoreload 22928 16912 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-04 18:22:00,777 autoreload 30112 4820 Watching for file changes with StatReloader
+ERROR 2025-07-04 18:24:58,684 log 30112 12784 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: SiniestrosApp_siniestro.reclamo_ter
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 50, in vista_list_siniestros
+    selected = list(siniestros)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: SiniestrosApp_siniestro.reclamo_ter
+ERROR 2025-07-04 18:24:58,709 basehttp 30112 12784 "GET /staff/siniestros/list HTTP/1.1" 500 151261
+ERROR 2025-07-04 18:24:59,458 log 30112 12784 Internal Server Error: /staff/siniestros/list
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: SiniestrosApp_siniestro.reclamo_ter
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 50, in vista_list_siniestros
+    selected = list(siniestros)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: SiniestrosApp_siniestro.reclamo_ter
+ERROR 2025-07-04 18:24:59,466 basehttp 30112 12784 "GET /staff/siniestros/list HTTP/1.1" 500 150987
+INFO 2025-07-04 18:25:48,996 basehttp 30112 9908 "GET /staff/siniestros/list HTTP/1.1" 200 30130
+INFO 2025-07-05 18:51:04,697 basehttp 30112 19348 "GET /staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-05 18:51:04,802 basehttp 30112 19348 "GET /login/login/?next=/staff/siniestros/list HTTP/1.1" 200 6882
+INFO 2025-07-05 18:51:05,187 basehttp 30112 21764 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-07-05 18:51:05,188 basehttp 30112 19348 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-05 18:51:05,188 basehttp 30112 25196 "GET /static/img/Tuem%20sin%20fondo.png HTTP/1.1" 304 0
+INFO 2025-07-05 18:51:05,288 basehttp 30112 19348 "GET /static/img/fondo%20encabezado.jpg HTTP/1.1" 304 0
+INFO 2025-07-05 18:51:08,081 basehttp 30112 8348 "GET /static/img/icoNovaraRey.png HTTP/1.1" 304 0
+INFO 2025-07-05 18:51:12,394 basehttp 30112 8348 "POST /login/login/?next=/staff/siniestros/list HTTP/1.1" 302 0
+INFO 2025-07-05 18:51:12,492 basehttp 30112 8348 "GET /staff/siniestros/list HTTP/1.1" 200 30130
+INFO 2025-07-05 18:51:17,834 basehttp 30112 8348 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 29883
+INFO 2025-07-05 18:54:01,773 basehttp 30112 16464 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 18:54:03,617 basehttp 30112 16464 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 19:59:08,906 autoreload 30112 4820 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 19:59:13,619 autoreload 14708 17580 Watching for file changes with StatReloader
+INFO 2025-07-05 19:59:22,267 basehttp 14708 27436 "GET /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 19:59:22,610 basehttp 14708 27436 "GET /login/login/?next=/staff/siniestros/edit/2 HTTP/1.1" 200 6882
+INFO 2025-07-05 19:59:29,521 basehttp 14708 4692 "POST /login/login/?next=/staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 19:59:29,675 basehttp 14708 4692 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32785
+INFO 2025-07-05 19:59:43,496 basehttp 14708 10244 "POST /staff/siniestros/edit/2 HTTP/1.1" 200 32783
+INFO 2025-07-05 20:00:09,996 autoreload 14708 17580 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 20:00:11,140 autoreload 12924 1160 Watching for file changes with StatReloader
+INFO 2025-07-05 20:00:24,227 autoreload 12924 1160 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 20:00:25,461 autoreload 10300 21236 Watching for file changes with StatReloader
+INFO 2025-07-05 20:00:45,594 basehttp 10300 3120 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:00:52,198 basehttp 10300 3216 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32799
+INFO 2025-07-05 20:01:10,009 basehttp 10300 26608 "POST /staff/siniestros/edit/2 HTTP/1.1" 200 32790
+INFO 2025-07-05 20:01:18,949 basehttp 10300 23444 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:01:22,792 basehttp 10300 23444 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32806
+INFO 2025-07-05 20:02:31,495 basehttp 10300 9884 "POST /staff/siniestros/edit/2 HTTP/1.1" 200 32792
+INFO 2025-07-05 20:02:36,533 basehttp 10300 29212 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:02:40,910 basehttp 10300 29212 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32808
+INFO 2025-07-05 20:03:05,567 autoreload 10300 21236 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 20:03:06,626 autoreload 24868 18340 Watching for file changes with StatReloader
+INFO 2025-07-05 20:03:12,113 basehttp 24868 15540 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:03:18,006 basehttp 24868 25744 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:03:19,502 basehttp 24868 25744 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32808
+INFO 2025-07-05 20:03:31,269 basehttp 24868 24352 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:03:31,328 basehttp 24868 24352 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:03:33,641 basehttp 24868 24352 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32813
+INFO 2025-07-05 20:04:33,351 autoreload 24868 18340 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 20:04:34,492 autoreload 18016 6396 Watching for file changes with StatReloader
+INFO 2025-07-05 20:04:44,608 basehttp 18016 21440 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:04:44,691 basehttp 18016 21440 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:05:32,948 autoreload 18016 6396 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-07-05 20:05:34,234 autoreload 26168 30652 Watching for file changes with StatReloader
+INFO 2025-07-05 20:05:36,140 basehttp 26168 4308 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32812
+INFO 2025-07-05 20:05:44,579 basehttp 26168 24620 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:05:44,635 basehttp 26168 24620 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:06:45,965 basehttp 26168 12584 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:06:48,071 basehttp 26168 12584 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32831
+INFO 2025-07-05 20:09:42,089 basehttp 26168 21124 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32837
+INFO 2025-07-05 20:11:56,503 basehttp 26168 26620 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32884
+ERROR 2025-07-05 20:14:01,069 log 26168 13744 Internal Server Error: /staff/siniestros/edit/2
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 128, in vista_edit_siniestro
+    return render(req,'SiniestrosApp/siniestro_edit.html',{
+        'siniestro': siniestro,
+    ...<2 lines>...
+        'terceros': terceros
+        })
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'unlocalize'
+ERROR 2025-07-05 20:14:01,084 basehttp 26168 13744 "GET /staff/siniestros/edit/2 HTTP/1.1" 500 283851
+INFO 2025-07-05 20:16:12,274 basehttp 26168 27024 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32801
+INFO 2025-07-05 20:16:46,691 basehttp 26168 28588 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32837
+INFO 2025-07-05 20:17:14,018 basehttp 26168 13268 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:17:14,091 basehttp 26168 13268 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:17:15,885 basehttp 26168 13268 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32837
+INFO 2025-07-05 20:22:48,126 basehttp 26168 25180 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32829
+INFO 2025-07-05 20:22:55,207 basehttp 26168 2084 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:22:55,272 basehttp 26168 2084 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:22:57,228 basehttp 26168 2084 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32834
+INFO 2025-07-05 20:23:24,811 basehttp 26168 8396 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:23:24,879 basehttp 26168 8396 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:23:26,804 basehttp 26168 8396 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32834
+INFO 2025-07-05 20:25:12,435 basehttp 26168 11004 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32857
+INFO 2025-07-05 20:25:19,399 basehttp 26168 20268 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:25:19,491 basehttp 26168 20268 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:25:21,202 basehttp 26168 20268 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32857
+INFO 2025-07-05 20:25:49,320 basehttp 26168 15948 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32893
+INFO 2025-07-05 20:26:00,098 basehttp 26168 8660 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:26:00,178 basehttp 26168 8660 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:26:01,689 basehttp 26168 8660 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32902
+INFO 2025-07-05 20:26:08,832 basehttp 26168 25020 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:26:08,893 basehttp 26168 25020 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:26:10,951 basehttp 26168 25020 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32902
+INFO 2025-07-05 20:26:19,252 basehttp 26168 27372 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:26:19,312 basehttp 26168 27372 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:26:21,189 basehttp 26168 27372 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32902
+INFO 2025-07-05 20:26:34,334 basehttp 26168 2888 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:26:34,400 basehttp 26168 2888 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:26:36,159 basehttp 26168 2888 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32902
+INFO 2025-07-05 20:26:45,746 basehttp 26168 17160 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:26:45,800 basehttp 26168 17160 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:26:47,327 basehttp 26168 17160 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32908
+INFO 2025-07-05 20:27:02,396 basehttp 26168 16464 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:27:02,466 basehttp 26168 16464 "GET /staff/siniestros/list HTTP/1.1" 200 30121
+INFO 2025-07-05 20:27:06,422 basehttp 26168 428 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32905
+INFO 2025-07-05 20:27:16,501 basehttp 26168 7628 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:27:16,558 basehttp 26168 7628 "GET /staff/siniestros/list HTTP/1.1" 200 30121
+INFO 2025-07-05 20:27:18,387 basehttp 26168 7628 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32918
+INFO 2025-07-05 20:27:23,582 basehttp 26168 22928 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:27:23,654 basehttp 26168 22928 "GET /staff/siniestros/list HTTP/1.1" 200 30121
+INFO 2025-07-05 20:27:25,248 basehttp 26168 22928 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32911
+INFO 2025-07-05 20:27:36,979 basehttp 26168 8584 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:27:37,033 basehttp 26168 8584 "GET /staff/siniestros/list HTTP/1.1" 200 30121
+INFO 2025-07-05 20:27:38,679 basehttp 26168 8584 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32927
+INFO 2025-07-05 20:27:50,501 basehttp 26168 13884 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:27:50,554 basehttp 26168 13884 "GET /staff/siniestros/list HTTP/1.1" 200 30121
+INFO 2025-07-05 20:27:52,122 basehttp 26168 13884 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32927
+INFO 2025-07-05 20:28:07,548 basehttp 26168 4908 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:28:07,601 basehttp 26168 4908 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:28:09,447 basehttp 26168 4908 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32930
+INFO 2025-07-05 20:28:18,863 basehttp 26168 3620 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:28:18,916 basehttp 26168 3620 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:28:20,555 basehttp 26168 3620 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32936
+INFO 2025-07-05 20:28:35,101 basehttp 26168 18264 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:28:35,163 basehttp 26168 18264 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:28:36,745 basehttp 26168 18264 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32937
+INFO 2025-07-05 20:28:43,683 basehttp 26168 29464 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:28:43,736 basehttp 26168 29464 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:28:45,472 basehttp 26168 29464 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32942
+INFO 2025-07-05 20:28:54,986 basehttp 26168 21632 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:28:55,047 basehttp 26168 21632 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:28:56,633 basehttp 26168 21632 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32957
+INFO 2025-07-05 20:29:10,988 basehttp 26168 29816 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:29:11,040 basehttp 26168 29816 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:29:12,498 basehttp 26168 29816 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32976
+INFO 2025-07-05 20:30:27,149 basehttp 26168 15764 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32967
+INFO 2025-07-05 20:30:39,854 basehttp 26168 28636 "POST /staff/siniestros/edit/2 HTTP/1.1" 302 0
+INFO 2025-07-05 20:30:39,928 basehttp 26168 28636 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:30:41,528 basehttp 26168 28636 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 32967
+INFO 2025-07-05 20:30:46,366 basehttp 26168 25308 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:35:48,636 basehttp 26168 8248 "GET /staff/siniestros/list HTTP/1.1" 200 30124
+INFO 2025-07-05 20:35:56,665 basehttp 26168 14480 "GET /staff/siniestros/edit/2 HTTP/1.1" 200 33381
+INFO 2025-07-05 20:36:00,911 basehttp 26168 13020 "GET /media/siniestros/Captura_de_pantalla_2025-05-07_120703.png HTTP/1.1" 200 7623
+INFO 2025-07-05 20:36:06,612 basehttp 26168 13020 "GET /media/siniestros/Captura_de_pantalla_2025-05-07_143020_qxNLEl5.png HTTP/1.1" 200 2500
+INFO 2025-07-06 12:01:32,261 autoreload 26168 30652 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-06 12:01:37,800 autoreload 20516 21036 Watching for file changes with StatReloader
+INFO 2025-07-06 12:03:16,829 autoreload 20516 21036 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-06 12:03:18,289 autoreload 30988 1312 Watching for file changes with StatReloader
+INFO 2025-07-06 12:03:22,906 basehttp 30988 23572 "GET /staff/dashboard/ HTTP/1.1" 302 0
+INFO 2025-07-06 12:03:23,475 basehttp 30988 23572 "GET /login/login/?next=/staff/dashboard/ HTTP/1.1" 200 6882
+INFO 2025-07-06 12:03:30,647 basehttp 30988 18016 "POST /login/login/?next=/staff/dashboard/ HTTP/1.1" 302 0
+INFO 2025-07-06 12:03:30,796 basehttp 30988 18016 "GET /staff/dashboard/ HTTP/1.1" 200 16587
+WARNING 2025-07-06 12:03:30,972 basehttp 30988 18016 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-06 12:03:47,238 basehttp 30988 15780 "GET /staff/siniestros/list?filtro_status_siniestro=I HTTP/1.1" 200 30124
+INFO 2025-07-06 12:03:58,467 basehttp 30988 29724 "GET /staff/siniestros/list?filtro_status_siniestro=I HTTP/1.1" 200 30124
+INFO 2025-07-06 12:04:06,238 basehttp 30988 29724 "GET /staff/siniestros/list?fil_status=I&fil_nombre=&fil_nro_poliza=&fil_siniestro= HTTP/1.1" 200 25949
+INFO 2025-07-06 12:04:28,245 autoreload 30988 1312 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-06 12:04:29,609 autoreload 21620 24600 Watching for file changes with StatReloader
+INFO 2025-07-06 12:04:30,512 basehttp 21620 12436 "GET /staff/dashboard/ HTTP/1.1" 200 16574
+WARNING 2025-07-06 12:04:30,555 basehttp 21620 12436 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-06 12:04:32,741 basehttp 21620 1592 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 25949
+INFO 2025-07-06 12:04:43,759 autoreload 21620 24600 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-06 12:04:44,940 autoreload 15412 13660 Watching for file changes with StatReloader
+INFO 2025-07-06 12:05:33,168 basehttp 15412 7000 "GET /staff/dashboard/ HTTP/1.1" 200 16574
+WARNING 2025-07-06 12:05:33,211 basehttp 15412 7000 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-06 15:27:36,818 basehttp 15412 2540 "GET /staff/clientes/ HTTP/1.1" 302 0
+INFO 2025-07-06 15:27:36,940 basehttp 15412 2540 "GET /login/login/?next=/staff/clientes/ HTTP/1.1" 200 6882
+INFO 2025-07-06 15:27:44,380 basehttp 15412 2540 "POST /login/login/?next=/staff/clientes/ HTTP/1.1" 302 0
+INFO 2025-07-06 15:27:44,784 basehttp 15412 2540 "GET /staff/clientes/ HTTP/1.1" 200 12303
+INFO 2025-07-06 15:27:49,135 basehttp 15412 31668 "GET /staff/clientes/edit/3/ HTTP/1.1" 200 40968
+INFO 2025-07-06 15:30:57,260 autoreload 15412 13660 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ClientesApp\models.py changed, reloading.
+INFO 2025-07-06 15:30:59,879 autoreload 27436 21888 Watching for file changes with StatReloader
+INFO 2025-07-06 15:31:51,998 autoreload 27436 21888 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ClientesApp\models.py changed, reloading.
+INFO 2025-07-06 15:31:53,991 autoreload 16904 21524 Watching for file changes with StatReloader
+INFO 2025-07-06 15:34:50,227 autoreload 16904 21524 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\StaffApp\views.py changed, reloading.
+INFO 2025-07-06 15:34:53,468 autoreload 22440 1192 Watching for file changes with StatReloader
+INFO 2025-07-06 15:34:59,388 basehttp 22440 28636 "GET /staff/dashboard/ HTTP/1.1" 200 16574
+WARNING 2025-07-06 15:34:59,555 basehttp 22440 28636 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-06 15:35:22,162 basehttp 22440 16048 "GET /staff/pagos/listpagos?fil_status=P HTTP/1.1" 200 26333
+INFO 2025-07-06 15:39:13,428 autoreload 22440 1192 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-07-06 15:39:15,826 autoreload 15212 29780 Watching for file changes with StatReloader
+INFO 2025-07-06 15:40:46,070 autoreload 15212 29780 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-07-06 15:40:48,071 autoreload 22908 31108 Watching for file changes with StatReloader
+INFO 2025-07-06 15:41:44,053 autoreload 22908 31108 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\ContadoApp\models.py changed, reloading.
+INFO 2025-07-06 15:41:46,261 autoreload 8660 31016 Watching for file changes with StatReloader
+INFO 2025-07-06 15:41:59,865 basehttp 8660 3696 "GET /staff/pagos/listpagos?fil_status=ALL&fil_nombre=&fil_nro_poliza=&fil_rubro=0 HTTP/1.1" 200 49280
+INFO 2025-07-06 15:42:57,156 basehttp 8660 4896 "GET /staff/dashboard/ HTTP/1.1" 200 16574
+WARNING 2025-07-06 15:42:57,258 basehttp 8660 4896 "GET /static/css/staff.css HTTP/1.1" 404 1853

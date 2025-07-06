@@ -1,0 +1,503 @@
+{% extends "StaffApp/baseStaff.html" %}
+
+{% block content %}
+<div class="container staff-form-container">
+  <h3 class="staff-form-title">Edición de Siniestro</h3>
+  <hr class="staff-form-hr">
+  <form method="post">
+    {% csrf_token %}
+
+    <input type="hidden" id="sinid" name="sinid" value="{{siniestro.id}}">
+      
+    <!-- Mostrar los datos de la poliza y el cliente-->
+      <p><strong>Cliente:&nbsp;</strong>
+        {% if siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica %}
+          {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.apellido }}, {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonafisica.nombre }}
+        {% elif siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica %}
+          {{ siniestro.poliza.rel_emision.Cotizacion.cliente.clientepersonajuridica.razon_social }}
+        {% else %}
+          Cliente sin nombre
+        {% endif %}
+      </p>
+      <p><strong>Compañia:&nbsp;</strong>{{siniestro.poliza.rel_emision.cot_cia.aseguradora.nombre}}</p>
+      <p><strong>Nro de Póliza:&nbsp;</strong>{{siniestro.poliza.numero}}</p>
+      <p><strong>Status del siniestro:&nbsp;</strong>{{siniestro.get_status_display}}</p>
+      <hr class="staff-form-hr">
+
+      <!-- Sección de modificación de datos del siniestro -->
+
+      <div class="staff-form-control-container">
+        <div class="mb-3">
+          <label for="cobertura" class="form-label">Cobertura del asegurado</label>
+          <input type="text" id="cobertura" name="cobertura" class="form-control" value="{{ siniestro.cobertura}}">
+        </div>
+        <div class="mb-3">
+          <label for="suma_aseg" class="form-label">Suma Asegurada (AR$)</label>
+          <input type="number" step="0.01" name="suma_aseg" id="suma_aseg" class="form-control" step="0.01" 
+            value="{{ siniestro.suma_aseg|stringformat:'.2f' }}">
+        </div>
+        <div class="mb-3">
+          <label for="franquicia_porc" class="form-label">Pranquicia Porcentual (%)</label>
+          <input type="number" id="franquicia_porc" name="franquicia_porc" 
+          step="0.01" class="form-control" value="{{ siniestro.porc_franquicia|stringformat:'.2f'}}">
+        </div>        
+        <div class="mb-3">
+          <label for="franquicia_fija" class="form-label">Pranquicia Fija (AR$)</label>
+          <input type="number" id="franquicia_fija" name="franquicia_fija" class="form-control" 
+          step="0.01" value="{{ siniestro.franquicia_fija|stringformat:'.2f'}}">
+        </div>
+        <div class="mb-3">
+          <label for="id_fecha_ocurrencia" class="form-label">Fecha y hora del siniestro</label>
+          <input type="datetime-local" class="form-control" id="id_fecha_ocurrencia" 
+            name="fecha_ocurrencia" required value="{{ siniestro.fecha_ocurrencia|date:"Y-m-d\\TH:i" }}">
+        </div>
+        <div class="mb-3">
+          <label for="lugar_ocurrencia" class="form-label">Lugar de ocurrencia del siniestro</label>
+          <input type="text" class="form-control" id="lugar_ocurrencia" 
+          name="lugar_ocurrencia" required value="{{siniestro.lugar}}">
+        </div>
+        <div class="mb-3">
+          <label for="short_desc" class="form-label">Descripción CORTA</label>
+          <input type="text" class="form-control" id="short_desc" 
+          name="short_desc" required value="{{siniestro.short_desc}}">
+        </div>
+        <div class="mb-3">
+          <label for="desc_ocurrencia" class="form-label">Descripción del siniestro</label>
+          <textarea name="desc_ocurrencia" id="desc_ocurrencia" rows="4" class="form-control" required>{{siniestro.descripcion}}</textarea>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="denunciado" name="denunciado" 
+            {% if siniestro.denunciado %}checked{% endif %}>
+          <label class="form-check-label" for="id_denunciado"> Con denuncia policia </label>
+        </div>
+        <div class="mb-3">
+          <label for="danios_propios" class="form-label">Descripción de de daños propios</label>
+          <textarea name="danios_propios" id="danios_propios" rows="4" class="form-control">{% if siniestro.danios %}{{siniestro.danios}}{% endif %}</textarea>
+        </div>
+        <div class="mb-3">
+          <label for="id_tercero" class="form-label">Tipo de intervención de tercero</label>
+          <select class="form-select" id="id_tercero" name="tercero" required>
+            {% for key, label in terceros_choices %}
+              <option value="{{ key }}" {% if siniestro.terc == key %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <hr class="staff-form-hr">
+
+      <!-- Sección de modificación de datos del tercer se debe disponibilizar solo para las opciones que involucren terceros-->
+
+      <div class="staff-form-control-container" id="sec_terceros" style="display: none;">
+        <input type="hidden" id="cantTerceros" value="{{ terceros|length }}">
+        <p><strong>Terceros involucrados</strong></p>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover table-sm" style="font-size: 0.85rem;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Tercero</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Seguro</th>
+                <th scope="col">Bien afectado</th>
+                <th scope="col">Daños</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for tercero in terceros %}
+              <tr>
+                <td>{{ tercero.nombre }}{% if tercero.dni %}<br>DNI:{{tercero.dni}}{% endif %}</td>
+                <td>{% if tercero.tel %}Tel:{{tercero.tel}}<br>{% endif %}{% if tercero.mail %}Mail:{{tercero.mail}}{% endif %}</td>
+                <td>{{ tercero.compania }}{% if tercero.nro_poliza %}<br>Poliza:{{tercero.nro_poliza}}{% endif %}</td>
+                <td>{{ tercero.bien_afectado }}</td>
+                <td>{{ tercero.danios }}</td>
+                <td>
+                  <button type="button" class="btn btn-outline-secondary btn-sm btn-edit-tercero" 
+                    data-id="{{ tercero.id }}"
+                    data-nombre = "{{ tercero.nombre }}"
+                    data-dni = "{{ tercero.dni }}"
+                    data-tel = "{{ tercero.tel }}"
+                    data-mail = "{{ tercero.mail }}"
+                    data-cia = "{{ tercero.compania }}"
+                    data-poliza = "{{ tercero.nro_poliza }}"
+                    data-bien = "{{ tercero.bien_afectado }}"
+                    data-danios = "{{ tercero.danios }}"
+                    title="Editar Datos de tercero">
+                    <i class="bi bi-pen"></i>
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm btn-del-tercero" 
+                    data-id="{{ tercero.id }}"
+                    title="Eliminar tercero afectado">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="6" class="text-center">No hay Terceros asociados al siniestro.</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6" class="text-center">
+                  <button type="button" class="btn btn-primary btn-add-tercero" id="btn_add_tercero">Agregar Tercero involucrado</button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <hr class="staff-form-hr">
+      </div>
+
+      <!-- Archivos del siniestro-->
+
+      <p><strong>Archivos asociados al siniestro:</strong></p>
+
+    <div class="staff-list-container ">
+      <table id="tabla_archivos" class="table table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>Archivo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs_siniestro %}
+          <tr>
+            <td><a href="{{doc.archivo.url}}" target="_blank" rel="noopener noreferrer">{{doc.descripcion}}</a></td>
+            <td>
+              <button type="button" class="btn btn-outline-secondary btn-sm btn-borrar-file" 
+                data-id="{{ doc.id }}"
+                data-name="{{ doc.archivo.descripcion }}"
+                title="Eliminar Archivo">
+                <i class="bi bi-trash"></i>
+              </button>
+              <a href="{{ doc.archivo.url }}" class="btn btn-outline-secondary btn-sm" download>
+                <i class="bi bi-download"></i>
+                </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="2" class="text-center">No hay archivos asociados.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="text-center">
+              <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
+                data-bs-target="#modalAgregarArchivo" data-bs-emision-id="{{siniestro.id}}">
+                Agregar Archivo al siniestro
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <hr class="staff-form-hr">
+
+    <!-- Datos de cierre de Voucher-->
+
+    <div class="staff-form-control-container {% if siniestro.status != 'V' %}d-none{% endif %}">
+      <p><strong>Siniestro resuelto vía generación de Voucher el {{siniestro.fecha_voucher}}</strong></p>
+      <div class="mb-3">
+        <label for="nro_voucher" class="form-label">Número de Voucher</label>
+        <input type="text" class="form-control" id="nro_voucher" 
+          name="nro_voucher" required value="{{siniestro.nro_voucher}}">
+      </div>
+      <hr class="staff-form-hr">
+    </div>
+
+    <!-- Datos de informe a la compañía-->
+
+    <div class="staff-form-control-container {% if siniestro.status == 'P' or siniestro.status == 'V' %}d-none{% endif %}">
+      <p><strong>Siniestro informado a la comapñía el {{siniestro.fecha_informe}}</strong></p>
+      <div class="mb-3">
+        <label for="info_nro" class="form-label">Número de Siniestro</label>
+        <input type="text" id="info_nro" name="info_nro" class="form-control" value="{{siniestro.nro_siniestro}}">
+      </div>
+      <div class="mb-3">
+        <label for="info_liq_nombre" class="form-label">Nombre y apellido de liquidador</label>
+        <input type="text" id="info_liq_nombre" name="info_liq_nombre" class="form-control" value="{{siniestro.liquidador_nombre}}">
+      </div>
+      <div class="mb-3">
+        <label for="info_liq_tel" class="form-label">Teléfono del liquidador</label>
+        <input type="text" id="info_liq_tel" name="info_liq_tel" class="form-control" value="{{siniestro.liquidador_tel}}">
+      </div>
+      <div class="mb-3">
+        <label for="info_liq_mail" class="form-label">Mail del liquidador</label>
+        <input type="text" id="info_liq_mail" name="info_liq_mail" class="form-control" value="{{siniestro.liquidador_mail}}">
+      </div>
+      <div class="mb-3">
+        <label for="info_inspec_fecha" class="form-label">Fecha de inspección</label>
+        <input type="date" id="info_inspec_fecha" name="info_inspec_fecha" class="form-control" value="{{siniestro.inspec_fecha|date:'Y-m-d' }}">
+      </div>
+      <div class="mb-3">
+        <label for="info_inspec_lugar" class="form-label">Lugar de inspección</label>
+        <input type="text" id="info_inspec_lugar" name="info_inspec_lugar" class="form-control" value="{{siniestro.inspec_lugar}}">
+      </div>
+      <div class="mb-3">
+        <label for="info_taller" class="form-label">Taller o Servicio técnico asignado</label>
+        <input type="text" id="info_taller" name="info_taller" class="form-control" value="{{siniestro.taller}}">
+      </div>
+
+      <hr class="staff-form-hr">
+    </div>
+
+    <!-- Datos de cierre -->
+    <div class="staff-form-control-container {% if siniestro.status != 'R' %}d-none{% endif %}">
+      <p><strong>Siniestro resuelto el {{siniestro.fecha_resolucion}}</strong></p>
+      <hr class="staff-form-hr">
+    </div>
+
+    <!-- Datos de rechazo -->
+    <div class="staff-form-control-container {% if siniestro.status != 'X' %}d-none{% endif %}">
+      <p><strong>Siniestro rechazado por la compañía el {{siniestro.fecha_resolucion}}</strong></p>
+      <hr class="staff-form-hr">
+    </div>
+
+      <div class="d-flex justify-content-between">
+            <a href="{% url 'list_siniestros' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar Siniestro</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Modal para agrgar terceros -->
+<div class="modal fade" id="addTerceroModal" tabindex="-1" aria-labelledby="addTerceroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addTerceroModalLabel">Agregar Tercero involucrado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addTerceroForm" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="add_terc_nombre" class="form-label">Nombre y Apellido del Tercero</label>
+            <input type="text" id="add_terc_nombre" name="add_terc_nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_dni" class="form-label">DNI del Tercero</label>
+            <input type="text" class="form-control" id="add_terc_dni" name="add_terc_dni">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_tel" class="form-label">Teléfono del Tercero</label>
+            <input type="text" class="form-control" id="add_terc_tel" name="add_terc_tel">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_mail" class="form-label">Mail del Tercero</label>
+            <input type="email" class="form-control" id="add_terc_mail" name="add_terc_mail">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_cia" class="form-label">Compañia aseguradora del Tercero</label>
+            <input type="text" class="form-control" id="add_terc_cia" name="add_terc_cia">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_poliza" class="form-label">Nro de Póliza del Tercero</label>
+            <input type="text" class="form-control" id="add_terc_poliza" name="add_terc_poliza">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_bien" class="form-label">Descripción del bien afectado</label>
+            <input type="text" class="form-control" id="add_terc_bien" name="add_terc_bien">
+          </div>
+          <div class="mb-3">
+            <label for="add_terc_danios" class="form-label">Daños al bien afectado</label>
+            <textarea name="add_terc_danios" id="add_terc_danios" class="form-control" rows="4"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Agregar Tercero Involucrado</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para editar terceros -->
+<div class="modal fade" id="editTerceroModal" tabindex="-1" aria-labelledby="editTerceroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTerceroModalLabel">Editar Tercero involucrado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editTerceroForm" method="post">
+          {% csrf_token %}
+          <input type="hidden" id="edit_terc_id" name="edit_terc_id">
+          <div class="mb-3">
+            <label for="edit_terc_nombre" class="form-label">Nombre y Apellido del Tercero</label>
+            <input type="text" id="edit_terc_nombre" name="edit_terc_nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_dni" class="form-label">DNI del Tercero</label>
+            <input type="text" class="form-control" id="edit_terc_dni" name="edit_terc_dni">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_tel" class="form-label">Teléfono del Tercero</label>
+            <input type="text" class="form-control" id="edit_terc_tel" name="edit_terc_tel">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_mail" class="form-label">Mail del Tercero</label>
+            <input type="email" class="form-control" id="edit_terc_mail" name="edit_terc_mail">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_cia" class="form-label">Compañia aseguradora del Tercero</label>
+            <input type="text" class="form-control" id="edit_terc_cia" name="edit_terc_cia">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_poliza" class="form-label">Nro de Póliza del Tercero</label>
+            <input type="text" class="form-control" id="edit_terc_poliza" name="edit_terc_poliza">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_bien" class="form-label">Descripción del bien afectado</label>
+            <input type="text" class="form-control" id="edit_terc_bien" name="edit_terc_bien">
+          </div>
+          <div class="mb-3">
+            <label for="edit_terc_danios" class="form-label">Daños al bien afectado</label>
+            <textarea name="edit_terc_danios" id="edit_terc_danios" class="form-control" rows="4"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar un archivo-->
+
+<div class="modal fade" id="modalAgregarArchivo" tabindex="-1" aria-labelledby="modalAgregarArchivoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'add_file_siniestro' siniestro.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarArchivoLabel">Agregar Archivo al siniestro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="file" class="form-label">Archivo</label>
+            <input type="file" name="file" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción de archivo</label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const selectorTercero = document.getElementById('id_tercero');
+    const seccionTerceros = document.getElementById('sec_terceros');
+    const modalAddTercero = document.getElementById('addTerceroModal');
+    const formAddTercero = document.getElementById('addTerceroForm');
+    const modalEditTercero = document.getElementById('editTerceroModal');
+    const formEditTercero = document.getElementById('editTerceroForm');
+    const sinId = document.getElementById('sinid').value;
+    const qtyTerceros = document.getElementById('cantTerceros').value;
+    let valorAnterior = selectorTercero.value;
+
+
+    function actualizarVisibilidadTerceros() {
+      if (selectorTercero.value === 'N') {
+        seccionTerceros.style.display = 'none';
+      } else {
+        seccionTerceros.style.display = 'block';
+      }
+    }
+
+    // Ejecutar al cargar
+    actualizarVisibilidadTerceros();
+
+    // Ejecutar cada vez que cambia el valor del select
+    selectorTercero.addEventListener('change', function () {
+      if (typeof qtyTerceros !== 'undefined' && qtyTerceros > 0 && this.value === 'N') {
+        alert(`No podés seleccionar "Sin terceros involucrados" porque ya hay ${qtyTerceros} tercero(s) cargado(s).`);
+        this.value = valorAnterior; // restaurar valor anterior
+      } else {
+        valorAnterior = this.value; // actualizar valor anterior
+        actualizarVisibilidadTerceros();
+      }
+    });
+
+    // Accion para el boton agragra tercero
+    const btnAddTercero = document.getElementById('btn_add_tercero')
+    btnAddTercero.addEventListener('click', function() {
+        formAddTercero.action = "{% url 'add_tercero' 0 %}".replace('0', sinId);
+        const modal = new bootstrap.Modal(modalAddTercero);
+        modal.show();
+      });
+
+    // Acciones para los botones edit tercero
+    const btnEditTercero = document.querySelectorAll('.btn-edit-tercero');
+    btnEditTercero.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.getElementById('edit_terc_id').value = this.getAttribute('data-id');
+        document.getElementById('edit_terc_nombre').value = this.getAttribute('data-nombre');
+        document.getElementById('edit_terc_dni').value = this.getAttribute('data-dni');
+        document.getElementById('edit_terc_tel').value = this.getAttribute('data-tel');
+        document.getElementById('edit_terc_mail').value = this.getAttribute('data-mail');
+        document.getElementById('edit_terc_cia').value = this.getAttribute('data-cia');
+        document.getElementById('edit_terc_poliza').value = this.getAttribute('data-poliza');
+        document.getElementById('edit_terc_bien').value = this.getAttribute('data-bien');
+        document.getElementById('edit_terc_danios').value = this.getAttribute('data-danios');
+        formEditTercero.action = "{% url 'edit_tercero' 0 %}".replace('0', sinId);
+        const modal = new bootstrap.Modal(modalEditTercero);
+        modal.show();
+        });
+    });
+
+    // Acciones para los botones eliminar tercero
+    const btnDelTercero = document.querySelectorAll('.btn-del-tercero');
+    btnDelTercero.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const terid = this.getAttribute('data-id');
+        if (confirm("¿Esta seguro de eliminar el tercero?")){
+            window.location.href = `/staff/siniestros/del_tercero/${sinId}/${terid}`;
+        }
+      });
+    });
+
+    // Acciones para los botones eliminar archivo
+    const btnDelArchivo = document.querySelectorAll('.btn-borrar-file');
+    btnDelArchivo.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const fileid = this.getAttribute('data-id');
+        if (confirm("¿Esta seguro de eliminar el Archivo?")){
+            window.location.href = `/staff/siniestros/del_archivo/${sinId}/${fileid}`;
+        }
+      });
+    });
+
+  });
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
