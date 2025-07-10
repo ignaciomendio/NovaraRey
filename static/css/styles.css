@@ -37,6 +37,21 @@
 
 /* Estilos para la parte de Staff */
 
+  .btn-salir-staff {
+    background-color: rgba(208, 168, 24, 0.5); /* Azul con 50% alpha */
+    border: 2px solid rgba(208, 168, 24);            /* Borde sólido azul */
+    color: black;
+    border-radius: 15px;                       /* Esquinas redondeadas */
+    padding: 8px 16px;
+    margin-top: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-salir-staff:hover {
+    background-color: rgba(208, 168, 24, 0.8); /* Fondo más opaco al pasar el mouse */
+  }
+
 .staff-button{
     min-width: 160px;
     border-radius:5px;

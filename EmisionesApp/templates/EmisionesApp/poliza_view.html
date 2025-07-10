@@ -160,7 +160,7 @@
 
   <!-- Area de botones de acción-->
 
-  <div class="d-flex justify-content-between">
+  <div class="d-flex flex-wrap gap-2 mb-3">
     <button class="btn btn-primary staff-button" title="Cargar endoso de modificación"
       {% if poliza.get_status != "Vigente" %}hidden{% endif %}
       id="bot_modificar">Modificar
@@ -517,8 +517,12 @@
     //Boton Renovar
     document.getElementById('bot_renovar').addEventListener('click', function () {
       const diasVigencia = document.getElementById('dias_vigencia').value;
-      if (confirm(`La poliza aun tiene ${diasVigencia} dias de vigencia. ¿Está seguro que desea RENOVAR la poliza?`)) {
-        // Redirige a la URL de renovación
+      if (diasVigencia){
+        if (confirm(`La poliza aun tiene ${diasVigencia} dias de vigencia. ¿Está seguro que desea RENOVAR la poliza?`)) {
+          // Redirige a la URL de renovación
+          window.location.href = "{% url 'add_poliza' poliza.rel_emision.id %}";
+        }
+      } else {
         window.location.href = "{% url 'add_poliza' poliza.rel_emision.id %}";
       }
     });

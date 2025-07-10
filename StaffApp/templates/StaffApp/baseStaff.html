@@ -33,6 +33,9 @@
                             <span class="me-2">Usuario: {{ user.get_username }}</span>
                         {% endif %}
                     </div>
+                    <div>
+                        <a href="{% url 'home' %}" class="btn btn-salir-staff">Salir de STAFF</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,11 +134,17 @@
                                     </li>
                                 </ul>
                             </li>
-
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item px-lg-2">
-                                <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Salir de Staff</a>
+                            <!--Menu Sinistros-->
+                            <li class="nav-item dropdown {% if request.path == '/staff/siniestros/' %}active{% endif %} px-lg-4">
+                                <a class="nav-link dropdown-toggle text-uppercase text-expanded" href="#" id="siniestrosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Siniestros</a>
+                                <ul class="dropdown-menu" aria-labelledby="siniestrosDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'list_siniestros' %}?fil_status=P">Siniestros en Relevamiento</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'list_siniestros' %}?fil_status=I">Siniestros Informados</a>
+                                    </li>                                    
+                                </ul>
                             </li>
                         </ul>
                     </div>

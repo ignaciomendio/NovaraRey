@@ -283,9 +283,10 @@ def vista_add_poliza(req:HttpRequest, id): #el id es el Nro de emision
         emision.tiene_poliza = True
         emision.save()
 
-        #Si hay poliza previa la marca como No renovable
+        #Si hay poliza previa la marca como No renovable y como inactiva
         if poliza_previa:
             poliza_previa.renovable = False
+            poliza_previa.activa = False
             poliza_previa.save()
         
         return redirect(reverse('ver_poliza', args=[new_poliza.id]))
