@@ -456,11 +456,15 @@
       if (esContado) {
         venc1Input.disabled = false;
         cuotasInput.disabled = false;
+        venc1Input.required = true;
+        cuotasInput.required = true;
       } else {
         venc1Input.disabled = true;
         cuotasInput.disabled = true;
         venc1Input.value = null;
         cuotasInput.value = null;
+        venc1Input.required = false;
+        cuotasInput.required = false;
       }
     }
 

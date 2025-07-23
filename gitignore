@@ -1,0 +1,16 @@
+# Entornos virtuales
+venv/
+.venv/
+.env/
+*.env
+*.env.*
+
+# Base de datos SQLite
+*.sqlite3
+*.sqlite3-journal
+
+# Archivos temporales de Django y Python
+__pycache__/
+*.py[cod]
+*.log
+

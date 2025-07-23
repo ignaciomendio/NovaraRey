@@ -6323,3 +6323,93 @@ INFO 2025-07-06 19:52:51,581 basehttp 24996 25408 "GET /staff/tareas/edit/1/ HTT
 INFO 2025-07-06 19:52:55,894 basehttp 24996 25408 "POST /staff/tareas/edit/1/ HTTP/1.1" 302 0
 INFO 2025-07-06 19:52:55,938 basehttp 24996 25408 "GET /staff/tareas/ HTTP/1.1" 200 13331
 INFO 2025-07-06 19:53:17,470 basehttp 24996 4028 "GET /admin/EmisionesApp/poliza/ HTTP/1.1" 200 26924
+INFO 2025-07-22 15:17:51,705 autoreload 14084 27356 Watching for file changes with StatReloader
+INFO 2025-07-22 15:18:12,895 basehttp 14084 7900 "GET / HTTP/1.1" 200 6246
+INFO 2025-07-22 15:18:13,204 basehttp 14084 7900 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 304 0
+INFO 2025-07-22 15:18:13,205 basehttp 14084 19160 "GET /static/img/Tuem%20sin%20fondo.png HTTP/1.1" 304 0
+INFO 2025-07-22 15:18:14,002 basehttp 14084 19160 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-22 15:18:20,494 basehttp 14084 19160 "GET /login/login/ HTTP/1.1" 200 6882
+INFO 2025-07-22 15:18:27,744 basehttp 14084 19160 "POST /login/login/ HTTP/1.1" 302 0
+INFO 2025-07-22 15:18:27,776 basehttp 14084 19160 "GET / HTTP/1.1" 200 6335
+INFO 2025-07-22 15:18:45,955 basehttp 14084 19160 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-07-22 15:18:46,079 basehttp 14084 19160 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-07-22 15:18:46,185 basehttp 14084 19160 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-22 15:19:02,200 basehttp 14084 7900 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-07-22 15:19:02,295 basehttp 14084 3344 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-07-22 15:19:02,333 basehttp 14084 7900 "GET /static/css/styles.css HTTP/1.1" 200 4018
+INFO 2025-07-22 15:19:02,393 basehttp 14084 7900 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-07-22 15:19:15,781 basehttp 14084 7900 "GET /staff/emisiones/listpolizas?fil_status=V HTTP/1.1" 200 19911
+INFO 2025-07-22 15:19:22,830 basehttp 14084 7900 "GET /staff/emisiones/verPoliza/4/ HTTP/1.1" 200 36696
+INFO 2025-07-22 15:19:41,068 basehttp 14084 7900 "GET /staff/emisiones/verPoliza/5/ HTTP/1.1" 200 32085
+ERROR 2025-07-22 15:25:20,592 log 14084 20144 Internal Server Error: /staff/emisiones/poliza/modificar_conducto/5/
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\EmisionesApp\views.py", line 548, in vista_modificar_conducto
+    poliza.save()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1283, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2059, in execute_sql
+    row_count = super().execute_sql(result_type)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1609, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 2022, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1012, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 2135, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1005, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'cant_cuotas' expected a number but got ''.
+ERROR 2025-07-22 15:25:20,642 basehttp 14084 20144 "POST /staff/emisiones/poliza/modificar_conducto/5/ HTTP/1.1" 500 141232
+WARNING 2025-07-22 15:25:21,067 log 14084 20144 Not Found: /favicon.ico
+WARNING 2025-07-22 15:25:21,068 basehttp 14084 20144 "GET /favicon.ico HTTP/1.1" 404 4275
+INFO 2025-07-22 15:27:37,230 basehttp 14084 20144 "GET /staff/emisiones/verPoliza/5/ HTTP/1.1" 200 33130
+INFO 2025-07-22 15:27:55,747 basehttp 14084 20144 "POST /staff/emisiones/poliza/modificar_conducto/5/ HTTP/1.1" 302 0
+INFO 2025-07-22 15:27:55,848 basehttp 14084 20144 "GET /staff/emisiones/verPoliza/5/ HTTP/1.1" 200 34158
+INFO 2025-07-22 15:30:28,698 basehttp 14084 20144 "GET /staff/siniestros/list?fil_status=P HTTP/1.1" 200 24878
+INFO 2025-07-22 15:30:32,480 basehttp 14084 20144 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-07-22 15:30:36,861 basehttp 14084 20144 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31395

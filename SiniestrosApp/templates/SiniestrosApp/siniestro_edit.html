@@ -37,12 +37,12 @@
             value="{{ siniestro.suma_aseg|stringformat:'.2f' }}">
         </div>
         <div class="mb-3">
-          <label for="franquicia_porc" class="form-label">Pranquicia Porcentual (%)</label>
+          <label for="franquicia_porc" class="form-label">Franquicia Porcentual (%)</label>
           <input type="number" id="franquicia_porc" name="franquicia_porc" 
           step="0.01" class="form-control" value="{{ siniestro.porc_franquicia|stringformat:'.2f'}}">
         </div>        
         <div class="mb-3">
-          <label for="franquicia_fija" class="form-label">Pranquicia Fija (AR$)</label>
+          <label for="franquicia_fija" class="form-label">ranquicia Fija (AR$)</label>
           <input type="number" id="franquicia_fija" name="franquicia_fija" class="form-control" 
           step="0.01" value="{{ siniestro.franquicia_fija|stringformat:'.2f'}}">
         </div>
