@@ -18,3 +18,4 @@ __pycache__/
 # Credentials
 credencials/
 *.json
+credencials/storage-novara-rey-service-account-key.json
