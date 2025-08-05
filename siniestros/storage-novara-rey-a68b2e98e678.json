@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "storage-novara-rey",
+  "private_key_id": "a68b2e98e678d1c4961e00496a32669dfa3d9e0b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8Yuh4X6MyZjcF\nPtWIBfgTV3oaMDsGNsPONRYqUPjfn9pLxJDd0VbjBY7dnGp69OFRp1Kyv6xSzeG9\n9q6YnEp5ONqImMbk1KSBCXqMwE8hA7tSG7YgLOlgxxWk5IX++/Il/62BZtk+ayLI\nZ1T4KPjExXAScqFmOtTQUN3/G8YBpjR9bGtalD058SgYfL3CnarUsrgIqTSgu1D5\n+/udhOMdLWCCwa8BbJyEuJDpk3jwWJmx/dxtZYg0CvkFVSj4tqGOVW9mgTGIiyJ4\nRaXCoD9xv/IQVwky10iQbIcmma+JWecCSfQpYHodgRwLVsXzRNGw3OV2UsGsBjxE\n4EYLlh/dAgMBAAECggEACR4BUbgRMiJ7xbN3ipx9V9RLOsK8TI3wdoWfs78U+F+o\nZTPXbgDQY27UrfmAtsAsunKuYCvCF4TSyMqMQyMHQKwleWhpcdAvwPX4OiEhgz/G\nvE/OheqehdpEvCT6Li+71aZ023ciivCM76V+mX8EISPMC3yEPqoYvBc50zuhHtm6\n2/SHprh4CbYXbsTxbqCwW2L8LUZ+zWcDgSnOJsDb34Q5ZKsEpShjjyXASKp0LTXm\n+q0z6zThAibF2824UhawbUani4+8bR7bEVkG8ijFzSKNBWMTsEIb6Qc9Qnsrfpt7\npMTjgPb/8Mzcb2dz7YHMARej4MoH1F4aCvF2UZbGkQKBgQDgv8ycBIDr2hsclyGE\nDZWbgjB8D0aGGIzhXCN3QJvAImFirp+VSGjBO+DQpDr3M81CvrnjmeZwW2NeHNlt\nEkTTOuoxM7J2+jTWcwxGVHpAC/SbDGLDXeTBYZfRcJVjC8kejnkklA+wdNigMwdS\nuqv+P5q6+/kr5NalE6g71qUr0QKBgQDWlLts2MJxdpYrZeI9wdrh2thPH1OfYu1e\neJeUHgjoMM5MkoqOveAQME0iABM/enmG98VOXlvIxAe2dx3BHx/H1NCSYme9kvm5\ngr6gKrcz429vo0XYzW/xFj3qYNm+vKTrtBSWXrFtrs7snoykzU/XOYPJoOrwU1lJ\nLhIaoK9STQKBgQCLSHIeUnAvOkjJDCQ6OUz5RdKUX8cd/YL5eueD1SdxCB2AUaYW\nlvxMnLYzt0PPxWu0rIx5L/xur0RCo/BfNw4uNfnDKj20nFU4fa4iu+HTZVVe7Wsb\nlknZSokSxAngiwJGDJepApVCjvddOKKWM5e5hmN29Ac0m6omPatqAhj0sQKBgDjq\nVFhHmjOMN8KlEIA+9faoHG3IKl8BV2KSa+oemVA0+dM3n0bDODYzCZJ2IKTasHdL\nKuthfcjfrggIyjyaK8zONtBNB6Ux4ckB09wZ2GQL9FfRH8qkmweAVcXgEIFV+gyG\nxFsqHLeyATKjzzw7NO0qVTla1FYQVYNik+y6KCaVAoGAM/prBTwClRC0DXODD1qa\nDjqUI383751vIyviCEoooJLzBQ/Xd/y5tsI71rifsuEZKa9fHUKK9XPu7D+QKp54\nWyE2WnRwFAb7J7f7hqG1MIE7o8izIxOATBYOlpWqvXgSlO83jR/GDj1ifsyefIEd\nkQyMVSQExKSIlkjYs0q2ZwI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "storage-novararey@storage-novara-rey.iam.gserviceaccount.com",
+  "client_id": "101966357234943904888",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/storage-novararey%40storage-novara-rey.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

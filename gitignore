@@ -14,3 +14,7 @@ __pycache__/
 *.py[cod]
 *.log
 
+
+# Credentials
+credencials/
+*.json

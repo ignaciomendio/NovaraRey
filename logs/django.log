@@ -6413,3 +6413,464 @@ INFO 2025-07-22 15:27:55,848 basehttp 14084 20144 "GET /staff/emisiones/verPoliz
 INFO 2025-07-22 15:30:28,698 basehttp 14084 20144 "GET /staff/siniestros/list?fil_status=P HTTP/1.1" 200 24878
 INFO 2025-07-22 15:30:32,480 basehttp 14084 20144 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
 INFO 2025-07-22 15:30:36,861 basehttp 14084 20144 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31395
+INFO 2025-08-04 11:03:16,792 autoreload 600 4508 Watching for file changes with StatReloader
+INFO 2025-08-04 11:03:31,927 basehttp 600 17724 "GET / HTTP/1.1" 200 6246
+INFO 2025-08-04 11:03:32,274 basehttp 600 2616 "GET /media/logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 200 54676
+INFO 2025-08-04 11:03:32,284 basehttp 600 17724 "GET /static/css/styles.css HTTP/1.1" 200 4018
+INFO 2025-08-04 11:03:32,285 basehttp 600 24216 "GET /static/img/Tuem%20sin%20fondo.png HTTP/1.1" 200 11346
+INFO 2025-08-04 11:03:32,446 basehttp 600 24216 "GET /static/img/fondo%20encabezado.jpg HTTP/1.1" 200 5860732
+INFO 2025-08-04 11:03:34,135 basehttp 600 24216 "GET /static/img/icoNovaraRey.png HTTP/1.1" 200 10438
+INFO 2025-08-04 11:03:34,559 basehttp 600 24216 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 11:03:34,790 basehttp 600 24216 "GET /login/login/?next=/staff/ HTTP/1.1" 200 6882
+INFO 2025-08-04 11:03:41,106 basehttp 600 24216 "POST /login/login/?next=/staff/ HTTP/1.1" 200 7152
+INFO 2025-08-04 11:03:50,903 basehttp 600 24216 "POST /login/login/?next=/staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 11:03:50,928 basehttp 600 24216 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 11:03:51,099 basehttp 600 24216 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-04 11:03:51,209 basehttp 600 24216 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-04 11:03:59,840 basehttp 600 17724 "GET /staff/siniestros/list?fil_status=P HTTP/1.1" 200 24966
+INFO 2025-08-04 11:04:02,811 basehttp 600 17724 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-04 11:04:09,095 basehttp 600 17724 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31394
+ERROR 2025-08-04 11:04:28,055 log 600 17724 Internal Server Error: /staff/siniestros/add_file/3
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 181, in vista_add_file_siniestro
+    DocSiniestro.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        usuario_creacion=req.user,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        siniestro = siniestro,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1880, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1805, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1749, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\files\storage\base.py", line 93, in get_available_name
+    while not self.is_name_available(name, max_length=max_length):
+              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\files\storage\base.py", line 56, in is_name_available
+    return not self.exists(name) and not exceeds_max_length
+               ~~~~~~~~~~~^^^^^^
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\storage.py", line 83, in exists
+    return self._get_file_id(name) is not None
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\storage.py", line 109, in _get_file_id
+    results = self.service.files().list(
+              ^^^^^^^^^^^^
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\storage.py", line 26, in service
+    credentials = Credentials.from_service_account_file(
+        settings.GOOGLE_DRIVE_CREDENTIALS_FILE,
+        scopes=['https://www.googleapis.com/auth/drive']
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\oauth2\service_account.py", line 260, in from_service_account_file
+    info, signer = _service_account_info.from_filename(
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        filename, require=["client_email", "token_uri"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\auth\_service_account_info.py", line 78, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ignac\\OneDrive\\Documentos\\Django\\NovaraRey\\credencials\\storage-novara-rey-service-account-key.json'
+ERROR 2025-08-04 11:04:28,097 basehttp 600 17724 "POST /staff/siniestros/add_file/3 HTTP/1.1" 500 173802
+WARNING 2025-08-04 11:04:28,318 log 600 17724 Not Found: /favicon.ico
+WARNING 2025-08-04 11:04:28,319 basehttp 600 17724 "GET /favicon.ico HTTP/1.1" 404 4275
+INFO 2025-08-04 11:07:43,642 autoreload 600 4508 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 11:07:46,533 autoreload 18088 26308 Watching for file changes with StatReloader
+INFO 2025-08-04 11:07:53,800 basehttp 18088 7940 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31394
+ERROR 2025-08-04 11:08:09,823 log 18088 7940 Internal Server Error: /staff/siniestros/add_file/3
+Traceback (most recent call last):
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py", line 181, in vista_add_file_siniestro
+    DocSiniestro.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        usuario_creacion=req.user,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        siniestro = siniestro,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1880, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1805, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1749, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\files\storage\base.py", line 49, in save
+    name = self._save(name, content)
+  File "C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\storage.py", line 71, in _save
+    ).execute()
+      ~~~~~~~^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\googleapiclient\http.py", line 902, in execute
+    _, body = self.next_chunk(http=http, num_retries=num_retries)
+              ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\googleapiclient\http.py", line 1093, in next_chunk
+    return self._process_response(resp, content)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ignac\AppData\Local\Programs\Python\Python313\Lib\site-packages\googleapiclient\http.py", line 1124, in _process_response
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=resumable returned "Service Accounts do not have storage quota. Leverage shared drives (https://developers.google.com/workspace/drive/api/guides/about-shareddrives), or use OAuth delegation (http://support.google.com/a/answer/7281227) instead.". Details: "[{'message': 'Service Accounts do not have storage quota. Leverage shared drives (https://developers.google.com/workspace/drive/api/guides/about-shareddrives), or use OAuth delegation (http://support.google.com/a/answer/7281227) instead.', 'domain': 'usageLimits', 'reason': 'storageQuotaExceeded'}]">
+ERROR 2025-08-04 11:08:09,848 basehttp 18088 7940 "POST /staff/siniestros/add_file/3 HTTP/1.1" 500 177332
+INFO 2025-08-04 14:12:06,042 autoreload 18088 26308 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 14:12:10,690 autoreload 9020 6420 Watching for file changes with StatReloader
+INFO 2025-08-04 14:13:43,398 autoreload 9020 6420 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-08-04 14:13:49,287 autoreload 27168 20132 Watching for file changes with StatReloader
+INFO 2025-08-04 14:14:23,583 basehttp 27168 7160 "GET /staff/siniestros/edit/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:14:23,871 basehttp 27168 7160 "GET /login/login/?next=/staff/siniestros/edit/3 HTTP/1.1" 200 6882
+INFO 2025-08-04 14:14:29,957 basehttp 27168 7160 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 14:14:29,984 basehttp 27168 7160 "GET /login/login/?next=/staff/ HTTP/1.1" 200 6882
+INFO 2025-08-04 14:14:41,087 basehttp 27168 7160 "POST /login/login/?next=/staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 14:14:41,136 basehttp 27168 7160 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 14:14:42,114 basehttp 27168 7160 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-04 14:14:42,264 basehttp 27168 7160 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-04 14:14:46,275 basehttp 27168 14708 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-04 14:14:48,696 basehttp 27168 14708 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31394
+INFO 2025-08-04 14:15:42,204 basehttp 27168 14708 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:15:42,311 basehttp 27168 14708 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31982
+INFO 2025-08-04 14:16:25,762 basehttp 27168 14708 "GET /media/siniestros/495464357_1236010901427810_8337227496884881582_n.jpg HTTP/1.1" 200 37818
+INFO 2025-08-04 14:16:43,136 basehttp 27168 14708 "GET /staff/siniestros/del_archivo/3/6 HTTP/1.1" 302 0
+INFO 2025-08-04 14:16:43,258 basehttp 27168 14708 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31394
+INFO 2025-08-04 14:18:37,686 autoreload 27300 21600 Watching for file changes with StatReloader
+INFO 2025-08-04 14:18:48,960 basehttp 27300 23780 "GET / HTTP/1.1" 200 6335
+INFO 2025-08-04 14:18:53,589 basehttp 27300 23780 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 14:18:53,708 basehttp 27300 23780 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-04 14:18:53,826 basehttp 27300 23780 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-04 14:18:58,552 basehttp 27300 8468 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-04 14:19:03,099 basehttp 27300 8468 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31394
+INFO 2025-08-04 14:19:32,363 basehttp 27300 8468 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:19:32,437 basehttp 27300 8468 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31982
+INFO 2025-08-04 14:19:40,676 basehttp 27300 8468 "GET /media/siniestros/495464357_1236010901427810_8337227496884881582_n.jpg HTTP/1.1" 200 37818
+INFO 2025-08-04 14:22:23,292 autoreload 27300 21600 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 14:22:26,229 autoreload 17640 18952 Watching for file changes with StatReloader
+INFO 2025-08-04 14:23:18,623 autoreload 7644 23592 Watching for file changes with StatReloader
+WARNING 2025-08-04 14:23:36,416 log 7644 10712 Not Found: /core/login/
+WARNING 2025-08-04 14:23:36,417 basehttp 7644 10712 "GET /core/login/ HTTP/1.1" 404 2929
+INFO 2025-08-04 14:31:40,445 autoreload 7644 23592 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 14:31:45,155 autoreload 3812 14708 Watching for file changes with StatReloader
+INFO 2025-08-04 14:31:58,309 autoreload 16420 2872 Watching for file changes with StatReloader
+WARNING 2025-08-04 14:32:16,030 log 16420 10416 Not Found: /core/login/
+WARNING 2025-08-04 14:32:16,032 basehttp 16420 10416 "GET /core/login/ HTTP/1.1" 404 2929
+INFO 2025-08-04 14:32:26,206 basehttp 16420 10416 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-04 14:32:26,353 log 16420 10416 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-04 14:32:26,355 basehttp 16420 10416 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 3046
+WARNING 2025-08-04 14:32:29,411 log 16420 10416 Not Found: /staff/
+WARNING 2025-08-04 14:32:29,414 basehttp 16420 10416 "GET /staff/ HTTP/1.1" 404 2909
+WARNING 2025-08-04 14:32:38,720 log 16420 10416 Not Found: /staff/
+WARNING 2025-08-04 14:32:38,722 basehttp 16420 10416 "GET /staff/ HTTP/1.1" 404 2909
+WARNING 2025-08-04 14:32:53,845 log 16420 10416 Not Found: /staff/
+WARNING 2025-08-04 14:32:53,847 basehttp 16420 10416 "GET /staff/ HTTP/1.1" 404 2909
+INFO 2025-08-04 14:32:59,104 basehttp 16420 10416 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-04 14:32:59,180 log 16420 10416 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-04 14:32:59,182 basehttp 16420 10416 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 3046
+WARNING 2025-08-04 14:33:03,090 log 16420 10416 Not Found: /rubros/
+WARNING 2025-08-04 14:33:03,092 basehttp 16420 10416 "GET /rubros/ HTTP/1.1" 404 2913
+INFO 2025-08-04 14:34:53,819 autoreload 16052 19900 Watching for file changes with StatReloader
+INFO 2025-08-04 14:35:05,167 basehttp 16052 29064 "GET /rubros/ HTTP/1.1" 200 58631
+INFO 2025-08-04 14:35:05,665 basehttp 16052 12312 "GET /media/RubrosMedia/SegCasa.png HTTP/1.1" 200 26837
+INFO 2025-08-04 14:35:05,701 basehttp 16052 28368 "GET /media/RubrosMedia/SegComercio.png HTTP/1.1" 200 28225
+INFO 2025-08-04 14:35:05,738 basehttp 16052 12312 "GET /media/RubrosMedia/caucion.png HTTP/1.1" 200 30765
+INFO 2025-08-04 14:35:05,769 basehttp 16052 29064 "GET /media/RubrosMedia/SegAuto.png HTTP/1.1" 200 48643
+INFO 2025-08-04 14:35:05,825 basehttp 16052 22232 "GET /media/RubrosMedia/rcmedicos.png HTTP/1.1" 200 32499
+INFO 2025-08-04 14:35:05,865 basehttp 16052 12312 "GET /media/RubrosMedia/accpers.png HTTP/1.1" 200 30749
+INFO 2025-08-04 14:35:05,892 basehttp 16052 29064 "GET /media/RubrosMedia/SegVida_5ltDDjZ.png HTTP/1.1" 200 24959
+INFO 2025-08-04 14:35:05,929 basehttp 16052 10840 "GET /media/RubrosMedia/repcivil.png HTTP/1.1" 200 31008
+INFO 2025-08-04 14:35:05,956 basehttp 16052 9820 "GET /media/RubrosMedia/rcprofesional.png HTTP/1.1" 200 33226
+INFO 2025-08-04 14:35:05,975 basehttp 16052 12312 "GET /media/RubrosMedia/motos.png HTTP/1.1" 200 42842
+INFO 2025-08-04 14:35:06,005 basehttp 16052 28368 "GET /media/RubrosMedia/objetosper.png HTTP/1.1" 200 26706
+INFO 2025-08-04 14:35:06,026 basehttp 16052 22232 "GET /media/RubrosMedia/SegConsorcio.png HTTP/1.1" 200 35057
+INFO 2025-08-04 14:35:06,063 basehttp 16052 10840 "GET /media/RubrosMedia/vidacol.png HTTP/1.1" 200 31987
+INFO 2025-08-04 14:35:06,095 basehttp 16052 29064 "GET /media/RubrosMedia/art.png HTTP/1.1" 200 30631
+INFO 2025-08-04 14:35:11,046 basehttp 16052 29064 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-04 14:35:11,151 basehttp 16052 29064 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-04 14:35:11,278 basehttp 16052 29064 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-04 14:35:14,897 basehttp 16052 10840 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-04 14:35:16,342 basehttp 16052 10840 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31982
+INFO 2025-08-04 14:35:20,326 basehttp 16052 10840 "GET /media/siniestros/495464357_1236010901427810_8337227496884881582_n.jpg HTTP/1.1" 304 0
+INFO 2025-08-04 14:39:12,990 autoreload 16052 19900 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 14:39:15,459 autoreload 12208 9776 Watching for file changes with StatReloader
+WARNING 2025-08-04 14:39:22,749 log 12208 28420 Not Found: /staff/dashboard/
+WARNING 2025-08-04 14:39:22,750 basehttp 12208 28420 "GET /staff/dashboard/ HTTP/1.1" 404 2949
+INFO 2025-08-04 14:41:39,229 autoreload 12208 9776 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\MainApp\urls.py changed, reloading.
+INFO 2025-08-04 14:41:41,462 autoreload 30504 16892 Watching for file changes with StatReloader
+INFO 2025-08-04 14:41:48,161 basehttp 30504 14676 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-04 14:41:48,294 basehttp 30504 14676 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-04 14:41:56,378 basehttp 30504 27156 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-04 14:41:58,509 basehttp 30504 27156 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 31970
+WARNING 2025-08-04 14:42:01,975 log 30504 27156 Not Found: /siniestros/495464357_1236010901427810_8337227496884881582_n.jpg
+WARNING 2025-08-04 14:42:01,977 basehttp 30504 27156 "GET /siniestros/495464357_1236010901427810_8337227496884881582_n.jpg HTTP/1.1" 404 4172
+INFO 2025-08-04 14:42:37,950 basehttp 30504 27156 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:42:38,018 basehttp 30504 27156 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 32581
+WARNING 2025-08-04 14:42:41,923 log 30504 27156 Not Found: /siniestros/accpers.png
+WARNING 2025-08-04 14:42:41,925 basehttp 30504 27156 "GET /siniestros/accpers.png HTTP/1.1" 404 4049
+INFO 2025-08-04 14:44:01,558 autoreload 30504 16892 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.
+INFO 2025-08-04 14:44:03,561 autoreload 21656 24964 Watching for file changes with StatReloader
+INFO 2025-08-04 14:55:14,611 autoreload 21656 24964 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-08-04 14:55:16,697 autoreload 8312 13376 Watching for file changes with StatReloader
+INFO 2025-08-04 14:55:22,047 autoreload 8312 13376 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\views.py changed, reloading.
+INFO 2025-08-04 14:55:23,289 autoreload 16972 9612 Watching for file changes with StatReloader
+INFO 2025-08-04 14:55:34,736 basehttp 16972 5516 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 32581
+INFO 2025-08-04 14:55:44,679 basehttp 16972 5516 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:55:44,729 basehttp 16972 5516 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 33244
+INFO 2025-08-04 14:57:45,880 basehttp 16972 5516 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-04 14:57:45,976 basehttp 16972 5516 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 33879
+WARNING 2025-08-04 14:59:37,485 log 16972 5516 Not Found: /siniestros/accpers_UF1JWg9.png
+WARNING 2025-08-04 14:59:37,496 basehttp 16972 5516 "GET /siniestros/accpers_UF1JWg9.png HTTP/1.1" 404 4073
+INFO 2025-08-04 15:10:17,714 autoreload 16972 9612 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\SiniestrosApp\models.py changed, reloading.
+INFO 2025-08-04 15:10:20,271 autoreload 4444 17836 Watching for file changes with StatReloader
+INFO 2025-08-05 11:16:29,989 autoreload 10540 15448 Watching for file changes with StatReloader
+INFO 2025-08-05 11:16:48,996 basehttp 10540 20096 "GET / HTTP/1.1" 200 6240
+WARNING 2025-08-05 11:16:49,065 log 10540 20096 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:16:49,067 basehttp 10540 20096 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:16:55,813 basehttp 10540 20096 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-05 11:16:55,861 basehttp 10540 17560 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:16:56,152 basehttp 10540 17560 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4249
+INFO 2025-08-05 11:16:56,281 basehttp 10540 17560 "GET /static/admin/css/base.css HTTP/1.1" 200 22154
+INFO 2025-08-05 11:16:56,294 basehttp 10540 17560 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-05 11:16:56,308 basehttp 10540 17560 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-05 11:16:56,324 basehttp 10540 17560 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-08-05 11:16:56,341 basehttp 10540 17560 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16632
+INFO 2025-08-05 11:16:56,372 basehttp 10540 17560 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-05 11:16:56,403 basehttp 10540 17560 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-05 11:16:59,673 basehttp 10540 17560 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:16:59,791 basehttp 10540 17560 "GET /admin/ HTTP/1.1" 200 29946
+INFO 2025-08-05 11:16:59,842 basehttp 10540 17560 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-05 11:16:59,866 basehttp 10540 17560 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-05 11:16:59,869 basehttp 10540 18980 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-05 11:16:59,873 basehttp 10540 5108 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-05 11:17:22,306 basehttp 10540 5108 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:17:22,357 log 10540 5108 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:17:22,358 basehttp 10540 5108 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:17:24,222 basehttp 10540 5108 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:17:24,373 basehttp 10540 5108 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-05 11:17:24,414 basehttp 10540 5108 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-05 11:17:28,014 basehttp 10540 18980 "GET /staff/siniestros/list?fil_status=I HTTP/1.1" 200 26765
+INFO 2025-08-05 11:17:34,198 basehttp 10540 18980 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 34223
+INFO 2025-08-05 11:18:21,352 basehttp 10540 18980 "POST /staff/siniestros/add_file/3 HTTP/1.1" 302 0
+INFO 2025-08-05 11:18:21,404 basehttp 10540 18980 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 34955
+INFO 2025-08-05 11:23:59,137 basehttp 10540 19988 "GET /staff/siniestros/del_archivo/3/11 HTTP/1.1" 302 0
+INFO 2025-08-05 11:23:59,403 basehttp 10540 19988 "GET /staff/siniestros/edit/3 HTTP/1.1" 200 34223
+INFO 2025-08-05 11:24:29,720 basehttp 10540 19988 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 13409
+INFO 2025-08-05 11:24:33,326 basehttp 10540 19988 "GET /staff/cotizaciones/solicitudes/?status=&nombre= HTTP/1.1" 200 29205
+INFO 2025-08-05 11:25:04,518 basehttp 10540 19988 "GET /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 12788
+INFO 2025-08-05 11:25:10,801 basehttp 10540 19988 "POST /staff/cotizaciones/nuevasolicitud/ HTTP/1.1" 200 13608
+INFO 2025-08-05 11:25:28,703 basehttp 10540 19988 "POST /staff/cotizaciones/solicita/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:25:28,732 basehttp 10540 19988 "GET /staff/cotizaciones/solicitudes/?status=P HTTP/1.1" 200 15112
+INFO 2025-08-05 11:25:37,924 basehttp 10540 19988 "GET /staff/cotizaciones/solicitudes/cotizar/13 HTTP/1.1" 302 0
+INFO 2025-08-05 11:25:38,042 basehttp 10540 19988 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 17810
+INFO 2025-08-05 11:25:51,207 basehttp 10540 19988 "GET /staff/cotizaciones/edit/12 HTTP/1.1" 200 20782
+INFO 2025-08-05 11:26:08,788 basehttp 10540 19988 "POST /staff/cotizaciones/cot_cias/add/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:26:08,823 basehttp 10540 19988 "GET /staff/cotizaciones/edit/12 HTTP/1.1" 200 22340
+INFO 2025-08-05 11:26:15,508 basehttp 10540 19988 "POST /staff/cotizaciones/edit/12 HTTP/1.1" 302 0
+INFO 2025-08-05 11:26:15,534 basehttp 10540 19988 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 17845
+INFO 2025-08-05 11:26:19,541 basehttp 10540 19988 "POST /staff/cotizaciones/send/12 HTTP/1.1" 302 0
+INFO 2025-08-05 11:26:19,561 basehttp 10540 19988 "GET /staff/cotizaciones/listado/?status=P HTTP/1.1" 200 15628
+INFO 2025-08-05 11:26:23,393 basehttp 10540 19988 "GET /staff/cotizaciones/listado/?status=E&nombre= HTTP/1.1" 200 17825
+INFO 2025-08-05 11:26:29,498 basehttp 10540 19988 "GET /staff/emisiones/add/12 HTTP/1.1" 200 12630
+INFO 2025-08-05 11:26:56,074 basehttp 10540 19988 "POST /staff/emisiones/add/12 HTTP/1.1" 302 0
+INFO 2025-08-05 11:26:56,155 basehttp 10540 19988 "GET /staff/emisiones/editemision/13/ HTTP/1.1" 200 17560
+INFO 2025-08-05 11:27:21,473 basehttp 10540 19988 "POST /staff/emisiones/edit/addfile/13 HTTP/1.1" 302 0
+INFO 2025-08-05 11:27:21,549 basehttp 10540 19988 "GET /staff/emisiones/list?filtro_poliza=SP HTTP/1.1" 200 13883
+INFO 2025-08-05 11:27:27,121 basehttp 10540 19988 "GET /staff/emisiones/editemision/13/ HTTP/1.1" 200 17949
+INFO 2025-08-05 11:28:13,206 basehttp 10540 19988 "GET /staff/emisiones/list HTTP/1.1" 200 29033
+INFO 2025-08-05 11:28:21,953 basehttp 10540 19988 "GET /staff/emisiones/list?filtro_poliza=SP&nombre= HTTP/1.1" 200 13784
+INFO 2025-08-05 11:28:29,395 basehttp 10540 19988 "GET /staff/emisiones/addPoliza/13/ HTTP/1.1" 200 15128
+INFO 2025-08-05 11:28:52,280 basehttp 10540 19988 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:28:52,385 log 10540 19988 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:28:52,386 basehttp 10540 19988 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:28:57,851 basehttp 10540 19988 "GET /rubros/ HTTP/1.1" 200 59661
+WARNING 2025-08-05 11:28:57,912 log 10540 19988 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:28:57,913 basehttp 10540 19988 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:31:17,789 basehttp 10540 19988 "GET /admin/ HTTP/1.1" 200 29946
+INFO 2025-08-05 11:31:26,601 basehttp 10540 19988 "GET /admin/RubrosApp/rubrocat/ HTTP/1.1" 200 24851
+INFO 2025-08-05 11:31:26,663 basehttp 10540 19988 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-08-05 11:31:26,783 basehttp 10540 21044 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:31:26,818 basehttp 10540 21044 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-05 11:31:26,852 basehttp 10540 19988 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-08-05 11:31:26,875 basehttp 10540 21044 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-08-05 11:31:26,907 basehttp 10540 19988 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-08-05 11:31:26,918 basehttp 10540 21044 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-08-05 11:31:26,940 basehttp 10540 19988 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-05 11:31:26,953 basehttp 10540 21044 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-05 11:31:26,971 basehttp 10540 20088 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-08-05 11:31:26,995 basehttp 10540 20088 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-05 11:31:27,134 basehttp 10540 10448 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-08-05 11:31:27,181 basehttp 10540 10448 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-05 11:31:34,056 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/ HTTP/1.1" 200 28516
+INFO 2025-08-05 11:31:34,115 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:31:39,157 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/1/change/ HTTP/1.1" 200 28787
+INFO 2025-08-05 11:31:39,221 basehttp 10540 10448 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-08-05 11:31:39,228 basehttp 10540 21044 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:31:39,238 basehttp 10540 20088 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-05 11:31:39,255 basehttp 10540 10448 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-08-05 11:31:39,259 basehttp 10540 20088 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-08-05 11:31:39,289 basehttp 10540 10448 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-05 11:34:57,258 basehttp 10540 10448 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:34:57,347 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:34:57,349 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:35:01,408 basehttp 10540 10448 "GET /rubros/ HTTP/1.1" 200 59661
+WARNING 2025-08-05 11:35:01,471 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:35:01,473 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:36:10,187 basehttp 10540 10448 "GET /admin/ HTTP/1.1" 200 29946
+INFO 2025-08-05 11:36:14,836 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/ HTTP/1.1" 200 28516
+INFO 2025-08-05 11:36:14,898 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:36:17,446 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/1/change/ HTTP/1.1" 200 28787
+INFO 2025-08-05 11:36:17,518 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:37:00,398 basehttp 10540 10448 "POST /admin/RubrosApp/categoria/1/change/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:37:00,453 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/ HTTP/1.1" 200 28743
+INFO 2025-08-05 11:37:00,513 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:37:00,568 basehttp 10540 10448 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-05 11:37:40,748 basehttp 10540 10448 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:37:40,810 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:37:40,812 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:37:44,668 basehttp 10540 10448 "GET /rubros/ HTTP/1.1" 200 59677
+WARNING 2025-08-05 11:37:44,725 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:37:44,727 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:38:08,476 basehttp 10540 10448 "GET /admin/ HTTP/1.1" 200 30002
+INFO 2025-08-05 11:38:17,380 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/ HTTP/1.1" 200 28516
+INFO 2025-08-05 11:38:17,454 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:38:19,992 basehttp 10540 10448 "GET /admin/RubrosApp/categoria/1/change/ HTTP/1.1" 200 28803
+INFO 2025-08-05 11:38:20,051 basehttp 10540 10448 "GET /admin/jsi18n/ HTTP/1.1" 200 9282
+INFO 2025-08-05 11:38:50,518 basehttp 10540 10448 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:38:50,589 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:38:50,594 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+WARNING 2025-08-05 11:38:53,578 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:38:53,580 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:38:53,597 basehttp 10540 5232 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:38:53,663 log 10540 5232 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:38:53,665 basehttp 10540 5232 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:38:58,065 basehttp 10540 5232 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:38:58,164 basehttp 10540 5232 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-05 11:38:58,216 basehttp 10540 5232 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-05 11:38:59,912 basehttp 10540 10448 "GET / HTTP/1.1" 200 6329
+WARNING 2025-08-05 11:38:59,966 log 10540 10448 Not Found: /logos/Logo Membrete sin fondo mini.png
+WARNING 2025-08-05 11:38:59,966 basehttp 10540 10448 "GET /logos/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 404 4105
+INFO 2025-08-05 11:44:49,960 basehttp 10540 908 "GET / HTTP/1.1" 200 6342
+INFO 2025-08-05 11:44:50,080 basehttp 10540 908 "GET /static/img/Logo%20Membrete%20sin%20fondo%20mini.png HTTP/1.1" 200 54676
+INFO 2025-08-05 11:45:33,442 basehttp 10540 10420 "GET /staff/ HTTP/1.1" 302 0
+INFO 2025-08-05 11:45:33,550 basehttp 10540 10420 "GET /staff/dashboard/ HTTP/1.1" 200 16753
+WARNING 2025-08-05 11:45:33,624 basehttp 10540 10420 "GET /static/css/staff.css HTTP/1.1" 404 1853
+INFO 2025-08-05 12:53:36,653 autoreload 10540 15448 C:\Users\ignac\OneDrive\Documentos\Django\NovaraRey\NovaraRey\settings.py changed, reloading.

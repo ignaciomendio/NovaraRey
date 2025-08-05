@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+import pymysql
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ==============================================================================
 
 # Detectar si estamos en desarrollo o producción
-DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
 
 # Secret Key - En producción debe venir de variable de entorno
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-_b*ure!#bjw76t-@p5co4t^lr71^814fqlmen1tp*#%&e0#_m1')
@@ -30,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-_b*ure!#bjw76t-@p5co4t^lr7
 if DEBUG:
     ALLOWED_HOSTS = ['imendiola.pythonanywhere.com', '127.0.0.1', 'localhost']
 else:
-    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+    ALLOWED_HOSTS = ['imendiola.pythonanywhere.com']
 
 # ==============================================================================
 # APLICACIONES
@@ -119,15 +121,20 @@ if DEBUG:
         }
     }
 else:
-    # Configuración para PostgreSQL en producción
+    # MySQL para producción en PythonAnywhere
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST', 'localhost'),
-            'PORT': os.getenv('DB_PORT', '5432'),
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('DB_NAME', 'imendiola$novarareydb'),  # Formato típico de PythonAnywhere
+            'USER': os.getenv('DB_USER', 'imendiola'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),  # DEBE ser configurada como variable de entorno
+            'HOST': os.getenv('DB_HOST', 'imendiola.mysql.pythonanywhere-services.com'),
+            'PORT': os.getenv('DB_PORT', '3306'),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+                'isolation_level': 'read committed',
+            },
         }
     }
 
@@ -184,8 +191,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / "media"
 
 # ==============================================================================
 # CONFIGURACIÓN DE FORMULARIOS
@@ -339,3 +346,47 @@ else:
             'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1'),
         }
     }
+
+
+
+
+# ----------------------
+# S3 Storage Settings
+# ----------------------
+
+# Configuración de AWS S3
+AWS_ACCESS_KEY_ID = 'AKIA4SMLJMGVLXJHEMLX'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'storage-novara-rey'
+AWS_S3_REGION_NAME = 'us-east-2'
+
+# IMPORTANTE: Desactivar ACLs para buckets que no las soportan
+AWS_DEFAULT_ACL = 'public-read'  # Cambiar de 'public-read' a None
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+# Configuración adicional
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_FILE_OVERWRITE = False
+AWS_LOCATION = ''  # ruta base en el bucket
+
+# Configuración de storages
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": AWS_STORAGE_BUCKET_NAME,
+            "region_name": AWS_S3_REGION_NAME,
+            "access_key": AWS_ACCESS_KEY_ID,
+            "secret_key": AWS_SECRET_ACCESS_KEY,
+            "default_acl": 'public-read' ,  # Importante: desactivar ACLs
+            "querystring_auth": AWS_QUERYSTRING_AUTH,
+            "file_overwrite": AWS_S3_FILE_OVERWRITE,
+            "location": AWS_LOCATION,
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    }
+}

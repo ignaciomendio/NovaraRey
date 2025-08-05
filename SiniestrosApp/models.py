@@ -1,7 +1,6 @@
 from django.db import models
 from EmisionesApp.models import Poliza
 from django.utils import timezone
-import os
 
 class Siniestro(models.Model):
 
@@ -65,6 +64,7 @@ class Tercero(models.Model):
     bien_afectado = models.CharField(max_length=80, verbose_name="Bien del tercero afectado por el siniestro", blank=True, null=True)
     danios = models.TextField(verbose_name="Descripción de los daños al tercer", null=True, blank=True) 
 
+
 class DocSiniestro(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creación')
     usuario_creacion = models.ForeignKey(
@@ -84,8 +84,9 @@ class DocSiniestro(models.Model):
             return (ahora.date() - self.fecha_creacion.date()).days
         return 0
     
-    def erase(self, *args, **kwargs):
-        """Elimina el archivo físico y luego el registro de base de datos."""
-        if self.archivo and os.path.isfile(self.archivo.path):
-            os.remove(self.archivo.path)
+    def delete(self, *args, **kwargs): #type: ignore
+        """Elimina el archivo de Google Drive y luego el registro de base de datos."""
+        if self.archivo:
+            # El storage personalizado se encarga de eliminar de Google Drive
+            self.archivo.delete(save=False)
         super().delete(*args, **kwargs)

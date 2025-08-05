@@ -17,15 +17,15 @@
         </div>
         <div class="staff-form-control-container">
             <label class="form-label">DNI, CUIL o CUIT</label>
-            <input type="text" name="dni" class="form-control" value="">
+            <input type="text" name="dni" class="form-control" value="" required>
         </div>
         <div class="staff-form-control-container">
             <label class="form-label">Fecha de Nacimiento</label>
-            <input type="date" name="fecha_nacimiento" class="form-control">
+            <input type="date" name="fecha_nacimiento" class="form-control" required>
         </div>
         <div class="staff-form-control-container">
             <label for="condicion_iva" class="form-label">Condición frente al IVA</label>
-            <select id="condicion_iva" name="condicion_iva" class="form-select">
+            <select id="condicion_iva" name="condicion_iva" class="form-select" required>
               {% for key, value in cond_choices %}
                 <option value="{{ key }}"> {{ value }}</option>
               {% endfor %}

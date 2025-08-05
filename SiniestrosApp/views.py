@@ -178,6 +178,7 @@ def vista_del_tercero(req: HttpRequest, sinid: int, terid: int):
 def vista_add_file_siniestro(req:HttpRequest, id):
     siniestro = get_object_or_404(Siniestro, id=id)
     if req.method=='POST':
+        print("🧪 FILE:", req.FILES.get("file"))
         DocSiniestro.objects.create(
             usuario_creacion=req.user,
             archivo = req.FILES.get("file"),
